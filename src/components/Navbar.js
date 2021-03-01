@@ -11,7 +11,7 @@ const Navbar = () =>{
       <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <FontAwesomeIcon icon={faShoppingCart}/>
+        <Link to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart}/></Link>
       </nav>
     </div>
   );
