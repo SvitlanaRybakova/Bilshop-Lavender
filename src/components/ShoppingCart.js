@@ -1,14 +1,14 @@
-
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash  } from '@fortawesome/free-solid-svg-icons'
+import styles from '../styles/ShoppingCard.module.css'
 
 function ShoppingCart() {
     return (
         <div className='container'>
             <div className='row'>
                 <div className='col-lg-8'>
-                    <div className="table-responsive">
+                    <div className={`${styles.shoppingCartTable} table-responsive`}>
                         <table className="table table-bordered text-center mb-0">
                             <thead>
                                 <tr>
@@ -17,26 +17,25 @@ function ShoppingCart() {
                                     <th>Total</th>
                                 </tr>
                             </thead>
-            
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td className={styles.productList}>
                                         <div className="d-flex align-items-center">
-                                            <div>
-                                                <button><FontAwesomeIcon icon={faTrash}/></button>
+                                            <div className={styles.removeIconBox}>
+                                                <button className={styles.removeIconBtn}><FontAwesomeIcon icon={faTrash}/></button>
                                             </div>
-                                            <a href="#">
-                                                <img src="http://source.unsplash.com/200x200?car" alt="Product" />
+                                            <a href="#" className={styles.productThumb}>
+                                                <img src="http://source.unsplash.com/120x120?car" alt="Product" />
                                             </a>
-                                            <a href="#">Toyota x600</a>
+                                            <a href="#" className={styles.productName}>Toyota x600</a>
                                         </div>
                                     </td>
                                     <td>
-                                        <span>100 000kr</span>
+                                        <span className={styles.price}>100 000kr</span>
                                     </td>
                                     
                                     <td>
-                                        <span>100 000kr</span>
+                                        <span className={styles.price}>100 000kr</span>
                                     </td>
                                 </tr>
                             </tbody>
