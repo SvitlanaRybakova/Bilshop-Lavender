@@ -1,26 +1,16 @@
-<<<<<<< Updated upstream
+import Home from './pages/Home' 
+import CarContextProvider from './contexts/CarContext'
 import Carousel from "./components/Carousel";
 
 function App() {
-  return (
-    <div className="App">
-      <Carousel />
-    </div>
-  );
-=======
-import Home from './pages/Home' 
-import CarContextProvider from './contexts/CarContext'
-
-function App() {
-  return (
   <div className="App">
     <CarContextProvider>
       <Home/>
+      <Carousel />
     </CarContextProvider>
 
   </div>
   )
->>>>>>> Stashed changes
 }
 
 export default App;
