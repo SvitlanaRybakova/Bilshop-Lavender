@@ -6,7 +6,7 @@ export const CarContext = createContext()
 function CarContextProvider(props) {
     const carsarray = Cars
     
-    const [ cars, setCars ] = useState( [carsarray
+    const [ cars, setCars ] = useState( [...carsarray
         ]
     )
 
