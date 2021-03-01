@@ -1,9 +1,12 @@
 import Home from './pages/Home' 
+import CarContextProvider from './contexts/CarContext'
 
 function App() {
   return (
   <div className="App">
-    <Home/>
+    <CarContextProvider>
+      <Home/>
+    </CarContextProvider>
 
   </div>
   )
