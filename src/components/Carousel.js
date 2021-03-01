@@ -8,23 +8,23 @@ function Carousel() {
       <div className="carousel-inner">
         <div className="carousel-item active" data-bs-interval="10000">
           <img
-            src="../assets/car-pictures/Acura-NSX-2000.jpg"
+            src="../assets/car-pictures/Ford-Mustang-1969.jpg"
             className="d-block w-100"
-            alt="..."
+            alt="Ford Mustang"
           />
         </div>
         <div className="carousel-item" data-bs-interval="2000">
           <img
-            src="../assets/car-pictures/Audi-80-1989.jpg"
+            src="../assets/car-pictures/Hyundai-Tiburon-2006.jpg"
             className="d-block w-100"
-            alt="..."
+            alt="Hyundai Triburon"
           />
         </div>
         <div className="carousel-item">
           <img
-            src="../assets/car-pictures/BMW-M5-2006.jpg"
+            src="../assets/car-pictures/Panoz-Esperante-2007.jpg"
             className="d-block w-100"
-            alt="..."
+            alt="Panoz Esperante"
           />
         </div>
       </div>
