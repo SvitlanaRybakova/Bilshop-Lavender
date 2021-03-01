@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { CarContext } from '../contexts/CarContext';
+import styles from '../styles/CarDetails.module.css';
 
 
 
@@ -8,7 +9,7 @@ export default function CarDetails() {
   console.log(cars);
   return (
     <>
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
           <div className="col-12">
             <div className="row">
@@ -21,46 +22,55 @@ export default function CarDetails() {
 
 
               {/* Start Product Info Area  */}
-              <div className="col-md-7">
-                <div className="product-details-info-content-wrap">
-                  <div className="prod-details-info-content">
-                    <h2>Hanging 4K Camera</h2>
-                    <h5 className="price"><strong>Price:</strong> <span className="price-amount">$325.00</span>
+              <div className="col-md-7 mt-5 mt-md-0">
+                <div className={styles.productDetailsInfoContentWrap}>
+                  <div className={styles.prodDetailsInfoContent}>
+                    <h2 className={styles.h2}>Hanging 4K Camera</h2>
+                    <h5 className={styles.price}><strong>Price:</strong> <span className={styles.priceAmoumt}>{cars.price}</span>
                     </h5>
-                    <p>Pursue pleasure rationally encounter consequences that are extremely painful. Nor
-                    again is there anyone who loves or pursues or desires to obtain pain of itself,
-              because it is pain, but because occasionally circles</p>
-                    <p>Pursue pleasure rationally encounter consequences that are extremely painful. Nor
-                    again is there anyone who loves or pursues or desires to obtain pain of itself,
-                    because it is pain, but because occasionally circles occur in and pain can
-              procure him some great ple cum solute nobie est eligendi option</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nihil, est officia libero molestias corporis possimus odit delectus. Molestias non debitis dolores necessitatibus ratione voluptates expedita porro quibusdam dolorem esse.</p>
 
-                    <div className="product-config">
-                      <div className="table-responsive">
-                        <table className="table table-bordered">
+                    <div className={styles.productConfig}>
+                      <div className={styles.tableResponsive}>
+                        <table className={styles.table}>
                           <tr>
-                            <th className="config-label">Color</th>
-                            <td className="config-option">
-                              <div className="config-color">
-                                <a href="#">Black</a>
-                                <a href="#">Blue</a>
-                                <a href="#">Green</a>
-                              </div>
+                            <th className={styles.configLabel}>Make</th>
+                            <td className={styles.configOption}>
+                              Panoz
                             </td>
                           </tr>
+
                           <tr>
-                            <th className="config-label">Size</th>
-                            <td className="config-option">
-                              <div className="config-color">
-                                <a href="#">Large</a>
-                                <a href="#">Medium</a>
-                                <a href="#">Small</a>
-                              </div>
+                            <th className={styles.configLabel}>Model</th>
+                            <td className={styles.configOption}>
+                              Despasito
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <th className={styles.configLabel}>Year</th>
+                            <td className={styles.configOption}>
+                              2006
+                            </td>
+                          </tr>
+                         
+                          <tr>
+                            <th className={styles.configLabel}>City</th>
+                            <td className={styles.configOption}>
+                              Lund
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <th className={styles.configLabel}>Miles</th>
+                            <td className={styles.configOption}>
+                              23355
                             </td>
                           </tr>
                         </table>
                       </div>
                     </div>
+                    <button className="btn btnBordered mt-5 mx-auto">Add to Cart</button>
                   </div>
                 </div>
               </div>
