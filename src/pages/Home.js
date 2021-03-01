@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
-import { CarContext } from '../contexts/CarContext'
+import React, { useContext } from 'react';
+import { CarContext } from '../contexts/CarContext';
+import CarList from '../components/CarList';
 
 function Home() {
     const { cars } = useContext(CarContext)
-    console.log(cars);
-
+    
     return(
         <div>
-            This is Home component
+            <CarList />
         </div>
     )
 }
