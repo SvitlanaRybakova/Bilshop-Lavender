@@ -6,21 +6,21 @@ function Carousel() {
       data-bs-ride="carousel"
     >
       <div className="carousel-inner">
-        <div className="carousel-item active" data-bs-interval="10000">
+        <div className="carousel-item active" data-bs-interval="3000">
           <img
             src="../assets/car-pictures/Ford-Mustang-1969.jpg"
             className="d-block w-100"
             alt="Ford Mustang"
           />
         </div>
-        <div className="carousel-item" data-bs-interval="2000">
+        <div className="carousel-item" data-bs-interval="3000">
           <img
             src="../assets/car-pictures/Hyundai-Tiburon-2006.jpg"
             className="d-block w-100"
             alt="Hyundai Triburon"
           />
         </div>
-        <div className="carousel-item">
+        <div className="carousel-item" data-bs-interval="3000">
           <img
             src="../assets/car-pictures/Panoz-Esperante-2007.jpg"
             className="d-block w-100"
