@@ -5,7 +5,9 @@ export default function CarItem(props){
   
   return(
     <>
-    <h6>{ car.make }</h6>
+    <div className="col-md-3">
+    <h6 style={{width: '200px', height:'100px', border: '1px solid green' }}>{ car.make }</h6>
+    </div>
     </>
   )
 }

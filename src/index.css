@@ -1,19 +1,209 @@
+/* Content
+  1. Typografi (styles for: font,  h1-h6, p)
+  2. Button 
+
+
+  Responsive
+*/
+
+/* ==========
+Typografi
+============= */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #303030;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: #1b1b1c;
+    line-height: 1.2;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+}
+
+h1, .h1 {
+    font-size: 60px;
+    margin-bottom: 6px;
+    margin-top: -15px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+strong,
+b {
+    font-weight: 700;
 }
 
 .carousel-item {
   height: 350px;
   margin-top: 5rem;
   width: 100%;
+}
+
+/* ==================
+    Buttons Styles 
+=====================*/
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+
+button:active,
+button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+.btnGroup .btn {
+  margin-right: 15px;
+}
+
+.btnGroup .btn:last-child {
+  margin-right: 0;
+}
+
+.btn {
+  border: 2px solid #d8d8d8;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
+  height: 45px;
+  letter-spacing: 0.025em;
+  line-height: 41px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.btn:focus, .btn:active {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btnWhite {
+  background-color: #d8d8d8;
+  border-radius: 25px;
+  color: #1b1b1c;
+}
+
+.btnWhite:hover {
+  background-color: #eeb644;
+  border-color: #eeb644;
+  color: #FFFFFF;
+}
+
+.btnBrand {
+  background-color: #eeb644;
+  border-color: #eeb644;
+  border-radius: 25px;
+  color: #1b1b1c;
+}
+
+.btnBrand:hover {
+  background-color: #d8d8d8;
+  border-color: #d8d8d8;
+}
+
+.btnBlack {
+  background-color: #1b1b1c;
+  border-color: #1b1b1c;
+  border-radius: 25px;
+  color: #FFFFFF;
+}
+
+.btnBlack:hover {
+  background-color: #d8d8d8;
+  border-color: #d8d8d8;
+  color: #1b1b1c;
+}
+
+.btnBordered {
+  border-radius: 0;
+  border-width: 1px;
+  font-size: 16px;
+  padding: 0 40px;
+  height: 50px;
+  line-height: 48px;
+}
+
+.btnBordered:hover {
+  border-color: #eeb644;
+  color: #eeb644;
+}
+
+
+/* ==========
+Responsive
+============= */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+
+  h3,
+  .h3 {
+      margin-top: -9px;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+
+  h3,
+  .h3 {
+      margin-top: -6px;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 32px;
+  margin-bottom: 14px;
+  margin-top: -8px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+
+  h4,
+  .h4 {
+      margin-top: -6px;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+
+  h4,
+  .h4 {
+      margin-top: -5px;
+  }
+}
+
+h5,
+.h5 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+h6,
+.h6 {
+  font-size: 20px;
+  margin-bottom: 12px;
 }
