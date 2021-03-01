@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash  } from '@fortawesome/free-solid-svg-icons'
+import ShoppingCartTotal from '../components/ShoppingCartTotal'
 import styles from '../styles/ShoppingCard.module.css'
 
 function ShoppingCart() {
@@ -41,6 +42,9 @@ function ShoppingCart() {
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div className='col-lg-4'>
+                    <ShoppingCartTotal/>
                 </div>
             </div>
         </div>
