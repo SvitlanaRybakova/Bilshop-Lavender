@@ -3,6 +3,20 @@
   margin-top: 1rem;
 }
 
-h5 {
+.carouselContainer {
+  position: relative;
+  height: 100%;
+}
+
+.h1deal {
   color: white;
+  padding: 20px 20px 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carouselImage {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
