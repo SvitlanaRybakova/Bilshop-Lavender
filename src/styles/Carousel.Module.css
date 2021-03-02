@@ -1,4 +1,23 @@
 .carouselItem {
   height: 350px;
-  margin-top: 5rem;
+}
+
+.carouselContainer {
+  position: relative;
+  height: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.h1deal {
+  color: white;
+  padding: 20px 20px 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carouselImage {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
