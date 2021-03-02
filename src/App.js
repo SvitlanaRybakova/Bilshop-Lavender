@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/about" component={About}/>
       <Route exact path="/shopping-cart" component={ShoppingCart}/>
       {/* TODO dynamic link  */}
-      <Route exact path="/change" component={CarDetails}/>
+      <Route exact path="/cars/:vin" component={CarDetails}/>
     </Router>
     </CarContextProvider>
   </div>
