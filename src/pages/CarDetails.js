@@ -90,7 +90,7 @@ export default function CarDetails(props) {
                           </table>
                         </div>
                       </div>
-                      <button className="btn btnBordered mt-5 mx-auto">Add to Cart</button>
+                      <NavLink className="btn btnBordered mt-5 mx-auto" to="/shopping-cart">Add to Cart</NavLink>
                     </div>
                   </div>
                 </div>
