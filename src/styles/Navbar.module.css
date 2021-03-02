@@ -6,7 +6,7 @@
 
  a,
  .brandName {
-    margin-right: 35px;
+    margin-right: 15px;
     color: #1b1b1c;
     font-size: 15px;
     font-weight: 600;
@@ -23,3 +23,30 @@ a:hover {
     color: #eeb644;
 }
 
+li {
+    margin: 5px 0;
+}
+
+.navbarList {
+    flex-grow: 0;
+}
+
+.myBtn:focus {
+    border: none;
+    outline: none !important;
+}
+nav {
+    position: relative;
+    padding: 0 5px;
+}
+
+.shoppingCartIcon {
+    position: absolute;
+    top: 38px;
+    right: 60px;
+}
+@media (min-width: 576px) { 
+    .shoppingCartIcon {
+        position: static;
+    }
+}

@@ -29,17 +29,26 @@ const Navbar = () =>{
     //   </nav>
     // </div>
 
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-sm">
       <div className="container-fluid">
-      <div className='d-flex align-items-end ms-3'>
+        <div className='d-flex align-items-end'>
          <img src={`../logo.png`} alt="Logo" className={styles.logo}/>
          <div className={`${styles.brandName} ms-3`}>Car Market <p className={styles.subBrand}>Lavender</p></div>
        </div>
-        <button onClick={toggleMenu} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <FontAwesomeIcon icon={faBars}/>
+        <button 
+          style={{outline: 'none !important'}}
+          onClick={toggleMenu} 
+          className={`${styles.myBtn} navbar-toggler`}
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarSupportedContent" 
+          aria-controls="navbarSupportedContent" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
+            <FontAwesomeIcon icon={faBars}/>
         </button>
-        <div className={`${show} collapse navbar-collapse`} id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className={`${show} ${styles.navbarList} collapse navbar-collapse`} id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
             <li className="nav-item">
               <Link to="/">Home</Link>
             </li>
@@ -49,6 +58,7 @@ const Navbar = () =>{
           </ul>
         </div>
       </div>
+      <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart}/></Link>
     </nav>
   );
 }
