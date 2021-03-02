@@ -6,6 +6,7 @@
 
 .configOption,
 .configLabel {
+  width: 50%;
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
