@@ -1,3 +1,10 @@
+.h2{
+  margin-bottom: 20px;
+  color: #eeb644;
+}
+.priceAmoumt{
+  font-weight: normal;
+}
 .table{
   border: #d8d8d8 1px solid;
   border-collapse: collapse;
@@ -6,6 +13,7 @@
 
 .configOption,
 .configLabel {
+  width: 50%;
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
