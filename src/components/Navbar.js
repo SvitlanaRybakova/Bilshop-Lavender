@@ -36,9 +36,9 @@ const Navbar = () =>{
          <div className={`${styles.brandName} ms-3`}>Car Market <p className={styles.subBrand}>Lavender</p></div>
        </div>
         <button 
-          style={{outline: 'none !important'}}
-          onClick={toggleMenu} 
-          className={`${styles.myBtn} navbar-toggler`}
+          onClick={toggleMenu}
+          style={{border: 'none'}} 
+          className={`${styles.myBtn} btn navbar-toggler`}
           type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#navbarSupportedContent" 

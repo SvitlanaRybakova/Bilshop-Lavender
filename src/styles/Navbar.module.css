@@ -31,15 +31,13 @@ li {
     flex-grow: 0;
 }
 
-.myBtn:focus {
-    border: none;
-    outline: none !important;
-}
 nav {
     position: relative;
     padding: 0 5px;
 }
-
+.myBtn {
+    padding: 0 15px;
+}
 .shoppingCartIcon {
     position: absolute;
     top: 38px;
@@ -48,5 +46,9 @@ nav {
 @media (min-width: 576px) { 
     .shoppingCartIcon {
         position: static;
+    }
+
+    nav {
+        margin: 0 30px;
     }
 }
