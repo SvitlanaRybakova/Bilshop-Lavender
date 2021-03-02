@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { CarContext } from '../contexts/CarContext';
 import styles from '../styles/CarDetails.module.css';
 
-
-
 export default function CarDetails() {
   const { cars } = useContext(CarContext);
   console.log(cars);
