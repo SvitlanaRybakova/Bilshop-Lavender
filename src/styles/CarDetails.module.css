@@ -1,0 +1,78 @@
+.table{
+  border: #d8d8d8 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.configOption,
+.configLabel {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  
+}
+
+.configLabel {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.configOption {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .prodDetailsInfoContent {
+      padding-left: 20px;
+  }
+}
+
+.prodDetailsInfoContent .h2 {
+  font-size: 30px;
+  margin-top: -6px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .prodDetailsInfoContent .h2 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+  }
+}
+
+.prodDetailsInfoContent .price {
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 33px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .prodDetailsInfoContent .price {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.prodDetailsInfoContent .priceAmount {
+  font-size: 18px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.productConfig {
+  margin: 40px 0;
+}
+
+.productConfig .table {
+  margin-bottom: 0;
+}
+
+
+
+
+
+}
+
+
+
+
