@@ -34,11 +34,11 @@ export default function CarDetails(props) {
             <div className="col-12">
               <div className="row">
                 <div className="col-md-5">
-                  {/* ******TODO dynamic link */}
+                
                   <img className="w-100"
-                    src="../assets/car-pictures/Ford-Mustang-1969.jpg" alt="" />
+                  src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                  alt={`${carItem.make} ${carItem.model}`} />
                 </div>
-                {/* img-block */}
 
 
                 {/* Start Product Info Area  */}
