@@ -1,85 +1,107 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { CarContext } from '../contexts/CarContext';
 import styles from '../styles/CarDetails.module.css';
 
 
 
-export default function CarDetails() {
+export default function CarDetails(props) {
+  const [carItem, setCarItem] = useState(null);
   const { cars } = useContext(CarContext);
-  console.log(cars);
-  return (
-    <>
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-12">
-            <div className="row">
-              <div className="col-md-5">
-                {/* ******TODO dynamic link */}
-                <img className="w-100"
-                  src="../assets/car-pictures/Ford-Mustang-1969.jpg" alt="" />
-              </div>
-              {/* img-block */}
 
 
-              {/* Start Product Info Area  */}
-              <div className="col-md-7 mt-5 mt-md-0">
-                <div className={styles.productDetailsInfoContentWrap}>
-                  <div className={styles.prodDetailsInfoContent}>
-                    <h2 className={styles.h2}>Hanging 4K Camera</h2>
-                    <h5 className={styles.price}><strong>Price:</strong> <span className={styles.priceAmoumt}>{cars.price}</span>
-                    </h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nihil, est officia libero molestias corporis possimus odit delectus. Molestias non debitis dolores necessitatibus ratione voluptates expedita porro quibusdam dolorem esse.</p>
+  useEffect(() => {
+    if (cars) {
+      setCarItem(cars.find((el) => props.match.params.vin == el.vin))
+    }
 
-                    <div className={styles.productConfig}>
-                      <div className={styles.tableResponsive}>
-                        <table className={styles.table}>
-                          <tr>
-                            <th className={styles.configLabel}>Make</th>
-                            <td className={styles.configOption}>
-                              Panoz
-                            </td>
-                          </tr>
+  }, [cars]);
 
-                          <tr>
-                            <th className={styles.configLabel}>Model</th>
-                            <td className={styles.configOption}>
-                              Despasito
-                            </td>
-                          </tr>
+  const showPrice = () => {
+    const price = String(carItem.price);
+    return price.split(/(\d{3})/).join(' ').trim();
+  }
 
-                          <tr>
-                            <th className={styles.configLabel}>Year</th>
-                            <td className={styles.configOption}>
-                              2006
-                            </td>
-                          </tr>
-                         
-                          <tr>
-                            <th className={styles.configLabel}>City</th>
-                            <td className={styles.configOption}>
-                              Lund
-                            </td>
-                          </tr>
 
-                          <tr>
-                            <th className={styles.configLabel}>Miles</th>
-                            <td className={styles.configOption}>
-                              23355
-                            </td>
-                          </tr>
-                        </table>
+
+  const renderCarDetails = () => {
+    console.log(typeof carItem.price);
+    
+    return (
+      <>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-12">
+              <div className="row">
+                <div className="col-md-5">
+                
+                  <img className="w-100"
+                  src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                  alt={`${carItem.make} ${carItem.model}`} />
+                </div>
+
+
+                {/* Start Product Info Area  */}
+                <div className="col-md-7 mt-5 mt-md-0">
+                  <div className={styles.productDetailsInfoContentWrap}>
+                    <div className={styles.prodDetailsInfoContent}>
+                      <h2 className={styles.h2}>{carItem.make} {carItem.model}</h2>
+                      <h5 className={styles.price}><strong >Price:</strong> <span className={styles.priceAmoumt}>{showPrice()} SEK</span>
+                      </h5>
+                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nihil, est officia libero molestias corporis possimus odit delectus. Molestias non debitis dolores necessitatibus ratione voluptates expedita porro quibusdam dolorem esse.</p>
+
+                      <div className={styles.productConfig}>
+                        <div className={styles.tableResponsive}>
+                          <table className={styles.table}>
+                            <tr>
+                              <th className={styles.configLabel}>Make</th>
+                              <td className={styles.configOption}>
+                                {carItem.make}
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th className={styles.configLabel}>Model</th>
+                              <td className={styles.configOption}>
+                                {carItem.model}
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th className={styles.configLabel}>Year</th>
+                              <td className={styles.configOption}>
+                                {carItem.year}
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th className={styles.configLabel}>City</th>
+                              <td className={styles.configOption}>
+                                {carItem.city}
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <th className={styles.configLabel}>Miles</th>
+                              <td className={styles.configOption}>
+                                {carItem.miles}
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
                       </div>
+                      <NavLink className="btn btnBordered mt-5 mx-auto" to="/shopping-cart">Add to Cart</NavLink>
                     </div>
-                    <button className="btn btnBordered mt-5 mx-auto">Add to Cart</button>
                   </div>
                 </div>
+                {/* End Product Info Area */}
               </div>
-              {/* End Product Info Area */}
             </div>
           </div>
         </div>
-      </div>
-      {/* container */}
-    </>
-  )
+        {/* container */}
+      </>
+    )
+  }
+  return carItem ? renderCarDetails() : <div></div>
 }

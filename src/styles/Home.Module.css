@@ -1,0 +1,47 @@
+.imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.imgCars {
+  margin-top: 0.7rem;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.itemWrapper {
+  margin: 1rem;
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 0.2;
+}
+
+.detailsButton {
+  border: 1px solid #eeb644;
+  border-radius: 1rem;
+  width: 10rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #eeb644;
+}
+
+.detailsButton:hover {
+  color: #383838;
+  border-color: #383838;
+}
+
+.carItemCart {
+  margin-left: 0;
+  font-size: 1.7rem;
+  color: #eeb644;
+}
+
+.carItemCart:hover {
+  color: #383838;
+}
+
+h6 {
+  font-size: 1rem;
+  color: #383838;
+}

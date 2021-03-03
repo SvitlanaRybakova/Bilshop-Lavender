@@ -1,8 +1,21 @@
-.about{
+.about {
   max-width: 80%;
   margin: auto;
 }
 
-.imgContainer{
+.imgContainer {
   max-width: 100%;
+}
+
+.findButton {
+  border: 1px solid #eeb644;
+  border-radius: 1rem;
+  width: 15rem;
+  font-size: 1rem;
+  color: #eeb644;
+}
+
+.findButton:hover {
+  color: #383838;
+  border-color: #383838;
 }
