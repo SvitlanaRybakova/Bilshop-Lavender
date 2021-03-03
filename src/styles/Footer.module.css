@@ -1,6 +1,6 @@
 .containerFluid {
   overflow: hidden;
-  margin-top: 250px;
+  margin-top: 150px;
   background: #1b1b1c;
   color: #ffffff !important;
   margin-bottom: 0;
@@ -12,9 +12,7 @@
   font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
 }
 
-.small {
-  font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
-}
+
 
 
 
@@ -28,4 +26,18 @@
 }
 
 
+.footerLink{
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 600
+}
+.footerLink:hover{
+  color: #feb737 !important;
+}
 
+.footerEmail{
+  font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
+  color: #ffffff;
+  font-weight: normal;
+  text-transform: none;
+}
