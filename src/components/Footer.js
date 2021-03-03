@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from '../styles/Footer.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Footer() {
   return (
@@ -26,7 +29,22 @@ export default function Footer() {
             </div>
             <div className="row ">
               <div className="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
-                <p className={`${styles.social} text-white mb-0 pb-0 bold-text`}> <span className="mx-2"><i className="fa fa-facebook" aria-hidden="true"></i></span> <span className="mx-2"><i className="fa fa-linkedin-square" aria-hidden="true"></i></span> <span className="mx-2"><i className="fa fa-twitter" aria-hidden="true"></i></span> <span className="mx-2"><i className="fa fa-instagram" aria-hidden="true"></i></span> </p><small className={styles.rights}><span>&#174;</span> Car market All Rights Reserved.</small>
+                <p className={`${styles.social} text-white mb-0 pb-0 bold-text`}>
+                  <span className="mx-2">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                    <i className="fa fa-facebook" aria-hidden="true"></i></span>
+                  <span className="mx-2">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                    <i className="fa fa-linkedin-square" aria-hidden="true"></i>
+                  </span>
+                  <span className="mx-2">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                    <i className="fa fa-twitter" aria-hidden="true"></i>
+                  </span>
+                  <span className="mx-2">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                    <i className="fa fa-instagram" aria-hidden="true"></i>
+                  </span> </p><small className={styles.rights}><span>&#174;</span> Car market All Rights Reserved.</small>
               </div>
               <div className="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
                 <h6 className={`${styles.mt55} mt-2 text-white bold-text`}><b>MARK BROWN</b></h6><small> <span><i className="fa fa-envelope" aria-hidden="true"></i></span> brown@gmail.com</small>
