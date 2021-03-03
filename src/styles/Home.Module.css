@@ -1,7 +1,41 @@
-.imgContainer{
-  max-width: 10%;
+.imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.imgCars{
-  max-width: 10rem;
+.imgCars {
+  margin-top: 1.5rem;
+  max-width: 90%;
+  margin-bottom: 1rem;
+}
+
+.itemWrapper {
+  margin: 1rem;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.detailsButton {
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: auto;
+  width: 10rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 0;
+}
+
+.detailsButton:hover {
+  color: #eeb644;
+  border-color: #eeb644;
+}
+
+.carItemCart {
+  margin-left: 0;
 }
