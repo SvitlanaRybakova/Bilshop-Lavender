@@ -23,7 +23,7 @@ export default function CarItem(props) {
       </div>
       <div className="row">
         <h6 className="col-9">
-          {car.make}, {car.model}
+          {car.make} {car.model}
         </h6>
         <h6 className="col-3 text-md-end">{car.year}</h6>
       </div>
