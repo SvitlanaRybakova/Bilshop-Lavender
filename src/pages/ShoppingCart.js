@@ -50,14 +50,14 @@ function ShoppingCart() {
               </tbody>
             </table>
           </div>
-            <div>
-                <div className="form-check">
+            <div className={styles.shippingMethods}>
+                <div className={`${styles.formCheckBox} form-check`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
                     <label className="form-check-label" for="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
-                <div className="form-check">
+                <div className={`${styles.formCheckBox} form-check`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" for="flexRadioDefault2">
                         Pick up the car by yourself
