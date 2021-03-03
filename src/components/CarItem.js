@@ -25,9 +25,9 @@ export default function CarItem(props) {
         <h6 className="col-9">
           {car.make} {car.model}
         </h6>
-        <h6 className="col-3 text-md-end">{car.year}</h6>
+        <span className="col-3 text-md-end">{car.year}</span>
       </div>
-      <h6 className="col-5 text-md-start">{car.price} kr</h6>
+      <span className="col-5 text-md-start">{car.price} kr</span>
       <div className="row">
         <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
           <FontAwesomeIcon icon={faShoppingCart} />
