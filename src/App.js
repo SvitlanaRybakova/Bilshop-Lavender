@@ -19,9 +19,10 @@ function App() {
           <Route exact path="/shopping-cart" component={ShoppingCart} />
           <Route exact path="/cars/:vin" component={CarDetails} />
           <Route exact path="/shopping-cart/checkout" component={Checkout} />
+          <Footer />
         </Router>
       </CarContextProvider>
-      <Footer />
+      
     </div>
   );
 }

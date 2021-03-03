@@ -1,22 +1,16 @@
-import { createContext, useState } from 'react'
-import Cars from '../json/cars.json'
+import { createContext, useState } from "react";
+import Cars from "../json/cars.json";
 
-export const CarContext = createContext()
+export const CarContext = createContext();
 
 function CarContextProvider(props) {
-    const carsarray = Cars
-    
-    const [ cars, setCars ] = useState( [...carsarray
-        ]
-    )
+  const carsarray = Cars;
 
-    return (
-        <CarContext.Provider value = {{cars}}>
-            {props.children}
+  const [cars, setCars] = useState([...carsarray]);
 
-        </CarContext.Provider>
-
-    )
+  return (
+    <CarContext.Provider value={{ cars }}>{props.children}</CarContext.Provider>
+  );
 }
 
-export default CarContextProvider
+export default CarContextProvider;
