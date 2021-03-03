@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal() {
@@ -42,11 +41,7 @@ function ShoppingCartTotal() {
                         </tfoot>
                     </table>
                 </div>
-                <div className={styles.toCheckoutBtnBox}>
-                    <Link className={styles.carItemCart} to="/shopping-cart/checkout">
-                        <span className={`btn ${styles.toCheckoutBtn} d-block`}>Proceed to Checkout</span>
-                    </Link>
-                </div>
+                
 
             </div>
         </div>

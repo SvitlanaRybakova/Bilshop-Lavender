@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash  } from '@fortawesome/free-solid-svg-icons'
 import ShoppingCartTotal from '../components/ShoppingCartTotal'
@@ -45,6 +46,11 @@ function ShoppingCart() {
                 </div>
                 <div className='col-lg-4'>
                     <ShoppingCartTotal/>
+                    <div className={styles.toCheckoutBtnBox}>
+                        <Link to="/shopping-cart/checkout">
+                            <span className={`btn ${styles.toCheckoutBtn} d-block`}>Proceed to Checkout</span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
