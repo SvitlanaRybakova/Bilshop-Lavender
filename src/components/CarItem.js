@@ -27,7 +27,7 @@ export default function CarItem(props) {
         </h6>
         <span className="col-3 text-md-end">{car.year}</span>
       </div>
-      <span className="col-5 text-md-start">{car.price} kr</span>
+      <span className="col-5 text-md-start">{car.price} SEK</span>
       <div className="row">
         <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
           <FontAwesomeIcon icon={faShoppingCart} />
