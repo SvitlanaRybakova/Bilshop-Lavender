@@ -17,28 +17,28 @@
 }
 
 .detailsButton {
-  border: 1px solid #eeb644;
+  border: 1px solid #383838;
   border-radius: 1rem;
   width: 10rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #eeb644;
+  color: #383838;
 }
 
 .detailsButton:hover {
-  color: #383838;
-  border-color: #383838;
+  border-color: #eeb644;
+  color: #eeb644;
 }
 
 .carItemCart {
   margin-left: 0;
   font-size: 1.7rem;
-  color: #eeb644;
+  color: #383838;
 }
 
 .carItemCart:hover {
-  color: #383838;
+  color: #eeb644;
 }
 
 h6 {
