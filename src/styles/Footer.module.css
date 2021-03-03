@@ -31,8 +31,10 @@
   font-size: 15px;
   font-weight: 600
 }
-.footerLink:hover{
+.footerLink:hover,
+.social span:hover {
   color: #feb737 !important;
+  cursor: pointer;
 }
 
 .footerEmail{
