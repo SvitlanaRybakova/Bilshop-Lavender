@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import CarContextProvider from './contexts/CarContext';
 import CarDetails from './pages/CarDetails';
-import ShoppingCart from './components/ShoppingCart';
+import ShoppingCart from './pages/ShoppingCart';
 import Checkout from './pages/Checkout';
 
 function App() {
