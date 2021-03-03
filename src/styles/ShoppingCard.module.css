@@ -51,3 +51,31 @@ td {
     font-weight: 600;
     vertical-align: middle;
 }
+
+
+/* Styling for delivety options */
+
+.shippingMethods {
+    margin-top: 50px;
+}
+
+.formCheckBox {
+    margin-bottom: 20px;
+}
+
+.formCheckRadio {
+    margin-right: 10px;
+    padding: 10px 10px;
+}
+
+.formCheckRadio:checked {
+    border-color: #eeb644;
+    background-color: #eeb644;
+
+}
+
+.formCheckRadio:focus {
+    box-shadow: none;
+}
+
+

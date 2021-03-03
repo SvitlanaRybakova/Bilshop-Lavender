@@ -5,3 +5,40 @@
 .imgCars{
   max-width: 10rem;
 }
+
+.itemWrapper {
+  margin: 1rem;
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 0.2;
+}
+
+.detailsButton {
+  border: 1px solid #383838;
+  border-radius: 1rem;
+  width: 10rem;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #383838;
+}
+
+.detailsButton:hover {
+  border-color: #eeb644;
+  color: #eeb644;
+}
+
+.carItemCart {
+  margin-left: 0;
+  font-size: 1.7rem;
+  color: #383838;
+}
+
+.carItemCart:hover {
+  color: #eeb644;
+}
+
+h6 {
+  font-size: 1rem;
+  color: #383838;
+}

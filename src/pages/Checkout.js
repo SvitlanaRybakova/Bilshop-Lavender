@@ -7,16 +7,8 @@ export default function Checkout() {
       <div className="page-content-wrapper sp-y">
         <div className="cart-page-content-wrap">
           <div className="container container-wide">
-            <div className="row">
-              <div className="col-12">
-                <div className="checkout-page-coupon-area">
-
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-6">
+            <div className="row d-flex justify-content-between ">
+              <div className="col-lg-6 ">
                 {/* Checkout Form Area Start */}
                 <div className="checkout-billing-details-wrap">
 
@@ -166,7 +158,7 @@ export default function Checkout() {
                 </div>
               </div>
 
-              <div className="col-lg-6 col-xl-5 ml-auto">
+              <div className="col-lg-6  col-xl-5 ">
                 <ShoppingCartTotal />
               </div>
             </div>

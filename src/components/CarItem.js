@@ -16,10 +16,24 @@ export default function CarItem(props){
       <div className={styles.imgContainer}>
         <img className={styles.imgCars} src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}></img>
       </div>
-    <div 
-    onClick={handleClick}
-    className="btn"
-    >See more</div>
+      <div className="row">
+        <h6 className="col-9">
+          {car.make} {car.model}
+        </h6>
+        <span className="col-3 text-md-end">{car.year}</span>
+      </div>
+      <span className="col-5 text-md-start">{car.price} SEK</span>
+      <div className="row">
+        <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
+          <FontAwesomeIcon icon={faShoppingCart} />
+        </Link>
+        <div
+          onClick={handleClick}
+          className={`${styles.detailsButton} col btn`}
+        >
+          view details
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,13 +1,23 @@
 import React from 'react'
+import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
-function ShoppingCartTotal() {
+function ShoppingCartTotal(props) {
+
+    console.log(props.isDeliveryRequired);
+
+    let deliverySum = props.isDeliveryRequired ? '5000' : '0'
+
+    const location = useLocation()
+
+    let buttonText = location.pathname === '/shopping-cart' ? 'Proceed to Checkout' : 'Place order'
+    
     return (
         <div className='mt-5 mt-lg-0'>
             <div className={styles.cartTotal}>
                 <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
 
-                <div class="table-responsive">
+                <div className="table-responsive">
                     <table className="table table-borderless">
                         <thead className='border-bottom'>
                             <tr>
@@ -29,7 +39,7 @@ function ShoppingCartTotal() {
                                     Shipping
                                 </td>
                                 <td>
-                                   5 000kr
+                                   {deliverySum} kr
                                 </td>
                             </tr>
                         </tbody>
@@ -40,6 +50,13 @@ function ShoppingCartTotal() {
                             </tr>   
                         </tfoot>
                     </table>
+                </div>
+                <div className={styles.toCheckoutBtnBox}>
+                    <Link to="/shopping-cart/checkout">
+                    <span className={`btn ${styles.toCheckoutBtn} d-block`}>
+                        {buttonText}
+                    </span>
+                    </Link>
                 </div>
 
                 <div className={styles.toCheckoutBtnBox}>
