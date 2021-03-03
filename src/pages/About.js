@@ -57,12 +57,11 @@ function About() {
         </div>
       </div>
 
-      <div className="card text-center">
+      <div className="card text-center mt-5">
         <div className="card-body">
-          <p className="card-text">We have the car just for you!</p>
-          <a href="#" className="btn btnWhite">
-            <button onClick={refreshPage}>Find your new car</button>
-          </a>
+          <Link className={`${styles.findButton} btn`} to="/">
+            find your new car
+          </Link>
         </div>
       </div>
     </div>

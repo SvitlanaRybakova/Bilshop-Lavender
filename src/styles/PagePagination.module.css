@@ -1,0 +1,28 @@
+.ulPagination{
+  margin-top: 50px;
+
+}
+
+.liItem{
+  color: #383838;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  font-family: "Oswald", sans-serif;
+}
+
+.liItem:hover{
+ 
+  box-sizing: border-box;
+  border: 1px solid  #feb93e;
+  color:  #feb93e;
+  background-color: transparent;
+}
+
+.active{
+  background-color: #feb93e !important;
+  color: #000000 !important;
+}
+
+.pageItem{
+  /* background-color: red; */
+}
