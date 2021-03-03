@@ -6,6 +6,7 @@ import CarContextProvider from "./contexts/CarContext";
 import CarDetails from "./pages/CarDetails";
 import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/shopping-cart/checkout" component={Checkout} />
         </Router>
       </CarContextProvider>
+      <Footer />
     </div>
   );
 }
