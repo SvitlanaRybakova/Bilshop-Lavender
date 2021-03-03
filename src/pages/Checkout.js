@@ -9,8 +9,8 @@ export default function Checkout() {
       <div className={`${styles.pageContentWrapper} sp-y`}>
         <div className={styles.cartPageContentWrap}>
           <div className="container container-wide">
-            <div className="row">
-              <div className="col-lg-6">
+            <div className="row d-flex justify-content-between ">
+              <div className="col-lg-6 ">
                 {/* Checkout Form Area Start */}
                 <div className={styles.checkoutBillingDetailsWrap}>
 
@@ -160,7 +160,7 @@ export default function Checkout() {
                 </div>
               </div>
 
-              <div className="col-lg-6 col-xl-5 ml-auto">
+              <div className="col-lg-6  col-xl-5 ">
                 <ShoppingCartTotal />
               </div>
             </div>
