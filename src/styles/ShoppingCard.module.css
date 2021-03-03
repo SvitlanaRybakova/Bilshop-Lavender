@@ -52,21 +52,6 @@ td {
     vertical-align: middle;
 }
 
-.toCheckoutBtnBox {
-    margin: 15px 0 0;
-}
-
-.toCheckoutBtn{
-    background-color: #eeb644;
-    border-color: #eeb644;
-    border-radius: 25px;
-    color: #1b1b1c;
-    font-size: 14px;
-}
-.toCheckoutBtn:hover {
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
-}
 
 /* Styling for delivety options */
 
@@ -80,11 +65,17 @@ td {
 
 .formCheckRadio {
     margin-right: 10px;
+    padding: 10px 10px;
 }
 
 .formCheckRadio:checked {
     border-color: #eeb644;
     background-color: #eeb644;
+
+}
+
+.formCheckRadio:focus {
+    box-shadow: none;
 }
 
 

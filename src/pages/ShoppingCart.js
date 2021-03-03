@@ -1,17 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 
 function ShoppingCart() {
-    let isPaidDeliveryRequired = true;
-    console.log(isPaidDeliveryRequired);
+    let isDeliveryRequired = true;
+    console.log(isDeliveryRequired);
 
     const handleRadioButtonClick = () => {
-        isPaidDeliveryRequired = true
-        console.log(isPaidDeliveryRequired);
+        isDeliveryRequired = true
+        console.log(isDeliveryRequired);
     }
     
   return (
@@ -59,15 +58,15 @@ function ShoppingCart() {
             </table>
           </div>
             <div className={styles.shippingMethods}>
-                <div className={`${styles.formCheckBox} form-check`} onClick={handleRadioButtonClick}>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`} onClick={handleRadioButtonClick}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
                     <label className="form-check-label" for="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
-                <div className={`${styles.formCheckBox} form-check`} onClick={()=>{isPaidDeliveryRequired = false}}>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`} onClick={()=>{isDeliveryRequired = false}}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                    <label className="form-check-label" for="flexRadioDefault2">
+                    <label className="form-check-label" >
                         Pick up the car by yourself
                     </label>
                 </div>
@@ -76,15 +75,8 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          <ShoppingCartTotal isPaidDeliveryRequired={isPaidDeliveryRequired}/>
-
-          <div className={styles.toCheckoutBtnBox}>
-            <Link to="/shopping-cart/checkout">
-              <span className={`btn ${styles.toCheckoutBtn} d-block`}>
-                Proceed to Checkout
-              </span>
-            </Link>
-          </div>
+          <ShoppingCartTotal isDeliveryRequired={isDeliveryRequired}/>
+          
         </div>
       </div>
     </div>

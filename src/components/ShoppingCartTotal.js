@@ -1,10 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
 
     
-    console.log(props.isPaidDeliveryRequired);
+    console.log(props.isDeliveryRequired);
+
+    let deliverySum = props.isDeliveryRequired ? '5000' : '0'
+
     
     return (
         <div className='mt-5 mt-lg-0'>
@@ -33,7 +37,7 @@ function ShoppingCartTotal(props) {
                                     Shipping
                                 </td>
                                 <td>
-                                   5 000kr
+                                   {deliverySum} kr
                                 </td>
                             </tr>
                         </tbody>
@@ -45,7 +49,13 @@ function ShoppingCartTotal(props) {
                         </tfoot>
                     </table>
                 </div>
-                
+                <div className={styles.toCheckoutBtnBox}>
+                    <Link to="/shopping-cart/checkout">
+                    <span className={`btn ${styles.toCheckoutBtn} d-block`}>
+                        Proceed to Checkout
+                    </span>
+                    </Link>
+                </div>
 
             </div>
         </div>
