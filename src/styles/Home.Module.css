@@ -5,8 +5,8 @@
 }
 
 .imgCars {
-  margin-top: 1.5rem;
-  max-width: 90%;
+  margin-top: 0.7rem;
+  max-width: 100%;
   margin-bottom: 1rem;
 }
 
@@ -14,21 +14,13 @@
   margin: 1rem;
 }
 
-.card {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .detailsButton {
   border: 1px solid black;
   border-radius: 1rem;
-  margin: auto;
   width: 10rem;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  margin-right: 0;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .detailsButton:hover {
@@ -38,4 +30,9 @@
 
 .carItemCart {
   margin-left: 0;
+  font-size: 1.7rem;
+}
+
+h6 {
+  font-size: 1rem;
 }

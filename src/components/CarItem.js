@@ -21,14 +21,23 @@ export default function CarItem(props) {
           src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
         ></img>
       </div>
-      <h6>{car.make}</h6>
-      <h6>{car.model}</h6>
-      <h6>{car.year}</h6>
-      <Link className={styles.carItemCart} to="/shopping-cart">
-        <FontAwesomeIcon icon={faShoppingCart} />
-      </Link>
-      <div onClick={handleClick} className={`${styles.detailsButton} btn`}>
-        view details
+      <div className="row">
+        <h6 className="col-9">
+          {car.make}, {car.model}
+        </h6>
+        <h6 className="col-3 text-md-end">{car.year}</h6>
+      </div>
+      <h6 className="col-5 text-md-start">{car.price} kr</h6>
+      <div className="row">
+        <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
+          <FontAwesomeIcon icon={faShoppingCart} />
+        </Link>
+        <div
+          onClick={handleClick}
+          className={`${styles.detailsButton} col btn`}
+        >
+          view details
+        </div>
       </div>
     </div>
   );
