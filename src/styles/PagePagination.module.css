@@ -4,7 +4,8 @@
 }
 
 .liItem{
-  color: #000000;
+  color: #383838;
+  font-size: 1rem;
   border: 1px solid transparent;
   font-family: "Oswald", sans-serif;
 }
