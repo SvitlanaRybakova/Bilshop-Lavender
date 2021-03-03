@@ -68,11 +68,23 @@ td {
     border-color: #d8d8d8;
 }
 
+/* Styling for delivety options */
 
-border: 1px solid #e1e1e1;
-display: block;
-padding: 12px 15px;
--webkit-transition: 0.4s;
--o-transition: 0.4s;
-transition: 0.4s;
-width: 100%;
+.shippingMethods {
+    margin-top: 50px;
+}
+
+.formCheckBox {
+    margin-bottom: 20px;
+}
+
+.formCheckRadio {
+    margin-right: 10px;
+}
+
+.formCheckRadio:checked {
+    border-color: #eeb644;
+    background-color: #eeb644;
+}
+
+

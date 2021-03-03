@@ -6,6 +6,14 @@ import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 
 function ShoppingCart() {
+    let isPaidDeliveryRequired = true;
+    console.log(isPaidDeliveryRequired);
+
+    const handleRadioButtonClick = () => {
+        isPaidDeliveryRequired = true
+        console.log(isPaidDeliveryRequired);
+    }
+    
   return (
     <div className="container">
       <div className="row">
@@ -51,13 +59,13 @@ function ShoppingCart() {
             </table>
           </div>
             <div className={styles.shippingMethods}>
-                <div className={`${styles.formCheckBox} form-check`}>
+                <div className={`${styles.formCheckBox} form-check`} onClick={handleRadioButtonClick}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
                     <label className="form-check-label" for="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
-                <div className={`${styles.formCheckBox} form-check`}>
+                <div className={`${styles.formCheckBox} form-check`} onClick={()=>{isPaidDeliveryRequired = false}}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" for="flexRadioDefault2">
                         Pick up the car by yourself
@@ -67,7 +75,9 @@ function ShoppingCart() {
         </div>
         
         <div className="col-lg-4">
-          <ShoppingCartTotal />
+
+          <ShoppingCartTotal isPaidDeliveryRequired={isPaidDeliveryRequired}/>
+
           <div className={styles.toCheckoutBtnBox}>
             <Link to="/shopping-cart/checkout">
               <span className={`btn ${styles.toCheckoutBtn} d-block`}>

@@ -1,13 +1,17 @@
 import React from 'react'
 import styles from '../styles/ShoppingCartTotal.module.css'
 
-function ShoppingCartTotal() {
+function ShoppingCartTotal(props) {
+
+    
+    console.log(props.isPaidDeliveryRequired);
+    
     return (
         <div className='mt-5 mt-lg-0'>
             <div className={styles.cartTotal}>
                 <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
 
-                <div class="table-responsive">
+                <div className="table-responsive">
                     <table className="table table-borderless">
                         <thead className='border-bottom'>
                             <tr>
