@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -13,10 +13,6 @@ const Navbar = () =>{
   }
 
   const show = showCollapsedMenu ? "show" : "" ;
-
-  useEffect(()=> {
-    console.log('component changed');
-  })
 
   return(
     <nav className="navbar navbar-expand-sm">
