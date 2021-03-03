@@ -67,3 +67,12 @@ td {
     background-color: #d8d8d8;
     border-color: #d8d8d8;
 }
+
+
+border: 1px solid #e1e1e1;
+display: block;
+padding: 12px 15px;
+-webkit-transition: 0.4s;
+-o-transition: 0.4s;
+transition: 0.4s;
+width: 100%;
