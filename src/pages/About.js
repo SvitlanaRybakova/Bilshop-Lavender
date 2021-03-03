@@ -1,7 +1,10 @@
 import styles from "../styles/About.Module.css";
-import { Link } from "react-router-dom";
+import React from "react";
 
 function About() {
+  const refreshPage = () => {
+    window.location.reload();
+  };
   return (
     <div className={`${styles.about}`}>
       <div className="mb-3 d-flex">
@@ -58,9 +61,8 @@ function About() {
         <div className="card-body">
           <p className="card-text">We have the car just for you!</p>
           <a href="#" className="btn btnWhite">
-            Find your new car
+            <button onClick={refreshPage}>Find your new car</button>
           </a>
-          <Link to="/">Home</Link>
         </div>
       </div>
     </div>
