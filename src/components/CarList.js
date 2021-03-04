@@ -4,27 +4,40 @@ import CarItem from "../components/CarItem";
 import PagePagination from '../components/PagePagination'
 
 export default function CarList() {
-  const { 
-    copyCars, 
-    carsPerPage, 
+  const {
+    copyCars,
+    carsPerPage,
     setCurrentPage,
     currentCars } = useContext(CarContext);
 
+  const { cars, filtered, showResult } = useContext(CarContext);
 
   // pagination
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
 
-
-  return (
-    <div className="container container-wide">
-      <div className="row mtn-30 d-flex justify-content-center">
-        {currentCars.map((item) => (
-          <CarItem key={item.vin} car={item} />
-        ))}
+  if (showResult === true) {
+    return (
+      <div className="container container-wide">
+        <div className="row mtn-30 d-flex justify-content-center">
+          {filtered.map((item) => (
+            <CarItem key={item.vin} car={item} />
+          ))}
+        </div>
       </div>
-      <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
-    </div>
-  );
+    );
+  } else {
+    // rendered with pagination
+    return (
+      <div className="container container-wide">
+        <div className="row mtn-30 d-flex justify-content-center">
+          {currentCars.map((item) => (
+            <CarItem key={item.vin} car={item} />
+          ))}
+        </div>
+        <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
+      </div>
+    );
+  }
 }
