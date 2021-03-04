@@ -7,7 +7,7 @@ import styles from '../styles/CarDetails.module.css';
 
 export default function CarDetails(props) {
   const [carItem, setCarItem] = useState(null);
-  const { cars } = useContext(CarContext);
+  const { cars  } = useContext(CarContext);
 
 
   useEffect(() => {
