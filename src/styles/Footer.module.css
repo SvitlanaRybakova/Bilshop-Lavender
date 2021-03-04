@@ -1,7 +1,7 @@
 .containerFluid {
   overflow: hidden;
   margin-top: 150px;
-  background: #1b1b1c;
+  background: #383838;
   color: #ffffff !important;
   margin-bottom: 0;
   padding-bottom: 0
@@ -31,8 +31,10 @@
   font-size: 15px;
   font-weight: 600
 }
-.footerLink:hover{
+.footerLink:hover,
+.social span:hover {
   color: #feb737 !important;
+  cursor: pointer;
 }
 
 .footerEmail{
