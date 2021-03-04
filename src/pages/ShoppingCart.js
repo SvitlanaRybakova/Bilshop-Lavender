@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
@@ -9,9 +9,18 @@ function ShoppingCart() {
 
   const { purchases, setDeliveryCost }  = useContext(ShopCartContext)
 
-  console.log(purchases.products);
-   
-    
+  const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
+
+  
+  const handleClick = (e) => {
+    setDeliveryCost(e)
+    setIsRadioButtonClicked(!isRadioButtonClicked)
+  }
+
+  useEffect(() => {
+    console.log(purchases);
+  }, [isRadioButtonClicked]) 
+
   return (
     <div className="container">
       <div className="row">
@@ -22,13 +31,13 @@ function ShoppingCart() {
                 <tr>
                   <th>Products</th>
                   <th>Price</th>
-                  <th>Total</th>
+                  {/* <th>Total</th> */}
                 </tr>
               </thead>
               <tbody>
 
                { purchases.products.map((product, i) => (
-                 <tr>
+                 <tr key={i}>
                  <td className={styles.productList}>
                    <div className="d-flex align-items-center">
                      <div className={styles.removeIconBox}>
@@ -50,11 +59,6 @@ function ShoppingCart() {
                  <td>
                    <span className={styles.price}> {product.price} </span>
                  </td>
-
-                 <td>
-                   <span className={styles.price}> {purchases.priceTotal}</span>
-                 </td>
-                 
                 </tr>
                ))
                
@@ -65,15 +69,15 @@ function ShoppingCart() {
 
             <div>Shipping cost {purchases.deliveryCost}</div>
           </div>
-            <div className={styles.shippingMethods}>
+            <div className={styles.shippingMethods} >
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={setDeliveryCost} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
+                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={setDeliveryCost} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
+                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" htmlFor='flexRadioDefault2' >
                         Pick up the car by yourself
                     </label>
@@ -83,7 +87,7 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          <ShoppingCartTotal/>
+          <ShoppingCartTotal purchases={purchases}/>
           
         </div>
       </div>
