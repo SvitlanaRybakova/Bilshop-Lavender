@@ -32,14 +32,24 @@ td {
 }
 
 .productThumb {
-    display: block;
-    width: 120px;
-    margin-right: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+.productThumb img {
+    width: 100%;
+    height: auto;
+}
+
 
 .productName {
     color: #1b1b1c;
     line-height: 1;
+    margin-left: 20px;
 }
 
 .productName:hover {
