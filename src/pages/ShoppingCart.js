@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
+import { ShopCartContext } from '../contexts/ShopCartContext'
 
 function ShoppingCart() {
+
+  const { purchases }  = useContext(ShopCartContext)
+
+  console.log(purchases.products);
     
   return (
     <div className="container">
@@ -20,34 +25,41 @@ function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className={styles.productList}>
-                    <div className="d-flex align-items-center">
-                      <div className={styles.removeIconBox}>
-                        <button className={styles.removeIconBtn}>
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      </div>
-                      <a href="#" className={styles.productThumb}>
-                        <img
-                          src="http://source.unsplash.com/120x120?car"
-                          alt="Product"
-                        />
-                      </a>
-                      <a href="#" className={styles.productName}>
-                        Toyota x600
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <span className={styles.price}>100 000kr</span>
-                  </td>
 
-                  <td>
-                    <span className={styles.price}>100 000kr</span>
-                  </td>
+               { purchases.products.map((product, i) => (
+                 <tr>
+                 <td className={styles.productList}>
+                   <div className="d-flex align-items-center">
+                     <div className={styles.removeIconBox}>
+                       <button className={styles.removeIconBtn}>
+                         <FontAwesomeIcon icon={faTrash} />
+                       </button>
+                     </div>
+                     <a href="#" className={styles.productThumb}>
+                       <img
+                         src="http://source.unsplash.com/120x120?car"
+                         alt="Product"
+                       />
+                     </a>
+                     <a href="#" className={styles.productName}>
+                       {product.make}
+                     </a>
+                   </div>
+                 </td>
+                 <td>
+                   <span className={styles.price}> {product.price} </span>
+                 </td>
+
+                 <td>
+                   <span className={styles.price}> {purchases.priceTotal}</span>
+                 </td>
                 </tr>
+               ))
+               
+               }
+                    
               </tbody>
+              
             </table>
           </div>
             <div className={styles.shippingMethods}>
