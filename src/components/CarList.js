@@ -3,15 +3,27 @@ import { CarContext } from "../contexts/CarContext";
 import CarItem from "../components/CarItem";
 
 export default function CarList() {
-  const { cars } = useContext(CarContext);
+  const { cars, filtered, showResult } = useContext(CarContext);
 
-  return (
-    <div className="container container-wide">
-      <div className="row mtn-30 d-flex justify-content-center">
-        {cars.map((item) => (
-          <CarItem key={item.vin} car={item} />
-        ))}
+  if (showResult === true) {
+    return (
+      <div className="container container-wide">
+        <div className="row mtn-30 d-flex justify-content-center">
+          {filtered.map((item) => (
+            <CarItem key={item.vin} car={item} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="container container-wide">
+        <div className="row mtn-30 d-flex justify-content-center">
+          {cars.map((item) => (
+            <CarItem key={item.vin} car={item} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
