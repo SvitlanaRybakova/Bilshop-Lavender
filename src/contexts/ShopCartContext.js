@@ -34,10 +34,10 @@ function ShopCartContextProvider(props) {
             priceTotal: 'Choose delivery option'
         }
     )
+
     const setDeliveryCost = (e) => {
         purchases.deliveryCost = e.currentTarget.value === 'paidDelivery' ? 5000 : 0
         setPriceTotal()
-        console.log(purchases);
     }
 
     function setPriceTotal() {
@@ -50,10 +50,17 @@ function ShopCartContextProvider(props) {
         purchases.priceTotal = updatedTotalPrice
     }
 
+    function deleteProduct(productToDelete) {
+        console.log('clicked');
+        const updateProducts = purchases.products.filter(product => product.vin !== productToDelete.vin )
+        purchases.products = updateProducts
+    }
+
     const values = {
         purchases,
         setDeliveryCost,
-        setPriceTotal
+        setPriceTotal,
+        deleteProduct
     }
 
     return (

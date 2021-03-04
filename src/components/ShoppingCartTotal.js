@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
-
-    console.log(props);
-
+    
     const location = useLocation()
 
     let buttonText = location.pathname === '/shopping-cart' ? 'Proceed to Checkout' : 'Place order'
@@ -31,7 +29,7 @@ function ShoppingCartTotal(props) {
                                     <tr key={i}>
                                         <td>
                                             {product.make}
-                                            <p style={{fontSize: 12}}>{product.model}</p>
+                                            <p style={{fontSize: 12}}>{product.model} {product.year}</p>
                                         </td>
                                         <td>
                                             {product.price}

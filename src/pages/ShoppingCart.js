@@ -7,18 +7,23 @@ import { ShopCartContext } from '../contexts/ShopCartContext'
 
 function ShoppingCart() {
 
-  const { purchases, setDeliveryCost}  = useContext(ShopCartContext)
+  const { purchases, setDeliveryCost, deleteProduct}  = useContext(ShopCartContext)
 
   const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
+  const [isDeleteProductClicked, setisDeleteProductClicked] = useState('false')
 
   const handleClick = (e) => {
     setDeliveryCost(e)
     setIsRadioButtonClicked(!isRadioButtonClicked)
   }
 
+  const handleDeleteButtonClick = (productToDelete) => {
+    deleteProduct(productToDelete)
+    setisDeleteProductClicked(!isDeleteProductClicked)
+  }
+
   useEffect(() => {
-    console.log(purchases);
-  }, [isRadioButtonClicked]) 
+  }, [isRadioButtonClicked, isDeleteProductClicked]) 
 
   return (
     <div className="container">
@@ -34,12 +39,11 @@ function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-
                { purchases.products.map((product, i) => (
                  <tr key={i}>
                  <td className={styles.productList}>
                    <div className="d-flex align-items-center">
-                     <div className={styles.removeIconBox}>
+                     <div className={styles.removeIconBox} onClick={() => handleDeleteButtonClick(product)}>
                        <button className={styles.removeIconBtn}>
                          <FontAwesomeIcon icon={faTrash} />
                        </button>
