@@ -15,10 +15,13 @@ export default function CarItem(props){
   }
   
   return(
-    <div className="card col-md-3">
-      <h6>{ car.make }</h6>
+  
+  <div className={`${styles.itemWrapper} card col-md-3`}>
       <div className={styles.imgContainer}>
-        <img className={styles.imgCars} src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}></img>
+        <img
+          className={styles.imgCars}
+          src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
+        ></img>
       </div>
       <div className="row">
         <h6 className="col-9">
