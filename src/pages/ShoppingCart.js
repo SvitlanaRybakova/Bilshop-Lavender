@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 
 function ShoppingCart() {
+    
   return (
     <div className="container">
       <div className="row">
@@ -50,16 +50,26 @@ function ShoppingCart() {
               </tbody>
             </table>
           </div>
+            <div className={styles.shippingMethods}>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                    <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
+                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                        Home delivery (5 000 kr)
+                    </label>
+                </div>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                    <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
+                    <label className="form-check-label" htmlFor='flexRadioDefault2' >
+                        Pick up the car by yourself
+                    </label>
+                </div>
+            </div>
         </div>
+        
         <div className="col-lg-4">
-          <ShoppingCartTotal />
-          <div className={styles.toCheckoutBtnBox}>
-            <Link to="/shopping-cart/checkout">
-              <span className={`btn ${styles.toCheckoutBtn} d-block`}>
-                Proceed to Checkout
-              </span>
-            </Link>
-          </div>
+
+          <ShoppingCartTotal/>
+          
         </div>
       </div>
     </div>

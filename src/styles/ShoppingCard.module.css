@@ -52,18 +52,30 @@ td {
     vertical-align: middle;
 }
 
-.toCheckoutBtnBox {
-    margin: 15px 0 0;
+
+/* Styling for delivety options */
+
+.shippingMethods {
+    margin-top: 50px;
 }
 
-.toCheckoutBtn{
-    background-color: #eeb644;
+.formCheckBox {
+    margin-bottom: 20px;
+}
+
+.formCheckRadio {
+    margin-right: 10px;
+    padding: 10px 10px;
+}
+
+.formCheckRadio:checked {
     border-color: #eeb644;
-    border-radius: 25px;
-    color: #1b1b1c;
-    font-size: 14px;
+    background-color: #eeb644;
+
 }
-.toCheckoutBtn:hover {
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
+
+.formCheckRadio:focus {
+    box-shadow: none;
 }
+
+

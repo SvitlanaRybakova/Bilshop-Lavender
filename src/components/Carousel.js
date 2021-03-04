@@ -1,6 +1,18 @@
 import styles from "../styles/Carousel.Module.css";
+import React, { useContext } from "react";
+import { CarContext } from "../contexts/CarContext";
+import CarouselCar from "../components/CarouselCar";
+import CarouselIndicators from "../components/CarouselIndicators";
 
 function Carousel() {
+  const { cars } = useContext(CarContext);
+  const filteredCars = [];
+  cars.forEach(car => {
+    if(car.hasOwnProperty('discount')){
+      filteredCars.push(car);
+    }
+  });
+
   return (
     <div
       id="carouselExampleDark"
@@ -8,68 +20,17 @@ function Carousel() {
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide-to="0"
-          className="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
+      {filteredCars.map((car, index) => (
+          <CarouselIndicators key={car.vin} car={car} index={index}/>
+        ))}
       </div>
+
       <div className={`${styles.carouselContainer} carousel-inner`}>
-        <div
-          className={`${styles.carouselItem} carousel-item active`}
-          data-bs-interval="4000"
-        >
-          <img
-            src="../assets/car-pictures/Ford-Mustang-1969.jpg"
-            className={`${styles.carouselImage} d-block`}
-            alt="Ford Mustang"
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h1 className={styles.h1deal}>10% OFF ON THIS MUSTANG 1969</h1>
-          </div>
-        </div>
-        <div
-          className={`${styles.carouselItem} carousel-item`}
-          data-bs-interval="4000"
-        >
-          <img
-            src="../assets/car-pictures/Hyundai-Tiburon-2006.jpg"
-            className={`${styles.carouselImage} d-block`}
-            alt="Hyundai Triburon"
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h1 className={styles.h1deal}>10% OFF ON THIS TIBURON 2006</h1>
-          </div>
-        </div>
-        <div
-          className={`${styles.carouselItem} carousel-item`}
-          data-bs-interval="4000"
-        >
-          <img
-            src="../assets/car-pictures/Panoz-Esperante-2007.jpg"
-            className={`${styles.carouselImage} d-block`}
-            alt="Panoz Esperante"
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h1 className={styles.h1deal}>10% OFF ON THIS ESPERANTE 2007</h1>
-          </div>
-        </div>
+      {filteredCars.map((car, index) => (
+          <CarouselCar key={car.vin} car={car} index={index}/>
+        ))}
       </div>
+
       <button
         className="carousel-control-prev"
         type="button"
