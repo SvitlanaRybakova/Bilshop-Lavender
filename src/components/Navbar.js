@@ -16,8 +16,8 @@ const Navbar = () =>{
 
   return(
     <nav className="navbar navbar-expand-sm">
-      <div className="container d-flex justify-content-end">
-        <div className='d-flex align-items-end flex-grow-1'>
+      <div className="container-fluid">
+        <div className='d-flex align-items-end'>
          <img src={`../logo.png`} alt="Logo" className={styles.logo}/>
          <div className={`${styles.brandName} ms-3`}>Car Market <p className={styles.subBrand}>Lavender</p></div>
        </div>
@@ -43,8 +43,8 @@ const Navbar = () =>{
             </li>
           </ul>
         </div>
-      <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart}/></Link>
       </div>
+      <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart}/></Link>
     </nav>
   );
 }
