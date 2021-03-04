@@ -14,7 +14,7 @@ function CarContextProvider(props) {
 
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [carsPerPage, setCarsPerPage] = useState(8);
+  const [carsPerPage, setCarsPerPage] = useState(9);
  
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
