@@ -2,11 +2,7 @@ import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
-function ShoppingCartTotal(props) {
-
-    console.log(props.isDeliveryRequired);
-
-    let deliverySum = props.isDeliveryRequired ? '5000' : '0'
+function ShoppingCartTotal() {
 
     const location = useLocation()
 
@@ -39,7 +35,7 @@ function ShoppingCartTotal(props) {
                                     Shipping
                                 </td>
                                 <td>
-                                   {deliverySum} kr
+                                   deliveryCost kr
                                 </td>
                             </tr>
                         </tbody>
