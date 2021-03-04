@@ -7,21 +7,24 @@ import CarDetails from "./pages/CarDetails";
 import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
+import ShopCartContextProvider from './contexts/ShopCartContext'
 
 function App() {
   return (
     <div className="App">
-      <CarContextProvider>
-        <Router>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/shopping-cart" component={ShoppingCart} />
-          <Route exact path="/cars/:vin" component={CarDetails} />
-          <Route exact path="/shopping-cart/checkout" component={Checkout} />
-          <Footer />
-        </Router>
-      </CarContextProvider>
+      <ShopCartContextProvider>
+        <CarContextProvider>
+          <Router>
+            <Navbar />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/shopping-cart" component={ShoppingCart} />
+            <Route exact path="/cars/:vin" component={CarDetails} />
+            <Route exact path="/shopping-cart/checkout" component={Checkout} />
+            <Footer />
+          </Router>
+        </CarContextProvider>
+      </ShopCartContextProvider>
       
     </div>
   );

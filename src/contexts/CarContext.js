@@ -4,7 +4,6 @@ import Cars from "../json/cars.json";
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
-  // TODO избавится от переменной
   const carsarray = Cars;
 
   // main array from db

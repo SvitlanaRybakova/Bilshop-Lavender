@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { ShopCartContext } from '../contexts/ShopCartContext'
 import ShoppingCartTotal from '../components/ShoppingCartTotal';
 import styles from '../styles/Checkout.module.css';
 
 export default function Checkout() {
+  const { purchases }  = useContext(ShopCartContext)
+
   return (
     <>
     
@@ -161,7 +164,7 @@ export default function Checkout() {
               </div>
 
               <div className="col-lg-6  col-xl-5 ">
-                <ShoppingCartTotal />
+                <ShoppingCartTotal purchases={purchases}/>
               </div>
             </div>
           </div>
