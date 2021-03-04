@@ -7,9 +7,10 @@ import { ShopCartContext } from '../contexts/ShopCartContext'
 
 function ShoppingCart() {
 
-  const { purchases }  = useContext(ShopCartContext)
+  const { purchases, setDeliveryCost }  = useContext(ShopCartContext)
 
   console.log(purchases.products);
+   
     
   return (
     <div className="container">
@@ -53,24 +54,26 @@ function ShoppingCart() {
                  <td>
                    <span className={styles.price}> {purchases.priceTotal}</span>
                  </td>
+                 
                 </tr>
                ))
                
                }
                     
               </tbody>
-              
             </table>
+
+            <div>Shipping cost {purchases.deliveryCost}</div>
           </div>
             <div className={styles.shippingMethods}>
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                    <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
+                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={setDeliveryCost} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                    <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
+                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={setDeliveryCost} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
                     <label className="form-check-label" htmlFor='flexRadioDefault2' >
                         Pick up the car by yourself
                     </label>

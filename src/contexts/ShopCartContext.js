@@ -34,8 +34,16 @@ function ShopCartContextProvider(props) {
             priceTotal: 200000
         }
     )
+    const setDeliveryCost = (e) => {
+        
+        purchases.deliveryCost = e.currentTarget.value === 'paidDelivery' ? 5000 : 0
+        console.log(purchases);
+    }
 
-    const values = {purchases}
+    const values = {
+        purchases,
+        setDeliveryCost,
+    }
 
     return (
         <ShopCartContext.Provider value={values}>
