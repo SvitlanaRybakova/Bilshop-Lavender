@@ -10,14 +10,14 @@ export default function PagePagination({carsPerPage, totalCars, paginate}) {
 
   return (
     <div className="container">
-      <nav aria-label="Page navigation example">
-        <ul class={`${styles.ulPagination} pagination`}>
+      <nav aria-label="Page navigation">
+        <ul className={`${styles.ulPagination} pagination`}>
           {pageNumbers.map(number => (
-             <li class={`${styles.pageItem} page-item`}>
-            <a onClick={() => paginate(number)} class={`${styles.liItem} page-link`} href="#">{number}</a>
+            <li key={ number } className={`${styles.pageItem} page-item`}>
+            <a onClick={(e) => paginate(e,number)} className={`${styles.liItem}`} href="#">{number}</a>
           </li>
           ))}
-         
+        
         </ul>
       </nav>
     </div>

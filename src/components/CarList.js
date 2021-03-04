@@ -13,7 +13,8 @@ export default function CarList() {
   const { cars, filtered, showResult } = useContext(CarContext);
 
   // pagination
-  const paginate = (pageNumber) => {
+  const paginate = (e, pageNumber) => {
+    e.preventDefault();
     setCurrentPage(pageNumber);
   }
 
