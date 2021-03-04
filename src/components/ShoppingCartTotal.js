@@ -55,6 +55,9 @@ function ShoppingCartTotal() {
                     </Link>
                 </div>
 
+                <div className={styles.toCheckoutBtnBox}>
+                    <a href="#" className={`btn ${styles.toCheckoutBtn} d-block`}>Proceed to Checkout</a>
+                </div>
             </div>
         </div>
     )

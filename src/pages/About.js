@@ -1,7 +1,10 @@
 import styles from "../styles/About.Module.css";
-import { Link } from "react-router-dom";
+import React from "react";
 
 function About() {
+  const refreshPage = () => {
+    window.location.reload();
+  };
   return (
     <div className={`${styles.about}`}>
       <div className="mb-3 d-flex">

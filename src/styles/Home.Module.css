@@ -1,12 +1,9 @@
-.imgContainer {
-  display: flex;
-  justify-content: center;
+.imgContainer{
+  max-width: 10%;
 }
 
-.imgCars {
-  margin-top: 0.7rem;
-  max-width: 100%;
-  margin-bottom: 1rem;
+.imgCars{
+  max-width: 10rem;
 }
 
 .itemWrapper {
