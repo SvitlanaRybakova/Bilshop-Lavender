@@ -29,10 +29,17 @@ function CarContextProvider(props) {
   const findCar = (e) => {
     e.preventDefault();
 
+    if (searchInput === "") {
+      setShowResult(false);
+    }
+
     if (searchInput.length > 0) {
       setFiltered(
         copyCar.filter((item) => {
-          return item.make.toLowerCase().includes(searchInput.toLowerCase());
+          return (
+            item.make.toLowerCase().includes(searchInput.toLowerCase()) +
+            item.model.toLowerCase().includes(searchInput.toLowerCase())
+          );
         })
       );
       if (filtered.length > 0) {
