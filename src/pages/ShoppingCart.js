@@ -5,13 +5,6 @@ import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 
 function ShoppingCart() {
-    let isDeliveryRequired = true;
-    console.log(isDeliveryRequired);
-
-    const handleRadioButtonClick = () => {
-        isDeliveryRequired = true
-        console.log(isDeliveryRequired);
-    }
     
   return (
     <div className="container">
@@ -58,15 +51,15 @@ function ShoppingCart() {
             </table>
           </div>
             <div className={styles.shippingMethods}>
-                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`} onClick={handleRadioButtonClick}>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
-                    <label className="form-check-label" for="flexRadioDefault1">
+                    <label className="form-check-label" htmlFor="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
                 </div>
-                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`} onClick={()=>{isDeliveryRequired = false}}>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-                    <label className="form-check-label" >
+                    <label className="form-check-label" htmlFor='flexRadioDefault2' >
                         Pick up the car by yourself
                     </label>
                 </div>
@@ -75,7 +68,7 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          <ShoppingCartTotal isDeliveryRequired={isDeliveryRequired}/>
+          <ShoppingCartTotal/>
           
         </div>
       </div>
