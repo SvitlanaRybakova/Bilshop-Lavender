@@ -4,7 +4,7 @@ import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
 
-    console.log(props.purchases);
+    console.log(props);
 
     const location = useLocation()
 

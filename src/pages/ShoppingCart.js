@@ -7,11 +7,10 @@ import { ShopCartContext } from '../contexts/ShopCartContext'
 
 function ShoppingCart() {
 
-  const { purchases, setDeliveryCost }  = useContext(ShopCartContext)
+  const { purchases, setDeliveryCost}  = useContext(ShopCartContext)
 
   const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
 
-  
   const handleClick = (e) => {
     setDeliveryCost(e)
     setIsRadioButtonClicked(!isRadioButtonClicked)
@@ -66,12 +65,10 @@ function ShoppingCart() {
                     
               </tbody>
             </table>
-
-            <div>Shipping cost {purchases.deliveryCost}</div>
           </div>
             <div className={styles.shippingMethods} >
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked/>
+                    <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                         Home delivery (5 000 kr)
                     </label>
