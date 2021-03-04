@@ -5,12 +5,9 @@ import PagePagination from '../components/PagePagination'
 
 export default function CarList() {
   const { 
-    cars, 
-    currentPage, 
+    copyCars, 
     carsPerPage, 
     setCurrentPage,
-    indexOfLastCar,
-    indexOfFirstCar, 
     currentCars } = useContext(CarContext);
 
 
@@ -24,10 +21,10 @@ export default function CarList() {
     <div className="container container-wide">
       <div className="row mtn-30 d-flex justify-content-center">
         {currentCars.map((item) => (
-          <CarItem key={item.vin} car={cars} />
+          <CarItem key={item.vin} car={item} />
         ))}
       </div>
-      <PagePagination carsPerPage={carsPerPage} totalCars={cars.length} paginate={paginate} />
+      <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
     </div>
   );
 }

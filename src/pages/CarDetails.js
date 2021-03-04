@@ -7,15 +7,15 @@ import styles from '../styles/CarDetails.module.css';
 
 export default function CarDetails(props) {
   const [carItem, setCarItem] = useState(null);
-  const { cars  } = useContext(CarContext);
+  const { copyCars  } = useContext(CarContext);
 
 
   useEffect(() => {
-    if (cars) {
-      setCarItem(cars.find((el) => props.match.params.vin == el.vin))
+    if (copyCars) {
+      setCarItem(copyCars.find((el) => props.match.params.vin == el.vin))
     }
 
-  }, [cars]);
+  }, [copyCars]);
 
   const showPrice = () => {
     const price = String(carItem.price);
