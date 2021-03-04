@@ -14,7 +14,8 @@ export default function CarItem(props) {
   };
 
   return (
-    <div className={`${styles.itemWrapper} card col-md-3`}>
+    
+    <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
       <div className={styles.imgContainer}>
         <img
           className={styles.imgCars}
@@ -25,10 +26,10 @@ export default function CarItem(props) {
         <h6 className="col-9">
           {car.make} {car.model}
         </h6>
-        <span className="col-3 text-md-end">{car.year}</span>
+        <span className="col-3 mt-1 text-md-end">{car.year}</span>
       </div>
-      <span className="col-5 text-md-start">{car.price} SEK</span>
-      <div className="row">
+      <span className="col-5 mt-2 text-md-start">{car.price} SEK</span>
+      <div className="row mt-4">
         <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
           <FontAwesomeIcon icon={faShoppingCart} />
         </Link>

@@ -20,7 +20,7 @@ export default function CarList() {
 
   if (showResult === true) {
     return (
-      <div className="container container-wide">
+      <div className="container">
         <div className="row mtn-30 d-flex justify-content-center">
           {filtered.map((item) => (
             <CarItem key={item.vin} car={item} />
