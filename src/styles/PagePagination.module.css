@@ -1,6 +1,5 @@
 .ulPagination{
   margin-top: 50px;
-
 }
 
 .liItem{
@@ -8,21 +7,20 @@
   font-size: 1rem;
   border: 1px solid transparent;
   font-family: "Oswald", sans-serif;
+  padding: 0.3rem 0.5rem;
+  margin: 0.25rem;
+  font-size: 1.2rem;
 }
 
 .liItem:hover{
- 
   box-sizing: border-box;
   border: 1px solid  #feb93e;
-  color:  #feb93e;
   background-color: transparent;
 }
 
-.active{
-  background-color: #feb93e !important;
-  color: #000000 !important;
+.liItem:focus{
+  background-color: #feb93e;
+  color: #383838;
 }
 
-.pageItem{
-  /* background-color: red; */
-}
+
