@@ -44,14 +44,14 @@ function ShoppingCart() {
                          <FontAwesomeIcon icon={faTrash} />
                        </button>
                      </div>
-                     <a href="#" className={styles.productThumb}>
-                       <img
-                         src="http://source.unsplash.com/120x120?car"
+                     <div className={styles.productThumb}>
+                       <img 
+                         src={`../assets/car-pictures/${product.make}-${product.model}-${product.year}.jpg`}
                          alt="Product"
                        />
-                     </a>
+                     </div>
                      <a href="#" className={styles.productName}>
-                       {product.make}
+                       {product.make} {product.model} {product.year}
                      </a>
                    </div>
                  </td>

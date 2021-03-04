@@ -31,7 +31,7 @@ function ShopCartContextProvider(props) {
                   },
             ],
             deliveryCost: 0, 
-            priceTotal: 0
+            priceTotal: 'Choose delivery option'
         }
     )
     const setDeliveryCost = (e) => {
