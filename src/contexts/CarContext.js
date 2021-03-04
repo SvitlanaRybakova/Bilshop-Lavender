@@ -1,27 +1,37 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import Cars from "../json/cars.json";
 
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
-  //   useState = { showResult: true, filtered: [] };
   const carsarray = Cars;
 
+  // main array from db
   const [cars, setCars] = useState([...carsarray]);
 
-  //   const [copyCar, setCopyCar] = useState([]);
+  // copy of main array 
+  const [copyCars, setCopyCars] = useState(cars);
 
+  //variables for pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [carsPerPage, setCarsPerPage] = useState(9);
+
+  const indexOfLastCar = currentPage * carsPerPage;
+  const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  const currentCars = copyCars.slice(indexOfFirstCar, indexOfLastCar);
+
+  // variables for search bar
   const [searchInput, setSearchInput] = useState("");
 
   const [showResult, setShowResult] = useState(false);
   const [filtered, setFiltered] = useState([]);
 
-  const copyCar = [...Cars];
+  useEffect(() => {
+    setCars([...carsarray]);
+    setCopyCars(cars);
+  }, [])
 
-  //   useEffect(() => {
-  //     setCopyCar(cars);
-  //   }, []);
-
+  // functions for search bar
   const onChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -35,7 +45,7 @@ function CarContextProvider(props) {
 
     if (searchInput.length > 0) {
       setFiltered(
-        copyCar.filter((item) => {
+        copyCars.filter((item) => {
           return (
             item.make.toLowerCase().includes(searchInput.toLowerCase()) +
             item.model.toLowerCase().includes(searchInput.toLowerCase())
@@ -57,10 +67,9 @@ function CarContextProvider(props) {
     setSearchInput("");
   };
 
+
   return (
-    <CarContext.Provider
-      value={{ cars, findCar, searchInput, onChange, showResult, filtered }}
-    >
+    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered }}>
       {props.children}
     </CarContext.Provider>
   );

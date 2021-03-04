@@ -1,31 +1,23 @@
 import React from 'react';
 import styles from '../styles/PagePagination.module.css';
 
-export default function PagePagination() {
+export default function PagePagination({carsPerPage, totalCars, paginate}) {
+  const pageNumbers=[];
+  
+  for(let i=1; i <= Math.ceil(totalCars/carsPerPage); i++){
+      pageNumbers.push(i);
+  }
+
   return (
     <div className="container">
       <nav aria-label="Page navigation example">
         <ul class={`${styles.ulPagination} pagination`}>
-          <li class={`${styles.pageItem} page-item`}>
-            <a class={`${styles.liItem} page-link`} href="#">Previous</a>
+          {pageNumbers.map(number => (
+             <li class={`${styles.pageItem} page-item`}>
+            <a onClick={() => paginate(number)} class={`${styles.liItem} page-link`} href="#">{number}</a>
           </li>
-
-          <li class={`${styles.pageItem} page-item`}>
-            <a class={`${styles.liItem} page-link`} href="#">1</a>
-          </li>
-
-          <li class={`${styles.pageItem} page-item`}>
-            <a class={`${styles.liItem} page-link`} href="#">2</a>
-          </li>
-
-          <li class={`${styles.pageItem} page-item`}>
-            <a class={`${styles.liItem} page-link`} href="#">3</a>
-          </li>
-
-          <li class={`${styles.pageItem} page-item`}>
-            <a class={`${styles.liItem} page-link`} href="#">Next</a>
-          </li>
-
+          ))}
+         
         </ul>
       </nav>
     </div>
