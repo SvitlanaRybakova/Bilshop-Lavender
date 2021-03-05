@@ -19,19 +19,20 @@ const Navbar = () => {
       <div className="container d-flex justify-content-end">
         <div className='d-flex align-items-end flex-grow-1'>
           <Link to="/" className='d-flex align-items-end'>
-         <img src={`../../logo.png`} alt="Logo" className='logo'/>
-         <div className='brandName ms-3'>Car Market <p className='subBrand'>Lavender</p></div>
+            <img src={`../../logo.png`} alt="Logo" className='logo'/>
+            <div className='brandName ms-3'>Car Market <p className='subBrand'>Lavender</p></div>
           </Link>
-          onClick={toggleMenu}
-          style={{ border: 'none' }}
-          className={`${styles.myBtn} btn navbar-toggler`}
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <FontAwesomeIcon icon={faBars} />
+          <button>
+            onClick={toggleMenu}
+            style={{ border: 'none' }}
+            className={`${styles.myBtn} btn navbar-toggler`}
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <FontAwesomeIcon icon={faBars} />
         </button>
         <div className={`${show} ${styles.navbarList} collapse navbar-collapse`} id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
