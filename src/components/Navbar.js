@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container d-flex justify-content-end">
         <div className='d-flex align-items-end flex-grow-1'>
           <Link to="/" className='d-flex align-items-end'>
-            <img src={`../../logo.png`} alt="Logo" className='logo'/>
+            <img src={`../../logo.png`} alt="Logo" className='logo' />
             <div className='brandName ms-3'>Car Market <p className='subBrand'>Lavender</p></div>
           </Link>
           <button>
@@ -33,18 +33,19 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation">
             <FontAwesomeIcon icon={faBars} />
-        </button>
-        <div className={`${show} ${styles.navbarList} collapse navbar-collapse`} id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
-            <li className="nav-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
+          </button>
+          <div className={`${show} ${styles.navbarList} collapse navbar-collapse`} id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
+              <li className="nav-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/about">About</Link>
+              </li>
+            </ul>
+          </div>
+          <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} /></Link>
         </div>
-        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} /></Link>
       </div>
     </nav>
   );
