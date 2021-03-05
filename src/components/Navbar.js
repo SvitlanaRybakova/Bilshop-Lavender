@@ -18,8 +18,8 @@ const Navbar = () =>{
     <nav className="navbar navbar-expand-sm">
       <div className="container d-flex justify-content-end">
         <div className='d-flex align-items-end flex-grow-1'>
-         <img src={`../logo.png`} alt="Logo" className={styles.logo}/>
-         <div className={`${styles.brandName} ms-3`}>Car Market <p className={styles.subBrand}>Lavender</p></div>
+         <img src={`../../logo.png`} alt="Logo" className='logo'/>
+         <div className='brandName ms-3'>Car Market <p className='subBrand'>Lavender</p></div>
        </div>
         <button 
           onClick={toggleMenu}
