@@ -6,23 +6,25 @@ export const CarContext = createContext();
 function CarContextProvider(props) {
   const carsarray = Cars;
 
-  // main array from db
+  // * main array from db
   const [cars, setCars] = useState([...carsarray]);
 
-  // copy of main array 
+  // * copy of main array 
   const [copyCars, setCopyCars] = useState(cars);
+
+ 
 
   //variables for pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [carsPerPage, setCarsPerPage] = useState(9);
+  const [carsPerPage] = useState(9);
 
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  // * array for rendering data with pagination
   const currentCars = copyCars.slice(indexOfFirstCar, indexOfLastCar);
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
-
   const [showResult, setShowResult] = useState(false);
   const [filtered, setFiltered] = useState([]);
 
@@ -30,6 +32,13 @@ function CarContextProvider(props) {
     setCars([...carsarray]);
     setCopyCars(cars);
   }, [])
+
+  
+  // show price in friendly set
+  const showPrice = (carItem) => {
+    const price = String(carItem);
+    return price.split(/(\d{3})/).join(' ').trim();
+  }
 
   // functions for search bar
   const onChange = (e) => {
@@ -60,16 +69,14 @@ function CarContextProvider(props) {
         console.log(filtered);
       }
     }
-    // else {
-    //   setCar(copyCar);
-    // }
+ 
 
     setSearchInput("");
   };
 
 
   return (
-    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered }}>
+    <CarContext.Provider value={{ showPrice, cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered }}>
       {props.children}
     </CarContext.Provider>
   );
