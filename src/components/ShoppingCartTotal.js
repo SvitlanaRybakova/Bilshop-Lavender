@@ -11,9 +11,17 @@ function ShoppingCartTotal(props) {
     
     const location = useLocation()
 
-    let buttonText = location.pathname === '/shopping-cart' ? 'Proceed to Checkout' : 'Place order'
+    // button text and link address are depends on current url path
+    let buttonText
+    let linkAdress
 
-    
+    if(location.pathname === '/shopping-cart') {
+        buttonText = 'Proceed to Checkout'
+        linkAdress = "/shopping-cart/checkout"
+    } else if (location.pathname === '/shopping-cart/checkout') {
+        buttonText = 'Place order'
+        linkAdress = "/shopping-cart/checkout/confirmation"
+    }
     
     return (
         <div className='mt-5 mt-lg-0'>
@@ -60,21 +68,20 @@ function ShoppingCartTotal(props) {
                                         typeof props.purchases.priceTotal === 'number' && 
                                         <span> SEK</span>
                                     }
-                                                            
-                                     
-                                    </b></td>
+                                    </b>
+                                </td>
                             </tr>   
                         </tfoot>
                     </table>
                 </div>
+
                 <div className={styles.toCheckoutBtnBox}>
-                    <Link to="/shopping-cart/checkout">
+                    <Link to={linkAdress}>
                     <span className={`btn ${styles.toCheckoutBtn} d-block`}>
                         {buttonText}
                     </span>
                     </Link>
                 </div>
-
             </div>
         </div>
     )

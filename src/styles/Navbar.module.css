@@ -1,10 +1,4 @@
-.logo {
-  width: 80px;
-  height: auto;
-}
-
-a,
-.brandName {
+a {
   margin-right: 15px;
   color: #1b1b1c;
   font-size: 15px;
@@ -14,11 +8,6 @@ a,
 }
 
 a:hover {
-  color: #eeb644;
-}
-
-.subBrand {
-  letter-spacing: 0.06cm;
   color: #eeb644;
 }
 

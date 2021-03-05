@@ -1,7 +1,7 @@
 /* Content
   1. Typografi (styles for: font,  h1-h6, p)
   2. Button 
-
+  3. Logo and Brand name styles 
 
   Responsive
 */
@@ -156,6 +156,28 @@ button:focus {
 
 .btnBordered:hover {
   border-color: #eeb644;
+  color: #eeb644;
+}
+
+
+/* ==================
+    Logo and Brand name styles 
+=====================*/
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.brandName {
+  margin-right: 15px;
+  color: #1b1b1c;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.subBrand {
+  letter-spacing: 0.06cm;
   color: #eeb644;
 }
 
