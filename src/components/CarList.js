@@ -8,9 +8,10 @@ export default function CarList() {
     copyCars,
     carsPerPage,
     setCurrentPage,
-    currentCars } = useContext(CarContext);
+    currentCars,
+    isFinded } = useContext(CarContext);
 
-  const { cars, filtered, showResult, filteredByPrice } = useContext(CarContext);
+
 
   // pagination
   const paginate = (e, pageNumber) => {
@@ -18,19 +19,13 @@ export default function CarList() {
     setCurrentPage(pageNumber);
   }
 
-  if (showResult === true) {
+
+
+  // rendered with pagination
+
+  const renderWithPagination = () => {
     return (
-      <div className="container">
-        <div className="row mtn-30 d-flex justify-content-center">
-          {filtered.map((item) => (
-            <CarItem key={item.vin} car={item} />
-          ))}
-        </div>
-      </div>
-    );
-  } else {
-    // rendered with pagination
-    return (
+
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
           {currentCars.map((item) => (
@@ -41,4 +36,6 @@ export default function CarList() {
       </div>
     );
   }
+
+  return isFinded ? renderWithPagination() : <div>NOT FOUND</div>
 }
