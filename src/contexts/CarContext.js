@@ -27,19 +27,18 @@ function CarContextProvider(props) {
   //  получаю инфу из базы
 
 
-  useEffect(() => {
-    setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-  }, [currentPage])
+ 
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
-  const [isSearhing, setSearching] = useState(false);
+  const [isSearching, setSearching] = useState(false);
   // const [filtered, setFiltered] = useState([]);
 
-
-  useEffect(() => {
+ useEffect(() => {
     setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-  }, [isSearhing])
+    console.log(isSearching);
+  }, [currentPage, isSearching])
+  
 
   // show price in friendly set
   const showPrice = (carItem) => {
@@ -51,7 +50,11 @@ function CarContextProvider(props) {
 
   const findCar = (e) => {
     e.preventDefault();
-    console.log(searchInput);
+    setSearching(false)
+    setCopyCars(cars)
+    
+    
+
     let result = [];
     if (searchInput.length > 0) {
       
@@ -68,18 +71,17 @@ function CarContextProvider(props) {
       } else {
         console.log('not found');
       }
-      console.log(currentCars);
-    } else {
-      setCopyCars(cars)
-      setSearching(true)
-      console.log(currentCars);
-    }
+      
+    } 
+
+
+
     setSearchInput("");
   };
 
 
   return (
-    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, showPrice, setSearchInput }}>
+    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, showPrice, setSearchInput, searchInput }}>
       {props.children}
     </CarContext.Provider>
   );

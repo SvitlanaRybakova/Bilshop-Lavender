@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Search() {
-  const {  findCar, setSearchInput } = useContext(CarContext);
+  const { searchInput, findCar, setSearchInput } = useContext(CarContext);
 
   return (
     <form onSubmit={(e) => findCar(e)} className={styles.form}>
@@ -17,6 +17,7 @@ function Search() {
         className={styles.input}
         type="text"
         placeholder="Search"
+        value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
     </form>
