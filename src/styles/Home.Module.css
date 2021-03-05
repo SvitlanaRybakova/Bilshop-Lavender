@@ -29,6 +29,16 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+@media only screen and (min-width: 400px) and (max-width: 767px) {
+  .detailsButton{
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+  .detailsButton{
+    font-size: 0.7rem;
+  }
+}
 
 .detailsButton:hover {
   border-color: #eeb644;
@@ -43,6 +53,11 @@
 
 .carItemCart:hover {
   color: #eeb644;
+}
+
+.priseSpan{
+  color: #ad2626;
+  font-size: 1.2rem;
 }
 
 
