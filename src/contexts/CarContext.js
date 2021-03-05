@@ -33,6 +33,11 @@ function CarContextProvider(props) {
   const [maxPrice, setMaxPrice] = useState("");
   const [filteredByPrice, setFilteredByPrice] = useState([]);
 
+   //variables for filter milage
+   const [minMilage, setMinMilage] = useState("");
+   const [maxMilage, setMaxMilage] = useState("");
+   const [filteredByMilage, setFilteredByMilage] = useState([]);
+
 
   useEffect(() => {
     setCars([...carsarray]);
@@ -91,8 +96,25 @@ function CarContextProvider(props) {
     setFilteredByPrice(
       copyCars.filter((car) => {
         if(car.price >= minPrice && car.price <= maxPrice){
-          console.log(car);
-          console.log(filteredByPrice);
+          return car;
+        };
+      })
+    );
+  }
+
+  // functions for milage filter
+  const onChangeMinMilage = (e) => {
+    setMinMilage(e.target.value);
+  };
+  const onChangeMaxMilage = (e) => {
+    setMaxMilage(e.target.value);
+  };
+
+  const findCarByMilage = (e) =>{
+    e.preventDefault();
+    setFilteredByMilage(
+      copyCars.filter((car) => {
+        if(car.miles >= minMilage && car.miles <= maxMilage){
           return car;
         };
       })
@@ -100,7 +122,7 @@ function CarContextProvider(props) {
   }
 
   return (
-    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered, onChangeMinPrice, onChangeMaxPrice, findCarByPrice, filteredByPrice }}>
+    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered, onChangeMinPrice, onChangeMaxPrice, findCarByPrice, filteredByPrice, onChangeMinMilage, onChangeMaxMilage, findCarByMilage, filteredByMilage, showPrice }}>
       {props.children}
     </CarContext.Provider>
   );
