@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { CarContext } from '../contexts/CarContext';
 import styles from '../styles/CarDetails.module.css';
 
@@ -33,9 +33,23 @@ export default function CarDetails(props) {
               <div className="row">
                 <div className="col-md-5">
 
-                  <img className="w-100"
-                    src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
-                    alt={`${carItem.make} ${carItem.model}`} />
+                   {/* lightbox */}
+                  <a className={styles.lightbox} href="#car">
+                    <img className="w-100"
+                      src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                      alt={`${carItem.make} ${carItem.model}`} />
+                  </a>
+                  
+                  {/* lightbox-target */}
+                  <div className={styles.lightboxTarget} id="car">
+                    <img className={`${styles.lightboxTargetImg} w-100`}
+                      src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                      alt={`${carItem.make} ${carItem.model}`} />
+                    <a className={styles.lightboxClose} href="#"></a>
+                  </div>
+
+
+
                 </div>
 
 
