@@ -19,8 +19,8 @@
 }
 
 .liItem:focus{
-  background-color: #feb93e;
-  color: #383838;
-}
+  color: #feb93e;
+  border: 1px solid  #feb93e;
+} 
 
 
