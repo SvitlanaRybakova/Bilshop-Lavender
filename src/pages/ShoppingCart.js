@@ -4,9 +4,10 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 import { ShopCartContext } from '../contexts/ShopCartContext'
+import {CarContext} from '../contexts/CarContext';
 
 function ShoppingCart() {
-
+  const { showPrice } = useContext(CarContext);
   const { purchases, setDeliveryCost, deleteProduct}  = useContext(ShopCartContext)
 
   const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
@@ -61,7 +62,7 @@ function ShoppingCart() {
                    </div>
                  </td>
                  <td>
-                   <span className={styles.price}> {product.price} </span>
+                   <span className={styles.price}> {showPrice(product.price)} SEK </span>
                  </td>
                 </tr>
                ))
@@ -85,7 +86,7 @@ function ShoppingCart() {
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
-                        Home delivery (5 000 kr)
+                        Home delivery (5 000 SEK)
                     </label>
                 </div>
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
@@ -99,7 +100,8 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          <ShoppingCartTotal purchases={purchases}/>
+          {/* <ShoppingCartTotal purchases={purchases}/> */}
+          <ShoppingCartTotal purchases={purchases} showPrice={showPrice}/>
           
         </div>
       </div>
