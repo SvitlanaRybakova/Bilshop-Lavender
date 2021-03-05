@@ -13,13 +13,14 @@ export default function CarList() {
   const { cars, filtered, showResult } = useContext(CarContext);
 
   // pagination
-  const paginate = (pageNumber) => {
+  const paginate = (e, pageNumber) => {
+    e.preventDefault();
     setCurrentPage(pageNumber);
   }
 
   if (showResult === true) {
     return (
-      <div className="container container-wide">
+      <div className="container">
         <div className="row mtn-30 d-flex justify-content-center">
           {filtered.map((item) => (
             <CarItem key={item.vin} car={item} />
