@@ -25,14 +25,18 @@ export default function CarItem(props) {
           src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
         ></img>
       </div>
+    <div className="d-flex flex-column justify-content-between" style={{height: "11.25rem"}}>
+      {/* name */}
       <div className="row">
-        <h6 className="col-9">
+        <h6 className="col-9 col-md-8 col-xl-9">
           {car.make} {car.model}
         </h6>
-        <span className="col-3 mt-1 text-md-end">{car.year}</span>
+        <span className="col-3 col-md-4 col-xl-3 mt-1 text-md-end">{car.year}</span>
       </div>
-      <span className="col-5 mt-2 text-md-start">{showPrice(car.price)} SEK</span>
-      <div className="row mt-4">
+      {/* price */}
+      <span className={`${styles.priseSpan} `}><strong>{showPrice(car.price)} SEK</strong></span>
+     {/* buttons */}
+      <div className="row ">
         <Link className={`${styles.carItemCart} col`} to="/shopping-cart">
           <FontAwesomeIcon icon={faShoppingCart} />
         </Link>
@@ -43,6 +47,7 @@ export default function CarItem(props) {
           view details
         </div>
       </div>
+  </div>
     </div>
   );
 }
