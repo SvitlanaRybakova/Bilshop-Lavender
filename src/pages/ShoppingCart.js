@@ -100,8 +100,8 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          {/* <ShoppingCartTotal purchases={purchases}/> */}
-          <ShoppingCartTotal purchases={purchases} showPrice={showPrice}/>
+          <ShoppingCartTotal purchases={purchases}/>
+          
           
         </div>
       </div>
