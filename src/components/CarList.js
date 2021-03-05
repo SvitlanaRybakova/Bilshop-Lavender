@@ -8,7 +8,8 @@ export default function CarList() {
     copyCars,
     carsPerPage,
     setCurrentPage,
-    currentCars } = useContext(CarContext);
+    currentCars,
+    isFinded } = useContext(CarContext);
 
 
 
@@ -18,11 +19,13 @@ export default function CarList() {
     setCurrentPage(pageNumber);
   }
 
-  
-  
-    // rendered with pagination
-  
+
+
+  // rendered with pagination
+
+  const renderWithPagination = () => {
     return (
+
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
           {currentCars.map((item) => (
@@ -32,5 +35,7 @@ export default function CarList() {
         <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
       </div>
     );
-  
+  }
+
+  return isFinded ? renderWithPagination() : <div>NOT FOUND</div>
 }

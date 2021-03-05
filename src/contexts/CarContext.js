@@ -6,14 +6,6 @@ export const CarContext = createContext();
 function CarContextProvider(props) {
   const carsarray = Cars;
 
-  // * main array from db
-  const [cars, setCars] = useState([...carsarray]);
-
-
-  // * copy of main array 
-  const [copyCars, setCopyCars] = useState(cars);
-
-
   //variables for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage] = useState(2);
@@ -21,24 +13,29 @@ function CarContextProvider(props) {
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
 
+  // * main array from db
+  const [cars] = useState([...carsarray]);
+
+  // * copy of the main array that changes and modifieds
+  const [copyCars, setCopyCars] = useState(cars);
 
   //  *array that is rendered on the CarList
   const [currentCars, setCurrentCars] = useState(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-  //  получаю инфу из базы
-
-
- 
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
   const [isSearching, setSearching] = useState(false);
+  const [isFinded, setFinded] = useState(true);
+
+
+  // TODO avoid globals, use local instead - result
   // const [filtered, setFiltered] = useState([]);
 
- useEffect(() => {
+  useEffect(() => {
     setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-    console.log(isSearching);
   }, [currentPage, isSearching])
-  
+
+
 
   // show price in friendly set
   const showPrice = (carItem) => {
@@ -47,17 +44,14 @@ function CarContextProvider(props) {
   }
 
   // functions for search bar
-
   const findCar = (e) => {
     e.preventDefault();
     setSearching(false)
     setCopyCars(cars)
-    
-    
 
     let result = [];
     if (searchInput.length > 0) {
-      
+
       result = copyCars.filter((item) => {
         return (
           item.make.toLowerCase().includes(searchInput.toLowerCase()) +
@@ -69,19 +63,17 @@ function CarContextProvider(props) {
         setCopyCars(result)
         setSearching(true)
       } else {
-        console.log('not found');
+        setFinded(false)
       }
-      
-    } 
 
-
+    }
 
     setSearchInput("");
   };
 
 
   return (
-    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, showPrice, setSearchInput, searchInput }}>
+    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, showPrice, setSearchInput, searchInput, isFinded }}>
       {props.children}
     </CarContext.Provider>
   );
