@@ -3,6 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
+
+    const showPrice = (carItem) => {
+        const price = String(carItem);
+        return price.split(/(\d{3})/).join(' ').trim();
+    }
     
     const location = useLocation()
 
@@ -32,7 +37,7 @@ function ShoppingCartTotal(props) {
                                             <p style={{fontSize: 12}}>{product.model} {product.year}</p>
                                         </td>
                                         <td>
-                                            {props.showPrice(product.price)} SEK 
+                                            {showPrice(product.price)} SEK 
                                         </td>
                                      </tr>
                                 ))
@@ -49,7 +54,15 @@ function ShoppingCartTotal(props) {
                         <tfoot>
                             <tr className='border-top'>
                                 <th>Total</th>
-                                <td><b> {props.showPrice(props.purchases.priceTotal)} SEK</b></td>
+                                <td>
+                                    <b>{showPrice(props.purchases.priceTotal)} 
+                                    {
+                                        typeof props.purchases.priceTotal === 'number' && 
+                                        <span> SEK</span>
+                                    }
+                                                            
+                                     
+                                    </b></td>
                             </tr>   
                         </tfoot>
                     </table>
