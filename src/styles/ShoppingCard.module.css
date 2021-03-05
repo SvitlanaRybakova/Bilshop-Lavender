@@ -13,9 +13,6 @@ td {
     border-color: #e1e1e1;
 }
 
-.productList {
-    width: 55%;
-}
 
 .removeIconBox {
     margin-right: 15px;
@@ -51,7 +48,6 @@ td {
 .productName {
     color: #1b1b1c;
     line-height: 1;
-    margin-left: 20px;
 }
 
 .productName:hover {
