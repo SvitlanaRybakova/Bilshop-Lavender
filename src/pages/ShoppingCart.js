@@ -4,21 +4,27 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
 import styles from "../styles/ShoppingCard.module.css";
 import { ShopCartContext } from '../contexts/ShopCartContext'
+import {CarContext} from '../contexts/CarContext';
 
 function ShoppingCart() {
-
-  const { purchases, setDeliveryCost}  = useContext(ShopCartContext)
+  const { showPrice } = useContext(CarContext);
+  const { purchases, setDeliveryCost, deleteProduct}  = useContext(ShopCartContext)
 
   const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
+  const [isDeleteProductClicked, setisDeleteProductClicked] = useState('false')
 
   const handleClick = (e) => {
     setDeliveryCost(e)
     setIsRadioButtonClicked(!isRadioButtonClicked)
   }
 
+  const handleDeleteButtonClick = (productToDelete) => {
+    deleteProduct(productToDelete)
+    setisDeleteProductClicked(!isDeleteProductClicked)
+  }
+
   useEffect(() => {
-    console.log(purchases);
-  }, [isRadioButtonClicked]) 
+  }, [isRadioButtonClicked, isDeleteProductClicked]) 
 
   return (
     <div className="container">
@@ -34,12 +40,12 @@ function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-
-               { purchases.products.map((product, i) => (
+              
+               { purchases.products.length > 0 && purchases.products.map((product, i) => (
                  <tr key={i}>
                  <td className={styles.productList}>
                    <div className="d-flex align-items-center">
-                     <div className={styles.removeIconBox}>
+                     <div className={styles.removeIconBox} onClick={() => handleDeleteButtonClick(product)}>
                        <button className={styles.removeIconBtn}>
                          <FontAwesomeIcon icon={faTrash} />
                        </button>
@@ -56,11 +62,21 @@ function ShoppingCart() {
                    </div>
                  </td>
                  <td>
-                   <span className={styles.price}> {product.price} </span>
+                   <span className={styles.price}> {showPrice(product.price)} SEK </span>
                  </td>
                 </tr>
                ))
-               
+               }
+               {
+                 purchases.products.length === 0 && 
+                 <tr>
+                  <td className={styles.productList}>
+                    <p className={styles.emptyCart}>The shopping cart is empty</p>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
                }
                     
               </tbody>
@@ -70,7 +86,7 @@ function ShoppingCart() {
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
                     <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
                     <label className="form-check-label" htmlFor="flexRadioDefault1">
-                        Home delivery (5 000 kr)
+                        Home delivery (5 000 SEK)
                     </label>
                 </div>
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
@@ -84,7 +100,8 @@ function ShoppingCart() {
         
         <div className="col-lg-4">
 
-          <ShoppingCartTotal purchases={purchases}/>
+          {/* <ShoppingCartTotal purchases={purchases}/> */}
+          <ShoppingCartTotal purchases={purchases} showPrice={showPrice}/>
           
         </div>
       </div>
