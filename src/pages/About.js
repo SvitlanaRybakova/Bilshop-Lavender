@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <div className={`${styles.about}`}>
+    <div className={`${styles.about} mt-5`}>
       <div className="mb-3 d-flex">
         <div className="row g-0">
           <div className={`col-md-4 order-md-2`}>
@@ -14,8 +14,8 @@ function About() {
             />
           </div>
           <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title text-sm-center text-md-start">
+            <div className="card-body me-4">
+              <h5 className="card-title text-sm-center text-md-start mb-4">
                 About Company
               </h5>
               <p className="card-text">
@@ -39,11 +39,11 @@ function About() {
             />
           </div>
           <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title text-sm-center text-md-start">
+            <div className="card-body ms-4">
+              <h5 className="card-title text-sm-center text-md-start mb-4">
                 We do things
               </h5>
-              <p className="card-text">
+              <p className="card-text ">
                 The axle crashed the work-ready service utility van. The
                 aluminum axle was manufactured by the mobility. Once the
                 rollback body demolished the lorry. Once the Hino upfitted the

@@ -9,7 +9,7 @@ export default function Checkout() {
   return (
     <>
     
-      <div className={`${styles.pageContentWrapper} sp-y`}>
+      <div className={`${styles.pageContentWrapper} sp-y mt-5`}>
         <div className={styles.cartPageContentWrap}>
           <div className="container container-wide">
             <div className="row d-flex justify-content-between ">

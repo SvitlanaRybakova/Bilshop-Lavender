@@ -27,7 +27,7 @@ function ShoppingCart() {
   }, [isRadioButtonClicked, isDeleteProductClicked]) 
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
         <div className="col-lg-8">
           <div className={`${styles.shoppingCartTable} table-responsive`}>
@@ -51,7 +51,7 @@ function ShoppingCart() {
                        </button>
                      </div>
                      <div className={styles.productThumb}>
-                       <img 
+                       <img
                          src={`../assets/car-pictures/${product.make}-${product.model}-${product.year}.jpg`}
                          alt="Product"
                        />
