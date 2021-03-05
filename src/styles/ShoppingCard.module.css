@@ -88,4 +88,9 @@ td {
     box-shadow: none;
 }
 
+/* Styling for empty cart text */
 
+.emptyCart {
+    color: gray;
+    margin-top: 20px;
+}

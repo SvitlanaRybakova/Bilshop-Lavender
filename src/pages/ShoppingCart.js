@@ -39,7 +39,8 @@ function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-               { purchases.products.map((product, i) => (
+              
+               { purchases.products.length > 0 && purchases.products.map((product, i) => (
                  <tr key={i}>
                  <td className={styles.productList}>
                    <div className="d-flex align-items-center">
@@ -64,7 +65,17 @@ function ShoppingCart() {
                  </td>
                 </tr>
                ))
-               
+               }
+               {
+                 purchases.products.length === 0 && 
+                 <tr>
+                  <td className={styles.productList}>
+                    <p className={styles.emptyCart}>The shopping cart is empty</p>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
                }
                     
               </tbody>

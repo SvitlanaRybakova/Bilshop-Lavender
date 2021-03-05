@@ -51,9 +51,12 @@ function ShopCartContextProvider(props) {
     }
 
     function deleteProduct(productToDelete) {
-        console.log('clicked');
         const updateProducts = purchases.products.filter(product => product.vin !== productToDelete.vin )
         purchases.products = updateProducts
+        if (purchases.products.length === 0)  {
+            purchases.deliveryCost = 0
+        }
+        setPriceTotal()
     }
 
     const values = {
