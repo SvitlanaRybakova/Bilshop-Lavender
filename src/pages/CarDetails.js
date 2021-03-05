@@ -6,8 +6,10 @@ import styles from '../styles/CarDetails.module.css';
 
 
 export default function CarDetails(props) {
+  // variable for CarDetails page(dynamic data, rendering)
   const [carItem, setCarItem] = useState(null);
-  const { copyCars  } = useContext(CarContext);
+
+  const { copyCars, showPrice } = useContext(CarContext);
 
 
   useEffect(() => {
@@ -17,16 +19,12 @@ export default function CarDetails(props) {
 
   }, [copyCars]);
 
-  const showPrice = () => {
-    const price = String(carItem.price);
-    return price.split(/(\d{3})/).join(' ').trim();
-  }
 
 
 
   const renderCarDetails = () => {
-    console.log(typeof carItem.price);
-    
+
+
     return (
       <>
         <div className="container mt-5">
@@ -34,10 +32,10 @@ export default function CarDetails(props) {
             <div className="col-12">
               <div className="row">
                 <div className="col-md-5">
-                
+
                   <img className="w-100"
-                  src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
-                  alt={`${carItem.make} ${carItem.model}`} />
+                    src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                    alt={`${carItem.make} ${carItem.model}`} />
                 </div>
 
 
@@ -46,7 +44,7 @@ export default function CarDetails(props) {
                   <div className={styles.productDetailsInfoContentWrap}>
                     <div className={styles.prodDetailsInfoContent}>
                       <h2 className={styles.h2}>{carItem.make} {carItem.model}</h2>
-                      <h5 className={styles.price}><strong >Price:</strong> <span className={styles.priceAmoumt}>{showPrice()} SEK</span>
+                      <h5 className={styles.price}><strong >Price:</strong> <span className={styles.priceAmoumt}>{showPrice(carItem.price)} SEK</span>
                       </h5>
                       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem nihil, est officia libero molestias corporis possimus odit delectus. Molestias non debitis dolores necessitatibus ratione voluptates expedita porro quibusdam dolorem esse.</p>
 
