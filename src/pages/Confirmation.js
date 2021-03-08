@@ -1,27 +1,38 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPrint, faFilePdf, faBroadcastTower} from '@fortawesome/free-solid-svg-icons'
+import { faPrint, faFilePdf, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/Confirmation.module.css'
+import { Link } from 'react-router-dom'
 
 function Confirmation() {
+
+    const printConfirmation = () => {
+        window.print()
+    }
+
     return (
-        <div className='container mt-5 py-3 border'>
-            <div className='company-contacts d-flex align-items-start'>
+        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border`}>
+            <div className={`${styles.companyContacts} d-flex align-items-start`}>
                 <div className='flex-grow-1'>
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
                     <div className='brandName ms-3 mt-2'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <button>
-                    <FontAwesomeIcon icon={faPrint} size='2x'/>
+                <button onClick={printConfirmation}>
+                    <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
                 </button>
                 <button className='ps-4'>
-                    <FontAwesomeIcon icon={faFilePdf} size='2x'/>
+                    <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
                 </button>
                 <div className='ps-4'>
                     <p>Car Market, Inc</p>
                     <p>605, Ratan Icon Building, <br/> Skåne, Sweden, 90002</p>
                     <p>Tel: 070-0000-0077</p>
                     <p>Email: cars@mailgo.dev</p>
+                </div>
+                <div>
+                    <Link to="/" className={styles.closeButton}>
+                        <FontAwesomeIcon icon={faTimesCircle} size='lg' />
+                    </Link>
                 </div>
             </div>
             <div className='customer-contacts mt-5'>

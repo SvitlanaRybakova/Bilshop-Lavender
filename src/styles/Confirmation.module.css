@@ -7,3 +7,24 @@ p {
     font-size: 15px;
     text-transform: uppercase;
 }
+
+.companyContacts {
+    position: relative;
+}
+
+
+.closeButton {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+}  
+
+.icon:hover {
+    color: #eeb644;
+}
+
+@media print {
+    .toPrint {
+        background-color: rgb(190, 38, 38);
+    }
+}
