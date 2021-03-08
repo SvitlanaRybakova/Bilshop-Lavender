@@ -1,16 +1,23 @@
 import styles from "../styles/Carousel.Module.css";
+import { useHistory } from "react-router-dom";
 
 function CarouselCard(props) {
   const { car } = props;
   const { index } = props;
-
+  const history = useHistory();
   const modelUpperCase = car.model.toUpperCase();
+
+ 
+  const handleClick = () => {
+    history.push(`/cars/${car.vin}`);
+  }
 
   if(index === 0){
     return(
       <div
         className={`${styles.carouselItem} carousel-item active`}
         data-bs-interval="4000"
+        onClick={handleClick}
       >
         <img
           src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
@@ -27,6 +34,7 @@ function CarouselCard(props) {
       <div
         className={`${styles.carouselItem} carousel-item`}
         data-bs-interval="4000"
+        onClick={handleClick}
       >
         <img
           src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
