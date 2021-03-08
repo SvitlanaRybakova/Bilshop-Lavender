@@ -14,10 +14,16 @@ function Confirmation() {
     const { purchases } = useContext(ShopCartContext)
     const { showPrice } = useContext(CarContext);
     
-    console.log(userData);
-
     const printConfirmation = () => {
         window.print()
+    }
+
+    function currentDate() {
+        const today = new Date(); 
+        const nullBeforeMonth = today.getMonth() <= 9 ? '0' : '' 
+        const nullBeforeDay = today.getDate() <= 9 ? '0' : '' 
+        const date = nullBeforeDay + today.getDate() + '.' + nullBeforeMonth + (today.getMonth() + 1) + '.' + today.getFullYear();
+        return date
     }
 
     return (
@@ -47,13 +53,13 @@ function Confirmation() {
             </div>
             <div className='customer-contacts mt-5'>
                 <p>Customer Name: <b>{userData.firstName} {userData.lastName}</b></p>
-                <p>Customer Address: <b>{userData.city}, {userData.streetAddress}</b></p>
+                <p>Customer Address: <b>{userData.postcode}, {userData.city}, {userData.streetAddress}</b></p>
                 <p>Customer Tel: <b>{userData.phone}</b></p>
                 <p>Customer Email: <b>{userData.email}</b></p>
             </div>
             <div className='d-flex flex-column d-sm-block mt-5'>
-                <p>Date: Date</p>
-                <p>Customer ID: ID</p>
+                <p>Date: <b>{currentDate()}</b></p>
+                <p>Customer ID: <b>{userData.userId}</b></p>
             </div>
             <div>
                 <h3 className='mt-5 pb-2 text-center'>Order Information</h3>
@@ -69,7 +75,7 @@ function Confirmation() {
                             purchases.products.map((product, i) => (
                                 <tr>
                                     <td>{product.make} {product.model} {product.year}</td>
-                                    <td>{showPrice(product.price)}</td>
+                                    <td>{showPrice(product.price)} SEK</td>
                                 </tr>
                             ))
                         }
