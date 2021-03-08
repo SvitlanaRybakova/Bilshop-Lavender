@@ -10,26 +10,11 @@ export default function CarList() {
     setCurrentPage,
     currentCars } = useContext(CarContext);
 
-  const { cars, filtered, showResult, filteredByPrice } = useContext(CarContext);
-
   // pagination
   const paginate = (e, pageNumber) => {
     e.preventDefault();
     setCurrentPage(pageNumber);
   }
-
-  if (showResult === true) {
-    return (
-      <div className="container">
-        <div className="row mtn-30 d-flex justify-content-center">
-          {filtered.map((item) => (
-            <CarItem key={item.vin} car={item} />
-          ))}
-        </div>
-      </div>
-    );
-  } else {
-    // rendered with pagination
     return (
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
@@ -40,5 +25,4 @@ export default function CarList() {
         <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
       </div>
     );
-  }
 }

@@ -12,8 +12,6 @@ function CarContextProvider(props) {
   // * copy of main array 
   const [copyCars, setCopyCars] = useState(cars);
 
- 
-
   //variables for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [carsPerPage] = useState(9);
@@ -25,25 +23,16 @@ function CarContextProvider(props) {
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
-  const [showResult, setShowResult] = useState(false);
-  const [filtered, setFiltered] = useState([]);
 
-    //variables for filter price
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [filteredByPrice, setFilteredByPrice] = useState([]);
+  //variables for filter
+  const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState("");
 
-   //variables for filter milage
-   const [minMilage, setMinMilage] = useState("");
-   const [maxMilage, setMaxMilage] = useState("");
-   const [filteredByMilage, setFilteredByMilage] = useState([]);
-
-
-  useEffect(() => {
-    setCars([...carsarray]);
-    setCopyCars(cars);
-  }, [])
-
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(1000000);
+  const [minMiles, setMinMiles] = useState(null);
+  const [maxMiles, setMaxMiles] = useState(1000000);
   
   // show price in friendly set
   const showPrice = (carItem) => {
@@ -58,63 +47,54 @@ function CarContextProvider(props) {
 
   const findCar = (e) => {
     e.preventDefault();
-
-    if (searchInput === "") {
-      setShowResult(false);
-    }
-
     if (searchInput.length > 0) {
-      setFiltered(
-        copyCars.filter((item) => {
+      setCopyCars(
+        cars.filter((item) => {
           return (
             item.make.toLowerCase().includes(searchInput.toLowerCase()) +
             item.model.toLowerCase().includes(searchInput.toLowerCase())
           );
         })
       );
-      if (filtered.length > 0) {
-        setShowResult(true);
-        console.log(filtered);
-      } else {
-        setShowResult(true);
-        console.log(filtered);
-      }
     }
     setSearchInput("");
   };
 
-  // functions for price filter
+  // functions for filter
+  const onChangeMake = (e) => {
+    setMake(e.target.value);
+  };
+  const onChangeModel = (e) => {
+    setModel(e.target.value);
+  };
+  const onChangeYear = (e) => {
+    setYear(e.target.value);
+  };
+
   const onChangeMinPrice = (e) => {
     setMinPrice(e.target.value);
   };
   const onChangeMaxPrice = (e) => {
     setMaxPrice(e.target.value);
   };
-
-  const findCarByPrice = (e) =>{
-    e.preventDefault();
-    setFilteredByPrice(
-      copyCars.filter((car) => {
-        if(car.price >= minPrice && car.price <= maxPrice){
-          return car;
-        };
-      })
-    );
-  }
-
-  // functions for milage filter
-  const onChangeMinMilage = (e) => {
-    setMinMilage(e.target.value);
+  const onChangeMinMiles = (e) => {
+    setMinMiles(e.target.value);
   };
-  const onChangeMaxMilage = (e) => {
-    setMaxMilage(e.target.value);
+  const onChangeMaxMiles = (e) => {
+    setMaxMiles(e.target.value);
   };
 
-  const findCarByMilage = (e) =>{
+  const findCarFilter = (e) =>{
     e.preventDefault();
-    setFilteredByMilage(
-      copyCars.filter((car) => {
-        if(car.miles >= minMilage && car.miles <= maxMilage){
+    setCopyCars(
+      cars.filter((car) => {
+        if(
+          (car.miles >= minMiles && car.miles <= maxMiles)
+          && (car.price >= minPrice && car.price <= maxPrice)
+          && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
+          && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
+          && car.year == year
+        ){
           return car;
         };
       })
@@ -122,7 +102,7 @@ function CarContextProvider(props) {
   }
 
   return (
-    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showResult, filtered, onChangeMinPrice, onChangeMaxPrice, findCarByPrice, filteredByPrice, onChangeMinMilage, onChangeMaxMilage, findCarByMilage, filteredByMilage, showPrice }}>
+    <CarContext.Provider value={{ cars, copyCars, carsPerPage, setCurrentPage, currentCars, findCar, searchInput, onChange, showPrice, onChangeMinPrice, onChangeMaxPrice, onChangeMinMiles, onChangeMaxMiles, findCarFilter, minPrice, maxPrice, minMiles, maxMiles, onChangeMake, make, onChangeModel, model, onChangeYear, year }}>
       {props.children}
     </CarContext.Provider>
   );
