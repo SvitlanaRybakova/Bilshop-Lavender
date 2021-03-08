@@ -95,7 +95,6 @@ function CarContextProvider(props) {
     let alteredMaxMiles;
     let alteredMinPrice;
     let alteredMaxPrice;
-    let alteredYear;
 
         if(minMiles == ""){
           alteredMinMiles = 0;
@@ -117,20 +116,12 @@ function CarContextProvider(props) {
         }else{
           alteredMaxPrice = maxPrice;
         }
-        // if(year == ""){
-        //   alteredYear = "";
-        // }else{
-        //   alteredYear = year;
-        // }
-        // alteredYear = parseInt(alteredYear);
-        // console.log(typeof(alteredYear), typeof(cars[0].year));
-
     setCopyCars(
       cars.filter((car) => {
         if(year == ""){
           if(
             (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinMiles && car.price <= alteredMaxMiles)
+            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
             && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
             && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
           )
@@ -140,7 +131,7 @@ function CarContextProvider(props) {
         }else{
           if(
             (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinMiles && car.price <= alteredMaxMiles)
+            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
             && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
             && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
             && car.year == year
