@@ -5,11 +5,12 @@ export const UserContext = createContext()
 function UserContextProvider(props) {
     const [ userData, setUserInfo ] = useState(
         {
+            userId: 1,
             firstName: 'Kamila',
             lastName: 'Jonson',
             email: 'k.jonson@mymail.com',
             city: 'Stockholm',
-            posrcode: '12001',
+            postcode: '12001',
             streetAddress: 'Kungsgatan 13 - 305',
             phone: '0708000307',
         }
