@@ -185,7 +185,7 @@ a.lightbox img {
   }
   
   .lightboxTarget:target img {
-  max-height: 70%;
+  max-height: 80%;
   max-width: 70%;
   }
   
