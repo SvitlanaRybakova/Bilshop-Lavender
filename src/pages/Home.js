@@ -5,7 +5,6 @@ import CarList from "../components/CarList";
 import Searchbar from "../components/Searchbar";
 import PagePagination from "../components/PagePagination";
 import PriceRange from "../components/PriceRange";
-import MilageRange from "../components/MilageRange";
 
 function Home() {
   const { cars } = useContext(CarContext);
@@ -15,7 +14,6 @@ function Home() {
       <Carousel />
       <Searchbar />
       <PriceRange />
-      <MilageRange />
       <CarList />
       <PagePagination />
     </div>
