@@ -3,12 +3,25 @@ import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
+
+    const showPrice = (carItem) => {
+        const price = String(carItem);
+        return price.split(/(\d{3})/).join(' ').trim();
+    }
     
     const location = useLocation()
 
-    let buttonText = location.pathname === '/shopping-cart' ? 'Proceed to Checkout' : 'Place order'
+    // button text and link address are depends on current url path
+    let buttonText
+    let linkAdress
 
-    
+    if(location.pathname === '/shopping-cart') {
+        buttonText = 'Proceed to Checkout'
+        linkAdress = "/shopping-cart/checkout"
+    } else if (location.pathname === '/shopping-cart/checkout') {
+        buttonText = 'Place order'
+        linkAdress = "/shopping-cart/checkout/confirmation"
+    }
     
     return (
         <div className='mt-5 mt-lg-0'>
@@ -32,7 +45,7 @@ function ShoppingCartTotal(props) {
                                             <p style={{fontSize: 12}}>{product.model} {product.year}</p>
                                         </td>
                                         <td>
-                                            {props.showPrice(product.price)} SEK 
+                                            {showPrice(product.price)} SEK 
                                         </td>
                                      </tr>
                                 ))
@@ -49,19 +62,26 @@ function ShoppingCartTotal(props) {
                         <tfoot>
                             <tr className='border-top'>
                                 <th>Total</th>
-                                <td><b> {props.showPrice(props.purchases.priceTotal)} SEK</b></td>
+                                <td>
+                                    <b>{showPrice(props.purchases.priceTotal)} 
+                                    {
+                                        typeof props.purchases.priceTotal === 'number' && 
+                                        <span> SEK</span>
+                                    }
+                                    </b>
+                                </td>
                             </tr>   
                         </tfoot>
                     </table>
                 </div>
+
                 <div className={styles.toCheckoutBtnBox}>
-                    <Link to="/shopping-cart/checkout">
+                    <Link to={linkAdress}>
                     <span className={`btn ${styles.toCheckoutBtn} d-block`}>
                         {buttonText}
                     </span>
                     </Link>
                 </div>
-
             </div>
         </div>
     )

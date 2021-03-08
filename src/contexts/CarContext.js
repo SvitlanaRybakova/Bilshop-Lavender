@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import Cars from "../json/cars.json";
 
 export const CarContext = createContext();
@@ -18,11 +18,19 @@ function CarContextProvider(props) {
 
   const indexOfLastCar = currentPage * carsPerPage;
   const indexOfFirstCar = indexOfLastCar - carsPerPage;
-  // * array for rendering data with pagination
-  const currentCars = copyCars.slice(indexOfFirstCar, indexOfLastCar);
+
+  // * main array from db
+  const [cars] = useState([...carsarray]);
+
+  // * copy of the main array that changes and modifieds
+  const [copyCars, setCopyCars] = useState(cars);
+
+  //  *array that is rendered on the CarList
+  const [currentCars, setCurrentCars] = useState(copyCars.slice(indexOfFirstCar, indexOfLastCar))
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
+  const [isFinded, setFinded] = useState(true);
 
   //variables for filter
   const [make, setMake] = useState("");
@@ -41,10 +49,6 @@ function CarContextProvider(props) {
   }
 
   // functions for search bar
-  const onChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-
   const findCar = (e) => {
     e.preventDefault();
     if (searchInput.length > 0) {
@@ -57,6 +61,7 @@ function CarContextProvider(props) {
         })
       );
     }
+
     setSearchInput("");
   };
 
@@ -99,6 +104,27 @@ function CarContextProvider(props) {
         };
       })
     );
+  }
+
+  const values = {
+    cars, 
+    copyCars, 
+    carsPerPage, 
+    setCurrentPage, 
+    currentCars, 
+    findCar, 
+    showPrice, 
+    setSearchInput, 
+    searchInput, 
+    isFinded,
+    onChangeMinPrice, 
+    onChangeMaxPrice, 
+    findCarByPrice, 
+    filteredByPrice, 
+    onChangeMinMilage, 
+    onChangeMaxMilage, 
+    findCarByMilage, 
+    filteredByMilage
   }
 
   return (
