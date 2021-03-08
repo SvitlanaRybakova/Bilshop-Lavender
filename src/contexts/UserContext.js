@@ -3,7 +3,7 @@ import { createContext, useState } from 'react'
 export const UserContext = createContext()
 
 function UserContextProvider(props) {
-    const [ userData, setUserInfo ] = useState([
+    const [ userData, setUserInfo ] = useState(
         {
             firstName: 'Kamila',
             lastName: 'Jonson',
@@ -13,7 +13,7 @@ function UserContextProvider(props) {
             streetAddress: 'Kungsgatan 13 - 305',
             phone: '0708000307',
         }
-    ])
+    )
 
     const values = { 
         userData, 
