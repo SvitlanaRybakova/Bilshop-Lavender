@@ -18,3 +18,13 @@ p {
     top: -30px;
     right: -30px;
 }  
+
+.icon:hover {
+    color: #eeb644;
+}
+
+@media print {
+    .toPrint {
+        background-color: rgb(190, 38, 38);
+    }
+}

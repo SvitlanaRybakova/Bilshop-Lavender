@@ -5,18 +5,23 @@ import styles from '../styles/Confirmation.module.css'
 import { Link } from 'react-router-dom'
 
 function Confirmation() {
+
+    const printConfirmation = () => {
+        window.print()
+    }
+
     return (
-        <div className='container mt-5 py-5 px-5 border'>
+        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border`}>
             <div className={`${styles.companyContacts} d-flex align-items-start`}>
                 <div className='flex-grow-1'>
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
                     <div className='brandName ms-3 mt-2'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <button>
-                    <FontAwesomeIcon icon={faPrint} size='2x'/>
+                <button onClick={printConfirmation}>
+                    <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
                 </button>
                 <button className='ps-4'>
-                    <FontAwesomeIcon icon={faFilePdf} size='2x'/>
+                    <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
                 </button>
                 <div className='ps-4'>
                     <p>Car Market, Inc</p>
@@ -26,7 +31,7 @@ function Confirmation() {
                 </div>
                 <div>
                     <Link to="/" className={styles.closeButton}>
-                        <FontAwesomeIcon icon={faTimesCircle} size='2x' />
+                        <FontAwesomeIcon icon={faTimesCircle} size='lg' />
                     </Link>
                 </div>
             </div>
