@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
 import ShopCartContextProvider from './contexts/ShopCartContext'
 import Confirmation from './pages/Confirmation'
+import UserContextProvider from "./contexts/UserContext";
 
 function App() {
   return (
@@ -21,8 +22,12 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/shopping-cart" component={ShoppingCart} />
             <Route exact path="/cars/:vin" component={CarDetails} />
-            <Route exact path="/shopping-cart/checkout" component={Checkout} />
-            <Route exact path="/shopping-cart/checkout/confirmation" component={Confirmation} />
+
+            <UserContextProvider>
+              <Route exact path="/shopping-cart/checkout" component={Checkout} />
+              <Route exact path="/shopping-cart/checkout/confirmation" component={Confirmation} />
+            </UserContextProvider>
+            
             <Footer />
           </Router>
         </CarContextProvider>
