@@ -7,3 +7,14 @@ p {
     font-size: 15px;
     text-transform: uppercase;
 }
+
+.companyContacts {
+    position: relative;
+}
+
+
+.closeButton {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+}  
