@@ -11,6 +11,10 @@ a:hover {
   color: #eeb644;
 }
 
+.brandName:hover{
+  color: black;
+}
+
 li {
   margin: 5px 0;
 }
