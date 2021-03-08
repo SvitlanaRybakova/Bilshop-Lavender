@@ -22,7 +22,6 @@ function ShoppingCart() {
 
   const handleDeleteButtonClick = (productToDelete) => {
     deleteProduct(productToDelete)
-    // console.log(productToDelete);
     setisDeleteProductClicked(!isDeleteProductClicked)
   }
 
