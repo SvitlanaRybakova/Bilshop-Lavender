@@ -19,7 +19,9 @@
 .searchIcon {
   font-size: 1.3rem;
   margin-left: 0.5rem;
+  margin-right: 0.5rem;
   display: inline-block;
+  color: rgb(68, 68, 68);
 }
 
 .searchWrapper {
