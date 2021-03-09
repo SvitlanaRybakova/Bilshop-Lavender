@@ -28,7 +28,7 @@ export default function CarList() {
 
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
-          {copyCars.map((item) => (
+          {currentCars.map((item) => (
             <CarItem key={item.vin} car={item} />
           ))}
         </div>
