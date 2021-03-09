@@ -10,16 +10,18 @@ function Search() {
 
   return (
     <form onSubmit={(e) => findCar(e)} className={styles.form}>
-      <Link className={`${styles.searchIcon} `}>
-        <FontAwesomeIcon icon={faSearch} />
-      </Link>
-      <input
-        className={styles.input}
-        type="text"
-        placeholder="Search"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-      />
+      <div className={styles.searchWrapper}>
+        <Link className={`${styles.searchIcon} `}>
+          <FontAwesomeIcon icon={faSearch} />
+        </Link>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Search"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+      </div>
     </form>
   );
 }
