@@ -1,6 +1,7 @@
 .imgContainer {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .imgCars {

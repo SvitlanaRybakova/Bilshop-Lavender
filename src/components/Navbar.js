@@ -17,11 +17,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-sm">
-      <div className="container d-flex justify-content-end">
-        <div className='d-flex align-items-end flex-grow-1'>
-          <Link to="/" className='d-flex align-items-end'>
+      <div className="container d-flex justify-content-end ">
+        <div className='d-flex align-items-end flex-grow-1 '>
+          <Link to="/" className={`${styles.brandName} d-flex align-items-center`}>
             <img src={`../logo.png`} alt="Logo" className='logo' />
-            <div className={`${styles.brandName} ms-3`}>Car Market <p className='subBrand'>Lavender</p></div>
+            <div className= "ms-3">Car Market <p className='subBrand'>Lavender</p></div>
           </Link>
         </div>
         <button

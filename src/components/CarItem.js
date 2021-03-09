@@ -21,6 +21,7 @@ export default function CarItem(props) {
     <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
       <div className={styles.imgContainer}>
         <img
+          onClick={handleClick}
           className={styles.imgCars}
           src={`../assets/car-pictures/${car.make}-${car.model}-${car.year}.jpg`}
         ></img>
