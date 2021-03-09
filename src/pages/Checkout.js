@@ -31,7 +31,7 @@ export default function Checkout() {
   //on Checkout page we get function AddUserDataToContext from UserContext an sending it as a prop to ShoppingCartTotal component
   
   return (
-      <div className={`${styles.pageContentWrapper} sp-y`}>
+      <div className={`${styles.pageContentWrapper} mt-5 container sp-y`}>
         <div className={styles.cartPageContentWrap}>
           <div className="container container-wide">
             <div className="row d-flex justify-content-between ">
