@@ -45,7 +45,10 @@ export default function CarItem(props) {
         </span>
         {/* buttons */}
         <div className="row ">
-          <div className={`${styles.carItemCart} col`}>
+          <div
+            className={`${styles.carItemCart} col`}
+            onClick={() => addCarToCart(car)}
+          >
             <FontAwesomeIcon icon={faShoppingCart} />
           </div>
           <div
