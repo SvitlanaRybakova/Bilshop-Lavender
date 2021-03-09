@@ -46,11 +46,9 @@ function CarContextProvider(props) {
 
   // show price in friendly set
   const showPrice = (carItem) => {
-
     const price = String(carItem);
-    console.log(price.length % 3);
+
     if (price.length % 3 == 0) {
-      console.log(price.length);
       return price.split(/(\d{3})/).join(' ').trim();
     }
     else {
@@ -58,7 +56,6 @@ function CarContextProvider(props) {
       //add a space as a separator in integers
       return priceSep = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
     }
-
   }
 
   // functions for search bar
