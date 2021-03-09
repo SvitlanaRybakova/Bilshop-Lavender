@@ -24,7 +24,6 @@ p {
 }
 
 
-
 @media (min-width: 576px) {
     
     .toPrint {
@@ -42,7 +41,5 @@ p {
     }  
     .dateAndIdBlock {
         align-self: flex-end;
-        
     }
-    
-}
+}    
