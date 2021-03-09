@@ -44,11 +44,7 @@ export default function CarItem(props) {
         </span>
         {/* buttons */}
         <div className="row ">
-          <Link
-            className={`${styles.carItemCart} col`}
-            to="/shopping-cart"
-            onClick={() => addCarToCart(car)}
-          >
+          <Link className={`${styles.carItemCart} col`}>
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
           <div
