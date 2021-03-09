@@ -33,7 +33,7 @@ function ShoppingCart() {
   }, [isRadioButtonClicked, isDeleteProductClicked])
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
         <div className="col-lg-8">
           <div className={`${styles.shoppingCartTable} table-responsive`}>
@@ -56,17 +56,19 @@ function ShoppingCart() {
                             <FontAwesomeIcon icon={faTrash} />
                           </button>
                         </div>
-                        <div className={styles.productThumb}>
-                          <img
-                            src={`../assets/car-pictures/${product.make}-${product.model}-${product.year}.jpg`}
-                            alt="Product"
-                          />
+                        <div className='d-flex flex-column flex-sm-row align-items-sm-center'>
+                          <div className={styles.productThumb}>
+                            <img
+                              src={`../assets/car-pictures/${product.make}-${product.model}-${product.year}.jpg`}
+                              alt="Product"
+                            />
+                          </div>
+                          <a
+                            onClick={() => goToCarDescription(product)}
+                            href="#" className={`${styles.productName} mb-3 ms-0 ms-sm-4 mb-sm-0`}>
+                            {product.make} {product.model} <span className='d-inline-block mt-2'>{product.year}</span>
+                          </a>
                         </div>
-                        <a
-                          onClick={() => goToCarDescription(product)}
-                          href="#" className={styles.productName}>
-                          {product.make} {product.model} {product.year}
-                        </a>
                       </div>
                     </td>
                     <td>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPrint, faFilePdf, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import { faPrint, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/Confirmation.module.css'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
@@ -15,7 +15,9 @@ function Confirmation() {
     const { showPrice } = useContext(CarContext);
     
     const printConfirmation = () => {
+        document.querySelector('.btnBlock').classList.add('d-none')
         window.print()
+        document.querySelector('.btnBlock').classList.remove('d-none')
     }
 
     function currentDate() {
@@ -27,19 +29,18 @@ function Confirmation() {
     }
 
     return (
-        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border`}>
-            <div className={`${styles.companyContacts} d-flex align-items-start`}>
+        <div className={`${styles.toPrint} container mt-5 py-4 px-4 py-sm-5 px-sm-5 border d-flex flex-column`}>
+            <div className={`${styles.companyContacts} d-flex align-items-start flex-column flex-sm-row`}>
                 <div className='flex-grow-1'>
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
-                    <div className='brandName ms-3 mt-2'>Car Market <p className='subBrand'>Lavender</p></div>
+                    <div className='brandName mt-2 mb-5 mb-sm-0'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <button onClick={printConfirmation}>
-                    <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
-                </button>
-                <button className='ps-4'>
-                    <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
-                </button>
-                <div className='ps-4'>
+                <div className={`${styles.btnBlock} btnBlock`}>
+                    <button onClick={printConfirmation} className='d-none d-sm-block'>
+                        <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
+                    </button>
+                </div>
+                <div className='ps-sm-4'>
                     <p>Car Market, Inc</p>
                     <p>605, Ratan Icon Building, <br/> Skåne, Sweden, 90002</p>
                     <p>Tel: 070-0000-0077</p>
@@ -57,13 +58,13 @@ function Confirmation() {
                 <p>Customer Tel: <b>{userData.phone}</b></p>
                 <p>Customer Email: <b>{userData.email}</b></p>
             </div>
-            <div className='d-flex flex-column d-sm-block mt-5'>
+            <div className={`${styles.dateAndIdBlock} d-flex flex-column d-sm-block mt-5`}>
                 <p>Date: <b>{currentDate()}</b></p>
                 <p>Customer ID: <b>{userData.userId}</b></p>
             </div>
-            <div>
-                <h3 className='mt-5 pb-2 text-center'>Order Information</h3>
-                <table className="table table-responsive table-bordered ">
+            <div className={styles.productOverview}>
+                <h3 className='my-5 pb-2 text-center'>Order Information</h3>
+                <table className="table table-responsive table-bordered">
                     <thead>
                         <tr>
                             <th className='text-center'>Product</th>
@@ -81,7 +82,7 @@ function Confirmation() {
                         }
                     </tbody>
                 </table>
-                <p className={`${styles.totalPrice} mt-4`}>Total: {showPrice(purchases.priceTotal)} SEK</p>
+                <p className={`${styles.totalPrice} mt-5`}>Total: {showPrice(purchases.priceTotal)} SEK</p>
             </div>
             <div className='my-5'>
                 <p>Thank you for your purchase! If you have any questions contact us cars@mailgo.dev</p>
