@@ -7,8 +7,8 @@ import CarouselIndicators from "../components/CarouselIndicators";
 function Carousel() {
   const { cars } = useContext(CarContext);
   const filteredCars = [];
-  cars.forEach(car => {
-    if(car.hasOwnProperty('discount')){
+  cars.forEach((car) => {
+    if (car.hasOwnProperty("discount")) {
       filteredCars.push(car);
     }
   });
@@ -20,17 +20,16 @@ function Carousel() {
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators">
-      {filteredCars.map((car, index) => (
-          <CarouselIndicators key={car.vin} car={car} index={index}/>
+        {filteredCars.map((car, index) => (
+          <CarouselIndicators key={car.vin} car={car} index={index} />
         ))}
       </div>
-
       <div className={`${styles.carouselContainer} carousel-inner`}>
-      {filteredCars.map((car, index) => (
-          <CarouselCar key={car.vin} car={car} index={index}/>
+        {filteredCars.map((car, index) => (
+          <CarouselCar key={car.vin} car={car} index={index} />
         ))}
       </div>
-
+    
       <button
         className="carousel-control-prev"
         type="button"
