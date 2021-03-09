@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CarContext } from "../contexts/CarContext";
 import styles from "../styles/Search.Module.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,9 +11,9 @@ function Search() {
   return (
     <form onSubmit={(e) => findCar(e)} className={styles.form}>
       <div className={styles.searchWrapper}>
-        <div className={`${styles.searchIcon} `}>
+        <Link className={`${styles.searchIcon} `}>
           <FontAwesomeIcon icon={faSearch} />
-        </div>
+        </Link>
         <input
           className={styles.input}
           type="text"
