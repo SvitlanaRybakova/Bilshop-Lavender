@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { CarContext } from "../contexts/CarContext";
 import CarItem from "../components/CarItem";
-import PagePagination from '../components/PagePagination'
+import PagePagination from '../components/PagePagination';
+import NotFound from '../components/NotFound';
 
 export default function CarList() {
   const {
@@ -37,5 +38,5 @@ export default function CarList() {
     );
   }
 
-  return isFinded ? renderWithPagination() : <div>NOT FOUND</div>
+  return isFinded ? renderWithPagination() : <NotFound></NotFound>
 }
