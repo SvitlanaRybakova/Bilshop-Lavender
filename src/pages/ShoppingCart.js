@@ -71,7 +71,7 @@ function ShoppingCart() {
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td className={styles.tableColumn}>
                       <span className={styles.price}> {showPrice(product.price)} SEK </span>
                     </td>
                   </tr>
