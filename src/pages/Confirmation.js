@@ -63,7 +63,7 @@ function Confirmation() {
             </div>
             <div>
                 <h3 className='mt-5 pb-2 text-center'>Order Information</h3>
-                <table class="table table-responsive table-bordered ">
+                <table className="table table-responsive table-bordered ">
                     <thead>
                         <tr>
                             <th className='text-center'>Product</th>
@@ -73,7 +73,7 @@ function Confirmation() {
                     <tbody>
                         {
                             purchases.products.map((product, i) => (
-                                <tr>
+                                <tr key={i}>
                                     <td>{product.make} {product.model} {product.year}</td>
                                     <td>{showPrice(product.price)} SEK</td>
                                 </tr>

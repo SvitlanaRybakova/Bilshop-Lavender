@@ -9,6 +9,8 @@ function ShoppingCartTotal(props) {
         return price.split(/(\d{3})/).join(' ').trim();
     }
     
+    console.log(props);
+
     const location = useLocation()
 
     // button text and link address are depends on current url path
@@ -21,6 +23,12 @@ function ShoppingCartTotal(props) {
     } else if (location.pathname === '/shopping-cart/checkout') {
         buttonText = 'Place order'
         linkAdress = "/shopping-cart/checkout/confirmation"
+    }
+
+    //if the user is on the Checkout page and clicks at button 'Place order' then send the collected on the Checkout page user data to UserContext
+    const handleClick = (e) => {
+        if(linkAdress.includes('confirmation'))
+        props.addUserDataToContext(props.userPersonalData)
     }
     
     return (
@@ -77,7 +85,7 @@ function ShoppingCartTotal(props) {
 
                 <div className={styles.toCheckoutBtnBox}>
                     <Link to={linkAdress}>
-                    <span className={`btn ${styles.toCheckoutBtn} d-block`}>
+                    <span className={`btn ${styles.toCheckoutBtn} d-block`} onClick={(e)=> {handleClick(e)}}>
                         {buttonText}
                     </span>
                     </Link>
