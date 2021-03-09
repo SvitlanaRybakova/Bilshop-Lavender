@@ -3,7 +3,7 @@ import { createContext, useState } from 'react'
 export const UserContext = createContext()
 
 function UserContextProvider(props) {
-    const [ userData, setUserInfo ] = useState(
+    const [ userData, setUserData ] = useState(
         {
             userId: 1,
             firstName: 'Kamila',
@@ -16,8 +16,13 @@ function UserContextProvider(props) {
         }
     )
 
+    const addUserDataToContext = (data) => {
+        setUserData(data)
+    }
+
     const values = { 
         userData, 
+        addUserDataToContext
     }
 
     return (
