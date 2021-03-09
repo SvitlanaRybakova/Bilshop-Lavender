@@ -20,7 +20,9 @@ function CarContextProvider(props) {
   const [copyCars, setCopyCars] = useState(cars);
 
   //  *array that is rendered on the CarList
-  const [currentCars, setCurrentCars] = useState(copyCars.slice(indexOfFirstCar, indexOfLastCar))
+  const [currentCars, setCurrentCars] = useState(
+    copyCars.slice(indexOfFirstCar, indexOfLastCar)
+  );
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
@@ -30,7 +32,7 @@ function CarContextProvider(props) {
   // TODO avoid globals, use local instead - result
   // const [filtered, setFiltered] = useState([]);
 
-  //variables for filter 
+  //variables for filter
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
@@ -41,22 +43,24 @@ function CarContextProvider(props) {
   const [maxMiles, setMaxMiles] = useState("");
 
   useEffect(() => {
-    setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-  }, [currentPage, isSearching])
+    setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
+  }, [currentPage, isSearching]);
 
   // show price in friendly set
   const showPrice = (carItem) => {
     const price = String(carItem);
 
     if (price.length % 3 == 0) {
-      return price.split(/(\d{3})/).join(' ').trim();
-    }
-    else {
-      let priceSep = '';
+      return price
+        .split(/(\d{3})/)
+        .join(" ")
+        .trim();
+    } else {
+      let priceSep = "";
       //add a space as a separator in integers
-      return priceSep = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+      return (priceSep = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "));
     }
-  }
+  };
 
   // functions for search bar
   const findCar = (e) => {
@@ -68,22 +72,25 @@ function CarContextProvider(props) {
             item.make.toLowerCase().includes(searchInput.toLowerCase()) +
             item.model.toLowerCase().includes(searchInput.toLowerCase())
           );
-        }))
+        })
+      );
+    } else {
+      setCopyCars(cars);
     }
     setSearchInput("");
   };
 
   useEffect(() => {
-    setMake("")
-    setModel("")
-    setYear("")
-    setMinPrice("")
-    setMaxPrice("")
-    setMinMiles("")
-    setMaxMiles("")
-  }, [copyCars, currentCars])
+    setMake("");
+    setModel("");
+    setYear("");
+    setMinPrice("");
+    setMaxPrice("");
+    setMinMiles("");
+    setMaxMiles("");
+  }, [copyCars, currentCars]);
 
-   const onChangeMake = (e) => {
+  const onChangeMake = (e) => {
     setMake(e.target.value);
   };
   const onChangeModel = (e) => {
@@ -135,26 +142,27 @@ function CarContextProvider(props) {
     }
     setCopyCars(
       cars.filter((car) => {
-          if(
-            (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
-            && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
-            && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-          )
-          {
-            if(year != "" && car.year == year){
-              return true;
-            }else if (year == ""){
-              return true;
-            }else{
+        if (
+          car.miles >= alteredMinMiles &&
+          car.miles <= alteredMaxMiles &&
+          car.price >= alteredMinPrice &&
+          car.price <= alteredMaxPrice &&
+          car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0 &&
+          car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
+        ) {
+          if (year != "" && car.year == year) {
+            return true;
+          } else if (year == "") {
+            return true;
+          } else {
             return false;
-            }
-          }else{
-            return false;
-          };
+          }
+        } else {
+          return false;
+        }
       })
     );
-  }
+  };
 
   const values = {
     cars,
@@ -181,13 +189,11 @@ function CarContextProvider(props) {
     minPrice,
     maxPrice,
     minMiles,
-    maxMiles
-  }
+    maxMiles,
+  };
 
   return (
-    <CarContext.Provider value={values}>
-      {props.children}
-    </CarContext.Provider>
+    <CarContext.Provider value={values}>{props.children}</CarContext.Provider>
   );
 }
 
