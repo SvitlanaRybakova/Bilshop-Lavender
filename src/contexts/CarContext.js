@@ -65,7 +65,16 @@ function CarContextProvider(props) {
     setSearchInput("");
   };
 
-  // functions for filter
+  useEffect(() => {
+    setMake("")
+    setModel("")
+    setYear("")
+    setMinPrice("")
+    setMaxPrice("")
+    setMinMiles("")
+    setMaxMiles("")
+  }, [copyCars, currentCars])
+
    const onChangeMake = (e) => {
     setMake(e.target.value);
   };
@@ -118,7 +127,6 @@ function CarContextProvider(props) {
         }
     setCopyCars(
       cars.filter((car) => {
-        if(year == ""){
           if(
             (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
             && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
@@ -126,20 +134,16 @@ function CarContextProvider(props) {
             && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
           )
           {
-            return car;
+            if(year != "" && car.year == year){
+              return true;
+            }else if (year == ""){
+              return true;
+            }else{
+            return false;
+            }
+          }else{
+            return false;
           };
-        }else{
-          if(
-            (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
-            && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
-            && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-            && car.year == year
-          )
-          {
-            return car;
-          };
-        }
       })
     );
   }
@@ -162,7 +166,14 @@ function CarContextProvider(props) {
     onChangeMake,
     onChangeModel,
     onChangeYear,
-    findCarFilter
+    findCarFilter,
+    make,
+    model,
+    year,
+    minPrice,
+    maxPrice,
+    minMiles,
+    maxMiles
   }
 
   return (
