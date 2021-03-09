@@ -10,6 +10,8 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 export default function CarItem(props) {
   const { car } = props;
   const { showPrice } = useContext(CarContext);
+ 
+ 
   const { addCarToCart } = useContext(ShopCartContext);
   const history = useHistory();
 
@@ -37,6 +39,10 @@ export default function CarItem(props) {
           </h6>
           <span className="col-3 col-md-4 col-xl-3 mt-1 text-md-end">
             {car.year}
+          </span>
+          {/*miles*/}
+          <span className={`${styles.milesSpan} `}>
+          <strong>{(car.miles)} km </strong>
           </span>
         </div>
         {/* price */}

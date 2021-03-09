@@ -48,7 +48,10 @@ function CarContextProvider(props) {
   const showPrice = (carItem) => {
     const price = String(carItem);
     return price.split(/(\d{3})/).join(' ').trim();
+
   }
+
+
 
   // functions for search bar
   const findCar = (e) => {
@@ -60,7 +63,7 @@ function CarContextProvider(props) {
           item.make.toLowerCase().includes(searchInput.toLowerCase()) +
           item.model.toLowerCase().includes(searchInput.toLowerCase())
         );
-      }))
+      })) 
     }
     setSearchInput("");
   };
