@@ -11,8 +11,8 @@
 
 .h1deal {
   color: white;
-  padding: 20px 20px 30px;
-  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1em 2em 1em;
+  font-size: 35px;
 }
 
 .carouselImage {
@@ -20,4 +20,6 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  filter: brightness(0.4);
+  object-position: center;
 }
