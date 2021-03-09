@@ -61,6 +61,10 @@ td {
     vertical-align: middle;
 }
 
+.tableColumn {
+    min-width: 100px;
+}
+
 
 /* Styling for delivety options */
 
