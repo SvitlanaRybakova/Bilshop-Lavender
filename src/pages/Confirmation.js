@@ -15,6 +15,7 @@ function Confirmation() {
     const { showPrice } = useContext(CarContext);
     
     const printConfirmation = () => {
+        document.querySelector('.btnBlock').classList.add('d-none')
         window.print()
     }
 
@@ -33,12 +34,14 @@ function Confirmation() {
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
                     <div className='brandName ms-3 mt-2'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <button onClick={printConfirmation}>
-                    <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
-                </button>
-                <button className='ps-4'>
-                    <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
-                </button>
+                <div className='btnBlock'>
+                    <button onClick={printConfirmation}>
+                        <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
+                    </button>
+                    <button className='ps-4'>
+                        <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
+                    </button>
+                </div>
                 <div className='ps-4'>
                     <p>Car Market, Inc</p>
                     <p>605, Ratan Icon Building, <br/> Skåne, Sweden, 90002</p>
