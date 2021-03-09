@@ -23,6 +23,14 @@ p {
     color: #eeb644;
 }
 
+.dateAndIdBlock {
+    width: 20%;
+    position: absolute;
+    top: 350px;
+    right: 60px;
+}
+
+
 @media print {
     .toPrint {
         background-color: rgb(190, 38, 38);
