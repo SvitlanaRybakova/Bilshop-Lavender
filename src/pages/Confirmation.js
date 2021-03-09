@@ -35,8 +35,8 @@ function Confirmation() {
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
                     <div className='brandName mt-2 mb-5 mb-sm-0'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <div className={`${styles.btnBlock} btnBlock d-none d-sm-block`}>
-                    <button onClick={printConfirmation}>
+                <div className={`${styles.btnBlock} btnBlock`}>
+                    <button onClick={printConfirmation} className='d-none d-sm-block'>
                         <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
                     </button>
                 </div>
