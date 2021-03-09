@@ -1,5 +1,6 @@
 .carouselItem {
   height: 350px;
+  cursor: pointer
 }
 
 .carouselContainer {
