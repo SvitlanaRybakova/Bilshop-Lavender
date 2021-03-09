@@ -29,18 +29,18 @@ function Confirmation() {
     }
 
     return (
-        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border d-flex flex-column`}>
-            <div className={`${styles.companyContacts} d-flex align-items-start`}>
+        <div className={`${styles.toPrint} container mt-5 py-4 px-4 py-sm-5 px-sm-5 border d-flex flex-column`}>
+            <div className={`${styles.companyContacts} d-flex align-items-start flex-column flex-sm-row`}>
                 <div className='flex-grow-1'>
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
-                    <div className='brandName ms-3 mt-2'>Car Market <p className='subBrand'>Lavender</p></div>
+                    <div className='brandName mt-2 mb-5 mb-sm-0'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
-                <div className='btnBlock'>
+                <div className={`${styles.btnBlock} btnBlock d-none d-sm-block`}>
                     <button onClick={printConfirmation}>
                         <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
                     </button>
                 </div>
-                <div className='ps-4'>
+                <div className='ps-sm-4'>
                     <p>Car Market, Inc</p>
                     <p>605, Ratan Icon Building, <br/> Skåne, Sweden, 90002</p>
                     <p>Tel: 070-0000-0077</p>
