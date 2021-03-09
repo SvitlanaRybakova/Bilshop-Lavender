@@ -60,7 +60,7 @@ function Confirmation() {
                 <p>Customer Tel: <b>{userData.phone}</b></p>
                 <p>Customer Email: <b>{userData.email}</b></p>
             </div>
-            <div className='d-flex flex-column d-sm-block mt-5'>
+            <div className={`${styles.dateAndIdBlock} d-flex flex-column d-sm-block mt-5`}>
                 <p>Date: <b>{currentDate()}</b></p>
                 <p>Customer ID: <b>{userData.userId}</b></p>
             </div>
