@@ -29,9 +29,6 @@ function CarContextProvider(props) {
   const [isSearching, setSearching] = useState(false);
   const [isFinded, setFinded] = useState(true);
 
-  // TODO avoid globals, use local instead - result
-  // const [filtered, setFiltered] = useState([]);
-
   //variables for filter
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -43,7 +40,10 @@ function CarContextProvider(props) {
   const [maxMiles, setMaxMiles] = useState("");
 
   useEffect(() => {
-    setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
+    if(currentPage || isSearching){
+      setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
+    }
+    setSearching(false);
   }, [currentPage, isSearching]);
 
   // show price in friendly set
@@ -56,28 +56,36 @@ function CarContextProvider(props) {
         .join(" ")
         .trim();
     } else {
-      let priceSep = "";
       //add a space as a separator in integers
-      return (priceSep = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 "));
+      return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
     }
   };
 
-  // functions for search bar
-  const findCar = (e) => {
-    e.preventDefault();
-    if (searchInput.length > 0) {
-      setCopyCars(
-        cars.filter((item) => {
-          return (
-            item.make.toLowerCase().includes(searchInput.toLowerCase()) +
-            item.model.toLowerCase().includes(searchInput.toLowerCase())
-          );
-        })
-      );
-    } else {
-      setCopyCars(cars);
-    }
-    setSearchInput("");
+  // functions for search bar	
+  const findCar = (e) => {	
+    e.preventDefault();	
+    setFinded(true);	
+    if (searchInput.length > 0) {	
+      const result = cars.filter((item) => {	
+        return (	
+          item.make.toLowerCase().includes(searchInput.toLowerCase()) +	
+          item.model.toLowerCase().includes(searchInput.toLowerCase())	
+        );	
+      })	
+      // if we have a match	
+      if (result.length > 0) {	
+        setCopyCars(result)	
+      }	
+      // other way, isFined is false and rendered NotFound component	
+      else {	
+        setFinded(false)	
+      }	
+      setSearching(true)	
+    } else {	
+      setCopyCars(cars);	
+      setSearching(true)	
+    }	
+    setSearchInput("");	
   };
 
   useEffect(() => {
