@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPrint, faFilePdf, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import { faPrint, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/Confirmation.module.css'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
@@ -17,6 +17,7 @@ function Confirmation() {
     const printConfirmation = () => {
         document.querySelector('.btnBlock').classList.add('d-none')
         window.print()
+        document.querySelector('.btnBlock').classList.remove('d-none')
     }
 
     function currentDate() {
@@ -28,7 +29,7 @@ function Confirmation() {
     }
 
     return (
-        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border`}>
+        <div className={`${styles.toPrint} container mt-5 py-5 px-5 border d-flex flex-column`}>
             <div className={`${styles.companyContacts} d-flex align-items-start`}>
                 <div className='flex-grow-1'>
                     <img src={`../../logo.png`} alt="Logo" className='logo'/>
@@ -37,9 +38,6 @@ function Confirmation() {
                 <div className='btnBlock'>
                     <button onClick={printConfirmation}>
                         <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
-                    </button>
-                    <button className='ps-4'>
-                        <FontAwesomeIcon icon={faFilePdf} size='2x'className={styles.icon}/>
                     </button>
                 </div>
                 <div className='ps-4'>
@@ -64,9 +62,9 @@ function Confirmation() {
                 <p>Date: <b>{currentDate()}</b></p>
                 <p>Customer ID: <b>{userData.userId}</b></p>
             </div>
-            <div>
-                <h3 className='mt-5 pb-2 text-center'>Order Information</h3>
-                <table className="table table-responsive table-bordered ">
+            <div className={styles.productOverview}>
+                <h3 className='my-5 pb-2 text-center'>Order Information</h3>
+                <table className="table table-responsive table-bordered">
                     <thead>
                         <tr>
                             <th className='text-center'>Product</th>
@@ -84,7 +82,7 @@ function Confirmation() {
                         }
                     </tbody>
                 </table>
-                <p className={`${styles.totalPrice} mt-4`}>Total: {showPrice(purchases.priceTotal)} SEK</p>
+                <p className={`${styles.totalPrice} mt-5`}>Total: {showPrice(purchases.priceTotal)} SEK</p>
             </div>
             <div className='my-5'>
                 <p>Thank you for your purchase! If you have any questions contact us cars@mailgo.dev</p>

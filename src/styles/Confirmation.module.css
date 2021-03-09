@@ -24,15 +24,15 @@ p {
 }
 
 .dateAndIdBlock {
-    width: 20%;
-    position: absolute;
-    top: 350px;
-    right: 60px;
+    align-self: flex-end;
+    
 }
 
+.toPrint {
+    width: 90%;
+}
 
-@media print {
-    .toPrint {
-        background-color: rgb(190, 38, 38);
-    }
+.productOverview {
+    width: 90%;
+    margin: 0 auto;
 }
