@@ -46,8 +46,19 @@ function CarContextProvider(props) {
 
   // show price in friendly set
   const showPrice = (carItem) => {
+
     const price = String(carItem);
-    return price.split(/(\d{3})/).join(' ').trim();
+    console.log(price.length % 3);
+    if (price.length % 3 == 0) {
+      console.log(price.length);
+      return price.split(/(\d{3})/).join(' ').trim();
+    }
+    else {
+      let priceSep = '';
+      //add a space as a separator in integers
+      return priceSep = price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+    }
+
   }
 
   // functions for search bar
@@ -56,17 +67,17 @@ function CarContextProvider(props) {
     if (searchInput.length > 0) {
       setCopyCars(
         cars.filter((item) => {
-        return (
-          item.make.toLowerCase().includes(searchInput.toLowerCase()) +
-          item.model.toLowerCase().includes(searchInput.toLowerCase())
-        );
-      }))
+          return (
+            item.make.toLowerCase().includes(searchInput.toLowerCase()) +
+            item.model.toLowerCase().includes(searchInput.toLowerCase())
+          );
+        }))
     }
     setSearchInput("");
   };
 
   // functions for filter
-   const onChangeMake = (e) => {
+  const onChangeMake = (e) => {
     setMake(e.target.value);
   };
   const onChangeModel = (e) => {
@@ -89,54 +100,52 @@ function CarContextProvider(props) {
     setMaxMiles(e.target.value);
   };
 
-  const findCarFilter = (e) =>{
+  const findCarFilter = (e) => {
     e.preventDefault();
     let alteredMinMiles;
     let alteredMaxMiles;
     let alteredMinPrice;
     let alteredMaxPrice;
 
-        if(minMiles == ""){
-          alteredMinMiles = 0;
-        }else{
-          alteredMinMiles = minMiles;
-        }
-        if(maxMiles == ""){
-          alteredMaxMiles = 10000000;
-        }else{
-          alteredMaxMiles = maxMiles;
-        }
-        if(minPrice == ""){
-          alteredMinPrice = 0;
-        }else{
-          alteredMinPrice = minPrice;
-        }
-        if(maxPrice == ""){
-          alteredMaxPrice = 10000000;
-        }else{
-          alteredMaxPrice = maxPrice;
-        }
+    if (minMiles == "") {
+      alteredMinMiles = 0;
+    } else {
+      alteredMinMiles = minMiles;
+    }
+    if (maxMiles == "") {
+      alteredMaxMiles = 10000000;
+    } else {
+      alteredMaxMiles = maxMiles;
+    }
+    if (minPrice == "") {
+      alteredMinPrice = 0;
+    } else {
+      alteredMinPrice = minPrice;
+    }
+    if (maxPrice == "") {
+      alteredMaxPrice = 10000000;
+    } else {
+      alteredMaxPrice = maxPrice;
+    }
     setCopyCars(
       cars.filter((car) => {
-        if(year == ""){
-          if(
+        if (year == "") {
+          if (
             (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
             && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
             && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
             && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-          )
-          {
+          ) {
             return car;
           };
-        }else{
-          if(
+        } else {
+          if (
             (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
             && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
             && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
             && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
             && car.year == year
-          )
-          {
+          ) {
             return car;
           };
         }
@@ -145,19 +154,19 @@ function CarContextProvider(props) {
   }
 
   const values = {
-    cars, 
-    copyCars, 
-    carsPerPage, 
-    setCurrentPage, 
-    currentCars, 
-    findCar, 
-    showPrice, 
-    setSearchInput, 
-    searchInput, 
+    cars,
+    copyCars,
+    carsPerPage,
+    setCurrentPage,
+    currentCars,
+    findCar,
+    showPrice,
+    setSearchInput,
+    searchInput,
     isFinded,
-    onChangeMinPrice, 
-    onChangeMaxPrice, 
-    onChangeMinMiles, 
+    onChangeMinPrice,
+    onChangeMaxPrice,
+    onChangeMinMiles,
     onChangeMaxMiles,
     onChangeMake,
     onChangeModel,
@@ -166,7 +175,7 @@ function CarContextProvider(props) {
   }
 
   return (
-    <CarContext.Provider value={ values }>
+    <CarContext.Provider value={values}>
       {props.children}
     </CarContext.Provider>
   );
