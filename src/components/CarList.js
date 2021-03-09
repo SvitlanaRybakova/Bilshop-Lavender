@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { CarContext } from "../contexts/CarContext";
 import CarItem from "../components/CarItem";
-import PagePagination from '../components/PagePagination'
+import PagePagination from '../components/PagePagination';
+import NotFound from '../components/NotFound';
 
 export default function CarList() {
   const {
@@ -28,7 +29,7 @@ export default function CarList() {
 
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
-          {copyCars.map((item) => (
+          {currentCars.map((item) => (
             <CarItem key={item.vin} car={item} />
           ))}
         </div>
@@ -37,5 +38,5 @@ export default function CarList() {
     );
   }
 
-  return isFinded ? renderWithPagination() : <div>NOT FOUND</div>
+  return isFinded ? renderWithPagination() : <NotFound></NotFound>
 }

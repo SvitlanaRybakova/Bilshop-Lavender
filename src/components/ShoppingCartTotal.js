@@ -8,8 +8,6 @@ function ShoppingCartTotal(props) {
         const price = String(carItem);
         return price.split(/(\d{3})/).join(' ').trim();
     }
-    
-    console.log(props);
 
     const location = useLocation()
 

@@ -20,17 +20,16 @@ function CarContextProvider(props) {
   const [copyCars, setCopyCars] = useState(cars);
 
   //  *array that is rendered on the CarList
-  const [currentCars, setCurrentCars] = useState(copyCars.slice(indexOfFirstCar, indexOfLastCar))
+  const [currentCars, setCurrentCars] = useState(
+    copyCars.slice(indexOfFirstCar, indexOfLastCar)
+  );
 
   // variables for search bar
   const [searchInput, setSearchInput] = useState("");
   const [isSearching, setSearching] = useState(false);
   const [isFinded, setFinded] = useState(true);
 
-  // TODO avoid globals, use local instead - result
-  // const [filtered, setFiltered] = useState([]);
-
-  //variables for filter 
+  //variables for filter
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
@@ -41,35 +40,65 @@ function CarContextProvider(props) {
   const [maxMiles, setMaxMiles] = useState("");
 
   useEffect(() => {
-    setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar))
-  }, [currentPage, isSearching])
+    if(currentPage || isSearching){
+      setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
+    }
+    setSearching(false);
+  }, [currentPage, isSearching]);
 
   // show price in friendly set
   const showPrice = (carItem) => {
     const price = String(carItem);
-    return price.split(/(\d{3})/).join(' ').trim();
 
-  }
-
-
-
-  // functions for search bar
-  const findCar = (e) => {
-    e.preventDefault();
-    if (searchInput.length > 0) {
-      setCopyCars(
-        cars.filter((item) => {
-        return (
-          item.make.toLowerCase().includes(searchInput.toLowerCase()) +
-          item.model.toLowerCase().includes(searchInput.toLowerCase())
-        );
-      })) 
+    if (price.length % 3 == 0) {
+      return price
+        .split(/(\d{3})/)
+        .join(" ")
+        .trim();
+    } else {
+      //add a space as a separator in integers
+      return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
     }
-    setSearchInput("");
   };
 
-  // functions for filter
-   const onChangeMake = (e) => {
+  // functions for search bar	
+  const findCar = (e) => {	
+    e.preventDefault();	
+    setFinded(true);	
+    if (searchInput.length > 0) {	
+      const result = cars.filter((item) => {	
+        return (	
+          item.make.toLowerCase().includes(searchInput.toLowerCase()) +	
+          item.model.toLowerCase().includes(searchInput.toLowerCase())	
+        );	
+      })	
+      // if we have a match	
+      if (result.length > 0) {	
+        setCopyCars(result)	
+      }	
+      // other way, isFined is false and rendered NotFound component	
+      else {	
+        setFinded(false)	
+      }	
+      setSearching(true)	
+    } else {	
+      setCopyCars(cars);	
+      setSearching(true)	
+    }	
+    setSearchInput("");	
+  };
+
+  useEffect(() => {
+    setMake("");
+    setModel("");
+    setYear("");
+    setMinPrice("");
+    setMaxPrice("");
+    setMinMiles("");
+    setMaxMiles("");
+  }, [copyCars, currentCars]);
+
+  const onChangeMake = (e) => {
     setMake(e.target.value);
   };
   const onChangeModel = (e) => {
@@ -92,86 +121,87 @@ function CarContextProvider(props) {
     setMaxMiles(e.target.value);
   };
 
-  const findCarFilter = (e) =>{
+  const findCarFilter = (e) => {
     e.preventDefault();
     let alteredMinMiles;
     let alteredMaxMiles;
     let alteredMinPrice;
     let alteredMaxPrice;
 
-        if(minMiles == ""){
-          alteredMinMiles = 0;
-        }else{
-          alteredMinMiles = minMiles;
-        }
-        if(maxMiles == ""){
-          alteredMaxMiles = 10000000;
-        }else{
-          alteredMaxMiles = maxMiles;
-        }
-        if(minPrice == ""){
-          alteredMinPrice = 0;
-        }else{
-          alteredMinPrice = minPrice;
-        }
-        if(maxPrice == ""){
-          alteredMaxPrice = 10000000;
-        }else{
-          alteredMaxPrice = maxPrice;
-        }
+    if (minMiles == "") {
+      alteredMinMiles = 0;
+    } else {
+      alteredMinMiles = minMiles;
+    }
+    if (maxMiles == "") {
+      alteredMaxMiles = 10000000;
+    } else {
+      alteredMaxMiles = maxMiles;
+    }
+    if (minPrice == "") {
+      alteredMinPrice = 0;
+    } else {
+      alteredMinPrice = minPrice;
+    }
+    if (maxPrice == "") {
+      alteredMaxPrice = 10000000;
+    } else {
+      alteredMaxPrice = maxPrice;
+    }
     setCopyCars(
       cars.filter((car) => {
-        if(year == ""){
-          if(
-            (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
-            && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
-            && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-          )
-          {
-            return car;
-          };
-        }else{
-          if(
-            (car.miles >= alteredMinMiles && car.miles <= alteredMaxMiles)
-            && (car.price >= alteredMinPrice && car.price <= alteredMaxPrice)
-            && car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0
-            && car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-            && car.year == year
-          )
-          {
-            return car;
-          };
+        if (
+          car.miles >= alteredMinMiles &&
+          car.miles <= alteredMaxMiles &&
+          car.price >= alteredMinPrice &&
+          car.price <= alteredMaxPrice &&
+          car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0 &&
+          car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
+        ) {
+          if (year != "" && car.year == year) {
+            return true;
+          } else if (year == "") {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
         }
       })
     );
-  }
+  };
 
   const values = {
-    cars, 
-    copyCars, 
-    carsPerPage, 
-    setCurrentPage, 
-    currentCars, 
-    findCar, 
-    showPrice, 
-    setSearchInput, 
-    searchInput, 
+    cars,
+    copyCars,
+    carsPerPage,
+    setCurrentPage,
+    currentCars,
+    findCar,
+    showPrice,
+    setSearchInput,
+    searchInput,
     isFinded,
-    onChangeMinPrice, 
-    onChangeMaxPrice, 
-    onChangeMinMiles, 
+    onChangeMinPrice,
+    onChangeMaxPrice,
+    onChangeMinMiles,
     onChangeMaxMiles,
     onChangeMake,
     onChangeModel,
     onChangeYear,
-    findCarFilter
-  }
+    findCarFilter,
+    make,
+    model,
+    year,
+    minPrice,
+    maxPrice,
+    minMiles,
+    maxMiles,
+  };
 
   return (
-    <CarContext.Provider value={ values }>
-      {props.children}
-    </CarContext.Provider>
+    <CarContext.Provider value={values}>{props.children}</CarContext.Provider>
   );
 }
 
