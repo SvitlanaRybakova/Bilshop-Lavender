@@ -1,0 +1,17 @@
+.filtercontainer{
+    margin-top: 15px;
+    
+
+}
+.container{
+    display: block;
+    min-height: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-control{
+    display: block;
+   
+}
+
