@@ -45,9 +45,9 @@ export default function CarItem(props) {
         </span>
         {/* buttons */}
         <div className="row ">
-          <Link className={`${styles.carItemCart} col`}>
+          <div className={`${styles.carItemCart} col`}>
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
+          </div>
           <div
             onClick={handleClick}
             className={`${styles.detailsButton} col btn`}
