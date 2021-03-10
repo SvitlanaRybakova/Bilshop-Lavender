@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="container d-flex justify-content-end ">
         <div className='d-flex align-items-end flex-grow-1 '>
           <Link to="/" className={`${styles.brandName} d-flex align-items-center`}>
-            <img src={`../logo.png`} alt="Logo" className='logo' />
+            <img src={`../../logo.png`} alt="Logo" className='logo' />
             <div className= "ms-3">Car Market <p className='subBrand'>Lavender</p></div>
           </Link>
         </div>
