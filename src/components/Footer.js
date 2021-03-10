@@ -7,7 +7,7 @@ import { faFacebook, faInstagram, faTwitter, faTelegram } from "@fortawesome/fre
 
 export default function Footer() {
   return (
-    <div className={`${styles.containerFluid} container-fluid pb-0 mb-0 justify-content-center text-light}`}>
+    <div className={`${styles.containerFluid} container-fluid pb-0 mt-5 justify-content-center text-light}`}>
       <footer>
         <div className="row my-3 justify-content-center pt-5">
           <div className="col-11">
