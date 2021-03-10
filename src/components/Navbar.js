@@ -12,13 +12,14 @@ const Navbar = () => {
   const toggleMenu = () => {
     setshowCollapsedMenu(!showCollapsedMenu);
   };
-
+  const { showPrice } = useContext(CarContext);
   const show = showCollapsedMenu ? "show" : "";
 
   let totalRestructured;
   let navbarClassName;
   if (shoppingCartNum > 0) {
-    totalRestructured = `${total} SEK`;
+    totalRestructured = showPrice(total);
+    totalRestructured = `${totalRestructured} SEK`;
     navbarClassName = "d-block";
   } else {
     totalRestructured = "";
