@@ -69,6 +69,7 @@ export default function CarDetails(props) {
                       <div className={styles.productConfig}>
                         <div className={styles.tableResponsive}>
                           <table className={styles.table}>
+                           
                             <tr>
                               <th className={styles.configLabel}>Make</th>
                               <td className={styles.configOption}>
