@@ -15,24 +15,31 @@ p {
 
 .closeButton {
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: 0;
+    right: -15px;
 }  
 
 .icon:hover {
     color: #eeb644;
 }
 
-.dateAndIdBlock {
-    width: 20%;
-    position: absolute;
-    top: 350px;
-    right: 60px;
-}
 
-
-@media print {
+@media (min-width: 576px) {
+    
     .toPrint {
-        background-color: rgb(190, 38, 38);
+        width: 90%;
     }
-}
+    
+    .productOverview {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .closeButton {
+        position: absolute;
+        top: -30px;
+        right: -30px;
+    }  
+    .dateAndIdBlock {
+        align-self: flex-end;
+    }
+}    

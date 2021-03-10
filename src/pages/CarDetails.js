@@ -50,7 +50,7 @@ export default function CarDetails(props) {
                   <div className={styles.productDetailsInfoContentWrap}>
                     <div className={styles.prodDetailsInfoContent}>
                       <h2 className={styles.h2}>
-                        {carItem.make} {carItem.model}
+                        {carItem.make} {carItem.model} 
                       </h2>
                       <h5 className={styles.price}>
                         <strong>Price:</strong>{" "}

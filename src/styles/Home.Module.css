@@ -56,6 +56,11 @@
   color: #eeb644;
 }
 
+.milesSpan{
+  color: #080202;
+  font-size: 0.9rem;
+}
+
 .priseSpan{
   color: #ad2626;
   font-size: 1.2rem;

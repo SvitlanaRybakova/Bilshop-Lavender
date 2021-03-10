@@ -1,0 +1,42 @@
+.filtercontainer {
+  margin-top: 15px;
+}
+
+.btn-filter {
+  border: 1px solid #383838;
+  width: 10rem;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #383838;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+@media (min-width: 768px) {
+  .row .col-md-1,
+  .row .col-sm-1,
+  .row .col-lg-1 {
+    width: 100%;
+    *width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .row .col-md-1,
+  .row .col-sm-1,
+  .row .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row .col-md-1,
+  .row .col-sm-1,
+  .row .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}

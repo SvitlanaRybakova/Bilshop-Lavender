@@ -49,7 +49,6 @@ td {
 .productName {
     color: #1b1b1c;
     line-height: 1;
-    margin-left: 20px;
 }
 
 .productName:hover {
@@ -60,6 +59,10 @@ td {
     margin-bottom: 0;
     font-weight: 600;
     vertical-align: middle;
+}
+
+.tableColumn {
+    min-width: 100px;
 }
 
 

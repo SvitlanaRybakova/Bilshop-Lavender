@@ -101,6 +101,23 @@ button:focus {
   transition: all 0.3s ease 0s;
 }
 
+.btn1 {
+  border: 2px solid #d8d8d8;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
+  height: 39px;
+  letter-spacing: 0.025em;
+  line-height: 41px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border-radius: .25rem;
+}
+
 .btn:focus,
 .btn:active {
   outline: none;
