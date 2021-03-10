@@ -7,12 +7,19 @@ import { ShopCartContext } from "../contexts/ShopCartContext";
 
 const Navbar = () => {
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false)
-  const { shoppingCartNum } = useContext(ShopCartContext);
+  const { shoppingCartNum, total } = useContext(ShopCartContext);
   const toggleMenu = () => {
     setshowCollapsedMenu(!showCollapsedMenu)
   }
 
   const show = showCollapsedMenu ? "show" : "";
+
+  let totalRestructured;
+  if(shoppingCartNum > 0){
+    totalRestructured = `${total} SEK`;
+  }else{
+    totalRestructured = "";
+  }
 
   let cartNum;
   if(shoppingCartNum > 0){
@@ -52,7 +59,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} />{ cartNum }</Link>
+        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} />{ cartNum } { totalRestructured }</Link>
       </div>
     </nav>
   );

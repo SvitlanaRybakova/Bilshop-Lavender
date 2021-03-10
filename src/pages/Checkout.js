@@ -19,6 +19,11 @@ export default function Checkout() {
     postcode: '',
     streetAddress: '',
     phone: '',
+    cardName: '',
+    validDate: '',
+    cardNumber: '',
+    cvcCode: '',
+    cardHolder: ''
   }
 
   //function for collection of the user data fires onChange at inputs
@@ -99,22 +104,22 @@ export default function Checkout() {
                   {/* END billingFormWrap */}
 
                   {/* Payment details*/}
-                  <h2 className={styles.h2}>Payment details</h2>
+                  <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
                   <div className={styles.billingFormWrap, styles.paymentDetails}>
                     <form action="#" method="post">
                       <div className="row">
 
                         <div className="col-md-6">
                           <div className={`${styles.inputItem} mt-0`}>
-                            <label htmlFor="card_name" className="sr-only required">Card Name</label>
-                            <input type="text" id="card_name" placeholder="Card name" required />
+                            <label htmlFor="cardName" className="required">Card Name</label>
+                            <input type="text" id="cardName" required onChange={handle}/>
                           </div>
                         </div>
 
                         <div className="col-md-6">
                           <div className={`${styles.inputItem} mt-md-0`}>
-                            <label htmlFor="valid_date" className="sr-only required">Valid Date</label>
-                            <input type="date" id="valid_date" placeholder="Valid Date" required />
+                            <label htmlFor="validDate" className="required">Valid Date</label>
+                            <input type="text" id="validDate" required onChange={handle}/>
                           </div>
                         </div>
 
@@ -125,15 +130,15 @@ export default function Checkout() {
 
                         <div className="col-md-6">
                           <div className={`${styles.inputItem} mt-0`}>
-                            <label htmlFor="card_number" className="sr-only required">Card number</label>
-                            <input type="number" id="card_number" placeholder="Card number" required />
+                            <label htmlFor="cardNumber" className="required">Card number</label>
+                            <input type="number" id="cardNumber" required onChange={handle}/>
                           </div>
                         </div>
 
                         <div className="col-md-6">
                           <div className={`${styles.inputItem} mt-md-0`}>
-                            <label htmlFor="cvc_code" className="sr-only required">CVV2/CVC2 code</label>
-                            <input type="number" id="cvc_code" placeholder="CVC Code" required />
+                            <label htmlFor="cvcCode" className="required">CVV2/CVC2 code</label>
+                            <input type="number" id="cvcCode" required onChange={handle}/>
                           </div>
                         </div>
 
@@ -141,8 +146,8 @@ export default function Checkout() {
                       {/* end row */}
 
                       <div className={styles.inputItem}>
-                        <label htmlFor="card_holder" className="sr-only required">Card holder name</label>
-                        <input type="text" id="card_holder" placeholder="Card holder name*" required />
+                        <label htmlFor="cardHolder" className="required">Card holder name</label>
+                        <input type="text" id="cardHolder" required onChange={handle}/>
                       </div>
                     </form>
                   </div>
