@@ -3,15 +3,13 @@ import { useHistory } from "react-router-dom";
 import { CarContext } from "../contexts/CarContext";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import styles from "../styles/Home.Module.css";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 export default function CarItem(props) {
   const { car } = props;
   const { showPrice } = useContext(CarContext);
- 
- 
+
   const { addCarToCart } = useContext(ShopCartContext);
   const history = useHistory();
 

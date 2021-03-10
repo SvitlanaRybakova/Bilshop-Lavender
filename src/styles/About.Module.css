@@ -4,19 +4,109 @@
 
 .imgContainer {
   max-width: 100%;
-  border: 3px solid white;
+  /* border: 3px solid white; */
   box-shadow: 0px 0px 8px rgb(0 0 0 / 30%);
 }
 
 .findButton {
-  border: 1px solid #eeb644;
-  border-radius: 1rem;
-  width: 15rem;
-  font-size: 1rem;
-  color: #eeb644;
+  background-color: #eeb644;
+  border-color: #eeb644;
+  border-radius: 25px;
+  color: #1b1b1c;
 }
 
 .findButton:hover {
-  color: #383838;
-  border-color: #383838;
+  background-color: #d8d8d8;
+    border-color: #d8d8d8;
+}
+
+
+/* call-to-action */
+
+.callToActionContentArea {
+  padding: 200px 0 170px;
+  /* margin-top: -130px; */
+  background-color:#f8f9fa;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .callToActionContentArea {
+      padding-top: 180px;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .callToActionContentArea {
+      padding-top: 60px;
+      margin-top: 30px;
+  }
+}
+
+.callToActionContentArea .callToActionTxt h2 {
+  font-size: 40px;
+  margin-bottom: 35px;
+  margin-top: -7px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .callToActionContentArea .callToActionTxt h2 {
+      font-size: 26px;
+  }
+
+  .callToActionContentArea .callToActionTxt h2 br {
+      display: none;
+  }
+}
+
+.callToActionContentArea.home2 {
+  padding-bottom: 170px;
+  margin-top: 0;
+}
+
+.callToActionImageArea {
+  border: 1px solid red;
+  margin-top: -130px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .callToActionImageArea {
+      margin-bottom: 60px;
+  }
+}
+
+@media only screen and (max-width: 479.98px) {
+  .callToActionImageArea {
+      margin-bottom: 95px;
+  }
+}
+
+.needHelpArea {
+  padding: 50px 0 45px;
+}
+
+.aboutContent .h3,
+.aboutContent h2 {
+  margin-bottom: 20px;
+}
+
+/* subscribe to news */
+.jumbo{
+  background: url('https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80') no-repeat fixed bottom;
+  background-size: cover;
+  color: #efefef;
+  height: 400px;
+  position: relative;
+  z-index: -2;
+  border: 1px solid green;
+}
+
+.overlay{
+  background-color: #000000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
