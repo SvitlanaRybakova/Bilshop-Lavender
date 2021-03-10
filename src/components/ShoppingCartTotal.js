@@ -14,7 +14,7 @@ function ShoppingCartTotal(props) {
 
     if(location.pathname === '/shopping-cart') {
         buttonText = 'Proceed to Checkout'
-        linkAdress = "/shopping-cart/checkout"
+        linkAdress = props.props.purchases.products.length > 0 ? "/shopping-cart/checkout" : '#'
     } else if (location.pathname === '/shopping-cart/checkout') {
         buttonText = 'Place order'
         linkAdress = "/shopping-cart/checkout/confirmation"
