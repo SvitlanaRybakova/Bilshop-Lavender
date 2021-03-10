@@ -32,6 +32,11 @@ function ShoppingCart() {
   useEffect(() => {
   }, [isRadioButtonClicked, isDeleteProductClicked])
 
+  const props = {
+    showPrice,
+    purchases
+  }
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -110,7 +115,7 @@ function ShoppingCart() {
 
         <div className="col-lg-4">
 
-          <ShoppingCartTotal purchases={purchases} />
+          <ShoppingCartTotal props={props} />
 
 
         </div>
