@@ -110,12 +110,13 @@ button:focus {
   height: 39px;
   letter-spacing: 0.025em;
   line-height: 41px;
-  padding: 0 30px;
+  padding: 0 126px;
   text-transform: uppercase;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
+  background-color: rgb(233, 185, 83);
 }
 
 .btn:focus,
@@ -175,7 +176,6 @@ button:focus {
   border-color: #eeb644;
   color: #eeb644;
 }
-
 
 /* ==================
     Logo and Brand name styles 
