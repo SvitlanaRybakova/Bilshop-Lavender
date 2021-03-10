@@ -26,7 +26,7 @@ export default function CarDetails(props) {
 
   const renderCarDetails = () => {
     console.log(typeof carItem.price);
-    
+
     return (
       <>
         <div className="container mt-5">
@@ -34,10 +34,25 @@ export default function CarDetails(props) {
             <div className="col-12">
               <div className="row">
                 <div className="col-md-5">
-                
+
+                  {/* lightbox */}
+                  <a className={styles.lightbox} href="#car">
+                    <img className="w-100"
+                      src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                      alt={`${carItem.make} ${carItem.model}`} />
+                  </a>
+
+                  {/* lightbox-target */}
+                  <div className={styles.lightboxTarget} id="car">
+                    <img className={`${styles.lightboxTargetImg} w-100`}
+                      src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                      alt={`${carItem.make} ${carItem.model}`} />
+                    <a className={styles.lightboxClose} href="#"></a>
+                  </div>
+
                   <img className="w-100"
-                  src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
-                  alt={`${carItem.make} ${carItem.model}`} />
+                    src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
+                    alt={`${carItem.make} ${carItem.model}`} />
                 </div>
 
 
@@ -54,41 +69,41 @@ export default function CarDetails(props) {
                         <div className={styles.tableResponsive}>
                           <table className={styles.table}>
                             <thead>
-                            <tr>
-                              <th className={styles.configLabel}>Make</th>
-                              <td className={styles.configOption}>
-                                {carItem.make}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Make</th>
+                                <td className={styles.configOption}>
+                                  {carItem.make}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>Model</th>
-                              <td className={styles.configOption}>
-                                {carItem.model}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Model</th>
+                                <td className={styles.configOption}>
+                                  {carItem.model}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>Year</th>
-                              <td className={styles.configOption}>
-                                {carItem.year}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Year</th>
+                                <td className={styles.configOption}>
+                                  {carItem.year}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>City</th>
-                              <td className={styles.configOption}>
-                                {carItem.city}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>City</th>
+                                <td className={styles.configOption}>
+                                  {carItem.city}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>Miles</th>
-                              <td className={styles.configOption}>
-                                {carItem.miles}
-                              </td>
-                              
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Miles</th>
+                                <td className={styles.configOption}>
+                                  {carItem.miles}
+                                </td>
+
+                              </tr>
                             </thead>
                           </table>
                         </div>
