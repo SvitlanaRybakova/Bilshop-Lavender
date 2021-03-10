@@ -115,7 +115,7 @@
 
 .newsletterContent {
   color: #d8d8d8;
-  padding: 100px 15px;
+  padding: 50px 15px;
 }
 
 .newsletterContent h2, .newsletterContent h3, .newsletterContent h4 {
@@ -226,4 +226,22 @@
 .newsletterFormWrap .formContent .btnNewsletter:hover {
   background-color: #d8d8d8;
   color: #1b1b1c
+}
+/* need help */
+.needHelpArea{
+  background-color: #f8f9fa;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.helpBtn{
+  background-color: #1b1b1c;
+  border-color: #1b1b1c;
+  border-radius: 25px;
+  color: #FFFFFF;
+  font-size: 15px;
+}
+.helpBtn:hover{
+  background-color: #d8d8d8;
+  border-color: #d8d8d8;
+  color: #1b1b1c;
 }

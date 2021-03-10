@@ -5,27 +5,27 @@ function About() {
   return (
     <>
       <div className={`${styles.about} container mt-5 `}>
-          <div className="row g-0 d-flex  align-items-center mb-3 p-4">
-            <div className="col-md-6 order-md-2 p-lg-5">
-              <img
-                src="https://i.imgur.com/VZbb5FD.png"
-                alt="about company section - white car"
-                className={`${styles.imgContainer}`}
-              />
-            </div>
-            <div className="col-md-6">
-              <div className="card-body me-lg-4">
-                <h5 className=" fs-1 card-title  text-sm-center text-md-start mb-5">
-                  About Company
+        <div className="row g-0 d-flex  align-items-center mb-3 p-4">
+          <div className="col-md-6 order-md-2 p-lg-5">
+            <img
+              src="https://i.imgur.com/VZbb5FD.png"
+              alt="about company section - white car"
+              className={`${styles.imgContainer}`}
+            />
+          </div>
+          <div className="col-md-6">
+            <div className="card-body me-lg-4">
+              <h5 className=" fs-1 card-title  text-sm-center text-md-start mb-5">
+                About Company
               </h5>
-                <p className="card-text mt-5">
-                  Once the pickup braked the upfit. The aluminum engine was
-                  crashed by the Hino? The heavy duty, lifted pickup truck
-                  deconstructed. Once the wheel deconstructed the welder body
-                  while the upfitted hybrid was dumped by the axle.
+              <p className="card-text mt-5">
+                Once the pickup braked the upfit. The aluminum engine was
+                crashed by the Hino? The heavy duty, lifted pickup truck
+                deconstructed. Once the wheel deconstructed the welder body
+                while the upfitted hybrid was dumped by the axle.
               </p>
-              </div>
             </div>
+          </div>
         </div>
 
         <div className="mb-5 mt-5 d-flex ">
@@ -80,26 +80,45 @@ function About() {
       {/* <!--== End Call to action Wrapper ==--> */}
 
       {/* subscribe to newsletter */}
-      <div className={`${styles.subscribe} container-fluid`}> 
+      <div className={`${styles.subscribe} container-fluid`}>
         <div className="container">
-              <div className="row text-center align-middle">
-                  <div className={`${styles.newsletterContent}  text-center`}>
-                    <h4>SPECIAL <span>OFFER</span> FOR SUBSCRIPTION</h4>
-                    <h2>GET INSTANT DISCOUNT FOR MEMBERSHIP</h2>
-                    <p>Subscribe our newsletter and all latest news of our <br/>latest product, promotion and offers
+          <div className="row text-center align-middle">
+            <div className={`${styles.newsletterContent}  text-center`}>
+              <h4>SPECIAL <span>OFFER</span> FOR SUBSCRIPTION</h4>
+              <h2>GET INSTANT DISCOUNT FOR MEMBERSHIP</h2>
+              <p>Subscribe our newsletter and all latest news of our <br />latest product, promotion and offers
                         </p>
-                      <div className={`${styles.newsletterFormWrap}`}>
-                        <form action="#" method="post">
-                          <div className={`${styles.formContent}`}>
-                            <input type="email" placeholder="Enter your email here" />
-                            <button className={`${styles.btnNewsletter}`}>Submit</button>
-                          </div>
-                        </form>
-                      </div>
-                        </div>
+              <div className={`${styles.newsletterFormWrap}`}>
+                <form action="#" method="post">
+                  <div className={`${styles.formContent}`}>
+                    <input type="email" placeholder="Enter your email here" />
+                    <button className={`${styles.btnNewsletter}`}>Submit</button>
                   </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* <!--== Start Need Help area ==--> */}
+      <div className={`${styles.needHelpArea} mt-5`}>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-sm-7 ">
+              <div className="need-help-content mb-sm-20">
+                <h3 className="mb-4 fs-2">Need Help ?</h3>
+                <p>Call our support 24/7 at <b className="px-2">01234&nbsp;567&nbsp;890</b> </p>
+              </div>
+            </div>
+
+            <div className="col-sm-5 text-center text-sm-right mt-4 mt-md-0">
+              <a href="mailto:alicia@mailgo.dev" className={`${styles.helpBtn} btn`}>Or send e-mail </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <!--== End Need Help area ==--> */}
     </>
   );
 }
