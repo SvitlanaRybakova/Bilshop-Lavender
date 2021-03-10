@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ShopCartContext = createContext();
 
@@ -9,6 +9,13 @@ function ShopCartContextProvider(props) {
     deliveryCost: 0,
     priceTotal: "Choose delivery option",
   });
+
+  const [shoppingCartNum, setShoppingCartNum] = useState(purchases.products.length);
+
+  useEffect(() => {
+    setShoppingCartNum(purchases.products.length)
+  }, [purchases]);
+
 
   const setDeliveryCost = (e) => {
     purchases.deliveryCost =
@@ -26,20 +33,23 @@ function ShopCartContextProvider(props) {
     purchases.priceTotal = updatedTotalPrice;
   }
 
-  function deleteProduct(productToDelete) {
-    const updateProducts = purchases.products.filter(
-      (product) => product.vin !== productToDelete.vin
-    );
-    purchases.products = updateProducts;
+  const deleteProduct = (productToDelete) => {
+    setPurchases(({
+      products: purchases.products.filter(
+        (product) => product.vin !== productToDelete.vin
+      )
+    }))
     if (purchases.products.length === 0) {
       purchases.deliveryCost = 0;
     }
     setPriceTotal();
   }
 
-  function addCarToCart(car) {
-    if(!purchases.products.includes(car)) {
-      purchases.products.unshift(car);
+  const addCarToCart = (car) => {
+    if(!purchases.products.includes(car)){
+      setPurchases(previousState => ({
+        products: [car, ...previousState.products]
+      }))
     }
   }
 
@@ -49,6 +59,7 @@ function ShopCartContextProvider(props) {
     setPriceTotal,
     deleteProduct,
     addCarToCart,
+    shoppingCartNum,
   };
 
   return (
