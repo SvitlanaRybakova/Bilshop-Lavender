@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { CarContext } from '../contexts/CarContext';
 import styles from '../styles/CarDetails.module.css';
+import NotFound from '../components/NotFound';
 
 
 
@@ -115,6 +116,5 @@ export default function CarDetails(props) {
       </>
     )
   }
-  // TODO implement NOT FOUND
-  return carItem ? renderCarDetails() : <div></div>
+  return carItem ? renderCarDetails() : <div><NotFound/></div>
 }
