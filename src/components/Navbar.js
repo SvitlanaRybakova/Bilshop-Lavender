@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Navbar.module.css";
 import { ShopCartContext } from "../contexts/ShopCartContext";
+import { CarContext } from "../contexts/CarContext";
 
 const Navbar = () => {
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false);
