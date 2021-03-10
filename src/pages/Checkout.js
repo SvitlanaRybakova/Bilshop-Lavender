@@ -3,9 +3,11 @@ import { ShopCartContext } from '../contexts/ShopCartContext'
 import ShoppingCartTotal from '../components/ShoppingCartTotal';
 import styles from '../styles/Checkout.module.css';
 import {UserContext} from '../contexts/UserContext'
+import { CarContext } from '../contexts/CarContext';
 
 export default function Checkout() {
   const { purchases }  = useContext(ShopCartContext)
+  const { showPrice } = useContext(CarContext);
 
   const { addUserDataToContext }  = useContext(UserContext)
 
@@ -35,6 +37,13 @@ export default function Checkout() {
   //sending userData to UserContext happens when user clicks button at ShoppingCartTotal component
   //on Checkout page we get function AddUserDataToContext from UserContext an sending it as a prop to ShoppingCartTotal component
   
+  const props = {
+    purchases,
+    userPersonalData,
+    addUserDataToContext,
+    showPrice
+  }
+
   return (
       <div className={`${styles.pageContentWrapper} mt-5 container sp-y`}>
         <div className={styles.cartPageContentWrap}>
@@ -156,7 +165,7 @@ export default function Checkout() {
               </div>
 
               <div className="col-lg-6  col-xl-5 ">
-                <ShoppingCartTotal purchases={purchases} userPersonalData={userPersonalData} addUserDataToContext={addUserDataToContext} />
+                <ShoppingCartTotal props={props}/>
               </div>
             </div>
           </div>
