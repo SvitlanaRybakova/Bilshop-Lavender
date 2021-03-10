@@ -4,12 +4,9 @@ import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
 
-    const showPrice = (carItem) => {
-        const price = String(carItem);
-        return price.split(/(\d{3})/).join(' ').trim();
-    }
-
     const location = useLocation()
+
+    console.log(props);
 
     // button text and link address are depends on current url path
     let buttonText
@@ -26,10 +23,11 @@ function ShoppingCartTotal(props) {
     //if the user is on the Checkout page and clicks at button 'Place order' then send the collected on the Checkout page user data to UserContext
     const handleClick = (e) => {
         if(linkAdress.includes('confirmation'))
-        props.addUserDataToContext(props.userPersonalData)
+        props.props.addUserDataToContext(props.props.userPersonalData)
     }
     
     return (
+        
         <div className='mt-5 mt-lg-0'>
             <div className={styles.cartTotal}>
                 <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
@@ -44,14 +42,14 @@ function ShoppingCartTotal(props) {
                         </thead>
                         <tbody>
                             {
-                                props.purchases.products.map((product, i) => (
+                                props.props.purchases.products.map((product, i) => (
                                     <tr key={i}>
                                         <td>
                                             {product.make}
                                             <p style={{fontSize: 12}}>{product.model} {product.year}</p>
                                         </td>
                                         <td>
-                                            {showPrice(product.price)} SEK 
+                                            {props.props.showPrice(product.price)} SEK 
                                         </td>
                                      </tr>
                                 ))
@@ -61,7 +59,7 @@ function ShoppingCartTotal(props) {
                                     Shipping
                                 </td>
                                 <td>
-                                   {props.purchases.deliveryCost} SEK
+                                   {props.props.purchases.deliveryCost} SEK
                                 </td>
                             </tr>
                         </tbody>
@@ -69,9 +67,9 @@ function ShoppingCartTotal(props) {
                             <tr className='border-top'>
                                 <th>Total</th>
                                 <td>
-                                    <b>{showPrice(props.purchases.priceTotal)} 
+                                    <b>{props.props.showPrice(props.props.purchases.priceTotal)} 
                                     {
-                                        typeof props.purchases.priceTotal === 'number' && 
+                                        typeof props.props.purchases.priceTotal === 'number' && 
                                         <span> SEK</span>
                                     }
                                     </b>
