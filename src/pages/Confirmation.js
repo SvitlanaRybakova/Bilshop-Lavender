@@ -15,9 +15,7 @@ function Confirmation() {
     const { showPrice } = useContext(CarContext);
     
     const printConfirmation = () => {
-        document.querySelector('.btnBlock').classList.add('d-none')
         window.print()
-        document.querySelector('.btnBlock').classList.remove('d-none')
     }
 
     function currentDate() {
@@ -36,7 +34,7 @@ function Confirmation() {
                     <div className='brandName mt-2 mb-5 mb-sm-0'>Car Market <p className='subBrand'>Lavender</p></div>
                 </div>
                 <div className={`${styles.btnBlock} btnBlock`}>
-                    <button onClick={printConfirmation} className='d-none d-sm-block'>
+                    <button onClick={printConfirmation} className='d-none d-sm-block me-lg-5'>
                         <FontAwesomeIcon icon={faPrint} size='2x' className={styles.icon}/>
                     </button>
                 </div>
@@ -82,7 +80,13 @@ function Confirmation() {
                         }
                     </tbody>
                 </table>
-                <p className={`${styles.totalPrice} mt-5`}>Total: {showPrice(purchases.priceTotal)} SEK</p>
+                <p className={`${styles.totalPrice} mt-5`}>
+                    Total: {showPrice(purchases.priceTotal)} 
+                    {
+                        typeof purchases.priceTotal === 'number' && 
+                        <span> SEK</span>
+                    }
+                </p>
             </div>
             <div className='my-5'>
                 <p>Thank you for your purchase! If you have any questions contact us cars@mailgo.dev</p>
