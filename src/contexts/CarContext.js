@@ -148,6 +148,7 @@ function CarContextProvider(props) {
     } else {
       alteredMaxPrice = maxPrice;
     }
+    console.log(cars.length);
     setCopyCars(
       cars.filter((car) => {
         if (
@@ -169,7 +170,8 @@ function CarContextProvider(props) {
           return false;
         }
       })
-    );
+      );
+      setSearching(true);
   };
 
   const values = {
