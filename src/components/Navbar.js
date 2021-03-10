@@ -1,19 +1,25 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/Navbar.module.css'
-
+import { ShopCartContext } from "../contexts/ShopCartContext";
 
 const Navbar = () => {
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false)
-
+  const { shoppingCartNum } = useContext(ShopCartContext);
   const toggleMenu = () => {
     setshowCollapsedMenu(!showCollapsedMenu)
   }
 
   const show = showCollapsedMenu ? "show" : "";
 
+  let cartNum;
+  if(shoppingCartNum > 0){
+    cartNum = shoppingCartNum;
+  }else{
+    cartNum = "";
+  }
 
   return (
     <nav className="navbar navbar-expand-sm">
@@ -46,7 +52,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} /></Link>
+        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} />{ cartNum }</Link>
       </div>
     </nav>
   );
