@@ -10,29 +10,41 @@ function ShopCartContextProvider(props) {
     priceTotal: "Choose delivery option",
   });
 
+  //Total
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    let totalPrice = 0;
+    purchases.products.forEach((car) => {
+      totalPrice = totalPrice + car.price;
+    });
+    setTotal(totalPrice);
+  }, [purchases]);
+
+  // Number of items in cart
   const [shoppingCartNum, setShoppingCartNum] = useState(purchases.products.length);
 
   useEffect(() => {
     setShoppingCartNum(purchases.products.length)
   }, [purchases]);
 
-
+  // Shipping cost
   const setDeliveryCost = (e) => {
     purchases.deliveryCost =
       e.currentTarget.value === "paidDelivery" ? 5000 : 0;
     setPriceTotal();
   };
 
+    // Total price (including shipping cost)
   function setPriceTotal() {
     let updatedTotalPrice = purchases.deliveryCost;
-
     for (const product of purchases.products) {
       updatedTotalPrice += product.price;
     }
-
     purchases.priceTotal = updatedTotalPrice;
   }
 
+  //   Add/remove from cart
   const deleteProduct = (productToDelete) => {
     setPurchases(({
       products: purchases.products.filter(
@@ -60,6 +72,7 @@ function ShopCartContextProvider(props) {
     deleteProduct,
     addCarToCart,
     shoppingCartNum,
+    total,
   };
 
   return (
