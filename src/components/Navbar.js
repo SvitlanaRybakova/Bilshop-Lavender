@@ -1,55 +1,69 @@
-import { useState, useContext } from 'react'
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import styles from '../styles/Navbar.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import styles from "../styles/Navbar.module.css";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 
 const Navbar = () => {
-  const [showCollapsedMenu, setshowCollapsedMenu] = useState(false)
+  const [showCollapsedMenu, setshowCollapsedMenu] = useState(false);
   const { shoppingCartNum, total } = useContext(ShopCartContext);
   const toggleMenu = () => {
-    setshowCollapsedMenu(!showCollapsedMenu)
-  }
+    setshowCollapsedMenu(!showCollapsedMenu);
+  };
 
   const show = showCollapsedMenu ? "show" : "";
 
   let totalRestructured;
-  if(shoppingCartNum > 0){
+  let navbarClassName;
+  if (shoppingCartNum > 0) {
     totalRestructured = `${total} SEK`;
-  }else{
+    navbarClassName = "d-block";
+  } else {
     totalRestructured = "";
+    navbarClassName = "d-none";
   }
 
   let cartNum;
-  if(shoppingCartNum > 0){
+  if (shoppingCartNum > 0) {
     cartNum = shoppingCartNum;
-  }else{
+    navbarClassName = "d-block";
+  } else {
     cartNum = "";
+    navbarClassName = "d-none";
   }
 
   return (
     <nav className="navbar navbar-expand-sm">
       <div className="container d-flex justify-content-end ">
-        <div className='d-flex align-items-end flex-grow-1 '>
-          <Link to="/" className={`${styles.brandName} d-flex align-items-center`}>
-            <img src={`../../logo.png`} alt="Logo" className='logo' />
-            <div className= "ms-3">Car Market <p className='subBrand'>Lavender</p></div>
+        <div className="d-flex align-items-end flex-grow-1 ">
+          <Link
+            to="/"
+            className={`${styles.brandName} d-flex align-items-center`}
+          >
+            <img src={`../../logo.png`} alt="Logo" className="logo" />
+            <div className="ms-3">
+              Car Market <p className="subBrand">Lavender</p>
+            </div>
           </Link>
         </div>
         <button
           onClick={toggleMenu}
-          style={{ border: 'none' }}
+          style={{ border: "none" }}
           className={`${styles.myBtn} btn navbar-toggler`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <div className={`${show} ${styles.navbarList} collapse navbar-collapse`} id="navbarSupportedContent">
+        <div
+          className={`${show} ${styles.navbarList} collapse navbar-collapse`}
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
             <li className="nav-item">
               <Link to="/">Home</Link>
@@ -59,10 +73,20 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link className={styles.shoppingCartIcon} to='/shopping-cart'><FontAwesomeIcon icon={faShoppingCart} />{ cartNum } { totalRestructured }</Link>
+        <div className={`${styles.cartWrapper}`}>
+          <Link className={`$styles.shoppingCartIcon}`} to="/shopping-cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </Link>
+          <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
+            {cartNum}
+          </div>
+          <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
+            {totalRestructured}
+          </div>
+        </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
