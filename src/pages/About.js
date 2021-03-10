@@ -6,7 +6,7 @@ function About() {
     <>
       <div className={`${styles.about} container mt-5 `}>
         <div className="row g-0 d-flex  align-items-center mb-3 p-4">
-          <div className="col-md-6 order-md-2 p-lg-5">
+          <div className="col-md-6 order-md-2 p-lg-3">
             <img
               src="https://i.imgur.com/VZbb5FD.png"
               alt="about company section - white car"
@@ -30,7 +30,7 @@ function About() {
 
         <div className="mb-5 mt-5 d-flex ">
           <div className="row g-0 d-flex  align-items-center mb-3 p-4">
-            <div className="col-md-6 p-lg-5">
+            <div className="col-md-6 p-lg-3">
               <img
                 src="https://i.imgur.com/hm7w73f.png"
                 alt="USP car"
