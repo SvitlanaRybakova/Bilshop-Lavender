@@ -28,7 +28,7 @@ function PriceRange() {
       <form className="d-flex" onSubmit={findCarFilter}>
         <div className="container">
           <div className="row d-flex align-items-center justify-content-center">
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="text"
                 className="form-control"
@@ -37,7 +37,7 @@ function PriceRange() {
                 onChange={onChangeMake}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="text"
                 className="form-control"
@@ -46,7 +46,7 @@ function PriceRange() {
                 onChange={onChangeModel}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="number"
                 className="form-control"
@@ -55,7 +55,7 @@ function PriceRange() {
                 onChange={onChangeYear}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="number"
                 className="form-control"
@@ -64,7 +64,8 @@ function PriceRange() {
                 onChange={onChangeMinPrice}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="row"></div>
+            <div className="col">
               <input
                 type="number"
                 className="form-control"
@@ -73,7 +74,7 @@ function PriceRange() {
                 onChange={onChangeMaxPrice}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="number"
                 className="form-control"
@@ -82,7 +83,7 @@ function PriceRange() {
                 onChange={onChangeMinMiles}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <input
                 type="number"
                 className="form-control"
@@ -91,7 +92,7 @@ function PriceRange() {
                 onChange={onChangeMaxMiles}
               />
             </div>
-            <div className="col-lg-1">
+            <div className="col">
               <button  type="submit" className="btn1 btn">
                 Filter
               </button>
