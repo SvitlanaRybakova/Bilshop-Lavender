@@ -59,55 +59,60 @@ function About() {
         {/* <!--== Start Call to action Wrapper ==--> */}
         <div className={`${styles.callToActionContentArea} sm-top`}>
           {/* <div className={`${styles.callToActionArea} ${styles.home2}`}> */}
-            <div className="container border">
-              <div className="row">
-                <div className="col-12 text-center">
-                  <div className="call-to-action-txt">
-                    <h2>CARS THAT EVERYONE DREAMS OFF <span className="d-block mt-3">FIND YOUR CAR HERE</span> </h2>
-                    <Link className={`${styles.findButton} btn`} to="/">
-                      Shop Now
+          <div className="container">
+            <div className="row">
+              <div className="col-12 text-center">
+                <div className="call-to-action-txt">
+                  <h2>CARS THAT EVERYONE DREAMS OFF <span className="d-block mt-3">FIND YOUR CAR HERE</span> </h2>
+                  <Link className={`${styles.findButton} btn`} to="/">
+                    Shop Now
                       </Link>
-                  </div>
-                </div>
-              </div>
-            {/* </div> */}
-          </div>
-
-          <div className={styles.callToActionImageArea}>
-            <div className="container border">
-              <div className="row">
-                <div className="col-12 text-center">
-                  <img style={{width: '70%', border: '1px solid red'}}src="https://purepng.com/public/uploads/large/purepng.com-yellow-audi-caraudicars-961524670899johme.png" alt="Car" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <!--== End Call to action Wrapper ==--> */}
+        <div className="container ">
+          <div className={styles.callToActionImageArea}>
+            <div className={`${styles.imgWrapper} col-12 col-md-8 `}>
+              <img style={{ width: '100%' }} src="https://i.imgur.com/JympBXg.png" alt="yellow audi" />
+            </div>
+          </div>
+        </div>
       </div>
+      {/* <!--== End Call to action Wrapper ==--> */}
+
       {/* sibscribe to newsletter */}
       <div className={`${styles.jumbo} container-fluid`}>
         <div className={styles.overlay}></div>
         <div className="container">
-          <div className="card text-center mt-5">
+          <div className="text-center mt-5">
             <div className="card-body">
-             
+              <div className="row">
+                <div className="col-lg-8 col-xl-5 ">
+                  <div className={`${styles.newsletterContent} text-center`}>
+                    <h4>SPECIAL <span>OFFER</span> FOR SUBSCRIPTION</h4>
+                    <h2>GET INSTANT DISCOUNT FOR MEMBERSHIP</h2>
+                    <p>Subscribe our newsletter and all latest news of our <br/>latest product, promotion and offers
+                        </p>
+
+                      <div className="newsletter-form-wrap">
+                        <form action="#" method="post">
+                          <div className="form-content">
+                            <input type="email" placeholder="Enter your email here" />
+                            <button className="btn-newsletter">Submit</button>
+                          </div>
+                        </form>
+                      </div>
+                        </div>
+                  </div>
+                </div>
+
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* <Jumbo fluid className={style.jumbo} 
-      style={{background: `url(${ocean}) no-repeat fixed bottom`}}>
-        <div className={style.overlay}></div>
-        <Container>
-          <h1>Fluid jumbotron</h1>
-          <p>
-            This is a modified jumbotron that occupies the entire horizontal space of
-            its parent.
-    </p>
-        </Container>
-      </Jumbo> */}
-
     </>
   );
 }
