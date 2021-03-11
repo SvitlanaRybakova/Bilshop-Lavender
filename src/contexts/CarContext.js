@@ -4,6 +4,9 @@ import Cars from "../json/cars.json";
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
+
+
+  
   const carsarray = Cars;
 
   //variables for pagination
@@ -38,6 +41,9 @@ function CarContextProvider(props) {
   const [maxPrice, setMaxPrice] = useState("");
   const [minMiles, setMinMiles] = useState("");
   const [maxMiles, setMaxMiles] = useState("");
+  
+  
+  
 
   useEffect(() => {
     if(currentPage || isSearching){
@@ -204,6 +210,7 @@ function CarContextProvider(props) {
 
   return (
     <CarContext.Provider value={values}>{props.children}</CarContext.Provider>
+    
   );
 }
 

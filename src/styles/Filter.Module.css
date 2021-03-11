@@ -2,15 +2,36 @@
   margin-top: 15px;
 }
 
-.btn-filter {
-  border: 1px solid #383838;
-  width: 10rem;
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  color: #383838;
-  padding-left: 10px;
-  padding-right: 10px;
+.myBtn1 .button {
+  background-color: rgb(233, 185, 83);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .myBtn1 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .myBtn1 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .myBtn1 {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -39,7 +60,6 @@
     *width: 14.285714285714285714285714285714%;
   }
 }
-
 
 /*
 // Large devices (desktops, 992px and up)
