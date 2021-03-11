@@ -5,9 +5,7 @@ import styles from '../styles/ShoppingCartTotal.module.css'
 function ShoppingCartTotal(props) {
 
     const location = useLocation()
-
-    console.log(props);
-
+    
     // button text and link address are depends on current url path
     let buttonText
     let linkAdress
@@ -39,6 +37,7 @@ function ShoppingCartTotal(props) {
                                 <th>Products</th>
                                 <th>Total</th>
                             </tr>
+                
                         </thead>
                         <tbody>
                             {
@@ -58,26 +57,32 @@ function ShoppingCartTotal(props) {
                                 <td>
                                     Shipping
                                 </td>
-                                <td>
-                                   {props.props.purchases.deliveryCost} SEK
-                                </td>
+                                    {
+                                        props.props.purchases.products.length > 0 && 
+                                        <td>
+                                            {props.props.purchases.deliveryCost}
+                                            { props.props.purchases.products.length > 0 && ' SEK'}
+                                        </td>
+                                    }
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr className='border-top'>
                                 <th>Total</th>
                                 <td>
-                                    <b>{props.props.showPrice(props.props.purchases.priceTotal)} 
-                                    {
-                                        typeof props.props.purchases.priceTotal === 'number' && 
-                                        <span> SEK</span>
+                                    { 
+                                        props.props.purchases.products.length > 0 && 
+                                        <b>
+                                            {props.props.showPrice(props.props.purchases.priceTotal)} 
+                                            <span> SEK</span>
+                                        </b>
                                     }
-                                    </b>
                                 </td>
                             </tr>   
                         </tfoot>
                     </table>
                 </div>
+                
 
                 <div className={styles.toCheckoutBtnBox}>
                     <Link to={linkAdress}>

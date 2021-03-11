@@ -97,27 +97,26 @@ function ShoppingCart() {
               </tbody>
             </table>
           </div>
+         { purchases.products.length > 0 &&
           <div className={styles.shippingMethods} >
-            <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-              <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-              <label className="form-check-label" htmlFor="flexRadioDefault1">
-                Home delivery (5 000 SEK)
-                    </label>
+              <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
+                  Home delivery (5 000 SEK)
+                      </label>
+              </div>
+              <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                <label className="form-check-label" htmlFor='flexRadioDefault2' >
+                  Pick up the car by yourself
+                      </label>
+              </div>
             </div>
-            <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-              <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-              <label className="form-check-label" htmlFor='flexRadioDefault2' >
-                Pick up the car by yourself
-                    </label>
-            </div>
-          </div>
+          }
         </div>
 
         <div className="col-lg-4">
-
           <ShoppingCartTotal props={props} />
-
-
         </div>
       </div>
     </div>
