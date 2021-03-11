@@ -80,7 +80,9 @@ function CarContextProvider(props) {
       })	
       // if we have a match	
       if (result.length > 0) {	
-        setCopyCars(result)	
+        setCopyCars(result)
+        // if the user is on any page except the first and makes a search, then he  is redirected to the first page
+        setCurrentPage(1)	
       }	
       // other way, isFined is false and rendered NotFound component	
       else {	
