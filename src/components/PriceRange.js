@@ -93,7 +93,7 @@ function PriceRange() {
               />
             </div>
             <div className="col">
-              <button  type="submit" className="btn1 btn">
+              <button type="submit" className={`${styles.myBtn1}button`}>
                 Filter
               </button>
             </div>

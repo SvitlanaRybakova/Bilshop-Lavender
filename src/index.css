@@ -75,6 +75,20 @@ button {
   transition: 0.4s;
 }
 
+.myBtn1 {
+  background-color: rgb(233, 185, 83);
+  border: 2px;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  width: 100%;
+}
+
 button:active,
 button:focus {
   outline: none;
@@ -130,30 +144,42 @@ button:focus {
   }
 }
 
-
-@media (min-width: 992px) { .btn1 {
-  padding-left: 5em;
-  padding-right: 5em;
-} }
-
-
-@media (min-width: 1200px) { .btn1 {
-  border: 2px solid #d8d8d8;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 600;
-  font-family: "Oswald", sans-serif;
-  height: 39px;
-  letter-spacing: 0.025em;
-  line-height: 41px;
-  padding: 0 126px;
-  text-transform: uppercase;
-  transition: all 0.3s ease 0s;
-  border-radius: 0.25rem;
-  background-color: rgb(233, 185, 83);
- } 
+@media (min-width: 992px) {
+  .btn1 {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
 }
 
+@media (min-width: 1200px) {
+  .btn1 {
+    border: 2px solid #d8d8d8;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Oswald", sans-serif;
+    height: 39px;
+    letter-spacing: 0.025em;
+    line-height: 41px;
+    padding: 0 126px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    border-radius: 0.25rem;
+    background-color: rgb(233, 185, 83);
+  }
+}
+/*
+@media (min-width: 768px) {
+  .carousel-indicators {
+  margin-bottom: 5rem;
+  }
+  }
+  @media (min-width: 992px) {
+    .carousel-indicators {
+    margin-bottom: 5rem;
+    }
+    }
+*/
 .btn:focus,
 .btn:active {
   outline: none;

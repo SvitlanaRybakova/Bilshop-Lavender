@@ -29,7 +29,7 @@ function Carousel() {
           <CarouselCar key={car.vin} car={car} index={index} />
         ))}
       </div>
-    
+
       <button
         className="carousel-control-prev"
         type="button"
