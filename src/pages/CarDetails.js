@@ -70,13 +70,15 @@ export default function CarDetails(props) {
                       <div className={styles.productConfig}>
                         <div className={styles.tableResponsive}>
                           <table className={styles.table}>
-                            <tr>
-                              <th className={styles.configLabel}>Make</th>
-                              <td className={styles.configOption}>
-                                {carItem.make}
-                              </td>
-                            </tr>
-
+                            <thead>
+                              <tr>
+                                <th className={styles.configLabel}>Make</th>
+                                <th className={styles.configOption}>
+                                  {carItem.make}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                               <th className={styles.configLabel}>Model</th>
                               <td className={styles.configOption}>
@@ -104,6 +106,7 @@ export default function CarDetails(props) {
                                 {carItem.miles}
                               </td>
                             </tr>
+                            </tbody>
                           </table>
                         </div>
                       </div>
