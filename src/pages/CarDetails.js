@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CarContext } from '../contexts/CarContext';
 import styles from '../styles/CarDetails.module.css';
 import NotFound from '../components/NotFound';
@@ -34,13 +34,13 @@ export default function CarDetails(props) {
               <div className="row">
                 <div className="col-md-5">
 
-                   {/* lightbox */}
+                  {/* lightbox */}
                   <a className={styles.lightbox} href="#car">
                     <img className="w-100"
                       src={`../assets/car-pictures/${carItem.make}-${carItem.model}-${carItem.year}.jpg`}
                       alt={`${carItem.make} ${carItem.model}`} />
                   </a>
-                  
+
                   {/* lightbox-target */}
                   <div className={styles.lightboxTarget} id="car">
                     <img className={`${styles.lightboxTargetImg} w-100`}
@@ -66,13 +66,15 @@ export default function CarDetails(props) {
                       <div className={styles.productConfig}>
                         <div className={styles.tableResponsive}>
                           <table className={styles.table}>
-                            <tr>
-                              <th className={styles.configLabel}>Make</th>
-                              <td className={styles.configOption}>
-                                {carItem.make}
-                              </td>
-                            </tr>
-
+                            <thead>
+                              <tr>
+                                <th className={styles.configLabel}>Make</th>
+                                <th className={styles.configOption}>
+                                  {carItem.make}
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                               <th className={styles.configLabel}>Model</th>
                               <td className={styles.configOption}>
@@ -100,6 +102,7 @@ export default function CarDetails(props) {
                                 {carItem.miles}
                               </td>
                             </tr>
+                            </tbody>
                           </table>
                         </div>
                       </div>
@@ -116,5 +119,5 @@ export default function CarDetails(props) {
       </>
     )
   }
-  return carItem ? renderCarDetails() : <div><NotFound/></div>
+  return carItem ? renderCarDetails() : <div><NotFound /></div>
 }
