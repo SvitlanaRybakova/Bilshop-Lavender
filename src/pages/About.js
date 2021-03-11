@@ -89,7 +89,7 @@ function About() {
               <p>Subscribe our newsletter and all latest news of our <br />latest product, promotion and offers
                         </p>
               <div className={`${styles.newsletterFormWrap}`}>
-                <form action="#" method="post">
+                <form action="#" method="#">
                   <div className={`${styles.formContent}`}>
                     <input type="email" placeholder="Enter your email here" />
                     <button className={`${styles.btnNewsletter}`}>Submit</button>
