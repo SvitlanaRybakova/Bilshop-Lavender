@@ -76,17 +76,18 @@ button {
 }
 
 .myBtn1 {
-  background-color: rgb(233, 185, 83);
   border: 2px;
   cursor: pointer;
   outline: none;
-  padding: 0;
+  padding-top: 100px;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-  width: 100%;
+  width: 30px;
+  height: 200px;
+  background-color: rgb(233, 185, 83);
 }
 
 button:active,
@@ -127,9 +128,10 @@ button:focus {
   font-weight: 600;
   font-family: "Oswald", sans-serif;
   height: 39px;
+  width: 100%;
   letter-spacing: 0.025em;
   line-height: 41px;
-  padding: 0 126px;
+  padding: 0px;
   text-transform: uppercase;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -139,33 +141,22 @@ button:focus {
 }
 @media (min-width: 768px) {
   .btn1 {
-    padding-left: 5em;
-    padding-right: 5em;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 }
 
 @media (min-width: 992px) {
   .btn1 {
-    padding-left: 5em;
-    padding-right: 5em;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 }
 
 @media (min-width: 1200px) {
   .btn1 {
-    border: 2px solid #d8d8d8;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: "Oswald", sans-serif;
-    height: 39px;
-    letter-spacing: 0.025em;
-    line-height: 41px;
-    padding: 0 126px;
-    text-transform: uppercase;
-    transition: all 0.3s ease 0s;
-    border-radius: 0.25rem;
-    background-color: rgb(233, 185, 83);
+    padding-left: 2em;
+    padding-right: 2em;
   }
 }
 /*
