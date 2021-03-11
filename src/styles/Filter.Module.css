@@ -2,18 +2,9 @@
   margin-top: 15px;
 }
 
-.myBtn1 .button {
-  background-color: rgb(233, 185, 83);
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
-  width: 100%;
+.form-control .form-select {
+  margin-bottom: 2rem;
+  border: 1px solid #383838;
 }
 
 @media (min-width: 768px) {
