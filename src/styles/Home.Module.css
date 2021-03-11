@@ -11,7 +11,6 @@
   border-radius: 0.2rem;
 }
 
-
 .itemWrapper {
   padding: 0.9rem 2rem 3rem 2rem;
   margin: 1.5rem;
@@ -31,12 +30,12 @@
   padding-right: 10px;
 }
 @media only screen and (min-width: 400px) and (max-width: 767px) {
-  .detailsButton{
+  .detailsButton {
     font-size: 1rem;
   }
 }
 @media only screen and (min-width: 991px) and (max-width: 1200px) {
-  .detailsButton{
+  .detailsButton {
     font-size: 0.7rem;
   }
 }
@@ -49,23 +48,22 @@
 .carItemCart {
   margin-left: 0px;
   font-size: 1.5rem;
- 
 }
 
 .carItemCart:hover {
   color: #eeb644;
 }
 
-.milesSpan{
+.milesSpan {
   color: #080202;
   font-size: 0.9rem;
 }
 
-.priseSpan{
+.priseSpan {
   color: #ad2626;
   font-size: 1.2rem;
 }
-.carousel.caption{
+.carousel.caption {
   position: absolute;
   right: 15%;
   bottom: 1.25rem;
@@ -75,4 +73,3 @@
   color: #fff;
   text-align: center;
 }
-
