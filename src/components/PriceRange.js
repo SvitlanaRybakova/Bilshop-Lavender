@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "../styles/Filter.Module.css";
 import Cars from "../json/cars.json";
 import { CarContext } from "../contexts/CarContext";
-import { Multiselect } from "multiselect-react-dropdown";
+// import { Multiselect } from "multiselect-react-dropdown";
 
 function PriceRange() {
   const {
@@ -63,7 +63,7 @@ function PriceRange() {
                 <option value="3">200000-300000</option>
                 <option value="4">300000-400000</option>
                 <option value="5">500000-600000</option>
-                <option value="6"> >600000</option>
+                <option value="6"> 600000</option>
                 <input
                   type="number"
                   /*placeholder="Max price"*/
