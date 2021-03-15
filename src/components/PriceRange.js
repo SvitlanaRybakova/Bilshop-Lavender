@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styles from "../styles/Filter.Module.css";
 import Cars from "../json/cars.json";
 import { CarContext } from "../contexts/CarContext";
-import { Multiselect } from "multiselect-react-dropdown";
 
 function PriceRange() {
   const {
@@ -29,7 +28,7 @@ function PriceRange() {
         <div className="container">
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-2">
-              <label for="MinPrice"> Min price</label>
+              <label htmlFor="MinPrice"> Min price</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -51,7 +50,7 @@ function PriceRange() {
             </div>
 
             <div className="col-md-2">
-              <label for="MaxPrice"> Max Priece</label>
+              <label htmlFor="MaxPrice"> Max Price</label>
 
               <select
                 className="form-select"
@@ -74,7 +73,7 @@ function PriceRange() {
             </div>
 
             <div className="col-md-2">
-              <label for="MinMiles"> Min miles</label>
+              <label htmlFor="MinMiles"> Min miles</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -95,7 +94,7 @@ function PriceRange() {
               </select>
             </div>
             <div className="col-md-2">
-              <label for="MaxMiles"> Max Miles</label>
+              <label htmlFor="MaxMiles"> Max Miles</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -118,7 +117,7 @@ function PriceRange() {
           </div>
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-2">
-              <label for="VehicleType">VehicleType</label>
+              <label htmlFor="VehicleType">VehicleType</label>
               <input
                 type="text"
                 className="form-control"
@@ -129,7 +128,7 @@ function PriceRange() {
             </div>
 
             <div className="col-md-2">
-              <label for="VehicleType">Model</label>
+              <label htmlFor="VehicleType">Model</label>
               <input
                 type="text"
                 className="form-control"
@@ -140,7 +139,7 @@ function PriceRange() {
             </div>
 
             <div className="col-md-2">
-              <label for="VehicleYear"> Year</label>
+              <label htmlFor="VehicleYear"> Year</label>
               <input
                 type="number"
                 className="form-control"
