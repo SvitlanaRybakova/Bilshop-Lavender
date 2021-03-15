@@ -76,6 +76,7 @@ function ShopCartContextProvider(props) {
 
   const values = {
     purchases,
+    setPurchases,
     setDeliveryCost,
     deleteProduct,
     addCarToCart,

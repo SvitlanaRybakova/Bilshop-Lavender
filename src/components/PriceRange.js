@@ -62,7 +62,7 @@ function PriceRange() {
                 <option value="3">200000-300000</option>
                 <option value="4">300000-400000</option>
                 <option value="5">500000-600000</option>
-                <option value="6"> >600000</option>
+                <option value="6"> 600000</option>
                 <input
                   type="number"
                   /*placeholder="Max price"*/
