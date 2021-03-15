@@ -74,3 +74,16 @@ input::placeholder {
   font-size: 16px;
   padding: 5px 0;
 }
+
+.placeOrderButton{
+  background-color: #eeb644;
+  border-color: #eeb644;
+  border-radius: 25px;
+  color: #1b1b1c;
+  font-size: 14px;
+}
+
+.placeOrderButton:hover {
+  background-color: #d8d8d8;
+  border-color: #d8d8d8;
+}
