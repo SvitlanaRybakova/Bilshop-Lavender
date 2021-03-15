@@ -3,26 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
-
-    const location = useLocation()
-    
-    // button text and link address are depends on current url path
-    let buttonText
-    let linkAdress
-
-    if(location.pathname === '/shopping-cart') {
-        buttonText = 'Proceed to Checkout'
-        linkAdress = props.props.purchases.products.length > 0 ? "/shopping-cart/checkout" : '#'
-    } else if (location.pathname === '/shopping-cart/checkout') {
-        buttonText = 'Place order'
-        linkAdress = "/shopping-cart/checkout/confirmation"
-    }
-
-    //if the user is on the Checkout page and clicks at button 'Place order' then send the collected on the Checkout page user data to UserContext
-    const handleClick = (e) => {
-        if(linkAdress.includes('confirmation'))
-        props.props.addUserDataToContext(props.props.userPersonalData)
-    }
+    //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
+    const location = useLocation() 
     
     return (
         
@@ -85,11 +67,15 @@ function ShoppingCartTotal(props) {
                 
 
                 <div className={styles.toCheckoutBtnBox}>
-                    <Link to={linkAdress}>
-                    <span className={`btn ${styles.toCheckoutBtn} d-block`} onClick={(e)=> {handleClick(e)}}>
-                        {buttonText}
-                    </span>
-                    </Link>
+
+                    {/* Button renders only on shopping Cart page */}
+                    { location.pathname === '/shopping-cart' &&
+                        <Link to='/shopping-cart/checkout'>
+                            <span className={`btn ${styles.toCheckoutBtn} d-block`}>
+                                Proceed to Checkout
+                            </span>
+                        </Link>
+                    }
                 </div>
             </div>
         </div>
