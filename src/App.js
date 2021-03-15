@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import ShopCartContextProvider from './contexts/ShopCartContext'
 import Confirmation from './pages/Confirmation'
 import UserContextProvider from "./contexts/UserContext";
+import LogIn from "./pages/LogIn";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/shopping-cart" component={ShoppingCart} />
             <Route exact path="/cars/:vin" component={CarDetails} />
+            <Route exact path="/login" component={LogIn} />
+            
 
             <UserContextProvider>
               <Route exact path="/shopping-cart/checkout" component={Checkout} />
