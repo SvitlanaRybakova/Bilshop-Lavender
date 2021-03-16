@@ -1,0 +1,47 @@
+.filtercontainer {
+  /* margin-top: 15px; */
+  padding: 20px;
+  
+ 
+}
+.label{
+  margin-right: 10px;
+}
+
+.formControl .formSelect {
+  color: red;
+  margin-bottom: 2rem;
+  border: 1px solid #383838;
+}
+
+@media (min-width: 1000px){
+  .inputsWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid green; */
+  }
+  .inputItem{
+    /* border: 1px solid yellow; */
+    flex-basis: calc((100% /2 ) - 2rem);
+  }
+}
+@media (min-width: 1200px){
+  .inputsLargeWrapper{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .inputsWrapperLarge{
+    /* border: 1px solid black; */
+    display: flex;
+    width: 50%;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .inputItemLarge{
+    /* border: 1px solid blue; */
+    /* flex-basis: calc((100% /2 )-20px); */
+  }
+}
