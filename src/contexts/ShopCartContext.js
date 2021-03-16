@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 export const ShopCartContext = createContext();
 
@@ -23,7 +23,27 @@ function ShopCartContextProvider(props) {
   useEffect(() => {
     setShoppingCartNum(purchases.products.length)
   }, [purchases]);
+  
 
+  // Local storage
+  const [isFetched, setIsFetched] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("products") !== null) {
+      let temp = purchases;
+      temp.products = JSON.parse(localStorage.getItem("products"));
+      setPurchasesState(temp);
+    }else{
+      setPurchasesState(purchases);
+    }
+    setIsFetched(true);
+  }, [])
+
+  useEffect(() => {
+    if(isFetched === true){
+      localStorage.setItem("products", JSON.stringify(purchases.products));
+    }
+  }, [purchases])
 
  // Function for setting purcheses. Function takes argument temp which is a copy of current purchases with updates and overwrites purchases with that updated data.  
   const setPurchasesState = (temp) => {
@@ -65,12 +85,16 @@ function ShopCartContextProvider(props) {
 
   //Add a car to cart
   const addCarToCart = (car) => {
-    if(!purchases.products.includes(car)){
+      let isCar = false;
+      purchases.products.forEach(element => {
+        if (car.vin == element.vin) {
+          isCar = true;
+        }
+      });
+    if(isCar === false){
       let temp = purchases //make a copy of current purchases
-      if(!temp.products.includes(car)){
         temp.products.unshift(car) //update products in the copy
         setPurchasesState(temp) //overwrite purchases with new updated data
-      }
     }
   }
 
