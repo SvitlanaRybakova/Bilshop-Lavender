@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { CarContext } from "../contexts/CarContext";
 import CarItem from "../components/CarItem";
-import PagePagination from '../components/PagePagination';
-import NotFound from '../components/NotFound';
+import PagePagination from "../components/PagePagination";
+import NotFound from "../components/NotFound";
 
 
 export default function CarList() {
@@ -11,29 +11,39 @@ export default function CarList() {
     carsPerPage,
     setCurrentPage,
     currentCars,
-    isFinded } = useContext(CarContext);
-
+    isFinded,
+  } = useContext(CarContext);
 
   // pagination
   const paginate = (e, pageNumber) => {
     e.preventDefault();
     setCurrentPage(pageNumber);
-  }
+  };
+
+  const autoScrollToTop = () => {
+    let searchbarId = document.querySelector("#searchbarId");
+    searchbarId.scrollIntoView();
+  };
 
   // rendered with pagination
 
   const renderWithPagination = () => {
     return (
-
       <div className="container container-wide">
         <div className="row mtn-30 d-flex justify-content-center">
           {currentCars.map((item) => (
             <CarItem key={item.vin} car={item} />
           ))}
         </div>
-        <PagePagination carsPerPage={carsPerPage} totalCars={copyCars.length} paginate={paginate} />
+        <PagePagination
+          carsPerPage={carsPerPage}
+          totalCars={copyCars.length}
+          paginate={paginate}
+          autoScrollToTop={autoScrollToTop}
+        />
       </div>
     );
-  }
-  return isFinded ? renderWithPagination() : <><NotFound/></>
+  };
+
+  return isFinded ? renderWithPagination() : <NotFound></NotFound>;
 }

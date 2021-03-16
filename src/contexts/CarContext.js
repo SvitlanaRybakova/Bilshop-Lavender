@@ -4,9 +4,6 @@ import Cars from "../json/cars.json";
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
-
-
-  
   const carsarray = Cars;
 
   //variables for pagination
@@ -47,7 +44,7 @@ function CarContextProvider(props) {
   
 
   useEffect(() => {
-    if(currentPage || isSearching){
+    if (currentPage || isSearching) {
       setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
     }
     // if there was a transition from another page to the main page, all cars must be rendered again using  the original array (cars)  (not pay attention to past searches)
@@ -75,33 +72,33 @@ function CarContextProvider(props) {
     }
   };
 
-  // functions for search bar	
-  const findCar = (e) => {	
-    e.preventDefault();	
-    setFinded(true);	
-    if (searchInput.length > 0) {	
-      const result = cars.filter((item) => {	
-        return (	
-          item.make.toLowerCase().includes(searchInput.toLowerCase()) +	
-          item.model.toLowerCase().includes(searchInput.toLowerCase())	
-        );	
-      })	
-      // if we have a match	
-      if (result.length > 0) {	
-        setCopyCars(result)
+  // functions for search bar
+  const findCar = (e) => {
+    e.preventDefault();
+    setFinded(true);
+    if (searchInput.length > 0) {
+      const result = cars.filter((item) => {
+        return (
+          item.make.toLowerCase().includes(searchInput.toLowerCase()) +
+          item.model.toLowerCase().includes(searchInput.toLowerCase())
+        );
+      });
+      // if we have a match
+      if (result.length > 0) {
+        setCopyCars(result);
         // if the user is on any page except the first and makes a search, then he  is redirected to the first page
-        setCurrentPage(1)	
-      }	
-      // other way, isFined is false and rendered NotFound component	
-      else {	
-        setFinded(false)	
-      }	
-      setSearching(true)	
-    } else {	
-      setCopyCars(cars);	
-      setSearching(true)	
-    }	
-    setSearchInput("");	
+        setCurrentPage(1);
+      }
+      // other way, isFined is false and rendered NotFound component
+      else {
+        setFinded(false);
+      }
+      setSearching(true);
+    } else {
+      setCopyCars(cars);
+      setSearching(true);
+    }
+    setSearchInput("");
   };
 
   useEffect(() => {
@@ -186,8 +183,8 @@ function CarContextProvider(props) {
           return false;
         }
       })
-      );
-      setSearching(true);
+    );
+    setSearching(true);
   };
 
   const values = {
@@ -221,7 +218,6 @@ function CarContextProvider(props) {
 
   return (
     <CarContext.Provider value={values}>{props.children}</CarContext.Provider>
-    
   );
 }
 
