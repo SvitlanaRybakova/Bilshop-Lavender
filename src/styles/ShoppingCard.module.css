@@ -96,4 +96,12 @@ td {
 .emptyCart {
     color: gray;
     margin-top: 20px;
+    min-height: 170px;
+}
+
+@media (min-width: 992px) {
+    .deliveryBox {
+        min-height: 190px;
+    }
+
 }
