@@ -5,13 +5,22 @@ export const UserContext = createContext()
 function UserContextProvider(props) {
     const [ userData, setUserData ] = useState({})
 
+    const [userOrders, setUserOrders] = useState({
+      userId: 1,
+      orderHistory: [],
+      firstname: "",
+      lastname: "",
+    })
+
     const addUserDataToContext = (data) => {
         setUserData(data)
     }
 
     const values = { 
         userData, 
-        addUserDataToContext
+        addUserDataToContext,
+        userOrders,
+        setUserOrders,
     }
 
     return (

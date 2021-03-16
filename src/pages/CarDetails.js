@@ -6,7 +6,6 @@ import styles from "../styles/CarDetails.module.css";
 import NotFound from "../components/NotFound";
 
 export default function CarDetails(props) {
-
   // variable for CarDetails page(dynamic data, rendering)
   const { addCarToCart } = useContext(ShopCartContext);
   const [carItem, setCarItem] = useState(null);
@@ -18,7 +17,7 @@ export default function CarDetails(props) {
 
   useEffect(() => {
     if (copyCars || location) {
-      setCarItem(cars.find((el) => props.match.params.vin == el.vin))
+      setCarItem(cars.find((el) => props.match.params.vin == el.vin));
     }
   }, [copyCars, location]);
 
@@ -58,7 +57,7 @@ export default function CarDetails(props) {
                         {carItem.make} {carItem.model}
                       </h2>
                       <h5 className={styles.price}>
-                        <strong>Price:</strong>{" "}
+                        {" "}
                         <span className={styles.priceAmoumt}>
                           {showPrice(carItem.price)} SEK
                         </span>
@@ -136,8 +135,8 @@ export default function CarDetails(props) {
   return carItem ? (
     renderCarDetails()
   ) : (
-      <div>
-        <NotFound />
-      </div>
-    );
+    <div>
+      <NotFound />
+    </div>
+  );
 }
