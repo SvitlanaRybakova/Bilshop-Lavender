@@ -38,5 +38,5 @@ export default function CarList() {
     );
   }
 
-  return isFinded ? renderWithPagination() : <NotFound></NotFound>
+  return isFinded ? renderWithPagination() : <NotFound/>
 }
