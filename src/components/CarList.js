@@ -4,6 +4,7 @@ import CarItem from "../components/CarItem";
 import PagePagination from "../components/PagePagination";
 import NotFound from "../components/NotFound";
 
+
 export default function CarList() {
   const {
     copyCars,

@@ -38,13 +38,24 @@ function CarContextProvider(props) {
   const [maxPrice, setMaxPrice] = useState("");
   const [minMiles, setMinMiles] = useState("");
   const [maxMiles, setMaxMiles] = useState("");
+  
+  // switching from another link to home
+  const [isSwitching, setSwitching] = useState(false);
+  
 
   useEffect(() => {
     if (currentPage || isSearching) {
       setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
     }
+    // if there was a transition from another page to the main page, all cars must be rendered again using  the original array (cars)  (not pay attention to past searches)
+    if(isSwitching){
+      setFinded(true)
+      setCopyCars(cars);	
+      setCurrentCars(cars.slice(indexOfFirstCar, indexOfLastCar));
+    }
     setSearching(false);
-  }, [currentPage, isSearching]);
+    setSwitching(false)
+  }, [currentPage, isSearching, isSwitching]);
 
   // show price in friendly set
   const showPrice = (carItem) => {
@@ -186,6 +197,7 @@ function CarContextProvider(props) {
     showPrice,
     setSearchInput,
     searchInput,
+    setSwitching,
     isFinded,
     onChangeMinPrice,
     onChangeMaxPrice,
