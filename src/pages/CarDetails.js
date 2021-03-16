@@ -6,7 +6,7 @@ import styles from "../styles/CarDetails.module.css";
 import NotFound from "../components/NotFound";
 
 export default function CarDetails(props) {
-  
+
   // variable for CarDetails page(dynamic data, rendering)
   const { addCarToCart } = useContext(ShopCartContext);
   const [carItem, setCarItem] = useState(null);
@@ -15,7 +15,7 @@ export default function CarDetails(props) {
 
   // for url tracking
   let location = useLocation();
-  
+
   useEffect(() => {
     if (copyCars || location) {
       setCarItem(cars.find((el) => props.match.params.vin == el.vin))
