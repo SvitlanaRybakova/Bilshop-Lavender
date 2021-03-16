@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import { ShopCartContext } from '../contexts/ShopCartContext'
 import ShoppingCartTotal from '../components/ShoppingCartTotal';
 import styles from '../styles/Checkout.module.css';
@@ -6,7 +7,8 @@ import {UserContext} from '../contexts/UserContext'
 import { CarContext } from '../contexts/CarContext';
 
 export default function Checkout() {
-  const { purchases }  = useContext(ShopCartContext)
+  const history = useHistory()
+  const { purchases, setPurchases }  = useContext(ShopCartContext)
   const { showPrice } = useContext(CarContext);
 
   const { addUserDataToContext }  = useContext(UserContext)
@@ -34,13 +36,24 @@ export default function Checkout() {
     userPersonalData[event.target.id] = event.target.value 
   }
 
-  //sending userData to UserContext happens when user clicks button at ShoppingCartTotal component
-  //on Checkout page we get function AddUserDataToContext from UserContext an sending it as a prop to ShoppingCartTotal component
+  //efter the form was submitted by user, 1) userPersonalData sends to the User context, 2) user is redirected on confirmation page 3) shopping cart is getting empty
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addUserDataToContext(userPersonalData)
+    history.push('/shopping-cart/checkout/confirmation')
+    setPurchases(() => ({
+      
+      products: [],
+      deliveryCost: 0,
+      priceTotal: 0,
+    }))
+
+  }
   
   const props = {
     purchases,
     userPersonalData,
-    addUserDataToContext,
     showPrice
   }
 
@@ -53,10 +66,10 @@ export default function Checkout() {
                 {/* Checkout Form Area Start */}
                 <div className={styles.checkoutBillingDetailsWrap}>
 
-                  {/* billingFormWrap */}
+                  {/* checkoutBillingDetailsWrap */}
                   <h2 className={styles.h2}>Customer Information</h2>
                   <div className={styles.billingFormWrap}>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                       <div className="row">
                         <div className="col-md-6">
                           <div className={`${styles.inputItem} mt-0`}>
@@ -108,14 +121,8 @@ export default function Checkout() {
                         <label htmlFor="phone" className="sr-only">Phone</label>
                         <input type="tel" id="phone" placeholder="Phone" required onChange={handle}/>
                       </div>
-                    </form>
-                  </div>
-                  {/* END billingFormWrap */}
 
-                  {/* Payment details*/}
-                  <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
-                  <div className={styles.billingFormWrap, styles.paymentDetails}>
-                    <form action="#" method="post">
+                      <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
                       <div className="row">
 
                         <div className="col-md-6">
@@ -158,13 +165,15 @@ export default function Checkout() {
                         <label htmlFor="cardHolder" className="required">Card holder name</label>
                         <input type="text" id="cardHolder" required onChange={handle}/>
                       </div>
+
+                      <button type='submit' className={`${styles.placeOrderButton} btn mt-5 container`}>Place order</button>
                     </form>
                   </div>
-                  {/* END Payment details */}
+                  {/* END checkoutBillingDetailsWrap */}
                 </div>
               </div>
 
-              <div className="col-lg-6  col-xl-5 ">
+              <div className={`${styles.cartTotalBox} order-first order-lg-last col-lg-6  col-xl-5`}>
                 <ShoppingCartTotal props={props}/>
               </div>
             </div>
