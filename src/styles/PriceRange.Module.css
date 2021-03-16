@@ -1,0 +1,13 @@
+.filtercontainer {
+  /* margin-top: 15px; */
+  padding: 20px;
+  
+ 
+}
+
+.form-control .form-select {
+  color: red;
+  margin-bottom: 2rem;
+  border: 1px solid #383838;
+}
+
