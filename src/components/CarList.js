@@ -4,6 +4,7 @@ import CarItem from "../components/CarItem";
 import PagePagination from '../components/PagePagination';
 import NotFound from '../components/NotFound';
 
+
 export default function CarList() {
   const {
     copyCars,
@@ -13,14 +14,11 @@ export default function CarList() {
     isFinded } = useContext(CarContext);
 
 
-
   // pagination
   const paginate = (e, pageNumber) => {
     e.preventDefault();
     setCurrentPage(pageNumber);
   }
-
-
 
   // rendered with pagination
 
@@ -37,6 +35,5 @@ export default function CarList() {
       </div>
     );
   }
-
-  return isFinded ? renderWithPagination() : <NotFound></NotFound>
+  return isFinded ? renderWithPagination() : <><NotFound/></>
 }
