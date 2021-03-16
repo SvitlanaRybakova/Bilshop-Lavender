@@ -5,6 +5,9 @@ import styles from '../styles/ShoppingCartTotal.module.css'
 function ShoppingCartTotal(props) {
     //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
     const location = useLocation() 
+
+    let linkAdress
+    linkAdress = props.props.purchases.products.length > 0 ? "/shopping-cart/checkout" : '#' 
     
     return (
         
@@ -70,7 +73,7 @@ function ShoppingCartTotal(props) {
 
                     {/* Button renders only on shopping Cart page */}
                     { location.pathname === '/shopping-cart' &&
-                        <Link to='/shopping-cart/checkout'>
+                        <Link to={linkAdress}>
                             <span className={`btn ${styles.toCheckoutBtn} d-block`}>
                                 Proceed to Checkout
                             </span>
