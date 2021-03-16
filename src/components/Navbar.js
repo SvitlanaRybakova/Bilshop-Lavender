@@ -13,7 +13,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setshowCollapsedMenu(!showCollapsedMenu);
   };
-  const { showPrice, setFinded, isFinded } = useContext(CarContext);
+  const { showPrice, setSwitching } = useContext(CarContext);
   const show = showCollapsedMenu ? "show" : "";
   
   let totalRestructured;
@@ -38,7 +38,7 @@ const Navbar = () => {
 
   // refresh rendering when navigating from other tabs to the home page
   const followLink = () =>{
-    setFinded(true);
+    setSwitching(true);
   }
 
   return (
