@@ -14,11 +14,12 @@ function Search() {
           <FontAwesomeIcon icon={faSearch} />
         </div>
         <input
-          className={styles.input}
+          className={`${styles.input}`}
           type="text"
           placeholder="Search"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          id="searchbarId"
         />
       </div>
     </form>
