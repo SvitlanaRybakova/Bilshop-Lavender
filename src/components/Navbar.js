@@ -6,6 +6,7 @@ import styles from "../styles/Navbar.module.css";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import { CarContext } from "../contexts/CarContext";
 
+
 const Navbar = () => {
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false);
   const { shoppingCartNum, total } = useContext(ShopCartContext);
@@ -69,6 +70,7 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
             <li className="nav-item">
               <Link to="/about">About</Link>
+              <Link to="/LogIn">LogIn</Link>
             </li>
           </ul>
         </div>
