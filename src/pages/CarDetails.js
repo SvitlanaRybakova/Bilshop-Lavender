@@ -6,13 +6,14 @@ import styles from "../styles/CarDetails.module.css";
 import NotFound from "../components/NotFound";
 
 export default function CarDetails(props) {
+  
   // variable for CarDetails page(dynamic data, rendering)
   const { addCarToCart } = useContext(ShopCartContext);
   const [carItem, setCarItem] = useState(null);
 
   const { cars, copyCars, showPrice } = useContext(CarContext);
 
-  // for url trackong
+  // for url tracking
   let location = useLocation();
   
   useEffect(() => {

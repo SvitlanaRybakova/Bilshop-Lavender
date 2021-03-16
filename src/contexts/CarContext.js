@@ -192,6 +192,7 @@ function CarContextProvider(props) {
     showPrice,
     setSearchInput,
     searchInput,
+    setFinded,
     isFinded,
     onChangeMinPrice,
     onChangeMaxPrice,

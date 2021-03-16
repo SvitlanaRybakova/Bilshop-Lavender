@@ -6,15 +6,16 @@ import styles from "../styles/Navbar.module.css";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import { CarContext } from "../contexts/CarContext";
 
+
 const Navbar = () => {
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false);
   const { shoppingCartNum, total } = useContext(ShopCartContext);
   const toggleMenu = () => {
     setshowCollapsedMenu(!showCollapsedMenu);
   };
-  const { showPrice } = useContext(CarContext);
+  const { showPrice, setFinded, isFinded } = useContext(CarContext);
   const show = showCollapsedMenu ? "show" : "";
-
+  
   let totalRestructured;
   let navbarClassName;
   if (shoppingCartNum > 0) {
@@ -35,11 +36,17 @@ const Navbar = () => {
     navbarClassName = "d-none";
   }
 
+  // refresh rendering when navigating from other tabs to the home page
+  const followLink = () =>{
+    setFinded(true);
+  }
+
   return (
     <nav className="navbar navbar-expand-sm">
       <div className="container d-flex justify-content-end ">
         <div className="d-flex align-items-end flex-grow-1 ">
           <Link
+          onClick={followLink}
             to="/"
             className={`${styles.brandName} d-flex align-items-center`}
           >
