@@ -166,14 +166,14 @@ export default function Checkout() {
                         <input type="text" id="cardHolder" required onChange={handle}/>
                       </div>
 
-                      <button type='submit' className={`${styles.placeOrderButton} btn`}>Place order</button>
+                      <button type='submit' className={`${styles.placeOrderButton} btn mt-5 container`}>Place order</button>
                     </form>
                   </div>
                   {/* END checkoutBillingDetailsWrap */}
                 </div>
               </div>
 
-              <div className={`${styles.cartTotalBox} col-lg-6  col-xl-5`}>
+              <div className={`${styles.cartTotalBox} order-first order-lg-last col-lg-6  col-xl-5`}>
                 <ShoppingCartTotal props={props}/>
               </div>
             </div>
