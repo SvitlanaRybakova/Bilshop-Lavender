@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 
 function ShoppingCartTotal(props) {
     //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
-    const location = useLocation() 
+    const location = useLocation()
 
-    let linkAdress
-    linkAdress = props.props.purchases.products.length > 0 ? "/shopping-cart/checkout" : '#' 
+    // let linkAdress
+    // linkAdress = (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ? "/shopping-cart/checkout" : '#'
     
+    useEffect(() => {
+
+    }, [props.props.purchases.isDeliveryChoosed]);
+
     return (
-        
-        <div className='mt-5 mt-lg-0'>
+
+        <div className='mt-5 mt-lg-0 mydiv'>
             <div className={styles.cartTotal}>
                 <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
 
@@ -22,7 +26,7 @@ function ShoppingCartTotal(props) {
                                 <th>Products</th>
                                 <th>Total</th>
                             </tr>
-                
+
                         </thead>
                         <tbody>
                             {
@@ -30,55 +34,97 @@ function ShoppingCartTotal(props) {
                                     <tr key={i}>
                                         <td>
                                             {product.make}
-                                            <p style={{fontSize: 12}}>{product.model} {product.year}</p>
+                                            <p style={{ fontSize: 12 }}>{product.model} {product.year}</p>
                                         </td>
                                         <td>
-                                            {props.props.showPrice(product.price)} SEK 
+                                            {props.props.showPrice(product.price)} SEK
                                         </td>
-                                     </tr>
+                                    </tr>
                                 ))
                             }
                             <tr>
                                 <td>
                                     Shipping
                                 </td>
-                                    {
-                                        props.props.purchases.products.length > 0 && 
-                                        <td>
+                                {
+                                    (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ?
+                                        (<td>
                                             {props.props.purchases.deliveryCost}
                                             { props.props.purchases.products.length > 0 && ' SEK'}
-                                        </td>
-                                    }
+                                        </td>)
+                                        :
+                                        (<td>
+                                            <b> none</b>
+                                        </td>)
+
+                                }
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr className='border-top'>
                                 <th>Total</th>
                                 <td>
-                                    { 
-                                        props.props.purchases.products.length > 0 && 
+                                    {
+                                        props.props.purchases.products.length > 0 &&
                                         <b>
-                                            {props.props.showPrice(props.props.purchases.priceTotal)} 
+                                            {props.props.showPrice(props.props.purchases.priceTotal)}
                                             <span> SEK</span>
                                         </b>
                                     }
                                 </td>
-                            </tr>   
+                            </tr>
                         </tfoot>
                     </table>
                 </div>
-                
+
 
                 <div className={styles.toCheckoutBtnBox}>
 
                     {/* Button renders only on shopping Cart page */}
-                    { location.pathname === '/shopping-cart' &&
-                        <Link to={linkAdress}>
-                            <span className={`btn ${styles.toCheckoutBtn} d-block`}>
-                                Proceed to Checkout
-                            </span>
-                        </Link>
-                    }
+                   
+                    <div className='text-center'>
+                        {(() => {
+                            if (location.pathname === '/shopping-cart' 
+                            && props.props.purchases.isDeliveryChoosed
+                            && props.props.purchases.products.length > 0) {
+                                return (
+                                    <Link to='/shopping-cart/checkout'>
+                                        <button type="button" className={`btn ${styles.toCheckoutBtn}`} >
+                                            Proceed to checkout
+                                        </button>
+                                    </Link>
+                                )
+                            } else if (location.pathname === '/shopping-cart/checkout' || props.props.purchases.products.length === 0) {
+                                return (
+                                    <div></div>
+                                )
+                            } else {
+                                return (
+                                    <Link to='#'>
+                                        <button type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
+                                            Proceed to checkout
+                                        </button>
+                                    </Link>
+                                )
+                            }
+                        })()}
+                    </div>
+                </div>
+            </div>
+
+            <div className="modal fade" id="chooseDeliveryModal" tabIndex="-1" aria-labelledby="chooseDeliveryModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header border-0">
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body text-center">
+                            <b>Please choose delivery option</b>
+                        </div>
+                        <div className="modal-footer text-center border-0">
+                            <button type="button" className={`${styles.closeBtn} btn`} data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

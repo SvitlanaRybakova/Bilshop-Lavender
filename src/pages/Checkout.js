@@ -8,7 +8,7 @@ import { CarContext } from '../contexts/CarContext';
 
 export default function Checkout() {
   const history = useHistory()
-  const { purchases, setPurchases }  = useContext(ShopCartContext)
+  const { purchases }  = useContext(ShopCartContext)
   const { showPrice } = useContext(CarContext);
 
   const { addUserDataToContext, userData, setUserData, userOrders, setUserOrders }  = useContext(UserContext)
@@ -44,12 +44,6 @@ export default function Checkout() {
   }));
     addUserDataToContext(userPersonalData)
     history.push('/shopping-cart/checkout/confirmation')
-    setPurchases(() => ({
-      
-      products: [],
-      deliveryCost: 0,
-      priceTotal: 0,
-    }))
   }
 
   //Set order to localStorage
