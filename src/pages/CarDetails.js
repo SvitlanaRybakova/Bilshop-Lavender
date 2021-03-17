@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { CarContext } from "../contexts/CarContext";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import styles from "../styles/CarDetails.module.css";
@@ -10,13 +10,16 @@ export default function CarDetails(props) {
   const { addCarToCart } = useContext(ShopCartContext);
   const [carItem, setCarItem] = useState(null);
 
-  const { copyCars, showPrice } = useContext(CarContext);
+  const { cars, copyCars, showPrice } = useContext(CarContext);
+
+  // for url tracking
+  let location = useLocation();
 
   useEffect(() => {
-    if (copyCars) {
-      setCarItem(copyCars.find((el) => props.match.params.vin == el.vin));
+    if (copyCars || location) {
+      setCarItem(cars.find((el) => props.match.params.vin == el.vin));
     }
-  }, [copyCars]);
+  }, [copyCars, location]);
 
   const renderCarDetails = () => {
     return (
@@ -54,7 +57,7 @@ export default function CarDetails(props) {
                         {carItem.make} {carItem.model}
                       </h2>
                       <h5 className={styles.price}>
-                        <strong>Price:</strong>{" "}
+                        {" "}
                         <span className={styles.priceAmoumt}>
                           {showPrice(carItem.price)} SEK
                         </span>
@@ -79,33 +82,33 @@ export default function CarDetails(props) {
                               </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                              <th className={styles.configLabel}>Model</th>
-                              <td className={styles.configOption}>
-                                {carItem.model}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Model</th>
+                                <td className={styles.configOption}>
+                                  {carItem.model}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>Year</th>
-                              <td className={styles.configOption}>
-                                {carItem.year}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Year</th>
+                                <td className={styles.configOption}>
+                                  {carItem.year}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>City</th>
-                              <td className={styles.configOption}>
-                                {carItem.city}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>City</th>
+                                <td className={styles.configOption}>
+                                  {carItem.city}
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <th className={styles.configLabel}>Miles</th>
-                              <td className={styles.configOption}>
-                                {carItem.miles}
-                              </td>
-                            </tr>
+                              <tr>
+                                <th className={styles.configLabel}>Miles</th>
+                                <td className={styles.configOption}>
+                                  {carItem.miles}
+                                </td>
+                              </tr>
                             </tbody>
                           </table>
                         </div>
