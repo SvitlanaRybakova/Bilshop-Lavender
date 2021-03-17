@@ -11,7 +11,7 @@ import { CarContext } from '../contexts/CarContext';
 function Confirmation() {
 
     const { userData } = useContext(UserContext)
-    const { purchases } = useContext(ShopCartContext)
+    const { purchases, setPurchases } = useContext(ShopCartContext)
     const { showPrice } = useContext(CarContext);
     
     const printConfirmation = () => {
@@ -24,6 +24,16 @@ function Confirmation() {
         const nullBeforeDay = today.getDate() <= 9 ? '0' : '' 
         const date = nullBeforeDay + today.getDate() + '.' + nullBeforeMonth + (today.getMonth() + 1) + '.' + today.getFullYear();
         return date
+    }
+
+    const handleClick = () => {
+        setPurchases(() => ({
+            userId: 1,
+            products: [],
+            deliveryCost: 0,
+            isDeliveryChoosed: false,
+            priceTotal: 0
+          }))
     }
 
     return (
@@ -45,7 +55,7 @@ function Confirmation() {
                     <p>Email: cars@mailgo.dev</p>
                 </div>
                 <div>
-                    <Link to="/" className={styles.closeButton}>
+                    <Link to="/" className={styles.closeButton} onClick={handleClick}>
                         <FontAwesomeIcon icon={faTimesCircle} size='lg' />
                     </Link>
                 </div>
