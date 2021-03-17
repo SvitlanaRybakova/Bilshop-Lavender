@@ -4,6 +4,7 @@ export const ShopCartContext = createContext();
 
 function ShopCartContextProvider(props) {
   const [purchases, setPurchases] = useState({
+    //If you need to add a property to this object, add that property as well to confirmation page, where this obj resets to empty state (at handleClick function)
     userId: 1,
     products: [],
     deliveryCost: 0,
