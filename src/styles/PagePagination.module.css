@@ -1,8 +1,8 @@
-.ulPagination{
+.ulPagination {
   margin-top: 50px;
 }
 
-.liItem{
+.liItem {
   color: #383838;
   font-size: 1rem;
   border: 1px solid transparent;
@@ -12,16 +12,13 @@
   font-size: 1.2rem;
 }
 
-.liItem:hover{
+.liItem:hover {
   box-sizing: border-box;
-  border: 1px solid  #feb93e;
+  border: 1px solid #feb93e;
   background-color: transparent;
 }
 
-.liItem:focus{
+.liItem:focus {
   color: #feb93e;
-  border: 1px solid  #feb93e;
-} 
-
-
-
+  border: 1px solid #feb93e;
+}

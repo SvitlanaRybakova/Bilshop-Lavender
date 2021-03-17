@@ -4,9 +4,11 @@ export const ShopCartContext = createContext();
 
 function ShopCartContextProvider(props) {
   const [purchases, setPurchases] = useState({
+    //If you need to add a property to this object, add that property as well to confirmation page, where this obj resets to empty state (at handleClick function)
     userId: 1,
     products: [],
     deliveryCost: 0,
+    isDeliveryChoosed: false,
     priceTotal: 0,
   });
 
@@ -52,12 +54,14 @@ function ShopCartContextProvider(props) {
       products: temp.products,
       deliveryCost: temp.deliveryCost,
       priceTotal: temp.priceTotal,
+      isDeliveryChoosed: temp.isDeliveryChoosed
     }))
   }
   
   // Shipping cost
   const setDeliveryCost = (e) => {
     let temp = purchases //make a copy of current purchases
+    temp.isDeliveryChoosed = true //For blocking to checkout without delivery choosed
     temp.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the copy
     setPurchasesState(temp) //overwrite purchases with new updated data
   };
@@ -80,6 +84,7 @@ function ShopCartContextProvider(props) {
   const deleteProduct = (productToDelete) => {
     let temp = purchases //make a copy of current purchases
     temp.products = purchases.products.filter((product) => product.vin !== productToDelete.vin) //update products in the copy
+    temp.isDeliveryChoosed = false
     setPurchasesState(temp) //overwrite purchases with new updated data
   }
 

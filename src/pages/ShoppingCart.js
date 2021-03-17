@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartTotal from "../components/ShoppingCartTotal";
@@ -97,22 +97,24 @@ function ShoppingCart() {
               </tbody>
             </table>
           </div>
-         { purchases.products.length > 0 &&
-          <div className={styles.shippingMethods} >
-              <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                  Home delivery (5 000 SEK)
-                      </label>
+         <div className={styles.deliveryBox}>
+           { purchases.products.length > 0 &&
+            <div className={styles.shippingMethods} >
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                  <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="paidDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label className="form-check-label" htmlFor="flexRadioDefault1">
+                    Home delivery (5 000 SEK)
+                        </label>
+                </div>
+                <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
+                  <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                  <label className="form-check-label" htmlFor='flexRadioDefault2' >
+                    Pick up the car by yourself
+                  </label>
+                </div>
               </div>
-              <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
-                <input className={`${styles.formCheckRadio} form-check-input`} onClick={handleClick} value="withoutDelivery" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                <label className="form-check-label" htmlFor='flexRadioDefault2' >
-                  Pick up the car by yourself
-                      </label>
-              </div>
-            </div>
-          }
+            }
+         </div>
         </div>
 
         <div className="col-lg-4">

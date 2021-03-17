@@ -28,122 +28,104 @@ function PriceRange() {
         <div className="container">
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-2">
-              <label htmlFor="MinPrice"> Min price</label>
+              <label htmlFor="minPrice">Min price</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
+                value={minPrice}
+                onChange={onChangeMinPrice}
               >
-                <option selected> Search min price</option>
-                <option value="1">50000-100000</option>
-                <option value="2">100000-200000</option>
-                <option value="3">200000-300000</option>
-                <option value="4">300000-400000</option>
-                <option value="5">500000-600000</option>
-
-                <input
-                  type="number"
-                  /*placeholder="Min price"*/
-                  value={minPrice}
-                  onChange={onChangeMinPrice}
-                />
+                <option defaultValue>Filter min price</option>
+                <option value="50000">50.000 SEK</option>
+                <option value="100000">100.000 SEK</option>
+                <option value="200000">200.000 SEK</option>
+                <option value="300000">300.000 SEK</option>
+                <option value="400000">400.000 SEK</option>
               </select>
             </div>
 
             <div className="col-md-2">
-              <label htmlFor="MaxPrice"> Max Price</label>
+              <label htmlFor="maxPrice">Max Price</label>
 
               <select
                 className="form-select"
                 aria-label="Default select example"
+                value={maxPrice}
+                onChange={onChangeMaxPrice}
               >
-                <option selected> Search max price</option>
-                <option value="1">50000-100000</option>
-                <option value="2">100000-200000</option>
-                <option value="3">200000-300000</option>
-                <option value="4">300000-400000</option>
-                <option value="5">500000-600000</option>
-                <option value="6"> 600000</option>
-                <input
-                  type="number"
-                  /*placeholder="Max price"*/
-                  value={maxPrice}
-                  onChange={onChangeMaxPrice}
-                />
+                <option defaultValue>Filter max price</option>
+                <option value="100000">100.000 SEK</option>
+                <option value="200000">200.000 SEK</option>
+                <option value="300000">300.000 SEK</option>
+                <option value="400000">400.000 SEK</option>
+                <option value="500000">500.000 SEK</option>
               </select>
             </div>
 
             <div className="col-md-2">
-              <label htmlFor="MinMiles"> Min miles</label>
+              <label htmlFor="minMiles">Min miles</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
+                value={minMiles}
+                onChange={onChangeMinMiles}
               >
-                <option selected>Search Miles</option>
-                <option value="1"> 10000-20000</option>
-                <option value="2"> 20000-30000</option>
-                <option value="3"> 30000-40000</option>
-                <option value="4"> 40000-50000</option>
-                <option value="5"> 50000-60000</option>
-                <option value="6"> 60000-70000</option>
-                <input
-                  type="number"
-                  /*placeholder="Min miles"*/
-                  value={minMiles}
-                  onChange={onChangeMinMiles}
-                />
+                <option defaultValue>Filter min miles</option>
+                <option value="10000">10.000</option>
+                <option value="20000">20.000</option>
+                <option value="30000">30.000</option>
+                <option value="40000">40.000</option>
+                <option value="50000">50.000</option>
+                <option value="60000">60.000</option>
               </select>
             </div>
             <div className="col-md-2">
-              <label htmlFor="MaxMiles"> Max Miles</label>
+              <label htmlFor="maxMiles">Max miles</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
+                value={maxMiles}
+                onChange={onChangeMaxMiles}
               >
-                <option selected> Search Miles</option>
-                <option value="1"> 10000-20000</option>
-                <option value="2"> 20000-30000</option>
-                <option value="3"> 30000-40000</option>
-                <option value="4"> 40000-50000</option>
-                <option value="5"> 50000-60000</option>
-                <option value="6"> 60000-70000</option>
-                <input
-                  type="number"
-                  /*placeholder="Max miles"*/
-                  value={maxMiles}
-                  onChange={onChangeMaxMiles}
-                />
+                <option defaultValue>Filter max miles</option>
+                <option value="10000">10.000</option>
+                <option value="20000">20.000</option>
+                <option value="30000">30.000</option>
+                <option value="40000">40.000</option>
+                <option value="50000">50.000</option>
+                <option value="60000">60.000</option>
               </select>
             </div>
           </div>
           <div className="row d-flex align-items-center justify-content-center">
             <div className="col-md-2">
-              <label htmlFor="VehicleType">VehicleType</label>
+              <label htmlFor="model">Make</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search Make"
+                placeholder="Filter Make"
                 value={make}
                 onChange={onChangeMake}
               />
             </div>
 
             <div className="col-md-2">
-              <label htmlFor="VehicleType">Model</label>
+              <label htmlFor="model">Model</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search Model"
+                placeholder="Filter Model"
                 value={model}
                 onChange={onChangeModel}
               />
             </div>
 
             <div className="col-md-2">
-              <label htmlFor="VehicleYear"> Year</label>
+              <label htmlFor="year">Year</label>
               <input
                 type="number"
                 className="form-control"
-                placeholder="Search Year"
+                placeholder="Filter Year"
                 value={year}
                 onChange={onChangeYear}
               />

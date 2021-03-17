@@ -27,7 +27,7 @@ export default function CarItem(props) {
         ></img>
       </div>
       <div
-        className="d-flex flex-column justify-content-between"
+        className="d-flex flex-column justify-content-between px-4"
         style={{ height: "11.25rem" }}
       >
         {/* name */}
