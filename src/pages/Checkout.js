@@ -1,5 +1,4 @@
-import React, {useContext, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, {useContext} from 'react';
 import { ShopCartContext } from '../contexts/ShopCartContext'
 import ShoppingCartTotal from '../components/ShoppingCartTotal';
 import styles from '../styles/Checkout.module.css';
@@ -7,11 +6,10 @@ import {UserContext} from '../contexts/UserContext'
 import { CarContext } from '../contexts/CarContext';
 
 export default function Checkout() {
-  const history = useHistory()
-  const { purchases }  = useContext(ShopCartContext)
+  const { purchases } = useContext(ShopCartContext)
   const { showPrice } = useContext(CarContext);
 
-  const { addUserDataToContext, userData, setUserData, userOrders, setUserOrders }  = useContext(UserContext)
+  const { addUserDataToContext, orderHistory } = useContext(UserContext)
 
   //an object which will contain the collecting data from input field
   let userPersonalData = {
@@ -39,18 +37,9 @@ export default function Checkout() {
   //efter the form was submitted by user, 1) userPersonalData sends to the User context, 2) user is redirected on confirmation page 3) shopping cart is getting empty
   const handleSubmit = (e) => {
     e.preventDefault()
-    setUserOrders(previousState => ({
-      orderHistory: [...previousState.orderHistory, purchases]
-  }));
+    orderHistory(purchases)
     addUserDataToContext(userPersonalData)
-    history.push('/shopping-cart/checkout/confirmation')
   }
-
-  //Set order to localStorage
-  useEffect(() => {
-      localStorage.setItem("orders", JSON.stringify(userOrders));
-  }, [userData])
-  
   
   const props = {
     purchases,
