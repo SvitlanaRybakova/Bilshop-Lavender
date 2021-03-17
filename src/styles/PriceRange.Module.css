@@ -1,0 +1,111 @@
+.filtercontainer {
+  /* margin-top: 15px; */
+  padding: 20px;
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.formControl .formSelect {
+  color: red;
+  margin-bottom: 2rem;
+  border: 1px solid #383838;
+}
+
+@media (min-width: 1000px) {
+  .inputsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid green; */
+  }
+  .inputItem {
+    /* border: 1px solid yellow; */
+    flex-basis: calc((100% /2) - 2rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .rowLargeView {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .rowItemLargeView {
+    flex-basis: calc((100% / 2) - 0.2rem);
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .innerRowItemsLarge {
+    /* border: 1px solid royalblue; */
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .col6Large {
+    flex: 0 0 auto;
+    width: 50%;
+    margin-bottom: 0px !important;
+  }
+  .secondLineLargeView {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.accordionCustom {
+  /* box-shadow: #8a877f 0.5px 0.5px 14px; */
+
+  
+}
+
+
+.btnWrapper{
+  /* background-color: yellow; */
+  /* border: 1px solid lightgray; */
+  
+}
+
+
+.accordionBtn {
+  width: 80%;
+  margin: 0 auto;
+  border: none;
+  background-color: transparent !important;
+  color:#757575 !important;
+  text-align: right !important;
+  /* justify-content: flex-start !important; */
+  /* border: 1px solid red; */
+}
+.accordionBtn:after{
+  margin-left: 20px !important;
+}
+
+.accordionBtn:focus{
+  border: 0.5px solid rgb(238, 182, 68) !important;
+  box-shadow: none;
+}
+
+.btnText {
+  /* border: 1px solid red; */
+  display: block;
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  
+margin-left:  auto;
+}
+
+.accordionColapse {
+  border: none !important;
+  margin-bottom: 80px;
+  /* box-shadow: #8a877f 1px 1px 7px; */
+}
