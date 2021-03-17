@@ -35,7 +35,7 @@ function PriceRange() {
             </div>
           </div>
           <div id="collapseOne" className={`${styles.accordionColapse} accordion-collapse collapse show`} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div className="accordion-body">
+            <div className="accordion-body p-0 m-0">
               {/* body */}
               <div className={`${styles.filtercontainer} container`}>
                 <form onSubmit={findCarFilter}>
@@ -43,11 +43,11 @@ function PriceRange() {
                   <div className={styles.rowLargeView}>
                     {/* price */}
                     <div className={`${styles.rowItemLargeView} row mb-4`}>
-                      <h2 className='fs-5'>Price</h2>
+                      <h2 className={`${styles.lable}`}>Price</h2>
                       <div className="col-6">
                         {/* <label htmlFor="minPrice">From</label> */}
                         <select
-                          className="form-select"
+                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minPrice}
                           onChange={onChangeMinPrice}
@@ -64,7 +64,7 @@ function PriceRange() {
                       <div className="col-6">
                         {/* <label htmlFor="maxPrice">To</label> */}
                         <select
-                          className="form-select"
+                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={maxPrice}
                           onChange={onChangeMaxPrice}
@@ -86,11 +86,11 @@ function PriceRange() {
 
                     {/* miles */}
                     <div className={`${styles.rowItemLargeView} row  mb-4`}>
-                      <h2 className='fs-5'>Miles</h2>
+                      <h2 className={`${styles.lable}`}>Miles</h2>
                       <div className="col-6">
                         {/* <label htmlFor="minMiles">From</label> */}
                         <select
-                          className="form-select"
+                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minMiles}
                           onChange={onChangeMinMiles}
@@ -107,7 +107,7 @@ function PriceRange() {
                       <div className="col-6">
                         {/* <label htmlFor="maxMiles">To</label> */}
                         <select
-                          className="form-select"
+                          className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={maxMiles}
                           onChange={onChangeMaxMiles}
@@ -129,7 +129,7 @@ function PriceRange() {
                     {/* make */}
                     <div className={`${styles.rowItemLargeView, styles.innerRowItemsLarge} row mb-4`}>
                       <div className={`${styles.col6Large} mb-4`}>
-                        <h2 className="fs-5">Make</h2>
+                        <h2 className={`${styles.lable}`}>Make</h2>
 
                         <input
                           type="text"
@@ -143,7 +143,7 @@ function PriceRange() {
 
                       {/* model */}
                       <div className={`${styles.col6Large}`}>
-                        <h2 className="fs-5">Model</h2>
+                        <h2 className={`${styles.lable}`}>Model</h2>
                         <input
                           type="text"
                           className={`${styles.formControl} form-control`}
@@ -156,7 +156,7 @@ function PriceRange() {
                     {/* year */}
                     <div className={`${styles.rowItemLargeView, styles.innerRowItemsLarge} row mb-4`}>
                       <div className={`${styles.col6Large} mb-4`}>
-                        <h2 className="fs-5">Year</h2>
+                        <h2 className={`${styles.lable}`}>Year</h2>
                         <input
                           type="number"
                           className={`${styles.formControl} form-control`}
@@ -166,9 +166,8 @@ function PriceRange() {
                         />
                       </div>
 
-
                       <div className={`${styles.col6Large}`}>
-                        <button type="submit" className="btn1">
+                        <button type="submit" className={`${styles.filterBtn}  btnBrand `}>
                           Filter
               </button>
                       </div>
