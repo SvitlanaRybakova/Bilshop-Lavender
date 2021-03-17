@@ -1,5 +1,4 @@
 .filtercontainer {
-  /* margin-top: 15px; */
   padding: 20px;
 }
 
@@ -51,9 +50,13 @@
   }
 }
 
-.btnWrapper {
-  /* background-color: yellow; */
-  /* border: 1px solid lightgray; */
+.accordionCustom{
+  padding:  30px 0 30px 0;
+  background-color: #f8f9fa;
+  background: linear-gradient(0deg, rgba(248,249,250,1) 88%, rgba(255,255,255,1) 100%);
+  margin-bottom: 50px;
+  box-shadow:#8a877f54 20px 8px 9px 0px;
+ 
 }
 
 .accordionBtn {
@@ -107,6 +110,9 @@
   background: url('https://api.iconify.design/ic:baseline-expand-more.svg?color=%23d3d3d3&width=1.3rem&height=1.3rem') no-repeat right 10px center;
 }
 
+.formControl{
+  background-color: transparent !important;
+}
 .formSelect:focus, .formControl:focus {
   border: 0.5px solid rgb(238, 182, 68) !important;
   box-shadow: none;

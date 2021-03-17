@@ -12,10 +12,14 @@
   width: 100%;
   height: 40px;
   padding: 18px 35px;
+  color: #303030;
 }
 
 .input {
-  background: url('https://api.iconify.design/bi:search.svg?color=%23d3d3d3&width=1.3rem&height=1.3rem') no-repeat 5px center;
+  background: url('https://api.iconify.design/bi:search.svg?width=1.3rem&height=1.3rem') no-repeat 5px center;
+}
+.input::placeholder{
+  color: #303030;
 }
 
 .input:focus {
