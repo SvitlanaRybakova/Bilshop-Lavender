@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styles from "../styles/LogIn.Module.css";
+import { Link } from "react-router-dom";
 
-function LogIn() {
+
+function LogIn (){
   return (
     <div className="LogIn-Container">
       <div className="rowZ d-flex align-items-center justify-content-center">
@@ -13,6 +15,8 @@ function LogIn() {
               class="form-control"
               id="exampleInputEmail1"
               placeholder="Enter email"
+              /*value={email}
+              onChange={(e) => setEmail(e.target.value)}*/
             ></input>
             &nbsp;&nbsp;&nbsp;
             <span className="second-word-formatting"></span>
@@ -25,6 +29,8 @@ function LogIn() {
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                /*value={password}
+                onChange={(e) => setPassword(e.target.value)}*/
               ></input>
             </div>
             <div className="form-check">
@@ -40,14 +46,25 @@ function LogIn() {
               </label>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to = '/'>
+            <span className="second-word-formatting"></span>
+            <button type="submit" class="btn1 btn-primary" /*disabled={!validateForm()}*/>
+            Log in
+            </button>
+            </Link>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to = '/'>
             <span className="second-word-formatting"></span>
             <button type="submit" class="btn1 btn-primary">
-              Log in
+            Sign up
             </button>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   );
-}
+  }
+
 export default LogIn;
