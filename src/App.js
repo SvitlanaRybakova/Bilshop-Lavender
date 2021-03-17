@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import LogIn from "./pages/LogIn";
+
 import CarContextProvider from "./contexts/CarContext";
 import CarDetails from "./pages/CarDetails";
 import ShoppingCart from "./pages/ShoppingCart";
@@ -14,6 +15,7 @@ import UserContextProvider from "./contexts/UserContext";
 
 
 function App() {
+  
   return (
     <div className="App">
       <ShopCartContextProvider>
@@ -27,6 +29,7 @@ function App() {
             <Route exact path="/LogIn" component={LogIn} />
             <Route exact path="/shopping-cart" component={ShoppingCart} />
             <Route exact path="/cars/:vin" component={CarDetails} />
+          
          
             
 
