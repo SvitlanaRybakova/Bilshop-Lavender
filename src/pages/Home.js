@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { CarContext } from "../contexts/CarContext";
 import Carousel from "../components/Carousel";
 import CarList from "../components/CarList";
-import Searchbar from "../components/Searchbar";
 import PagePagination from "../components/PagePagination";
 import PriceRange from "../components/PriceRange";
 
@@ -12,7 +11,7 @@ function Home() {
   return (
     <div>
       <Carousel />
-      <Searchbar />
+      {/* Searchbar component inside PriceRange */}
       <PriceRange />
       <CarList />
       <PagePagination />
