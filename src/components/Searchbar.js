@@ -8,11 +8,9 @@ function Search() {
   const { searchInput, findCar, setSearchInput } = useContext(CarContext);
 
   return (
+    <div className="container">
     <form onSubmit={(e) => findCar(e)} className={styles.form}>
-      <div className={styles.searchWrapper}>
-        <div className={`${styles.searchIcon} `}>
-          <FontAwesomeIcon icon={faSearch} />
-        </div>
+    
         <input
           className={`${styles.input}`}
           type="text"
@@ -21,8 +19,9 @@ function Search() {
           onChange={(e) => setSearchInput(e.target.value)}
           id="searchbarId"
         />
-      </div>
+    
     </form>
+    </div>
   );
 }
 export default Search;
