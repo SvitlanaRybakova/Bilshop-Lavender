@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styles from "../styles/PriceRange.Module.css";
 import { CarContext } from "../contexts/CarContext";
+import Searchbar from "../components/Searchbar";
 
 function PriceRange() {
   const {
@@ -22,17 +23,16 @@ function PriceRange() {
   } = useContext(CarContext);
 
   return (
-    <>
-      <div className={`${styles.accordionCustom} accordion`} id="accordionExample">
+    <div className={`${styles.accordionCustom}`}>
+      <Searchbar />
+      <div className="accordion" id="accordionExample">
         <div className="accordion-item">
-          <div className={`${styles.btnWrapper}`}>
-            <div className="container">
+          <div className="container">
             <h2 className="accordion-header" id="headingOne">
               <button className={`${styles.accordionBtn} accordion-button`} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <span className={styles.btnText}>Advanced searching</span>
               </button>
             </h2>
-            </div>
           </div>
           <div id="collapseOne" className={`${styles.accordionColapse} accordion-collapse collapse show`} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div className="accordion-body p-0 m-0">
@@ -47,7 +47,7 @@ function PriceRange() {
                       <div className="col-6">
                         {/* <label htmlFor="minPrice">From</label> */}
                         <select
-                           className={`${styles.formSelect} form-select`}
+                          className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minPrice}
                           onChange={onChangeMinPrice}
@@ -64,7 +64,7 @@ function PriceRange() {
                       <div className="col-6">
                         {/* <label htmlFor="maxPrice">To</label> */}
                         <select
-                           className={`${styles.formSelect} form-select`}
+                          className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={maxPrice}
                           onChange={onChangeMaxPrice}
@@ -90,7 +90,7 @@ function PriceRange() {
                       <div className="col-6">
                         {/* <label htmlFor="minMiles">From</label> */}
                         <select
-                           className={`${styles.formSelect} form-select`}
+                          className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minMiles}
                           onChange={onChangeMinMiles}
@@ -167,9 +167,7 @@ function PriceRange() {
                       </div>
 
                       <div className={`${styles.col6Large}`}>
-                        <button type="submit" className={`${styles.filterBtn}  btnBrand `}>
-                          Filter
-              </button>
+                        <button type="submit" className={`${styles.filterBtn}  btnBrand `}>Filter</button>
                       </div>
                     </div>
                   </div>
@@ -179,8 +177,7 @@ function PriceRange() {
           </div>
         </div>
       </div>
-
-    </>
+    </div>
   );
 }
 

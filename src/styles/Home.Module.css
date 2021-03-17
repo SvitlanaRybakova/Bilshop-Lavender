@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  
 }
 
 .imgCars {
@@ -16,7 +17,7 @@
   padding-right: 0px !important;
   padding-left: 0px !important;
   margin: 1.5rem;
-  /* background-color: #f8f9fa; */
+  background-color: #f8f9fa;
   border: none;
   border-radius: 0.5rem;
   box-shadow: #8a877f 1px 1px 7px;
