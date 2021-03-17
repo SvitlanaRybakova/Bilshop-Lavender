@@ -1,6 +1,12 @@
 .filtercontainer {
   /* margin-top: 15px; */
   padding: 20px;
+ 
+}
+
+.filtercontainer > form {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .label {
@@ -58,54 +64,50 @@
   }
 }
 
-.accordionCustom {
-  /* box-shadow: #8a877f 0.5px 0.5px 14px; */
-
-  
-}
 
 
-.btnWrapper{
+.btnWrapper {
   /* background-color: yellow; */
   /* border: 1px solid lightgray; */
-  
 }
-
 
 .accordionBtn {
   width: 80%;
   margin: 0 auto;
   border: none;
   background-color: transparent !important;
-  color:#757575 !important;
+  color: #757575 !important;
   text-align: right !important;
-  /* justify-content: flex-start !important; */
   /* border: 1px solid red; */
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 0;
 }
-.accordionBtn:after{
+
+.accordionBtn:not(.collapsed)::after{
+  background: url('https://api.iconify.design/ic:baseline-expand-more.svg?color=%23eeb544&width=1.5rem&height=1.5rem') no-repeat center center;
+}
+.accordionBtn:after {
   margin-left: 20px !important;
 }
 
-.accordionBtn:focus{
-  border: 0.5px solid rgb(238, 182, 68) !important;
+.accordionBtn:focus {
+  /* border: 0.5px solid #eeb544 !important; */
   box-shadow: none;
 }
+
 
 .btnText {
   /* border: 1px solid red; */
   display: block;
   letter-spacing: 1px;
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 1.1rem;
   font-family: Poppins, sans-serif;
-  font-weight: 600;
-  
-margin-left:  auto;
+  font-weight: normal;
+  margin-left: auto;
 }
 
 .accordionColapse {
   border: none !important;
   margin-bottom: 80px;
-  /* box-shadow: #8a877f 1px 1px 7px; */
 }
