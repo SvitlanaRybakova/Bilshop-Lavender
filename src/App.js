@@ -9,40 +9,43 @@ import CarDetails from "./pages/CarDetails";
 import ShoppingCart from "./pages/ShoppingCart";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer";
-import ShopCartContextProvider from './contexts/ShopCartContext'
-import Confirmation from './pages/Confirmation'
+import ShopCartContextProvider from "./contexts/ShopCartContext";
+import Confirmation from "./pages/Confirmation";
 import UserContextProvider from "./contexts/UserContext";
 
-
 function App() {
-  
   return (
     <div className="App">
-      <ShopCartContextProvider>
-        <CarContextProvider>
-          <Router>
-            <Navbar />
-           
-            <Route exact path="/" component={Home} />
+      <Router>
+        <UserContextProvider>
+          <ShopCartContextProvider>
+            <CarContextProvider>
+              <Navbar />
 
-            <Route exact path="/about" component={About} />
-            <Route exact path="/LogIn" component={LogIn} />
-            <Route exact path="/shopping-cart" component={ShoppingCart} />
-            <Route exact path="/cars/:vin" component={CarDetails} />
-          
-         
-            
+              <Route exact path="/" component={Home} />
 
-            <UserContextProvider>
-              <Route exact path="/shopping-cart/checkout" component={Checkout} />
-              <Route exact path="/shopping-cart/checkout/confirmation" component={Confirmation} />
-            </UserContextProvider>
-            
-            <Footer />
-          </Router>
-        </CarContextProvider>
-      </ShopCartContextProvider>
-      
+              <Route exact path="/about" component={About} />
+              <Route exact path="/shopping-cart" component={ShoppingCart} />
+              <Route exact path="/cars/:vin" component={CarDetails} />
+
+              <Route exact path="/LogIn" component={LogIn} />
+
+              <Route
+                exact
+                path="/shopping-cart/checkout"
+                component={Checkout}
+              />
+              <Route
+                exact
+                path="/shopping-cart/checkout/confirmation"
+                component={Confirmation}
+              />
+
+              <Footer />
+            </CarContextProvider>
+          </ShopCartContextProvider>
+        </UserContextProvider>
+      </Router>
     </div>
   );
 }
