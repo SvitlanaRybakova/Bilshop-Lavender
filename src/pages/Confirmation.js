@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPrint, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import styles from '../styles/Confirmation.module.css'
@@ -18,6 +18,10 @@ function Confirmation() {
         window.print()
     }
 
+    useEffect(() => {
+        document.querySelector('nav').classList.add('d-none')
+    }, [])
+
     function currentDate() {
         const today = new Date(); 
         const nullBeforeMonth = today.getMonth() <= 9 ? '0' : '' 
@@ -34,6 +38,7 @@ function Confirmation() {
             isDeliveryChoosed: false,
             priceTotal: 0
           }))
+          document.querySelector('nav').classList.remove('d-none')
     }
 
     return (
