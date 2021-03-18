@@ -25,7 +25,7 @@ function ShopCartContextProvider(props) {
   useEffect(() => {
     setShoppingCartNum(purchases.products.length)
   }, [purchases]);
-  
+
 
   // Local storage
   const [isFetched, setIsFetched] = useState(false);
@@ -35,19 +35,19 @@ function ShopCartContextProvider(props) {
       let temp = purchases;
       temp.products = JSON.parse(localStorage.getItem("products"));
       setPurchasesState(temp);
-    }else{
+    } else {
       setPurchasesState(purchases);
     }
     setIsFetched(true);
   }, [])
 
   useEffect(() => {
-    if(isFetched === true){
+    if (isFetched === true) {
       localStorage.setItem("products", JSON.stringify(purchases.products));
     }
   }, [purchases])
 
- // Function for setting purcheses. Function takes argument temp which is a copy of current purchases with updates and overwrites purchases with that updated data.  
+  // Function for setting purcheses. Function takes argument temp which is a copy of current purchases with updates and overwrites purchases with that updated data.  
   const setPurchasesState = (temp) => {
     temp.priceTotal = getTotalPrice()
     setPurchases(() => ({
@@ -57,7 +57,7 @@ function ShopCartContextProvider(props) {
       isDeliveryChoosed: temp.isDeliveryChoosed
     }))
   }
-  
+
   // Shipping cost
   const setDeliveryCost = (e) => {
     let temp = purchases //make a copy of current purchases
@@ -65,21 +65,21 @@ function ShopCartContextProvider(props) {
     temp.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the copy
     setPurchasesState(temp) //overwrite purchases with new updated data
   };
-  
+
   //Function for updating total price 
   const getTotalPrice = () => {
     let updatedTotalPrice = 0
-    
+
     purchases.products.forEach((car) => {
       updatedTotalPrice = updatedTotalPrice + car.price
     })
 
-    if(typeof purchases.deliveryCost === 'number') {
+    if (typeof purchases.deliveryCost === 'number') {
       updatedTotalPrice = updatedTotalPrice + purchases.deliveryCost
     }
     return updatedTotalPrice
   }
-  
+
   // Remove from cart
   const deleteProduct = (productToDelete) => {
     let temp = purchases //make a copy of current purchases
@@ -90,16 +90,18 @@ function ShopCartContextProvider(props) {
 
   //Add a car to cart
   const addCarToCart = (car) => {
-      let isCar = false;
-      purchases.products.forEach(element => {
-        if (car.vin == element.vin) {
-          isCar = true;
-        }
-      });
-    if(isCar === false){
+  
+    let isCar = false;
+    purchases.products.forEach(element => {
+      if (car.vin == element.vin) {
+        isCar = true;
+      }
+    });
+    if (isCar === false) {
       let temp = purchases //make a copy of current purchases
-        temp.products.unshift(car) //update products in the copy
-        setPurchasesState(temp) //overwrite purchases with new updated data
+      temp.products.unshift(car) //update products in the copy
+      setPurchasesState(temp) //overwrite purchases with new updated data
+  
     }
   }
 

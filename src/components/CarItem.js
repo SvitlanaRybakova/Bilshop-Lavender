@@ -10,12 +10,19 @@ export default function CarItem(props) {
   const { car } = props;
   const { showPrice } = useContext(CarContext);
 
-  const { addCarToCart } = useContext(ShopCartContext);
+  const { addCarToCart, purchases } = useContext(ShopCartContext);
   const history = useHistory();
 
   const handleClick = () => {
     history.push(`/cars/${car.vin}`);
   };
+
+  // const changeStatus = (vin) => {
+  //   // console.log(purchases);
+  //  return purchases.products.forEach(elem => elem.vin === vin)
+  // }
+ 
+  // console.log(changeStatus);
 
   return (
     <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
@@ -49,12 +56,36 @@ export default function CarItem(props) {
         </span>
         {/* buttons */}
         <div className="row ">
-          <div
-            className={`${styles.carItemCart} col`}
+ 
+         { 
+            (() => {
+             
+            purchases.products.forEach((elem) => {
+              if(elem.vin === car.vin){
+                console.log('inside');
+                return (<div>IN CART</div>)
+              }else {
+                return (<div
+                  className={`${styles.carItemCart} col parent`}
+                  onClick={() => addCarToCart(car)}
+                  >
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                  </div>)
+              }
+            })
+           })()
+         }
+
+        {/* {   changeStatus(car.vin) ? (<div>IN CART</div>) : (<div
+            className={`${styles.carItemCart} col parent`}
             onClick={() => addCarToCart(car)}
-          >
+            >
             <FontAwesomeIcon icon={faShoppingCart} />
-          </div>
+            </div>
+)} */}
+         
+
+
           <div
             onClick={handleClick}
             className={`${styles.detailsButton} col btn`}
