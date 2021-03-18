@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ShopCartContext } from '../contexts/ShopCartContext'
 import ShoppingCartTotal from '../components/ShoppingCartTotal';
 import styles from '../styles/Checkout.module.css';
@@ -40,6 +40,11 @@ export default function Checkout() {
     orderHistory(purchases)
     addUserDataToContext(userPersonalData)
   }
+
+  //when the user goes back from confirmation page with help av back-button in browser (but without pressing closing button at confirmation page), useEffect listens and deletes class d-none from Navbar, so Navbar renders again
+  useEffect(() => {
+    document.querySelector('nav').classList.remove('d-none')
+  }, [])
 
   const props = {
     purchases,
