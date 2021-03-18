@@ -1,4 +1,5 @@
-a {
+a,
+.logOutButton {
   margin-right: 15px;
   color: #1b1b1c;
   font-size: 15px;
@@ -7,7 +8,8 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+.logOutButton:hover {
   color: #eeb644;
 }
 

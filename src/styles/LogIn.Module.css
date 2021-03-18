@@ -1,4 +1,9 @@
-.rowZ {
+.buttonBtn2 {
+  display: flex;
+  margin: auto;
+}
+
+/* .rowZ {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
@@ -34,4 +39,4 @@
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
   }
-}
+} */
