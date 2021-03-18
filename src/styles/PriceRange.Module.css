@@ -51,7 +51,6 @@
 }
 
 .accordionCustom{
-  padding:  30px 0 30px 0;
   background-color: #f8f9fa;
   background: linear-gradient(0deg, rgba(248,249,250,1) 88%, rgba(255,255,255,1) 100%);
   margin-bottom: 50px;
@@ -66,9 +65,8 @@
   background-color: transparent !important;
   color: #303030 !important;
   text-align: right !important;
-  /* border: 1px solid red; */
   padding-top: 13px;
-  padding-bottom: 13px;
+  padding-bottom: 50px;
   padding-left: 0;
 }
 
@@ -86,7 +84,6 @@
 
 .btnText {
   display: block;
-  letter-spacing: 1px;
   font-size: 1.1rem;
   font-family: Poppins, sans-serif;
   font-weight: normal;
