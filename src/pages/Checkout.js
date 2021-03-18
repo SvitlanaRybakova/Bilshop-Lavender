@@ -52,8 +52,17 @@ export default function Checkout() {
     showPrice
   }
 
+  function ScrollToTopOnMount() {
+    useEffect(() => {
+      document.querySelector('body').scrollTo(0,0)
+    }, []);
+  
+    return null;
+  }
+
   return (
     <div className={`${styles.pageContentWrapper} mt-5 container sp-y`}>
+      <ScrollToTopOnMount />
       <div className={styles.cartPageContentWrap}>
         <div className="container container-wide">
           <div className="row d-flex justify-content-between ">
@@ -69,21 +78,21 @@ export default function Checkout() {
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
                           <label htmlFor="firstName" className="sr-only required">First Name</label>
-                          <input type="text" pattern="[A-Za-z]*" id="firstName" title="(only alphabetic characters)" placeholder="First Name" minlength="2" required onChange={handle} />
+                          <input type="text" pattern="[A-Za-z]*" id="firstName" title="(only alphabetic characters)" placeholder="First Name" minLength="2" required onChange={handle} />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
                           <label htmlFor="lastName" className="sr-only required">Last Name</label>
-                          <input type="text" pattern="[A-Za-z]*" id="lastName" title="(only alphabetic characters)" placeholder="Last Name" minlength="2" required onChange={handle} />
+                          <input type="text" pattern="[A-Za-z]*" id="lastName" title="(only alphabetic characters)" placeholder="Last Name" minLength="2" required onChange={handle} />
                         </div>
                       </div>
                     </div>
 
                     <div className={styles.inputItem}>
                       <label htmlFor="email" className="sr-only required">Email Address</label>
-                      <input type="email" id="email" placeholder="Email Address" minlength="2" required onChange={handle} />
+                      <input type="email" id="email" placeholder="Email Address" minLength="2" required onChange={handle} />
                     </div>
 
 
@@ -92,7 +101,7 @@ export default function Checkout() {
                       <div className="col-md-6">
                         <div className={styles.inputItem}>
                           <label htmlFor="city" className="sr-only required">Town / City</label>
-                          <input type="text" pattern="[A-Za-z]*" id="city" title="(only alphabetic characters)" placeholder="Town / City" minlength="2" required onChange={handle} />
+                          <input type="text" pattern="[A-Za-z]*" id="city" title="(only alphabetic characters)" placeholder="Town / City" minLength="2" required onChange={handle} />
                         </div>
                       </div>
 
@@ -107,7 +116,7 @@ export default function Checkout() {
 
                     <div className={styles.inputItem}>
                       <label htmlFor="streetAddress" className="sr-only required">Street address</label>
-                      <input type="text" pattern="^[^\s]+(\s+[^\s]+)*$" title="(you can't use space in the beginning)" id="streetAddress" placeholder="Street address" minlength="2" required onChange={handle} />
+                      <input type="text" pattern="^[^\s]+(\s+[^\s]+)*$" title="(you can't use space in the beginning)" id="streetAddress" placeholder="Street address" minLength="2" required onChange={handle} />
                     </div>
 
 
@@ -123,7 +132,7 @@ export default function Checkout() {
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
                           <label htmlFor="cardName" className="required">Card Name</label>
-                          <input type="text" pattern="[A-Za-z]*" title="(only alphabetic characters)" id="cardName" minlength="4" required onChange={handle} />
+                          <input type="text" pattern="[A-Za-z]*" title="(only alphabetic characters)" id="cardName" minLength="4" required onChange={handle} />
                         </div>
                       </div>
 
