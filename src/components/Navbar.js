@@ -15,7 +15,7 @@ const Navbar = () => {
   };
   const { showPrice, setSwitching } = useContext(CarContext);
   const show = showCollapsedMenu ? "show" : "";
-  
+
   let totalRestructured;
   let navbarClassName;
   if (shoppingCartNum > 0) {
@@ -37,7 +37,7 @@ const Navbar = () => {
   }
 
   // refresh rendering when navigating from other tabs to the home page
-  const followLink = () =>{
+  const followLink = () => {
     setSwitching(true);
   }
 
@@ -46,7 +46,7 @@ const Navbar = () => {
       <div className="container d-flex justify-content-end ">
         <div className="d-flex align-items-end flex-grow-1 ">
           <Link
-          onClick={followLink}
+            onClick={followLink}
             to="/"
             className={`${styles.brandName} d-flex align-items-center`}
           >
@@ -80,17 +80,19 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className={`${styles.cartWrapper}`}>
-          <Link className={`$styles.shoppingCartIcon}`} to="/shopping-cart">
+        <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
+          <div className={`${styles.cartWrapper}`}>
+
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
-          <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
-            {cartNum}
+
+            <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
+              {cartNum}
+            </div>
+            <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
+            {totalRestructured} 
+            </div>
           </div>
-          <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
-            {totalRestructured}
-          </div>
-        </div>
+        </Link>
       </div>
     </nav>
   );
