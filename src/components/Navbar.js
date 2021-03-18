@@ -92,17 +92,19 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className={`${styles.cartWrapper}`}>
-          <Link className={`$styles.shoppingCartIcon}`} to="/shopping-cart">
+        <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
+          <div className={`${styles.cartWrapper}`}>
+
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
-          <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
-            {cartNum}
+
+            <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
+              {cartNum}
+            </div>
+            <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
+            {totalRestructured} 
+            </div>
           </div>
-          <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
-            {totalRestructured}
-          </div>
-        </div>
+        </Link>
       </div>
     </nav>
   );

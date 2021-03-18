@@ -49,6 +49,8 @@ td {
 .productName {
     color: #1b1b1c;
     line-height: 1;
+    cursor: pointer;
+    font-size: 1.1rem;
 }
 
 .productName:hover {
