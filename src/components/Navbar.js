@@ -82,7 +82,7 @@ const Navbar = () => {
                 if (logedIn === true) {
                   return (
                     <div>
-                      <Link to="/">My profile</Link>
+                      <Link to="/MyProfile">My profile</Link>
                       <button className={styles.logOutButton} onClick={logOut}>
                         Log out
                       </button>
