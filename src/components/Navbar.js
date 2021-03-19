@@ -89,6 +89,8 @@ const Navbar = () => {
                 }
               })()}
               <Link to="/about">About</Link>
+              <Link to="/LogIn">LogIn</Link>
+              <Link to="/MyProfile">MyProfile</Link>
             </li>
           </ul>
         </div>
