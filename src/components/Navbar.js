@@ -5,9 +5,11 @@ import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Navbar.module.css";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import { CarContext } from "../contexts/CarContext";
-
+import { UserContext } from "../contexts/UserContext";
 
 const Navbar = () => {
+  const { logedIn, logOut } = useContext(UserContext);
+
   const [showCollapsedMenu, setshowCollapsedMenu] = useState(false);
   const { shoppingCartNum, total } = useContext(ShopCartContext);
   const toggleMenu = () => {
@@ -15,7 +17,7 @@ const Navbar = () => {
   };
   const { showPrice, setSwitching } = useContext(CarContext);
   const show = showCollapsedMenu ? "show" : "";
-  
+
   let totalRestructured;
   let navbarClassName;
   if (shoppingCartNum > 0) {
@@ -37,16 +39,16 @@ const Navbar = () => {
   }
 
   // refresh rendering when navigating from other tabs to the home page
-  const followLink = () =>{
+  const followLink = () => {
     setSwitching(true);
-  }
+  };
 
   return (
     <nav className="navbar navbar-expand-sm">
       <div className="container d-flex justify-content-end ">
         <div className="d-flex align-items-end flex-grow-1 ">
           <Link
-          onClick={followLink}
+            onClick={followLink}
             to="/"
             className={`${styles.brandName} d-flex align-items-center`}
           >
@@ -75,23 +77,36 @@ const Navbar = () => {
         >
           <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
             <li className="nav-item">
+              {(() => {
+                if (logedIn === true) {
+                  return (
+                    <button className={styles.logOutButton} onClick={logOut}>
+                      Log out
+                    </button>
+                  );
+                } else {
+                  return <Link to="/LogIn">LogIn</Link>;
+                }
+              })()}
               <Link to="/about">About</Link>
               <Link to="/LogIn">LogIn</Link>
               <Link to="/MyProfile">MyProfile</Link>
             </li>
           </ul>
         </div>
-        <div className={`${styles.cartWrapper}`}>
-          <Link className={`$styles.shoppingCartIcon}`} to="/shopping-cart">
+        <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
+          <div className={`${styles.cartWrapper}`}>
+
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
-          <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
-            {cartNum}
+
+            <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
+              {cartNum}
+            </div>
+            <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
+            {totalRestructured} 
+            </div>
           </div>
-          <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
-            {totalRestructured}
-          </div>
-        </div>
+        </Link>
       </div>
     </nav>
   );

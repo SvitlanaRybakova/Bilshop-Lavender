@@ -29,7 +29,8 @@ export default function CarList() {
 
   const renderWithPagination = () => {
     return (
-      <div className="container container-wide">
+      <div className="container">
+        
         <div className="row mtn-30 d-flex justify-content-center">
           {currentCars.map((item) => (
             <CarItem key={item.vin} car={item} />
@@ -42,6 +43,7 @@ export default function CarList() {
           autoScrollToTop={autoScrollToTop}
         />
       </div>
+     
     );
   };
 

@@ -68,11 +68,11 @@ function ShoppingCart() {
                               alt="Product"
                             />
                           </div>
-                          <a
+                          <div
                             onClick={() => goToCarDescription(product)}
-                            href="#" className={`${styles.productName} mb-3 ms-0 ms-sm-4 mb-sm-0`}>
+                            className={`${styles.productName} mb-3 ms-0 ms-sm-4 mb-sm-0`}>
                             {product.make} {product.model} <span className='d-inline-block mt-2'>{product.year}</span>
-                          </a>
+                          </div>
                         </div>
                       </div>
                     </td>
