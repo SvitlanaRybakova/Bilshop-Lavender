@@ -76,32 +76,36 @@ const Navbar = () => {
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
-            <li className="nav-item">
+            <li className="nav-item d-flex">
+              <Link to="/about">About</Link>
               {(() => {
                 if (logedIn === true) {
                   return (
-                    <button className={styles.logOutButton} onClick={logOut}>
-                      Log out
-                    </button>
+                    <div>
+                      <Link to="/">My profile</Link>
+                      <button className={styles.logOutButton} onClick={logOut}>
+                        Log out
+                      </button>
+                    </div>
                   );
                 } else {
                   return <Link to="/LogIn">LogIn</Link>;
                 }
               })()}
-              <Link to="/about">About</Link>
             </li>
           </ul>
         </div>
         <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
           <div className={`${styles.cartWrapper}`}>
-
             <FontAwesomeIcon icon={faShoppingCart} />
 
             <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
               {cartNum}
             </div>
-            <div className={`${styles.cartPriceStyling} ${navbarClassName} row`}>
-            {totalRestructured} 
+            <div
+              className={`${styles.cartPriceStyling} ${navbarClassName} row`}
+            >
+              {totalRestructured}
             </div>
           </div>
         </Link>
