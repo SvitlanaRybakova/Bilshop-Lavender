@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Route, Axios } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import LogIn from "./pages/LogIn";
-import MyProfile from "./pages/MyProfile"
+import MyProfile from "./pages/MyProfile";
 
 import CarContextProvider from "./contexts/CarContext";
 import CarDetails from "./pages/CarDetails";
@@ -22,21 +22,12 @@ function App() {
           <ShopCartContextProvider>
             <CarContextProvider>
               <Navbar />
-
-            <Route exact path="/about" component={About} />
-            <Route exact path="/LogIn" component={LogIn} />
-            <Route exact path="/MyProfile" component={MyProfile} />
-            <Route exact path="/shopping-cart" component={ShoppingCart} />
-            <Route exact path="/cars/:vin" component={CarDetails} />
-          
-         
-            
-
+              <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/LogIn" component={LogIn} />
+              <Route exact path="/MyProfile" component={MyProfile} />
               <Route exact path="/shopping-cart" component={ShoppingCart} />
               <Route exact path="/cars/:vin" component={CarDetails} />
-
-              <Route exact path="/LogIn" component={LogIn} />
 
               <Route
                 exact
