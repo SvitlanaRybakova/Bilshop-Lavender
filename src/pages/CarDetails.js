@@ -113,13 +113,12 @@ export default function CarDetails(props) {
                           </table>
                         </div>
                       </div>
-                      <NavLink
+                      <div
                         className="btn btnBordered mt-5 mx-auto"
                         onClick={() => addCarToCart(carItem)}
-                        to="/shopping-cart"
                       >
                         Add to Cart
-                      </NavLink>
+                      </div>
                     </div>
                   </div>
                 </div>
