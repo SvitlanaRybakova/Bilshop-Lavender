@@ -40,7 +40,7 @@ export default function CarItem(props) {
           </span>
           {/*miles*/}
           <span className={`${styles.milesSpan} `}>
-          <strong>{(car.miles)} km </strong>
+          <strong>{showPrice(car.miles)} km </strong>
           </span>
         </div>
         {/* price */}
@@ -48,16 +48,16 @@ export default function CarItem(props) {
           <strong>{showPrice(car.price)} SEK</strong>
         </span>
         {/* buttons */}
-        <div className="row ">
+        <div className="row d-flex justify-content-between">
           <div
-            className={`${styles.carItemCart} col`}
+            className={`${styles.carItemCart} col-2 `}
             onClick={() => addCarToCart(car)}
           >
             <FontAwesomeIcon icon={faShoppingCart} />
           </div>
           <div
             onClick={handleClick}
-            className={`${styles.detailsButton} col btn`}
+            className={`${styles.detailsButton} col-6  btn`}
           >
             view details
           </div>
