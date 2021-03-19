@@ -40,7 +40,7 @@ export default function CarItem(props) {
           </span>
           {/*miles*/}
           <span className={`${styles.milesSpan} `}>
-          <strong>{(car.miles)} km </strong>
+          <strong>{showPrice(car.miles)} km </strong>
           </span>
         </div>
         {/* price */}
