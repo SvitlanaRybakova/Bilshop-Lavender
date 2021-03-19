@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
+import { useHistory } from "react-router-dom";
+import { UserContext } from '../contexts/UserContext'
 
 function ShoppingCartTotal(props) {
     //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
@@ -8,10 +10,19 @@ function ShoppingCartTotal(props) {
 
     // let linkAdress
     // linkAdress = (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ? "/shopping-cart/checkout" : '#'
+    const history = useHistory();
+  const { logedIn } = useContext(UserContext)
     
+    const checkout = (e) =>{
+      e.preventDefault()
+      if (logedIn === true) {
+        history.push("/shopping-cart/checkout")
+      }
+    }
+
     useEffect(() => {
 
-    }, [props.props.purchases.isDeliveryChoosed]);
+    }, [props.props.purchases.isDeliveryChoosed, logedIn]);
 
     return (
 
@@ -87,13 +98,19 @@ function ShoppingCartTotal(props) {
                             if (location.pathname === '/shopping-cart' 
                             && props.props.purchases.isDeliveryChoosed
                             && props.props.purchases.products.length > 0) {
+                              if (logedIn === true) {
                                 return (
-                                    <Link to='/shopping-cart/checkout'>
-                                        <button type="button" className={`btn ${styles.toCheckoutBtn}`} >
+                                <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`}>
+                                    Proceed to checkout
+                                </button>
+                                )
+                              }else{
+                                return (
+                                        <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
                                             Proceed to checkout
                                         </button>
-                                    </Link>
                                 )
+                              }
                             } else if (location.pathname === '/shopping-cart/checkout' || props.props.purchases.products.length === 0) {
                                 return (
                                     <div></div>
@@ -118,9 +135,9 @@ function ShoppingCartTotal(props) {
                         <div className="modal-header border-0">
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body text-center">
-                            <b>Please choose delivery option</b>
-                        </div>
+                        <div className="modal-body text-center">                       
+                              <b>You need to be logged in and choose a shipping option to proceed!</b>
+                    </div>
                         <div className="modal-footer text-center border-0">
                             <button type="button" className={`${styles.closeBtn} btn`} data-bs-dismiss="modal">Close</button>
                         </div>
