@@ -86,7 +86,7 @@ function About() {
             <div className={`${styles.newsletterContent}  text-center`}>
               <h4>SPECIAL <span>OFFER</span> FOR SUBSCRIPTION</h4>
               <h2>GET INSTANT DISCOUNT FOR MEMBERSHIP</h2>
-              <p>Subscribe our newsletter and all latest news of our <br />latest product, promotion and offers
+              <p>Subscribe to our newsletter and all latest news of our <br />latest product, promotion and offers
                         </p>
               <div className={`${styles.newsletterFormWrap}`}>
                 <form action="#" method="#">
@@ -108,7 +108,7 @@ function About() {
             <div className="col-sm-7 ">
               <div className="need-help-content mb-sm-20">
                 <h3 className="mb-4 fs-2">Need Help ?</h3>
-                <p>Call our support 24/7 at <b className="px-2">01234&nbsp;567&nbsp;890</b> </p>
+                <p>Call our support 24/7 at <b className="">01234&nbsp;567&nbsp;890</b> </p>
               </div>
             </div>
 
