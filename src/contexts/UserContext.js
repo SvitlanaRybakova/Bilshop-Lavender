@@ -57,6 +57,19 @@ function UserContextProvider(props) {
   const onChangeConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
+
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const onChangeLoginPassword = (e) => {
+    setLoginPassword(e.target.value);
+  };
+
+  const [loginEmail, setLoginEmail] = useState("");
+
+  const onChangeLoginEmail = (e) => {
+    setLoginEmail(e.target.value);
+  };
+
   const [userData, setUserData] = useState({});
 
   const [userOrders, setUserOrders] = useState({
@@ -111,6 +124,7 @@ function UserContextProvider(props) {
     };
     console.log(userInfo);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    localStorage.setItem("logedIn", JSON.stringify(true));
     history.push("/");
     setFirstName("");
     setLastName("");
@@ -126,10 +140,49 @@ function UserContextProvider(props) {
 
   const [logedIn, setLogedIn] = useState(false);
 
-  useEffect(() => {}, [logedIn]);
+  useEffect(() => {
+    if (localStorage.getItem("logedIn") !== null) {
+      if (JSON.parse(localStorage.getItem("logedIn")) === true) {
+        setLogedIn(true);
+      }
+    }
+  }, [logedIn]);
 
   const logOut = () => {
+    localStorage.setItem("logedIn", false);
     setLogedIn(false);
+  };
+
+  const [userInfo, setUserInfo] = useState("");
+
+  useEffect(() => {
+    if (userInfo !== "") {
+      if (
+        userInfo.password === loginPassword &&
+        userInfo.emailAddress === loginEmail
+      ) {
+        setLogedIn(true);
+        setLoginEmail("");
+        setLoginPassword("");
+        localStorage.setItem("logedIn", JSON.stringify(true));
+        history.push("/");
+      } else {
+        alert("Password or Email invalid! Please try again");
+        setLoginEmail("");
+        setLoginPassword("");
+      }
+    }
+  }, [userInfo]);
+
+  const onSubmitLogin = (e) => {
+    e.preventDefault();
+    if (localStorage.getItem("userInfo") !== null) {
+      setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
+    } else {
+      setLoginEmail("");
+      setLoginPassword("");
+      alert("Password or Email invalid! Please try again");
+    }
   };
 
   const values = {
@@ -159,6 +212,11 @@ function UserContextProvider(props) {
     onChangeConfirmPassword,
     logedIn,
     logOut,
+    onChangeLoginEmail,
+    loginEmail,
+    onChangeLoginPassword,
+    loginPassword,
+    onSubmitLogin,
   };
 
   return (
