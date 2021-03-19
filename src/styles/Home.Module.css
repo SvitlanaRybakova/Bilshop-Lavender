@@ -51,6 +51,7 @@
 .carItemCart {
   margin-left: 0px;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .carItemCart:hover {
