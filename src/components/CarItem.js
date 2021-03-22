@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { CarContext } from "../contexts/CarContext";
 import { ShopCartContext } from "../contexts/ShopCartContext";
@@ -7,15 +7,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 export default function CarItem(props) {
+  console.log(`carItem renders`);
   const { car } = props;
   const { showPrice } = useContext(CarContext);
 
-  const { addCarToCart } = useContext(ShopCartContext);
+  const { purchases, addCarToCart } = useContext(ShopCartContext);
   const history = useHistory();
 
   const handleClick = () => {
     history.push(`/cars/${car.vin}`);
   };
+
+  let isBought = false;
+
+  for (let i = 0; i < purchases.products.length; i++) {
+    if (purchases.products[i].vin === car.vin) {
+      isBought = true;
+    }
+  }
 
   return (
     <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
@@ -40,7 +49,7 @@ export default function CarItem(props) {
           </span>
           {/*miles*/}
           <span className={`${styles.milesSpan} `}>
-          <strong>{showPrice(car.miles)} km </strong>
+            <strong>{showPrice(car.miles)} km </strong>
           </span>
         </div>
         {/* price */}
@@ -49,12 +58,25 @@ export default function CarItem(props) {
         </span>
         {/* buttons */}
         <div className="row d-flex justify-content-between">
-          <div
-            className={`${styles.carItemCart} col-2 `}
-            onClick={() => addCarToCart(car)}
-          >
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </div>
+
+          {(() => {
+
+            if (isBought) {
+
+              return <div style={{ background: 'red' }} className='col'> In cart</div>;
+            } else {
+
+              return <div
+                className={`${styles.carItemCart} col`}
+                onClick={() => addCarToCart(car)}
+              >
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </div>;
+            }
+          })()
+          }
+
+
           <div
             onClick={handleClick}
             className={`${styles.detailsButton} col-6  btn`}
