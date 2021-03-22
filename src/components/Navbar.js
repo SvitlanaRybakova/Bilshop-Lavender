@@ -93,25 +93,36 @@ const Navbar = () => {
           className={`${show} ${styles.navbarList} collapse navbar-collapse`}
           id="navbarSupportedContent"
         >
-          <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
-            <li className="nav-item d-flex">
-              <Link to="/about">About</Link>
               {(() => {
                 if (logedIn === true) {
                   return (
-                    <div>
-                      <Link to="/MyProfile">My profile</Link>
-                      <button className={styles.logOutButton} onClick={logOut}>
-                        Log out
-                      </button>
-                    </div>
+                    <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
+                    <li className="nav-item d-flex">
+                      <Link to="/about">About</Link>
+                    </li>
+                      <li className="nav-item d-flex">
+                          <Link to="/MyProfile">My profile</Link>
+                      </li>
+                      <li className="nav-item d-flex">
+                          <button className={`${styles.logOutButton}`} onClick={logOut}>
+                            Log out
+                          </button>
+                      </li>
+                    </ul>
                   );
                 } else {
-                  return <Link to="/LogIn">LogIn</Link>;
+                  return (
+                    <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
+                    <li className="nav-item d-flex">
+                        <Link to="/about">About</Link>
+                      </li>
+                      <li className="nav-item d-flex">
+                        <Link to="/LogIn">LogIn</Link>;
+                    </li>
+                   </ul>
+                  )
                 }
               })()}
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
