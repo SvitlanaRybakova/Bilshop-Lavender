@@ -3,8 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import styles from '../styles/ShoppingCartTotal.module.css'
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../contexts/UserContext'
+import { CarContext } from '../contexts/CarContext';
 
 function ShoppingCartTotal(props) {
+  const { showPrice } = useContext(CarContext);
     //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
     const location = useLocation()
 
@@ -28,7 +30,7 @@ function ShoppingCartTotal(props) {
 
         <div className='mt-5 mt-lg-0 mydiv'>
             <div className={styles.cartTotal}>
-                <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
+                <h5 className={styles.cartTotalHeading}>Your Order</h5>
 
                 <div className="table-responsive">
                     <table className="table table-borderless">
@@ -60,12 +62,13 @@ function ShoppingCartTotal(props) {
                                 {
                                     (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ?
                                         (<td>
-                                            {props.props.purchases.deliveryCost}
+                                            {showPrice(props.props.purchases.deliveryCost)}
+
                                             { props.props.purchases.products.length > 0 && ' SEK'}
                                         </td>)
                                         :
                                         (<td>
-                                            <b> none</b>
+                                            <b>Not chosen</b>
                                         </td>)
 
                                 }
