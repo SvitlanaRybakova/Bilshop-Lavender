@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 export default function CarItem(props) {
-  console.log(`carItem renders`);
   const { car } = props;
   const { showPrice } = useContext(CarContext);
 
@@ -18,6 +17,7 @@ export default function CarItem(props) {
     history.push(`/cars/${car.vin}`);
   };
 
+  //To mark a car that is in the shopping cart
   let isBought = false;
 
   for (let i = 0; i < purchases.products.length; i++) {
@@ -60,12 +60,9 @@ export default function CarItem(props) {
         <div className="row d-flex justify-content-between">
 
           {(() => {
-
             if (isBought) {
-
-              return <div style={{ background: 'red' }} className='col'> In cart</div>;
+              return <div className="col d-flex align-items-center"> In the cart</div>;
             } else {
-
               return <div
                 className={`${styles.carItemCart} col`}
                 onClick={() => addCarToCart(car)}
@@ -73,9 +70,7 @@ export default function CarItem(props) {
                 <FontAwesomeIcon icon={faShoppingCart} />
               </div>;
             }
-          })()
-          }
-
+          })()}
 
           <div
             onClick={handleClick}
