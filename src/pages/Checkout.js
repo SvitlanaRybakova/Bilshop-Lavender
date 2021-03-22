@@ -32,7 +32,6 @@ export default function Checkout() {
   //it saves collected data to the userPersonalData object
   function handle(event) {
     userPersonalData[event.target.id] = event.target.value
-    console.log(userPersonalData);
   }
 
   //efter the form was submitted by user, 1) userPersonalData sends to the User context, 2) user is redirected on confirmation page 3) shopping cart is getting empty
@@ -79,7 +78,22 @@ export default function Checkout() {
   }
 
   const validatePhoneNumber = (value) => {
-    return value.replace(/\s/g, "").match(/\d{1,3}/g)?.join("-").substr(0, 13) || ""
+    console.log(value.length, value);
+    if (value.length <= 7){
+      return  value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7)|| ""
+    } else{
+      const groupThreeString = value.substring(0, 7);
+      const groupTwoString = value.substring(7, value.length);
+      console.log('groupTwoString', groupTwoString, groupTwoString.length);
+      return (groupThreeString +
+        '-' +
+        groupTwoString.replace(/\s/g, "")
+        .match(/\d{1,2}/g)?.join("-")
+        )
+        .substring(0, 13) || "" 
+    }
+   
+    
     // [0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}
   }
 
@@ -123,7 +137,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateName(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -141,7 +155,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateName(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -167,7 +181,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateName(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -185,7 +199,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validatePostcode(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }}/>
                         </div>
                       </div>
@@ -203,7 +217,7 @@ export default function Checkout() {
                       onChange={(e) => {
                         const { value } = e.target
                         e.target.value = validateStreetAdress(value)
-                        handle(e, e.target.value)
+                        handle(e)
                       }} />
                     </div>
 
@@ -220,7 +234,7 @@ export default function Checkout() {
                         onChange={(e) => {
                           const { value } = e.target
                           e.target.value = validatePhoneNumber(value)
-                          handle(e, e.target.value)
+                          handle(e)
                         }}
                         
                       />
@@ -241,7 +255,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateName(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -260,7 +274,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateExpDate(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -284,7 +298,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateCardNumber(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }}
                           />
                         </div>
@@ -304,7 +318,7 @@ export default function Checkout() {
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateCVC(value)
-                              handle(e, e.target.value)
+                              handle(e)
                             }} />
                         </div>
                       </div>
@@ -323,7 +337,7 @@ export default function Checkout() {
                         onChange={(e) => {
                           const { value } = e.target
                           e.target.value = validateName(value)
-                          handle(e, e.target.value)
+                          handle(e)
                         }} />
                     </div>
 
