@@ -103,6 +103,14 @@ function ShopCartContextProvider(props) {
     }
   }
 
+  // Empty shopping cart
+  const emptyCart = () =>{
+    let temp = purchases
+    temp.products = [];
+    temp.isDeliveryChoosed = false
+    setPurchasesState(temp)
+  }
+
   const values = {
     purchases,
     setPurchases,
@@ -111,6 +119,7 @@ function ShopCartContextProvider(props) {
     addCarToCart,
     shoppingCartNum,
     total,
+    emptyCart,
   };
 
   return (
