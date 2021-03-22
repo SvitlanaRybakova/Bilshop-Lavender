@@ -46,6 +46,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-sm">
       <div className="container d-flex justify-content-end ">
+        {/* Logo */}
         <div className="d-flex align-items-end flex-grow-1 ">
           <Link
             onClick={followLink}
@@ -58,6 +59,22 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
+      {/* Shopping cart */}
+        <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
+          <div className={`${styles.cartWrapper}`}>
+            <FontAwesomeIcon icon={faShoppingCart} />
+
+            <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
+              {cartNum}
+            </div>
+            <div
+              className={`${styles.cartPriceStyling} ${navbarClassName} row`}
+            >
+              {totalRestructured}
+            </div>
+          </div>
+        </Link>
+        {/* Hamburger */}
         <button
           onClick={toggleMenu}
           style={{ border: "none" }}
@@ -71,6 +88,7 @@ const Navbar = () => {
         >
           <FontAwesomeIcon icon={faBars} />
         </button>
+        {/* About, My profile, Logout */}
         <div
           className={`${show} ${styles.navbarList} collapse navbar-collapse`}
           id="navbarSupportedContent"
@@ -95,20 +113,6 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link className={`${styles.shoppingCartIcon}`} to="/shopping-cart">
-          <div className={`${styles.cartWrapper}`}>
-            <FontAwesomeIcon icon={faShoppingCart} />
-
-            <div className={`${styles.cartNumStyling} ${navbarClassName} `}>
-              {cartNum}
-            </div>
-            <div
-              className={`${styles.cartPriceStyling} ${navbarClassName} row`}
-            >
-              {totalRestructured}
-            </div>
-          </div>
-        </Link>
       </div>
     </nav>
   );
