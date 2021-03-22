@@ -22,6 +22,10 @@
   box-shadow: #8a877f 1px 1px 7px;
 }
 
+.itemWrapper:hover {
+  background-color: rgb(233, 233, 233);
+}
+
 .detailsButton {
   border: 1px solid #383838;
   width: 10rem;
