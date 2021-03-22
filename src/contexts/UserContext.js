@@ -125,7 +125,6 @@ function UserContextProvider(props) {
       setPassword("");
       setConfirmPassword("");
     } else {
-      console.log(userInfo);
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       localStorage.setItem("logedIn", JSON.stringify(true));
       history.push("/");
