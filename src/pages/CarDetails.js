@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CarContext } from "../contexts/CarContext";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 import styles from "../styles/CarDetails.module.css";
@@ -7,7 +7,7 @@ import NotFound from "../components/NotFound";
 
 export default function CarDetails(props) {
   // variable for CarDetails page(dynamic data, rendering)
-  const { addCarToCart } = useContext(ShopCartContext);
+  const { purchases, addCarToCart } = useContext(ShopCartContext);
   const [carItem, setCarItem] = useState(null);
 
   const { cars, copyCars, showPrice } = useContext(CarContext);
@@ -20,6 +20,17 @@ export default function CarDetails(props) {
       setCarItem(cars.find((el) => props.match.params.vin == el.vin));
     }
   }, [copyCars, location]);
+
+
+  //To mark a car that is in the shopping cart
+  let isBought = false;
+
+  for (let i = 0; i < purchases.products.length; i++) {
+    let carItem = cars.find((el) => props.match.params.vin == el.vin)
+    if (purchases.products[i].vin === carItem.vin) {
+      isBought = true;
+    }
+  }
 
   const renderCarDetails = () => {
     return (
@@ -113,12 +124,21 @@ export default function CarDetails(props) {
                           </table>
                         </div>
                       </div>
-                      <div
-                        className="btn btnBordered mt-5 mx-auto"
-                        onClick={() => addCarToCart(carItem)}
-                      >
-                        Add to Cart
-                      </div>
+
+                      {(() => {
+                        if (isBought) {
+                          return <div style={{color: '#ad2626'}} className="mt-5 mx-auto border d-inline-block mt-3 px-4 py-3"> In the cart</div>;
+                        } else {
+                          return <div
+                            className="btn btnBordered mt-5 mx-auto"
+                            onClick={() => addCarToCart(carItem)}
+                          >
+                            Add to Cart
+                          </div>
+                        }
+                      })()}
+
+
                     </div>
                   </div>
                 </div>
