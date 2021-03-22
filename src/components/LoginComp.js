@@ -12,26 +12,34 @@ function LoginComp() {
   } = useContext(UserContext);
   return (
     <form onSubmit={(e) => onSubmitLogin(e)} className="LogIn-Container">
+      <h2 className="d-flex align-items-center justify-content-center">
+        LOG IN
+      </h2>
       <div className="rowZ d-flex align-items-center justify-content-center">
-        <div className="col-md-3">
+        <div className="col-10 col-md-5">
           <div className="form-group">
+            <label>Email Address</label>
             <input
               type="email"
-              className="form-control"
+              className="form-control mb-3"
               placeholder="Email Address"
               onChange={onChangeLoginEmail}
               value={loginEmail}
             ></input>
             <div className="form-group">
+              <label>Password</label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control mb-3"
                 placeholder="Password"
                 onChange={onChangeLoginPassword}
                 value={loginPassword}
               ></input>
             </div>
-            <button type="submit" className="btn1 btn-primary">
+            <button
+              type="submit"
+              className={`${styles.loginButton} btn1 btn-primary mb-2 `}
+            >
               Log in
             </button>
           </div>

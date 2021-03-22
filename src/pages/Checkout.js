@@ -226,7 +226,7 @@ export default function Checkout() {
                       />
                     </div>
 
-                    <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
+                    <h2 className={`${styles.h2} mb-4`}>Payment Details</h2>
                     <div className="row">
 
                       <div className="col-md-6">

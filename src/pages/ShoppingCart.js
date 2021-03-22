@@ -6,6 +6,7 @@ import styles from "../styles/ShoppingCard.module.css";
 import { ShopCartContext } from '../contexts/ShopCartContext'
 import { CarContext } from '../contexts/CarContext';
 import { useHistory } from "react-router-dom";
+import EmptyCart from "../components/EmptyCart";
 
 function ShoppingCart() {
   const { showPrice } = useContext(CarContext);
@@ -115,8 +116,14 @@ function ShoppingCart() {
               </div>
             }
          </div>
+         {(() => {
+                if (purchases.products.length > 0) {
+                  return (
+                    <EmptyCart></EmptyCart>
+                  );
+                }
+              })()}
         </div>
-
         <div className="col-lg-4">
           <ShoppingCartTotal props={props} />
         </div>

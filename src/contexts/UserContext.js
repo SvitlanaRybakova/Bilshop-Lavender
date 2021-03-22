@@ -107,8 +107,6 @@ function UserContextProvider(props) {
     }
   }, [userOrderHistoryBoolean]);
 
-  // if (ConfirmPassword !=== password)
-
   const onSubmit = (e) => {
     e.preventDefault();
     const userInfo = {
@@ -122,20 +120,25 @@ function UserContextProvider(props) {
       password: password,
       confirmPassword: confirmPassword,
     };
-    console.log(userInfo);
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    localStorage.setItem("logedIn", JSON.stringify(true));
-    history.push("/");
-    setFirstName("");
-    setLastName("");
-    setEmailAddress("");
-    setTownCity("");
-    setPostcodeZIP("");
-    setStreetAddress("");
-    setPhone("");
-    setPassword("");
-    setConfirmPassword("");
-    setLogedIn(true);
+    if (confirmPassword !== password) {
+      alert("Both passwords must be the same");
+      setPassword("");
+      setConfirmPassword("");
+    } else {
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      localStorage.setItem("logedIn", JSON.stringify(true));
+      history.push("/");
+      setFirstName("");
+      setLastName("");
+      setEmailAddress("");
+      setTownCity("");
+      setPostcodeZIP("");
+      setStreetAddress("");
+      setPhone("");
+      setPassword("");
+      setConfirmPassword("");
+      setLogedIn(true);
+    }
   };
 
   const [logedIn, setLogedIn] = useState(false);
