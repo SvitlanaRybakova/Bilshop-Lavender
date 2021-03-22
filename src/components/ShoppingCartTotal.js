@@ -28,7 +28,7 @@ function ShoppingCartTotal(props) {
 
         <div className='mt-5 mt-lg-0 mydiv'>
             <div className={styles.cartTotal}>
-                <h5 className={styles.cartTotalHeading}>Cart Totals</h5>
+                <h5 className={styles.cartTotalHeading}>Your Order</h5>
 
                 <div className="table-responsive">
                     <table className="table table-borderless">
@@ -65,7 +65,7 @@ function ShoppingCartTotal(props) {
                                         </td>)
                                         :
                                         (<td>
-                                            <b> none</b>
+                                            <b>Not chosen</b>
                                         </td>)
 
                                 }
