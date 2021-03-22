@@ -78,13 +78,11 @@ export default function Checkout() {
   }
 
   const validatePhoneNumber = (value) => {
-    console.log(value.length, value);
     if (value.length <= 7){
       return  value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7)|| ""
     } else{
       const groupThreeString = value.substring(0, 7);
       const groupTwoString = value.substring(7, value.length);
-      console.log('groupTwoString', groupTwoString, groupTwoString.length);
       return (groupThreeString +
         '-' +
         groupTwoString.replace(/\s/g, "")
@@ -93,8 +91,6 @@ export default function Checkout() {
         .substring(0, 13) || "" 
     }
    
-    
-    // [0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}
   }
 
   const validateCardNumber = (value) => {
