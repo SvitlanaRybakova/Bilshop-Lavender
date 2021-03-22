@@ -1,42 +1,24 @@
 .buttonBtn2 {
   display: flex;
   margin: auto;
+  background-color: white !important;
+  border: 1px solid#383838 !important;
+  color: #383838 !important;
+  font-size: 0.8rem;
+  /* margin-bottom: 153px; */
 }
 
-/* .rowZ {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 2rem;
-  margin-right: 2rem;
+.buttonBtn2:hover {
+  border-color: #eeb644 !important;
+  color: #eeb644 !important;
+  background-color: white !important;
 }
 
-@media (min-width: 768px) {
-  .row .col-md-1,
-  .row .col-sm-1,
-  .row .col-lg-1 {
-    width: 100%;
-    *width: 100%;
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
+.loginButton {
+  border-color: #eeb644;
 }
 
-@media (min-width: 992px) {
-  .row .col-md-1,
-  .row .col-sm-1,
-  .row .col-lg-1 {
-    width: 14.285714285714285714285714285714%;
-    *width: 14.285714285714285714285714285714%;
-  }
+.loginButton:hover {
+  background-color: #383838;
+  border-color: #383838;
 }
-
-@media (min-width: 1200px) {
-  .row .col-md-1,
-  .row .col-sm-1,
-  .row .col-lg-1 {
-    width: 14.285714285714285714285714285714%;
-    *width: 14.285714285714285714285714285714%;
-  }
-} */
