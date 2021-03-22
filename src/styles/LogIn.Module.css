@@ -15,10 +15,11 @@
 }
 
 .loginButton {
-  border-color: #eeb644;
+  border-color: #eeb644 !important;
+  background-color: #eeb644 !important;
 }
 
 .loginButton:hover {
-  background-color: #383838;
-  border-color: #383838;
+  background-color: #383838 !important;
+  border-color: #383838 !important;
 }
