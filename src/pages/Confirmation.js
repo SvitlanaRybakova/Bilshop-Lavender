@@ -56,7 +56,7 @@ function Confirmation() {
                 <div className='ps-sm-4'>
                     <p>Car Market, Inc</p>
                     <p>605, Ratan Icon Building, <br/> Skåne, Sweden, 90002</p>
-                    <p>Tel: 070-0000-0077</p>
+                    <p>Phone: 070-0000-0077</p>
                     <p>Email: cars@mailgo.dev</p>
                 </div>
                 <div>
@@ -103,8 +103,8 @@ function Confirmation() {
                     }
                 </p>
             </div>
-            <div className='my-5'>
-                <p>Thank you for your purchase! If you have any questions contact us cars@mailgo.dev</p>
+            <div className='my-5 text-center'>
+                <p>Thank you for your purchase! If you have any questions contact us at cars@mailgo.dev</p>
             </div>
            
         </div>

@@ -115,8 +115,8 @@ export default function Checkout() {
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="streetAddress" className="sr-only required">Street address</label>
-                      <input type="text" pattern="^[^\s]+(\s+[^\s]+)*$" title="(you can't use space in the beginning)" id="streetAddress" placeholder="Street address" minLength="2" required onChange={handle} />
+                      <label htmlFor="streetAddress" className="sr-only required">Street Address</label>
+                      <input type="text" pattern="^[^\s]+(\s+[^\s]+)*$" title="(you can't use space in the beginning)" id="streetAddress" placeholder="Street Address" minLength="2" required onChange={handle} />
                     </div>
 
 
@@ -126,7 +126,7 @@ export default function Checkout() {
                       <input type="number" pattern="[0-9]*" min="0" id="phone" placeholder="Phone" required onChange={handle} />
                     </div>
 
-                    <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
+                    <h2 className={`${styles.h2} mb-4`}>Payment Details</h2>
                     <div className="row">
 
                       <div className="col-md-6">
@@ -150,14 +150,14 @@ export default function Checkout() {
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
-                          <label htmlFor="cardNumber" className="required">Card number</label>
+                          <label htmlFor="cardNumber" className="required">Card Number</label>
                           <input type="number" id="cardNumber" min="0"  required onChange={handle} />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
-                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 code</label>
+                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 Code</label>
                           <input type="number" id="cvcCode" min="0" required onChange={handle} />
                         </div>
                       </div>
@@ -166,7 +166,7 @@ export default function Checkout() {
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="cardHolder" className="required">Card holder name</label>
+                      <label htmlFor="cardHolder" className="required">Card Holder Name</label>
                       <input type="text" pattern="[A-Za-z]*" title="(only alphabetic characters)" id="cardHolder" required onChange={handle} />
                     </div>
 
