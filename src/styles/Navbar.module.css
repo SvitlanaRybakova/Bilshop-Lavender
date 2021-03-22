@@ -66,6 +66,10 @@ nav {
  
 }
 
+Link{
+  display: block;
+  background-color: red;
+}
 
 .cartWrapper {
   display: flex;
