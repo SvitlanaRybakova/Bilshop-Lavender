@@ -85,7 +85,7 @@ export default function CarItem(props) {
             }
             else {
               return <div
-                className={`${styles.carItemCart} col`}
+                className={`${styles.carItemCart} col d-flex align-items-center`}
                 onClick={() => addCarToCart(car)}
               >
                 <FontAwesomeIcon icon={faShoppingCart} />
@@ -95,7 +95,7 @@ export default function CarItem(props) {
 
           <div
             onClick={handleClick}
-            className={`${styles.detailsButton} col-6  btn`}
+            className={`${styles.detailsButton} col-6 btn`}
           >
             view details
           </div>
