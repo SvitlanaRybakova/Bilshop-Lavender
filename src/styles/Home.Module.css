@@ -22,6 +22,10 @@
   box-shadow: #8a877f 1px 1px 7px;
 }
 
+.itemWrapper:hover {
+  background-color: rgb(233, 233, 233);
+}
+
 .detailsButton {
   border: 1px solid #383838;
   width: 10rem;
@@ -51,6 +55,7 @@
 .carItemCart {
   margin-left: 0px;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .carItemCart:hover {
@@ -59,7 +64,7 @@
 
 .milesSpan {
   color: #080202;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .priseSpan {

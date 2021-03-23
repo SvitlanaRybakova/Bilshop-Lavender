@@ -112,10 +112,10 @@ function CarContextProvider(props) {
   }, [copyCars, currentCars]);
 
   const onChangeMake = (e) => {
-    setMake(e.target.value);
+    setMake(e.target.value.trim());
   };
   const onChangeModel = (e) => {
-    setModel(e.target.value);
+    setModel(e.target.value.trim());
   };
   const onChangeYear = (e) => {
     setYear(e.target.value);
@@ -136,6 +136,7 @@ function CarContextProvider(props) {
 
   const findCarFilter = (e) => {
     e.preventDefault();
+    
     let alteredMinMiles;
     let alteredMaxMiles;
     let alteredMinPrice;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { CarContext } from "../contexts/CarContext";
 import { ShopCartContext } from "../contexts/ShopCartContext";
@@ -10,12 +10,21 @@ export default function CarItem(props) {
   const { car } = props;
   const { showPrice } = useContext(CarContext);
 
-  const { addCarToCart } = useContext(ShopCartContext);
+  const { purchases, addCarToCart } = useContext(ShopCartContext);
   const history = useHistory();
 
   const handleClick = () => {
     history.push(`/cars/${car.vin}`);
   };
+
+  //To mark a car that is in the shopping cart
+  let isBought = false;
+
+  for (let i = 0; i < purchases.products.length; i++) {
+    if (purchases.products[i].vin === car.vin) {
+      isBought = true;
+    }
+  }
 
   return (
     <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
@@ -40,7 +49,7 @@ export default function CarItem(props) {
           </span>
           {/*miles*/}
           <span className={`${styles.milesSpan} `}>
-          <strong>{(car.miles)} km </strong>
+            <strong>{showPrice(car.miles)} km </strong>
           </span>
         </div>
         {/* price */}
@@ -48,16 +57,24 @@ export default function CarItem(props) {
           <strong>{showPrice(car.price)} SEK</strong>
         </span>
         {/* buttons */}
-        <div className="row ">
-          <div
-            className={`${styles.carItemCart} col`}
-            onClick={() => addCarToCart(car)}
-          >
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </div>
+        <div className="row d-flex justify-content-between">
+
+          {(() => {
+            if (isBought) {
+              return <div className="col d-flex align-items-center"> In the cart</div>;
+            } else {
+              return <div
+                className={`${styles.carItemCart} col`}
+                onClick={() => addCarToCart(car)}
+              >
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </div>;
+            }
+          })()}
+
           <div
             onClick={handleClick}
-            className={`${styles.detailsButton} col btn`}
+            className={`${styles.detailsButton} col-6  btn`}
           >
             view details
           </div>

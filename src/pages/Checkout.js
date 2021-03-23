@@ -54,10 +54,55 @@ export default function Checkout() {
 
   function ScrollToTopOnMount() {
     useEffect(() => {
-      document.querySelector('body').scrollTo(0,0)
+      document.querySelector('body').scrollTo(0, 0)
     }, []);
-  
+
     return null;
+  }
+  const validateName = (value) => {
+
+    return value
+      .replace(/^\s*\d*/, "")
+      .replace(/[0-9]/g, "")
+      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
+  }
+
+  const validatePostcode = (value) => {
+    return value.replace(/\s/g, "").match(/\d{1,3}/g)?.join(" ").substr(0, 6) || ""
+  }
+
+  const validateStreetAdress = (value) => {
+    return value
+      .replace(/^\s*\d*/, "")
+      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
+  }
+
+  const validatePhoneNumber = (value) => {
+    if (value.length <= 7){
+      return  value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7)|| ""
+    } else{
+      const groupThreeString = value.substring(0, 7);
+      const groupTwoString = value.substring(7, value.length);
+      return (groupThreeString +
+        '-' +
+        groupTwoString.replace(/\s/g, "")
+        .match(/\d{1,2}/g)?.join("-")
+        )
+        .substring(0, 13) || "" 
+    }
+   
+  }
+
+  const validateCardNumber = (value) => {
+    return value.replace(/\s/g, "").match(/\d{1,4}/g)?.join(" ").substr(0, 19) || ""
+  }
+
+  const validateExpDate = (value) => {
+    return value.replace(/\//g, "").match(/\d{1,2}/g)?.join("/").substr(0, 5) || ""
+  }
+
+  const validateCVC = (value) => {
+    return value.match(/\d{1,3}/g)?.join("").substr(0, 3) || ""
   }
 
   return (
@@ -77,22 +122,44 @@ export default function Checkout() {
                     <div className="row">
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
-                          <label htmlFor="firstName" className="sr-only required">First Name</label>
-                          <input type="text" pattern="[A-Za-z]*" id="firstName" title="(only alphabetic characters)" placeholder="First Name" minLength="2" required onChange={handle} />
+                          <label htmlFor="firstName" className="">First Name</label>
+                          <input
+                            className={styles.input}
+                            type="text"
+                            id="firstName"
+                            title="(only alphabetic characters)"
+                            placeholder="Alicia" 
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateName(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
-                          <label htmlFor="lastName" className="sr-only required">Last Name</label>
-                          <input type="text" pattern="[A-Za-z]*" id="lastName" title="(only alphabetic characters)" placeholder="Last Name" minLength="2" required onChange={handle} />
+                          <label htmlFor="lastName" className="">Last Name</label>
+                          <input className={styles.input}
+                            type="text"
+                            id="lastName"
+                            title="(only alphabetic characters)"
+                            placeholder="Brown"
+                            title="(only alphabetic characters)"
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateName(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
                     </div>
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="email" className="sr-only required">Email Address</label>
-                      <input type="email" id="email" placeholder="Email Address" minLength="2" required onChange={handle} />
+                      <label htmlFor="email" className="">Email Address</label>
+                      <input className={styles.input} type="email" id="email" placeholder="example@gmail.com " minLength="2" required onChange={handle} />
                     </div>
 
 
@@ -100,46 +167,111 @@ export default function Checkout() {
                     <div className="row">
                       <div className="col-md-6">
                         <div className={styles.inputItem}>
-                          <label htmlFor="city" className="sr-only required">Town / City</label>
-                          <input type="text" pattern="[A-Za-z]*" id="city" title="(only alphabetic characters)" placeholder="Town / City" minLength="2" required onChange={handle} />
+                          <label htmlFor="city" className="">Town / City</label>
+                          <input className={styles.input}
+                            type="text"
+                            id="city"
+                            title="(only alphabetic characters)"
+                            placeholder=" Malmö"
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateName(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={styles.inputItem}>
-                          <label htmlFor="postcode" className="sr-only required">Postcode / ZIP</label>
-                          <input type="number" id="postcode" min="0" placeholder="Postcode / ZIP" required onChange={handle} />
+                          <label htmlFor="postcode" className="">Postcode / ZIP</label>
+                          <input className={styles.input}
+                            type="tel"
+                            inputMode="numeric"
+                            autoComplete="cc-number"
+                            id="postcode"
+                            placeholder="222 25"
+                            required 
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validatePostcode(value)
+                              handle(e)
+                            }}/>
                         </div>
                       </div>
                     </div>
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="streetAddress" className="sr-only required">Street address</label>
-                      <input type="text" pattern="^[^\s]+(\s+[^\s]+)*$" title="(you can't use space in the beginning)" id="streetAddress" placeholder="Street address" minLength="2" required onChange={handle} />
+                      <label htmlFor="streetAddress" className="">Street address</label>
+                      <input className={styles.input} 
+                      type="text" 
+                      title="(you can't use space in the beginning)" 
+                      id="streetAddress" 
+                      placeholder="Nordanväg 28A"  
+                      required 
+                      onChange={(e) => {
+                        const { value } = e.target
+                        e.target.value = validateStreetAdress(value)
+                        handle(e)
+                      }} />
                     </div>
 
 
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="phone" className="sr-only">Phone</label>
-                      <input type="number" pattern="[0-9]*" min="0" id="phone" placeholder="Phone" required onChange={handle} />
+                      <label htmlFor="phone" className="">Phone</label>
+                      <input 
+                      className={styles.input} 
+                      type="tel"
+                        id="phone"
+                        placeholder="073-123-12-12"
+                        required
+                        onChange={(e) => {
+                          const { value } = e.target
+                          e.target.value = validatePhoneNumber(value)
+                          handle(e)
+                        }}
+                        
+                      />
                     </div>
 
-                    <h2 className={`${styles.h2} mb-4`}>Payment details</h2>
+                    <h2 className={`${styles.h2} mb-4`}>Payment Details</h2>
                     <div className="row">
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
                           <label htmlFor="cardName" className="required">Card Name</label>
-                          <input type="text" pattern="[A-Za-z]*" title="(only alphabetic characters)" id="cardName" minLength="4" required onChange={handle} />
+                          <input
+                            className={styles.input}
+                            type="text"
+                            id="cardName"
+                            placeholder="Master Card"
+                            required 
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateName(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
                           <label htmlFor="validDate" className="required">Valid Date</label>
-                          <input type="number" pattern="[0-9]" min="0"   id="validDate" required onChange={handle} />
+                          <input
+                            className={styles.input}
+                            placeholder="02/24"
+                            type="tel"
+                            inputMode="numeric"
+                            autoComplete="cc-number"
+                            id="validDate"
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateExpDate(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
 
@@ -151,14 +283,39 @@ export default function Checkout() {
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
                           <label htmlFor="cardNumber" className="required">Card number</label>
-                          <input type="number" id="cardNumber" min="0"  required onChange={handle} />
+                          <input
+                            className={styles.input}
+                            placeholder="0000 0000 0000 0000"
+                            type="tel"
+                            inputMode="numeric"
+                            autoComplete="cc-number"
+                            id="cardNumber"
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateCardNumber(value)
+                              handle(e)
+                            }}
+                          />
                         </div>
                       </div>
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
                           <label htmlFor="cvcCode" className="required">CVV2/CVC2 code</label>
-                          <input type="number" id="cvcCode" min="0" required onChange={handle} />
+                          <input
+                            className={styles.input}
+                            placeholder="000"
+                            type="tel"
+                            inputMode="numeric"
+                            autoComplete="cc-number"
+                            id="cvcCode"
+                            required
+                            onChange={(e) => {
+                              const { value } = e.target
+                              e.target.value = validateCVC(value)
+                              handle(e)
+                            }} />
                         </div>
                       </div>
 
@@ -167,7 +324,17 @@ export default function Checkout() {
 
                     <div className={styles.inputItem}>
                       <label htmlFor="cardHolder" className="required">Card holder name</label>
-                      <input type="text" pattern="[A-Za-z]*" title="(only alphabetic characters)" id="cardHolder" required onChange={handle} />
+                      <input
+                        className={styles.input}
+                        placeholder="Alicia Brown"
+                        type="text"
+                        id="cardHolder"
+                        required
+                        onChange={(e) => {
+                          const { value } = e.target
+                          e.target.value = validateName(value)
+                          handle(e)
+                        }} />
                     </div>
 
                     <button type='submit' className={`${styles.placeOrderButton} btn mt-5 container`}>Place order</button>
