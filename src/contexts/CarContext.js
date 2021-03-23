@@ -86,7 +86,7 @@ function CarContextProvider(props) {
 
   useEffect(() =>{
     markPagination();
-  }, [copyCars])
+  }, [copyCars, isSwitching])
 
   // functions for search bar
   const findCar = (e) => {
