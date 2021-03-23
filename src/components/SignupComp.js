@@ -24,6 +24,11 @@ function SignupComp() {
     confirmPassword,
     onChangeConfirmPassword,
     onSubmit,
+
+    validateName,
+    validatePostcode,
+    validateStreetAdress,
+    validatePhoneNumber
   } = useContext(UserContext);
 
   return (
@@ -34,61 +39,108 @@ function SignupComp() {
       <div className="rowZ d-flex align-items-center justify-content-center">
         <div className="col-10 col-md-5">
           <div className="form-group">
+
             <label>First Name</label>
             <input
               type="text"
               className="form-control mb-3"
-              placeholder="First Name"
+              placeholder="Alicia"
               value={firstName}
-              onChange={onChangeFirstName}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validateName(value)
+                onChangeFirstName(e)
+              }}
             ></input>
+
             <label>Last Name</label>
             <input
               type="text"
               className="form-control mb-3"
-              placeholder="Last Name"
+              placeholder="Brown"
               value={lastName}
-              onChange={onChangeLastName}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validateName(value)
+                onChangeLastName(e)
+              }}
             ></input>
+
+
             <label>Email Address</label>
             <input
               type="email"
               className="form-control mb-3"
-              placeholder="Email Address"
+              placeholder="ex@example.com"
               value={emailAddress}
+              required
               onChange={onChangeEmailAddress}
             ></input>
+
+
             <label>Town / City</label>
             <input
               type="text"
               className="form-control mb-3"
-              placeholder="Town / City"
+              placeholder="Malmö"
               value={townCity}
-              onChange={onChangeTownCity}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validateName(value)
+                onChangeTownCity(e)
+              }}
             ></input>
+
+
             <label>Postcode / ZIP</label>
             <input
-              type="number"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="cc-number"
               className="form-control mb-3"
-              placeholder="Postcode / ZIP"
+              placeholder="222 25"
               value={postcodeZIP}
-              onChange={onChangePostcodeZIP}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validatePostcode(value)
+                onChangePostcodeZIP(e)
+              }}
             ></input>
+
+
             <label>Street Address</label>
             <input
               type="text"
               className="form-control mb-3"
-              placeholder="Stress Address"
+              placeholder="Nordanväg 28A"
               value={streetAddress}
-              onChange={onChangeStreetAddress}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validateStreetAdress(value)
+                onChangeStreetAddress(e)
+              }}
             ></input>
+
             <label>Phone</label>
             <input
-              type="number"
               className="form-control mb-3"
-              placeholder="Phone"
+              placeholder="073-123-23-45"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="cc-number"
               value={phone}
-              onChange={onChangePhone}
+              required
+              onChange={(e) => {
+                const { value } = e.target
+                e.target.value = validatePhoneNumber(value)
+                onChangePhone(e)
+              }}
+
             ></input>
             <div className="form-group">
               <label>Password</label>
@@ -96,6 +148,7 @@ function SignupComp() {
                 type="password"
                 className="form-control mb-3"
                 placeholder="Password"
+                required
                 value={password}
                 onChange={onChangePassword}
               ></input>
@@ -106,6 +159,7 @@ function SignupComp() {
                 type="password"
                 className="form-control mb-5"
                 placeholder="Confirm Password"
+                required
                 value={confirmPassword}
                 onChange={onChangeConfirmPassword}
               ></input>

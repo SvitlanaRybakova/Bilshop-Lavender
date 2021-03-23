@@ -5,21 +5,28 @@ import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 function MyProfile() {
-  const { userData, userOrders } = useContext(UserContext);
+
+  const {  userOrders } = useContext(UserContext);
   const { showPrice } = useContext(CarContext);
+  
   console.log(userOrders);
 
+   for (let i = 0; i < userOrders.length; i++) {
+     console.log(userOrders);
+   }
+
   const history = useHistory();
+ 
   const props = {
     showPrice,
-    userData,
     userOrders,
   };
 
-  for (let i = 0; i < userOrders.length; i++) {
-    console.log(userOrders);
-  }
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+  
 
+
+// the date in which an order has been made
   function Datum() {
     const today = new Date();
     const Month = today.getMonth() <= 12 ? "0" : "";
@@ -42,7 +49,7 @@ function MyProfile() {
                 <td>NAME:</td>
                 <td>
                   {" "}
-                  {userData.firstName} {userData.lastName}
+                  {userInfo.firstName} {userInfo.lastName}
                 </td>
               </tr>
             </thead>
@@ -51,20 +58,20 @@ function MyProfile() {
                 <td>ADDRESS:</td>
                 <td>
                   {" "}
-                  {userData.streetAddress} {userData.postcode} {userData.city}{" "}
+                  {userInfo.streetAddress} {userInfo.postcode} {userInfo.city}{" "}
                 </td>
               </tr>
             </thead>
             <thead>
               <tr>
                 <td>PHONE:</td>
-                <td>{userData.phone}</td>
+                <td>{userInfo.phone}</td>
               </tr>
             </thead>
             <thead>
               <tr>
                 <td>EMAIL:</td>
-                <td>{userData.email}</td>
+                <td>{userInfo.emailAddress}</td>
               </tr>
             </thead>
           </table>
@@ -84,6 +91,14 @@ function MyProfile() {
             </tr>
           </thead>
           <tbody>
+          {
+                    userOrders.products && userOrders.products.map((product, i) => (
+                                <tr key={i}>
+                                    <td>{product.make} {product.model} {product.year}</td>
+                                    <td>{showPrice(product.price)} SEK</td>
+                                </tr>
+                            ))
+                        }
             <tr>
               <td></td>
               <td></td>
