@@ -17,7 +17,7 @@ export default function CarList() {
   // pagination
   const paginate = (e, pageNumber) => {
     e.preventDefault();
-    let children = document.querySelectorAll(".PagePagination_liItem__1Oqp7");
+    let children = document.querySelectorAll("[class*=PagePagination_liItem");
     children.forEach(child => {
       child.style.removeProperty("border");
       child.style.removeProperty("color");
