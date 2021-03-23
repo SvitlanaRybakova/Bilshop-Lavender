@@ -5,6 +5,7 @@ import { ShopCartContext } from "../contexts/ShopCartContext";
 import styles from "../styles/Home.Module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../contexts/UserContext";
 
 export default function CarItem(props) {
   const { car } = props;
@@ -18,13 +19,30 @@ export default function CarItem(props) {
   };
 
   //To mark a car that is in the shopping cart
-  let isBought = false;
+  let isCarInShoppingCart = false
 
   for (let i = 0; i < purchases.products.length; i++) {
     if (purchases.products[i].vin === car.vin) {
-      isBought = true;
+      isCarInShoppingCart = true;
     }
   }
+
+
+  //To mark a sold car
+
+  const { userOrders } = useContext(UserContext)
+
+  let isBought = false
+  for (let i = 0; i < userOrders.orderHistory.length; i++) {
+
+    for (let j = 0; j < userOrders.orderHistory[i].products.length; j++) {
+
+      if (userOrders.orderHistory[i].products[j].vin === car.vin) {
+        isBought = true;
+      }
+    }
+  }
+
 
   return (
     <div className={`${styles.itemWrapper} card col-md-5 col-lg-3`}>
@@ -54,15 +72,18 @@ export default function CarItem(props) {
         </div>
         {/* price */}
         <span className={`${styles.priseSpan} `}>
-          <strong>{showPrice(car.price)} SEK</strong>
+          {!isBought && <strong>{showPrice(car.price)} SEK</strong>}
         </span>
         {/* buttons */}
         <div className="row d-flex justify-content-between">
 
           {(() => {
-            if (isBought) {
+            if (isCarInShoppingCart) {
               return <div className="col d-flex align-items-center"> In the cart</div>;
-            } else {
+            } else if (isBought) {
+              return <div className={`${styles.soldCar} col d-flex align-items-center`}> Sold</div>
+            }
+            else {
               return <div
                 className={`${styles.carItemCart} col`}
                 onClick={() => addCarToCart(car)}
