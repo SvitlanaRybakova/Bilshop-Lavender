@@ -210,19 +210,21 @@ function UserContextProvider(props) {
   }
 
   const validatePhoneNumber = (value) => {
-    console.log('value', value.length);
     if (value.length <= 7) {
       return value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7) || ""
     } else {
-      const groupThreeString = value.substring(0, 7);
-      const groupTwoString = value.substring(7, 13) || "";
-      console.log('groupTwoString', groupTwoString.length);
-      return (groupThreeString +
+      const groupByThreeString = value.substring(0, 7);
+      let groupByTwoString = value.substring(7, value.length);
+      const groups = groupByTwoString.replace(/\s/g, "").match(/\d{1,2}/g);
+      if(groups === null){
+          groupByTwoString = "";
+      } else {
+          groupByTwoString = groups.join("-");
+      }
+      return ((groupByThreeString +
         '-' +
-        groupTwoString.replace(/\s/g, "")
-          .match(/\d{1,2}/g)?.join("-")
-      )
-        .substring(0, 13) || ""
+        groupByTwoString
+      ).substring(0, 13) || "")
     }
 
   }
