@@ -6,20 +6,20 @@ import { UserContext } from '../contexts/UserContext'
 import { CarContext } from '../contexts/CarContext';
 
 function ShoppingCartTotal(props) {
-  const { showPrice } = useContext(CarContext);
+    const { showPrice } = useContext(CarContext);
     //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
     const location = useLocation()
 
     // let linkAdress
     // linkAdress = (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ? "/shopping-cart/checkout" : '#'
     const history = useHistory();
-  const { logedIn } = useContext(UserContext)
-    
-    const checkout = (e) =>{
-      e.preventDefault()
-      if (logedIn === true) {
-        history.push("/shopping-cart/checkout")
-      }
+    const { logedIn } = useContext(UserContext)
+
+    const checkout = (e) => {
+        e.preventDefault()
+        if (logedIn === true) {
+            history.push("/shopping-cart/checkout")
+        }
     }
 
     useEffect(() => {
@@ -95,25 +95,25 @@ function ShoppingCartTotal(props) {
                 <div className={styles.toCheckoutBtnBox}>
 
                     {/* Button renders only on shopping Cart page */}
-                   
+
                     <div className='text-center'>
                         {(() => {
-                            if (location.pathname === '/shopping-cart' 
-                            && props.props.purchases.isDeliveryChoosed
-                            && props.props.purchases.products.length > 0) {
-                              if (logedIn === true) {
-                                return (
-                                <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`}>
-                                    Proceed to checkout
-                                </button>
-                                )
-                              }else{
-                                return (
+                            if (location.pathname === '/shopping-cart'
+                                && props.props.purchases.isDeliveryChoosed
+                                && props.props.purchases.products.length > 0) {
+                                if (logedIn === true) {
+                                    return (
+                                        <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`}>
+                                            Proceed to checkout
+                                        </button>
+                                    )
+                                } else {
+                                    return (
                                         <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
                                             Proceed to checkout
                                         </button>
-                                )
-                              }
+                                    )
+                                }
                             } else if (location.pathname === '/shopping-cart/checkout' || props.props.purchases.products.length === 0) {
                                 return (
                                     <div></div>
@@ -138,9 +138,10 @@ function ShoppingCartTotal(props) {
                         <div className="modal-header border-0">
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div className="modal-body text-center">                       
-                              <b>You need to be logged in and choose a shipping option to proceed!</b>
-                    </div>
+                        <div className="modal-body text-center">
+                            {logedIn ? <b>You need to choose a shipping option to proceed!</b> : <b>You need to be logged in</b>}
+                            
+                        </div>
                         <div className="modal-footer text-center border-0">
                             <button type="button" className={`${styles.closeBtn} btn`} data-bs-dismiss="modal">Close</button>
                         </div>
