@@ -75,13 +75,13 @@ function CarContextProvider(props) {
 
   // Mark first pagination
   const markPagination = () =>{
-    let children = document.querySelectorAll(".PagePagination_liItem__1Oqp7");
+    let children = document.querySelectorAll("[class*=PagePagination_liItem");
     children.forEach(child => {
       child.style.removeProperty("border");
       child.style.removeProperty("color");
     });
-    document.querySelector(".PagePagination_liItem__1Oqp7").style.border = "1px solid #feb93e";
-    document.querySelector(".PagePagination_liItem__1Oqp7").style.color = "#feb93e";
+    document.querySelector("[class*=PagePagination_liItem").style.border = "1px solid #feb93e";
+    document.querySelector("[class*=PagePagination_liItem").style.color = "#feb93e";
   }
 
   useEffect(() =>{
