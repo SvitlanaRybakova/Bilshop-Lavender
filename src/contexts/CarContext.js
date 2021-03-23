@@ -80,8 +80,10 @@ function CarContextProvider(props) {
       child.style.removeProperty("border");
       child.style.removeProperty("color");
     });
-    document.querySelector("[class*=PagePagination_liItem").style.border = "1px solid #feb93e";
-    document.querySelector("[class*=PagePagination_liItem").style.color = "#feb93e";
+    if(document.querySelector("[class*=PagePagination_liItem")){
+      document.querySelector("[class*=PagePagination_liItem").style.border = "1px solid #feb93e";
+      document.querySelector("[class*=PagePagination_liItem").style.color = "#feb93e";
+    }
   }
 
   useEffect(() =>{
