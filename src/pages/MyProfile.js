@@ -20,18 +20,13 @@ function MyProfile() {
     console.log(userOrders);
   }
 
-  function currentDate() {
+  function Datum() {
     const today = new Date();
-    const nullBeforeMonth = today.getMonth() <= 9 ? "0" : "";
-    const nullBeforeDay = today.getDate() <= 9 ? "0" : "";
+    const Month = today.getMonth() <= 12 ? "0" : "";
+    const Day = today.getDate() <= 22 ? "0" : "";
     const date =
-      nullBeforeDay +
-      today.getDate() +
-      "." +
-      nullBeforeMonth +
-      (today.getMonth() + 1) +
-      "." +
-      today.getFullYear();
+      Day +
+      today.getDate() + "." + Month + (today.getMonth() + 1) +"." + today.getFullYear();
     return date;
   }
 
@@ -94,7 +89,7 @@ function MyProfile() {
               <td></td>
               <td>
                 <div className={`${styles.datum}`}>
-                  {currentDate()}{" "}
+                  {Datum()}{" "}
                 </div>{" "}
               </td>
             </tr>
