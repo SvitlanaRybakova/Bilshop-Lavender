@@ -17,6 +17,13 @@ export default function CarList() {
   // pagination
   const paginate = (e, pageNumber) => {
     e.preventDefault();
+    let children = document.querySelectorAll(".PagePagination_liItem__1Oqp7");
+    children.forEach(child => {
+      child.style.removeProperty("border");
+      child.style.removeProperty("color");
+    });
+    e.target.style.border = "1px solid #feb93e";
+    e.target.style.color = "#feb93e";
     setCurrentPage(pageNumber);
   };
 
