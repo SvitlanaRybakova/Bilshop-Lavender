@@ -1,11 +1,13 @@
-.container {
-  width: 90%;
+
+.customerInfo {
+  width: 50%;
   margin-left: 2rem;
 }
 
-.rowZ {
-  margin-left: 2rem;
+.datum {
+  align-self: flex-end;
 }
+
 
 @media (min-width: 768px) {
   .row .col-md-6,
