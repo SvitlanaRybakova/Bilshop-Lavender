@@ -23,6 +23,7 @@ function LoginComp() {
               type="email"
               className="form-control mb-3"
               placeholder="Email Address"
+              required
               onChange={onChangeLoginEmail}
               value={loginEmail}
             ></input>
@@ -30,6 +31,7 @@ function LoginComp() {
               <label>Password</label>
               <input
                 type="password"
+                required
                 className="form-control mb-3"
                 placeholder="Password"
                 onChange={onChangeLoginPassword}
