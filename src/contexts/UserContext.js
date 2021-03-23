@@ -108,6 +108,7 @@ function UserContextProvider(props) {
   }, [userOrderHistoryBoolean]);
 
   const onSubmit = (e) => {
+    console.log('right');
     e.preventDefault();
     const userInfo = {
       firstName: firstName,
@@ -139,6 +140,8 @@ function UserContextProvider(props) {
       setConfirmPassword("");
       setLogedIn(true);
     }
+   
+    console.log(firstName, lastName, emailAddress, townCity, postcodeZIP, streetAddress, phone,);
   };
 
   const [logedIn, setLogedIn] = useState(false);
@@ -188,6 +191,53 @@ function UserContextProvider(props) {
     }
   };
 
+  const validateName = (value) => {
+
+    return value
+      .replace(/^\s*\d*/, "")
+      .replace(/[0-9]/g, "")
+      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
+  }
+
+  const validatePostcode = (value) => {
+    return value.replace(/\s/g, "").match(/\d{1,3}/g)?.join(" ").substr(0, 6) || ""
+  }
+
+  const validateStreetAdress = (value) => {
+    return value
+      .replace(/^\s*\d*/, "")
+      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
+  }
+
+  const validatePhoneNumber = (value) => {
+    console.log('value', value.length);
+    if (value.length <= 7) {
+      return value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7) || ""
+    } else {
+      const groupThreeString = value.substring(0, 7);
+      const groupTwoString = value.substring(7, 13) || "";
+      console.log('groupTwoString', groupTwoString.length);
+      return (groupThreeString +
+        '-' +
+        groupTwoString.replace(/\s/g, "")
+          .match(/\d{1,2}/g)?.join("-")
+      )
+        .substring(0, 13) || ""
+    }
+
+  }
+
+  const validateCardNumber = (value) => {
+    return value.replace(/\s/g, "").match(/\d{1,4}/g)?.join(" ").substr(0, 19) || ""
+  }
+
+  const validateExpDate = (value) => {
+    return value.replace(/\//g, "").match(/\d{1,2}/g)?.join("/").substr(0, 5) || ""
+  }
+
+  const validateCVC = (value) => {
+    return value.match(/\d{1,3}/g)?.join("").substr(0, 3) || ""
+  }
   const values = {
     userData,
     addUserDataToContext,
@@ -220,6 +270,13 @@ function UserContextProvider(props) {
     onChangeLoginPassword,
     loginPassword,
     onSubmitLogin,
+    validateName,
+    validatePostcode,
+    validateCardNumber,
+    validateExpDate,
+    validateCVC,
+    validateStreetAdress,
+    validatePhoneNumber
   };
 
   return (

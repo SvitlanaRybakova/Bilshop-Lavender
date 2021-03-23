@@ -9,7 +9,16 @@ export default function Checkout() {
   const { purchases } = useContext(ShopCartContext)
   const { showPrice } = useContext(CarContext);
 
-  const { addUserDataToContext, orderHistory } = useContext(UserContext)
+  const { addUserDataToContext, 
+    orderHistory,
+    validateName,
+    validatePostcode,
+    validateCardNumber,
+    validateExpDate,
+    validateCVC,
+    validateStreetAdress,
+    validatePhoneNumber } = useContext(UserContext);
+    console.log(validateName);
 
   //an object which will contain the collecting data from input field
   let userPersonalData = {
@@ -59,51 +68,7 @@ export default function Checkout() {
 
     return null;
   }
-  const validateName = (value) => {
-
-    return value
-      .replace(/^\s*\d*/, "")
-      .replace(/[0-9]/g, "")
-      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
-  }
-
-  const validatePostcode = (value) => {
-    return value.replace(/\s/g, "").match(/\d{1,3}/g)?.join(" ").substr(0, 6) || ""
-  }
-
-  const validateStreetAdress = (value) => {
-    return value
-      .replace(/^\s*\d*/, "")
-      .replace(/(?:^|\s|[-"'([{])+\S/g, (c) => c.toUpperCase());
-  }
-
-  const validatePhoneNumber = (value) => {
-    if (value.length <= 7){
-      return  value.replace(/\-/g, "").match(/\d{1,3}/g)?.join("-").substring(0, 7)|| ""
-    } else{
-      const groupThreeString = value.substring(0, 7);
-      const groupTwoString = value.substring(7, value.length);
-      return (groupThreeString +
-        '-' +
-        groupTwoString.replace(/\s/g, "")
-        .match(/\d{1,2}/g)?.join("-")
-        )
-        .substring(0, 13) || "" 
-    }
-   
-  }
-
-  const validateCardNumber = (value) => {
-    return value.replace(/\s/g, "").match(/\d{1,4}/g)?.join(" ").substr(0, 19) || ""
-  }
-
-  const validateExpDate = (value) => {
-    return value.replace(/\//g, "").match(/\d{1,2}/g)?.join("/").substr(0, 5) || ""
-  }
-
-  const validateCVC = (value) => {
-    return value.match(/\d{1,3}/g)?.join("").substr(0, 3) || ""
-  }
+ 
 
   return (
     <div className={`${styles.pageContentWrapper} mt-5 container sp-y`}>
@@ -128,7 +93,7 @@ export default function Checkout() {
                             type="text"
                             id="firstName"
                             title="(only alphabetic characters)"
-                            placeholder="Alicia" 
+                            placeholder="Alicia"
                             required
                             onChange={(e) => {
                               const { value } = e.target
@@ -191,19 +156,19 @@ export default function Checkout() {
                             autoComplete="cc-number"
                             id="postcode"
                             placeholder="222 25"
-                            required 
+                            required
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validatePostcode(value)
                               handle(e)
-                            }}/>
+                            }} />
                         </div>
                       </div>
                     </div>
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="streetAddress" className="">Street address</label>
+                      <label htmlFor="streetAddress" className="">Street Address</label>
                       <input className={styles.input} 
                       type="text" 
                       title="(you can't use space in the beginning)" 
@@ -221,9 +186,9 @@ export default function Checkout() {
 
                     <div className={styles.inputItem}>
                       <label htmlFor="phone" className="">Phone</label>
-                      <input 
-                      className={styles.input} 
-                      type="tel"
+                      <input
+                        className={styles.input}
+                        type="tel"
                         id="phone"
                         placeholder="073-123-12-12"
                         required
@@ -232,7 +197,7 @@ export default function Checkout() {
                           e.target.value = validatePhoneNumber(value)
                           handle(e)
                         }}
-                        
+
                       />
                     </div>
 
@@ -247,7 +212,7 @@ export default function Checkout() {
                             type="text"
                             id="cardName"
                             placeholder="Master Card"
-                            required 
+                            required
                             onChange={(e) => {
                               const { value } = e.target
                               e.target.value = validateName(value)
@@ -282,7 +247,7 @@ export default function Checkout() {
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
-                          <label htmlFor="cardNumber" className="required">Card number</label>
+                          <label htmlFor="cardNumber" className="required">Card Number</label>
                           <input
                             className={styles.input}
                             placeholder="0000 0000 0000 0000"
@@ -302,7 +267,7 @@ export default function Checkout() {
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
-                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 code</label>
+                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 Code</label>
                           <input
                             className={styles.input}
                             placeholder="000"
@@ -323,7 +288,7 @@ export default function Checkout() {
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="cardHolder" className="required">Card holder name</label>
+                      <label htmlFor="cardHolder" className="required">Card Holder Name</label>
                       <input
                         className={styles.input}
                         placeholder="Alicia Brown"
