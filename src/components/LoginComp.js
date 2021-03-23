@@ -12,7 +12,7 @@ function LoginComp() {
   } = useContext(UserContext);
   return (
     <form onSubmit={(e) => onSubmitLogin(e)} className="LogIn-Container">
-      <h2 className="d-flex align-items-center justify-content-center">
+      <h2 className="d-flex align-items-center justify-content-center mt-2">
         LOG IN
       </h2>
       <div className="rowZ d-flex align-items-center justify-content-center">

@@ -4,6 +4,7 @@ import Cars from "../json/cars.json";
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
+  
   const carsarray = Cars;
 
   //variables for pagination
@@ -71,6 +72,21 @@ function CarContextProvider(props) {
       return price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
     }
   };
+
+  // Mark first pagination
+  const markPagination = () =>{
+    let children = document.querySelectorAll("[class*=PagePagination_liItem");
+    children.forEach(child => {
+      child.style.removeProperty("border");
+      child.style.removeProperty("color");
+    });
+    document.querySelector("[class*=PagePagination_liItem").style.border = "1px solid #feb93e";
+    document.querySelector("[class*=PagePagination_liItem").style.color = "#feb93e";
+  }
+
+  useEffect(() =>{
+    markPagination();
+  }, [copyCars, isSwitching])
 
   // functions for search bar
   const findCar = (e) => {

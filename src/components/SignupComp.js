@@ -33,7 +33,7 @@ function SignupComp() {
 
   return (
     <form onSubmit={(e) => onSubmit(e)} className="LogIn-Container">
-      <h2 className="d-flex align-items-center justify-content-center">
+      <h2 className="d-flex align-items-center justify-content-center mt-2">
         SIGN UP
       </h2>
       <div className="rowZ d-flex align-items-center justify-content-center">
