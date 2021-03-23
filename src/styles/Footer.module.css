@@ -2,11 +2,7 @@
   overflow: hidden;
   background: #000000;
   color: #ffffff !important;
-  /* margin-bottom: 0; */
   padding-bottom: 30px !important;
-  /* height: calc(78vh - 200px); */
-  border: 1px solid red;
-
 }
 
 .brandName {
