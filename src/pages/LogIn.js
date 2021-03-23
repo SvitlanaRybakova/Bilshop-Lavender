@@ -26,7 +26,7 @@ function LogIn() {
           <LoginComp />
           <button
             onClick={() => renderSignup()}
-            className={`${styles.buttonBtn2} btn btn-primary`}
+            className={`${styles.buttonBtn2} btn btn-primary mb-5`}
           >
             Create an account here
           </button>
@@ -38,7 +38,7 @@ function LogIn() {
           <SignupComp />
           <button
             onClick={() => renderLogin()}
-            className={`${styles.buttonBtn2} btn btn-primary`}
+            className={`${styles.buttonBtn2} btn btn-primary mb-5`}
           >
             Already have an account? Log in here
           </button>

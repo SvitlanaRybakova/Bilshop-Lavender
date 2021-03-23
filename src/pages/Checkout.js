@@ -203,7 +203,7 @@ export default function Checkout() {
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="streetAddress" className="">Street address</label>
+                      <label htmlFor="streetAddress" className="">Street Address</label>
                       <input className={styles.input} 
                       type="text" 
                       title="(you can't use space in the beginning)" 
@@ -282,7 +282,7 @@ export default function Checkout() {
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-0`}>
-                          <label htmlFor="cardNumber" className="required">Card number</label>
+                          <label htmlFor="cardNumber" className="required">Card Number</label>
                           <input
                             className={styles.input}
                             placeholder="0000 0000 0000 0000"
@@ -302,7 +302,7 @@ export default function Checkout() {
 
                       <div className="col-md-6">
                         <div className={`${styles.inputItem} mt-md-0`}>
-                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 code</label>
+                          <label htmlFor="cvcCode" className="required">CVV2/CVC2 Code</label>
                           <input
                             className={styles.input}
                             placeholder="000"
@@ -323,7 +323,7 @@ export default function Checkout() {
                     {/* end row */}
 
                     <div className={styles.inputItem}>
-                      <label htmlFor="cardHolder" className="required">Card holder name</label>
+                      <label htmlFor="cardHolder" className="required">Card Holder Name</label>
                       <input
                         className={styles.input}
                         placeholder="Alicia Brown"

@@ -17,8 +17,3 @@
   border: 1px solid #feb93e;
   background-color: transparent;
 }
-
-.liItem:focus {
-  color: #feb93e;
-  border: 1px solid #feb93e;
-}
