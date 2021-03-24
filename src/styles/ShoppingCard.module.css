@@ -107,3 +107,11 @@ td {
     }
 
 }
+
+/* Styling for btn 'empty cart' */
+
+.emptyCartTd {
+    border: none !important;
+    border-bottom: 1px solid transparent !important;
+    padding: 0 0 20px 0!important;
+}
