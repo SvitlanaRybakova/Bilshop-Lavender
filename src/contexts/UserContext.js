@@ -166,6 +166,7 @@ function UserContextProvider(props) {
   const logOut = () => {
     localStorage.setItem("logedIn", false);
     setLogedIn(false);
+    history.push("/");
   };
 
   const [userInfo, setUserInfo] = useState("");
