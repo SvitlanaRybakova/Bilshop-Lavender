@@ -6,8 +6,8 @@ function EmptyCart() {
 
 
   return (
-    <div className="d-flex justify-content-center justify-content-md-start mt-3">
-      <button className={`btn btnBrand`} onClick={(e) => emptyCart(e)}>Empty shopping cart</button>
+    <div className="d-flex justify-content-start mt-3">
+      <button className={`btnEmptyCart`} onClick={(e) => emptyCart(e)}>Empty all</button>
     </div>
   );
 }
