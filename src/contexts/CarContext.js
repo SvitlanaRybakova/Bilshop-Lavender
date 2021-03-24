@@ -96,9 +96,9 @@ function CarContextProvider(props) {
     setFinded(true);
     if (searchInput.length > 0) {
       const result = cars.filter((item) => {
+        const searchText = searchInput.split(' ').join('').toLowerCase();
         return (
-          item.make.toLowerCase().includes(searchInput.toLowerCase()) +
-          item.model.toLowerCase().includes(searchInput.toLowerCase())
+          (item.make.toLowerCase() + item.model.toLowerCase()).includes(searchText)
         );
       });
       // if we have a match
