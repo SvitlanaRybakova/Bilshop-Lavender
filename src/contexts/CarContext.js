@@ -140,7 +140,6 @@ function CarContextProvider(props) {
 
   const findCarFilter = (e) => {
     setFinded(true);
-    console.log('have a match');
     e.preventDefault();
     setSearching(true);
     setCopyCars(cars.filter((car) => {
@@ -162,6 +161,11 @@ function CarContextProvider(props) {
               return false
             }
             break
+            case "year":
+            if (car[carKey] > filterInput[key]) {
+              return false
+            }
+            break
           default:
             if (!car[key].toLowerCase().replace(/\s/g, "").includes(filterInput[key])) {
               return false
@@ -172,9 +176,8 @@ function CarContextProvider(props) {
       return true
     }))
 
-   
-
-    if(!copyCars){
+    console.log('length', copyCars.length);
+    if(copyCars.length <= 0){
       setFinded(false);
       console.log('dont have a match');
     }

@@ -150,7 +150,7 @@ function PriceRange() {
                       <div className={`${styles.col6Large} mb-4`}>
                         <h2 className={`${styles.lable}`}>Year</h2>
                         <input
-                          type="number" min="0"
+                          type="tel" 
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a year"
                           value={year}
