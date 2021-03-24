@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect } from "react";
 import Cars from "../json/cars.json";
 
+
+
 export const CarContext = createContext();
 
 function CarContextProvider(props) {
-  
+
   const carsarray = Cars;
 
   //variables for pagination
@@ -31,27 +33,28 @@ function CarContextProvider(props) {
   const [isFinded, setFinded] = useState(true);
 
   //variables for filter
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [year, setYear] = useState("");
+  const [filterInput, setFilterInput] = useState({
+    make: '',
+    model: '',
+    year: '',
+    minPrice: '',
+    maxPrice: '',
+    minMiles: '',
+    maxMiles: ''
+  })
 
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [minMiles, setMinMiles] = useState("");
-  const [maxMiles, setMaxMiles] = useState("");
-  
   // switching from another link to home
   const [isSwitching, setSwitching] = useState(false);
-  
+
 
   useEffect(() => {
     if (currentPage || isSearching) {
       setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
     }
     // if there was a transition from another page to the main page, all cars must be rendered again using  the original array (cars)  (not pay attention to past searches)
-    if(isSwitching){
+    if (isSwitching) {
       setFinded(true)
-      setCopyCars(cars);	
+      setCopyCars(cars);
       setCurrentCars(cars.slice(indexOfFirstCar, indexOfLastCar));
     }
     setSearching(false);
@@ -74,19 +77,19 @@ function CarContextProvider(props) {
   };
 
   // Mark first pagination
-  const markPagination = () =>{
+  const markPagination = () => {
     let children = document.querySelectorAll("[class*=PagePagination_liItem");
     children.forEach(child => {
       child.style.removeProperty("border");
       child.style.removeProperty("color");
     });
-    if(document.querySelector("[class*=PagePagination_liItem")){
+    if (document.querySelector("[class*=PagePagination_liItem")) {
       document.querySelector("[class*=PagePagination_liItem").style.border = "1px solid #feb93e";
       document.querySelector("[class*=PagePagination_liItem").style.color = "#feb93e";
     }
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     markPagination();
   }, [copyCars, isSwitching])
 
@@ -120,89 +123,62 @@ function CarContextProvider(props) {
   };
 
   useEffect(() => {
-    setMake("");
-    setModel("");
-    setYear("");
-    setMinPrice("");
-    setMaxPrice("");
-    setMinMiles("");
-    setMaxMiles("");
+    console.log('inside');
+    setFilterInput(
+      {
+        make: '',
+        model: '',
+        year: '',
+        minPrice: '',
+        maxPrice: '',
+        minMiles: '',
+        maxMiles: ''
+      }
+    )
+
   }, [copyCars, currentCars]);
 
-  const onChangeMake = (e) => {
-    setMake(e.target.value.trim());
-  };
-  const onChangeModel = (e) => {
-    setModel(e.target.value.trim());
-  };
-  const onChangeYear = (e) => {
-    setYear(e.target.value);
-  };
-
-  const onChangeMinPrice = (e) => {
-    setMinPrice(e.target.value);
-  };
-  const onChangeMaxPrice = (e) => {
-    setMaxPrice(e.target.value);
-  };
-  const onChangeMinMiles = (e) => {
-    setMinMiles(e.target.value);
-  };
-  const onChangeMaxMiles = (e) => {
-    setMaxMiles(e.target.value);
-  };
-
   const findCarFilter = (e) => {
+    setFinded(true);
+    console.log('have a match');
     e.preventDefault();
-    
-    let alteredMinMiles;
-    let alteredMaxMiles;
-    let alteredMinPrice;
-    let alteredMaxPrice;
-
-    if (minMiles == "") {
-      alteredMinMiles = 0;
-    } else {
-      alteredMinMiles = minMiles;
-    }
-    if (maxMiles == "") {
-      alteredMaxMiles = 10000000;
-    } else {
-      alteredMaxMiles = maxMiles;
-    }
-    if (minPrice == "") {
-      alteredMinPrice = 0;
-    } else {
-      alteredMinPrice = minPrice;
-    }
-    if (maxPrice == "") {
-      alteredMaxPrice = 10000000;
-    } else {
-      alteredMaxPrice = maxPrice;
-    }
-    setCopyCars(
-      cars.filter((car) => {
-        if (
-          car.miles >= alteredMinMiles &&
-          car.miles <= alteredMaxMiles &&
-          car.price >= alteredMinPrice &&
-          car.price <= alteredMaxPrice &&
-          car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0 &&
-          car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
-        ) {
-          if (year != "" && car.year == year) {
-            return true;
-          } else if (year == "") {
-            return true;
-          } else {
-            return false;
-          }
-        } else {
-          return false;
-        }
-      })
-    );
     setSearching(true);
+    setCopyCars(cars.filter((car) => {
+      for (let key in filterInput) {
+        if (filterInput[key].length == 0) {
+          continue
+        }
+        const carKey = key == "minPrice" || "maxPrice" ? "price" : "miles"
+        switch (key) {
+          case "minPrice":
+          case "minMiles":
+            if (car[carKey] < filterInput[key]) {
+              return false
+            }
+            break
+          case "maxPrice":
+          case "maxMiles":
+            if (car[carKey] > filterInput[key]) {
+              return false
+            }
+            break
+          default:
+            if (!car[key].toLowerCase().replace(/\s/g, "").includes(filterInput[key])) {
+              return false
+            }
+        }
+      }
+     
+      return true
+    }))
+
+   
+
+    if(!copyCars){
+      setFinded(false);
+      console.log('dont have a match');
+    }
+    
   };
 
   const values = {
@@ -217,21 +193,9 @@ function CarContextProvider(props) {
     searchInput,
     setSwitching,
     isFinded,
-    onChangeMinPrice,
-    onChangeMaxPrice,
-    onChangeMinMiles,
-    onChangeMaxMiles,
-    onChangeMake,
-    onChangeModel,
-    onChangeYear,
+    setFilterInput,
+    filterInput,
     findCarFilter,
-    make,
-    model,
-    year,
-    minPrice,
-    maxPrice,
-    minMiles,
-    maxMiles,
   };
 
   return (

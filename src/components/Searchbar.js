@@ -8,7 +8,6 @@ function Search() {
 
   return (
     <div className="container">
-      
     <form onSubmit={(e) => findCar(e)} className={styles.form}>
     <div className={styles.searchBar}>
         <input
@@ -19,9 +18,8 @@ function Search() {
           onChange={(e) => setSearchInput(e.target.value)}
           id="searchbarId"
         />
-     </div>
+    </div>
     </form>
-   
     </div>
   );
 }

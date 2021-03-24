@@ -5,23 +5,15 @@ import Searchbar from "../components/Searchbar";
 
 function PriceRange() {
   const {
-    onChangeMinMiles,
-    onChangeMaxMiles,
-    onChangeMinPrice,
-    onChangeMaxPrice,
     findCarFilter,
-    minPrice,
-    maxPrice,
-    minMiles,
-    maxMiles,
-    onChangeMake,
-    onChangeModel,
-    onChangeYear,
-    make,
-    model,
-    year,
+    setFilterInput,
+    filterInput
+ 
   } = useContext(CarContext);
 
+  // destructuring
+  const {make, model, year, minPrice, maxPrice, minMiles, maxMiles } = filterInput;
+  
   return (
     <div className={`${styles.accordionCustom}`}>
       <Searchbar />
@@ -50,10 +42,10 @@ function PriceRange() {
                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minPrice}
-                          onChange={onChangeMinPrice}
+                          onChange={e => setFilterInput({...filterInput, minPrice: e.target.value})}
                         >
-                          <option defaultValue>from </option>
-                          <option value="50000">50 000 SEK</option>
+                          <option defaultValue>0 </option>
+                          <option value="50000"> 50 000 SEK</option>
                           <option value="100000">100 000 SEK</option>
                           <option value="200000">200 000 SEK</option>
                           <option value="300000">300 000 SEK</option>
@@ -67,9 +59,9 @@ function PriceRange() {
                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={maxPrice}
-                          onChange={onChangeMaxPrice}
+                          onChange={e => setFilterInput({...filterInput, maxPrice: e.target.value})}
                         >
-                          <option defaultValue>to</option>
+                          <option defaultValue>0</option>
                           <option value="100000">100 000 SEK</option>
                           <option value="200000">200 000 SEK</option>
                           <option value="300000">300 000 SEK</option>
@@ -93,9 +85,9 @@ function PriceRange() {
                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={minMiles}
-                          onChange={onChangeMinMiles}
+                          onChange={e => setFilterInput({...filterInput, minMiles: e.target.value})}
                         >
-                          <option defaultValue>from</option>
+                          <option defaultValue>0</option>
                           <option value="10000">10 000</option>
                           <option value="20000">20 000</option>
                           <option value="30000">30 000</option>
@@ -110,9 +102,9 @@ function PriceRange() {
                           className={`${styles.formSelect} form-select`}
                           aria-label="Default select example"
                           value={maxMiles}
-                          onChange={onChangeMaxMiles}
+                          onChange={e => setFilterInput({...filterInput, maxMiles: e.target.value})}
                         >
-                          <option defaultValue> to</option>
+                          <option defaultValue> 0</option>
                           <option value="10000">10 000</option>
                           <option value="20000">20 000</option>
                           <option value="30000">30 000</option>
@@ -136,7 +128,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a make"
                           value={make}
-                          onChange={onChangeMake}
+                          onChange={e => setFilterInput({...filterInput, make: e.target.value})}
                         />
                       </div>
 
@@ -149,7 +141,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a model"
                           value={model}
-                          onChange={onChangeModel}
+                          onChange={e => setFilterInput({...filterInput, model: e.target.value})}
                         />
                       </div>
                     </div>
@@ -162,7 +154,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a year"
                           value={year}
-                          onChange={onChangeYear}
+                          onChange={e => setFilterInput({...filterInput, year: e.target.value})}
                         />
                       </div>
 
