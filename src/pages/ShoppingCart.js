@@ -95,6 +95,18 @@ function ShoppingCart() {
                   </tr>
                 }
 
+                {(() => {
+                if (purchases.products.length > 0) {
+                  return (
+                    <tr>
+                      <td className={styles.emptyCartTd}>
+                        <EmptyCart></EmptyCart>
+                      </td>
+                    </tr>
+                  );
+                }
+              })()}       
+
               </tbody>
             </table>
           </div>
@@ -116,13 +128,7 @@ function ShoppingCart() {
               </div>
             }
          </div>
-         {(() => {
-                if (purchases.products.length > 0) {
-                  return (
-                    <EmptyCart></EmptyCart>
-                  );
-                }
-              })()}
+         
         </div>
         <div className="col-lg-4">
           <ShoppingCartTotal props={props} />
