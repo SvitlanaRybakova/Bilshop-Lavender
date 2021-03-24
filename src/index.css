@@ -229,6 +229,24 @@ button:focus {
   color: #eeb644;
 }
 
+/* btn "Empty all" in the Shopping cart  */
+
+.btnEmptyCart {
+  font-size: 12px;
+  font-weight: 300;
+  padding: 3px 10px;
+  margin: 0 2px;
+  border: 1px solid #ad2626;
+  border-radius: 25px;
+  background-color: #ad2626;
+  color: white;
+  transition: all .2s;
+}
+
+.btnEmptyCart:hover {
+  background-color: #691717;
+}
+
 /* ==================
     Logo and Brand name styles 
 =====================*/
