@@ -11,14 +11,14 @@ function MyProfile() {
   return (
     <div className="container">
       <div className={`${styles.removeMargin} row`}>
-        <h6 className="text-center">My Profile</h6>
+        <h3 className="text-center mb-4">My Profile</h3>
 
-        <div className={`${styles.customerInfo} col`}>
+        <div className={`${styles.customerInfo} col col-md-4 mx-auto`}>
           <table className="table table-responsive table-bordered">
             <thead>
               <tr>
-                <td className="col-4">NAME:</td>
-                <td className="col-8">
+                <td className="col-4 col-md-3">NAME:</td>
+                <td className="col-8 col-md-9">
                   {userInfo.firstName} {userInfo.lastName}
                 </td>
               </tr>
