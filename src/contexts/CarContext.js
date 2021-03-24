@@ -96,10 +96,10 @@ function CarContextProvider(props) {
     setFinded(true);
     if (searchInput.length > 0) {
       const result = cars.filter((item) => {
-        const searchText = searchInput.split(' ').join('').toLowerCase();
-        return (
-          (item.make.toLowerCase() + item.model.toLowerCase()).includes(searchText)
-        );
+        const searchText = searchInput.toLowerCase().replace(/\s/g, "");
+        const itemMake = item.make.toLowerCase().replace(/\s/g, "");
+        const itemModel = item.model.toLowerCase().replace(/\s/g, "");
+        return (itemMake + itemModel).includes(searchText);
       });
       // if we have a match
       if (result.length > 0) {
