@@ -1,13 +1,15 @@
-
 .customerInfo {
   width: 50%;
   margin-left: 2rem;
 }
 
+.removeMargin {
+  margin-left: 0 !important;
+}
+
 .datum {
   align-self: flex-end;
 }
-
 
 @media (min-width: 768px) {
   .row .col-md-6,

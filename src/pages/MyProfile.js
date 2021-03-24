@@ -1,54 +1,24 @@
 import styles from "../styles/MyProfile.Module.css";
-import React, { useContext, useState, useEffect } from "react";
-import { CarContext } from "../contexts/CarContext";
-import { useHistory } from "react-router-dom";
+import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import PreviousOrders from "../components/PreviousOrders";
 
 function MyProfile() {
+  const { userOrders } = useContext(UserContext);
 
-  const {  userOrders } = useContext(UserContext);
-  const { showPrice } = useContext(CarContext);
-  
-  console.log(userOrders);
-
-   for (let i = 0; i < userOrders.length; i++) {
-     console.log(userOrders);
-   }
-
-  const history = useHistory();
- 
-  const props = {
-    showPrice,
-    userOrders,
-  };
-
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-  
-
-
-// the date in which an order has been made
-  function Datum() {
-    const today = new Date();
-    const Month = today.getMonth() <= 12 ? "0" : "";
-    const Day = today.getDate() <= 22 ? "0" : "";
-    const date =
-      Day +
-      today.getDate() + "." + Month + (today.getMonth() + 1) +"." + today.getFullYear();
-    return date;
-  }
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
     <div className="container">
-      <div className="row">
-        <p className="h6">My Profile</p>
+      <div className={`${styles.removeMargin} row`}>
+        <h6 className="text-center">My Profile</h6>
 
-        <div className={styles.customerInfo}>
-          <table className="table  table-responsive table-bordered">
+        <div className={`${styles.customerInfo} col`}>
+          <table className="table table-responsive table-bordered">
             <thead>
               <tr>
-                <td>NAME:</td>
-                <td>
-                  {" "}
+                <td className="col-4">NAME:</td>
+                <td className="col-8">
                   {userInfo.firstName} {userInfo.lastName}
                 </td>
               </tr>
@@ -57,11 +27,11 @@ function MyProfile() {
               <tr>
                 <td>ADDRESS:</td>
                 <td>
-                  {" "}
-                  {userInfo.streetAddress} {userInfo.postcode} {userInfo.city}{" "}
+                  {`${userInfo.streetAddress}, ${userInfo.townCity} ${userInfo.postcodeZIP}`}
                 </td>
               </tr>
             </thead>
+
             <thead>
               <tr>
                 <td>PHONE:</td>
@@ -78,45 +48,19 @@ function MyProfile() {
         </div>
       </div>
 
-   
-
       <div className={styles.productOverview}>
-        <h3 className="my-5 pb-2 text-center">My Orders</h3>
-        <table className="table table-responsive table-bordered">
-          <thead>
-            <tr>
-              <th className="text-center">Product</th>
-              <th className="text-center">Price</th>
-              <th className="text-center">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-          {
-                    userOrders.products && userOrders.products.map((product, i) => (
-                                <tr key={i}>
-                                    <td>{product.make} {product.model} {product.year}</td>
-                                    <td>{showPrice(product.price)} SEK</td>
-                                </tr>
-                            ))
-                        }
-            <tr>
-              <td></td>
-              <td></td>
-              <td>
-                <div className={`${styles.datum}`}>
-                  {Datum()}{" "}
-                </div>{" "}
-              </td>
-            </tr>
-
-{/*            
-                  <td>
-                    {product.make} {product.model} {product.year}
-                  </td>
-                  <td>{showPrice(product.price)} SEK</td> */}
-            
-          </tbody>
-        </table>
+        {(() => {
+          if (userOrders.orderHistory.length !== 0) {
+            return (
+              <div>
+                <h3 className="mt-5 mb-4 text-center">My Orders</h3>
+                {userOrders.orderHistory.map((order, i) => (
+                  <PreviousOrders key={i} order={order} />
+                ))}
+              </div>
+            );
+          }
+        })()}
       </div>
     </div>
   );
