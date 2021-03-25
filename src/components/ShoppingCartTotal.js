@@ -6,28 +6,30 @@ import { UserContext } from '../contexts/UserContext'
 import { CarContext } from '../contexts/CarContext';
 
 function ShoppingCartTotal(props) {
-    const { showPrice } = useContext(CarContext);
-    //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
-    const location = useLocation()
 
-    // let linkAdress
-    // linkAdress = (props.props.purchases.products.length > 0 && props.props.purchases.isDeliveryChoosed) ? "/shopping-cart/checkout" : '#'
+    const { showPrice } = useContext(CarContext);//for showing numbers in a friendly way
+
+    //useLocation is used for finding out about what page user is on, because we want that button "Proceed to checkout" renders only on the shopping Cart page
+    const location = useLocation() //for checking location.pathname
+
+    //for redirecting to the right page
     const history = useHistory();
+
     const { logedIn } = useContext(UserContext)
 
+    //function fires when user press button "Proceed to checkout"
     const checkout = (e) => {
         e.preventDefault()
-        if (logedIn === true) {
+        if (logedIn === true) { //if the user is logged in then user will be redirected to checkout
             history.push("/shopping-cart/checkout")
         }
     }
 
+    //the page reloads as soon as isDeliveryChoosed and logedIn change
     useEffect(() => {
-
     }, [props.props.purchases.isDeliveryChoosed, logedIn]);
 
     return (
-
         <div className='mt-5 mt-lg-0 mydiv'>
             <div className={styles.cartTotal}>
                 <h5 className={styles.cartTotalHeading}>Your Order</h5>
@@ -101,7 +103,7 @@ function ShoppingCartTotal(props) {
                             if (location.pathname === '/shopping-cart'
                                 && props.props.purchases.isDeliveryChoosed
                                 && props.props.purchases.products.length > 0) {
-                                  //if user is logged in, has chosen a delivery option and there are  products in cart then proceed to checkout 
+                                //if user is logged in, has chosen a delivery option and there are  products in cart then proceed to checkout 
                                 if (logedIn === true) {
                                     return (
                                         <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`}>
@@ -109,18 +111,19 @@ function ShoppingCartTotal(props) {
                                         </button>
                                     )
                                 } else {
-                                  //if user is not logger in show modal
+                                    //if user is not logger in show modal
                                     return (
                                         <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
                                             Proceed to checkout
                                         </button>
                                     )
                                 }
-                            } else if (location.pathname === '/shopping-cart/checkout' || props.props.purchases.products.length === 0) {
+                            } //if the user is on checkout page the button is not renders
+                            else if (location.pathname === '/shopping-cart/checkout' || props.props.purchases.products.length === 0) {
                                 return (
                                     <div></div>
                                 )
-                            } else {
+                            } else {//if there are no products in the shopping cart or user hasn't choose delivery option, then button is blocked and doesn't work
                                 return (
                                     <Link to='#'>
                                         <button type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
@@ -142,7 +145,7 @@ function ShoppingCartTotal(props) {
                         </div>
                         <div className="modal-body text-center">
                             {logedIn ? <b>You need to choose a shipping option to proceed!</b> : <b>You need to be logged in</b>}
-                            
+
                         </div>
                         <div className="modal-footer text-center border-0">
                             <button type="button" className={`${styles.closeBtn} btn`} data-bs-dismiss="modal">Close</button>
