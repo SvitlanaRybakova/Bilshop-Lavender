@@ -9,7 +9,8 @@ export default function Checkout() {
   const { purchases } = useContext(ShopCartContext)
   const { showPrice } = useContext(CarContext);
 
-  const { addUserDataToContext, 
+  //variables that imported from UserContext
+  const { addUserDataToContext,
     orderHistory,
     validateName,
     validatePostcode,
@@ -18,9 +19,8 @@ export default function Checkout() {
     validateCVC,
     validateStreetAdress,
     validatePhoneNumber } = useContext(UserContext);
-    console.log(validateName);
 
-  //an object which will contain the collecting data from input field
+  //an object which will contain the collecting data from input field at Checkout page
   let userPersonalData = {
     userId: 1,
     firstName: '',
@@ -37,38 +37,39 @@ export default function Checkout() {
     cardHolder: ''
   }
 
-  //function for collection of the user data fires onChange at inputs
-  //it saves collected data to the userPersonalData object
+  //function for collection the user data fires onChange at inputs and saves collected data to the userPersonalData object
   function handle(event) {
+    //it takes ID of the input field, then finds a key with the same name in the object and saves value from the input field to the corresponding key in the obj.
     userPersonalData[event.target.id] = event.target.value
   }
 
-  //efter the form was submitted by user, 1) userPersonalData sends to the User context, 2) user is redirected on confirmation page 3) shopping cart is getting empty
+  //efter the form was submitted by user 1) purcheses adds to orderHistory 2) userPersonalData sends to the User context
   const handleSubmit = (e) => {
     e.preventDefault()
-    orderHistory(purchases)
-    addUserDataToContext(userPersonalData)
+    orderHistory(purchases) //function imported from UserContext
+    addUserDataToContext(userPersonalData) //function imported from UserContext
   }
 
   //when the user goes back from confirmation page with help av back-button in browser (but without pressing closing button at confirmation page), useEffect listens and deletes class d-none from Navbar, so Navbar renders again
   useEffect(() => {
-    document.querySelector('nav').classList.remove('d-none')
+    document.querySelector('nav').classList.remove('d-none') //we add this class at Confirmation page for hiding Navbar so user can't press Logo and be redirected on Home page without complete the purchase 
   }, [])
 
+  //sends to ShoppingCartTotal
   const props = {
-    purchases,
-    userPersonalData,
-    showPrice
+    purchases, 
+    showPrice //for showing numbers in a friendly way in the ShoppingCartTotal
   }
 
-  function ScrollToTopOnMount() {
+  //for scrolling to top of the page when the user goes from Shopping cart page to checkout on mobile (page on mobile is long and without that function opens in the middle/end of te page).
+  function ScrollToTopOnMount() { //function uses as component in the beginning of the jsx codee 
     useEffect(() => {
       document.querySelector('body').scrollTo(0, 0)
     }, []);
 
     return null;
   }
- 
+
 
   return (
     <div className={`${styles.pageContentWrapper} mt-5 container sp-y`}>
@@ -96,9 +97,9 @@ export default function Checkout() {
                             placeholder="Alicia"
                             required
                             onChange={(e) => {
-                              const { value } = e.target
-                              e.target.value = validateName(value)
-                              handle(e)
+                              const { value } = e.target //take value from input field, send in as an argument in the validateName
+                              e.target.value = validateName(value) //validateName checks value and returns it in a valid view
+                              handle(e) //whire the validated value in the userPersonalData obj
                             }} />
                         </div>
                       </div>
@@ -169,17 +170,17 @@ export default function Checkout() {
 
                     <div className={styles.inputItem}>
                       <label htmlFor="streetAddress" className="">Street Address</label>
-                      <input className={styles.input} 
-                      type="text" 
-                      title="(you can't use space in the beginning)" 
-                      id="streetAddress" 
-                      placeholder="Nordanväg 28A"  
-                      required 
-                      onChange={(e) => {
-                        const { value } = e.target
-                        e.target.value = validateStreetAdress(value)
-                        handle(e)
-                      }} />
+                      <input className={styles.input}
+                        type="text"
+                        title="(you can't use space in the beginning)"
+                        id="streetAddress"
+                        placeholder="Nordanväg 28A"
+                        required
+                        onChange={(e) => {
+                          const { value } = e.target
+                          e.target.value = validateStreetAdress(value)
+                          handle(e)
+                        }} />
                     </div>
 
 
