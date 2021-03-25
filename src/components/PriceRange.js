@@ -136,7 +136,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a make"
                           value={make}
-                          onChange={onChangeMake}
+                          onChange={(e) => onChangeMake(e.target.value.replace(/\s/g, ""))}
                         />
                       </div>
 

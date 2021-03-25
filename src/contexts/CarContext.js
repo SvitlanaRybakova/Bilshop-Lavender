@@ -129,8 +129,8 @@ function CarContextProvider(props) {
     setMaxMiles("");
   }, [copyCars, currentCars]);
 
-  const onChangeMake = (e) => {
-    setMake(e.target.value.trim());
+  const onChangeMake = (make) => {
+    setMake(make.trim());
   };
   const onChangeModel = (e) => {
     setModel(e.target.value.trim());
