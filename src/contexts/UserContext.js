@@ -109,7 +109,6 @@ function UserContextProvider(props) {
   }, [userOrderHistoryBoolean]);
 
   const onSubmit = (e) => {
-    console.log("right");
     e.preventDefault();
     const userInfo = {
       firstName: firstName,
