@@ -142,7 +142,7 @@ function CarContextProvider(props) {
     setFinded(true);
     e.preventDefault();
     setSearching(true);
-    setCopyCars(cars.filter((car) => {
+    const res = cars.filter((car) => {
       for (let key in filterInput) {
         if (filterInput[key].length == 0) {
           continue
@@ -163,9 +163,6 @@ function CarContextProvider(props) {
             }
             break
             case "year":
-              // console.log('carKey', car[carKey], typeof car[carKey]);
-              // console.log('filterInput[key]', filterInput[key], typeof filterInput[key]);
-
             if (car[carKey].toString() != filterInput[key]) {
               return false
             }
@@ -178,13 +175,14 @@ function CarContextProvider(props) {
       }
      
       return true
-    }))
+    });
 
-    console.log('length', copyCars.length);
-    if(copyCars.length <= 0){
+    if(res.length>0){
+      setCopyCars(res);
+    }else {
       setFinded(false);
-      console.log('dont have a match');
     }
+    
     
   };
 

@@ -50,7 +50,6 @@ export default function CarList() {
           autoScrollToTop={autoScrollToTop}
         />
       </div>
-     
     );
   };
 
