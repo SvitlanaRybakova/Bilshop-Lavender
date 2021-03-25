@@ -136,7 +136,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a make"
                           value={make}
-                          onChange={onChangeMake}
+                          onChange={(e) => onChangeMake(e.target.value.replace(/\s/g, ""))}
                         />
                       </div>
 
@@ -158,11 +158,11 @@ function PriceRange() {
                       <div className={`${styles.col6Large} mb-4`}>
                         <h2 className={`${styles.lable}`}>Year</h2>
                         <input
-                          type="number" min="0"
+                          type="number" min="1960" max="2020"
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a year"
                           value={year}
-                          onChange={onChangeYear}
+                          onChange={(e) => onChangeYear(e.target.value.substring(0, 4))}
                         />
                       </div>
 
