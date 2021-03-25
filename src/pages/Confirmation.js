@@ -10,18 +10,21 @@ import { CarContext } from '../contexts/CarContext';
 
 function Confirmation() {
 
-    const { userData } = useContext(UserContext)
-    const { purchases, setPurchases } = useContext(ShopCartContext)
-    const { showPrice } = useContext(CarContext);
+    const { userData } = useContext(UserContext) //for rendering collected at Checko
+    const { purchases, setPurchases } = useContext(ShopCartContext) //for rendering purcheses and then reseting them to the empty state
+    const { showPrice } = useContext(CarContext); //for showing numbers in a friendly way 
     
+    //for printing the page, the function fires on clicking print button
     const printConfirmation = () => {
         window.print()
     }
 
+    //when the page loads Navbar hides so user can't press Logo at the Navbar and be redirected on Home page without complete the purchase 
     useEffect(() => {
-        document.querySelector('nav').classList.add('d-none')
+        document.querySelector('nav').classList.add('d-none') 
     }, [])
 
+    //for geting current date which render on the Confirmation page
     function currentDate() {
         const today = new Date(); 
         const nullBeforeMonth = today.getMonth() <= 9 ? '0' : '' 
@@ -30,15 +33,16 @@ function Confirmation() {
         return date
     }
 
+    //when the user clicks on the close button
     const handleClick = () => {
-        setPurchases(() => ({
+        setPurchases(() => ({ // purcheses reset to empty 
             userId: 1,
             products: [],
             deliveryCost: 0,
             isDeliveryChoosed: false,
             priceTotal: 0
           }))
-          document.querySelector('nav').classList.remove('d-none')
+          document.querySelector('nav').classList.remove('d-none') //Navbar gets back
     }
 
     return (
@@ -85,6 +89,7 @@ function Confirmation() {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* loops through products */}
                         {
                             purchases.products.map((product, i) => (
                                 <tr key={i}>
