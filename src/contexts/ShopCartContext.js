@@ -52,7 +52,7 @@ function ShopCartContextProvider(props) {
     }
   }, [purchases])
 
- // Function for setting purcheses. Function takes argument Obj which is a copy of purchases with updates.    
+ // Function for setting purcheses. Function takes argument Obj which is purchases with updates.    
   const setPurchasesState = (obj) => {
     obj.priceTotal = getTotalPrice() //counsts priceTotal
     setPurchases(() => ({ //and overwrites purchases with that updated data.
@@ -66,7 +66,7 @@ function ShopCartContextProvider(props) {
   // Shipping cost
   const setDeliveryCost = (e) => {
     purchases.isDeliveryChoosed = true //For blocking to checkout without delivery choosed
-    purchases.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the copy
+    purchases.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the purchases
     setPurchasesState(purchases) //overwrite purchases with new updated data
   };
   
