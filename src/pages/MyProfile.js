@@ -4,10 +4,12 @@ import { UserContext } from "../contexts/UserContext";
 import PreviousOrders from "../components/PreviousOrders";
 
 function MyProfile() {
-  const { userOrders } = useContext(UserContext);
+  const { userOrders } = useContext(UserContext); 
 
+  // local storage for user's information 
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
+   // returning the user's info : name, email, address ect. 
   return (
     <div className="container">
       <div className={`${styles.removeMargin} row`}>
