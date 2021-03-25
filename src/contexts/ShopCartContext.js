@@ -30,40 +30,38 @@ function ShopCartContextProvider(props) {
   // Local storage
   const [isFetched, setIsFetched] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("products") !== null) {
-      let temp = purchases;
-      temp.products = JSON.parse(localStorage.getItem("products"));
-      setPurchasesState(temp);
+  useEffect(() => { //at first rendering
+    if (localStorage.getItem("products") !== null) { //if there is "products" in the Local storage, take it from there 
+      purchases.products = JSON.parse(localStorage.getItem("products")); //overwrite products in the original purchases with products from LS
+      setPurchasesState(purchases); //this function counts priceTotal and then updates purcheses as well
     }else{
       setPurchasesState(purchases);
     }
     setIsFetched(true);
   }, [])
 
-  useEffect(() => {
+  useEffect(() => {//as soon as purchases changes
     if(isFetched === true){
-      localStorage.setItem("products", JSON.stringify(purchases.products));
+      localStorage.setItem("products", JSON.stringify(purchases.products)); //take the updated purchases and send it to Local Storage
     }
   }, [purchases])
 
- // Function for setting purcheses. Function takes argument temp which is a copy of current purchases with updates and overwrites purchases with that updated data.  
-  const setPurchasesState = (temp) => {
-    temp.priceTotal = getTotalPrice()
-    setPurchases(() => ({
-      products: temp.products,
-      deliveryCost: temp.deliveryCost,
-      priceTotal: temp.priceTotal,
-      isDeliveryChoosed: temp.isDeliveryChoosed
+ // Function for setting purcheses. Function takes argument Obj which is a copy of purchases with updates.    
+  const setPurchasesState = (obj) => {
+    obj.priceTotal = getTotalPrice() //counsts priceTotal
+    setPurchases(() => ({ //and overwrites purchases with that updated data.
+      products: obj.products,
+      deliveryCost: obj.deliveryCost,
+      priceTotal: obj.priceTotal,
+      isDeliveryChoosed: obj.isDeliveryChoosed
     }))
   }
   
   // Shipping cost
   const setDeliveryCost = (e) => {
-    let temp = purchases //make a copy of current purchases
-    temp.isDeliveryChoosed = true //For blocking to checkout without delivery choosed
-    temp.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the copy
-    setPurchasesState(temp) //overwrite purchases with new updated data
+    purchases.isDeliveryChoosed = true //For blocking to checkout without delivery choosed
+    purchases.deliveryCost = e.currentTarget.value === "paidDelivery" ? 5000 : 0 //update deliveryCost in the copy
+    setPurchasesState(purchases) //overwrite purchases with new updated data
   };
   
   //Function for updating total price 
@@ -82,10 +80,9 @@ function ShopCartContextProvider(props) {
   
   // Remove from cart
   const deleteProduct = (productToDelete) => {
-    let temp = purchases //make a copy of current purchases
-    temp.products = purchases.products.filter((product) => product.vin !== productToDelete.vin) //update products in the copy
-    temp.isDeliveryChoosed = false
-    setPurchasesState(temp) //overwrite purchases with new updated data
+    purchases.products = purchases.products.filter((product) => product.vin !== productToDelete.vin) //update products 
+    purchases.isDeliveryChoosed = false //reset isDeliveryChoosed 
+    setPurchasesState(purchases) //overwrite purchases with new updated data
   }
 
   //Add a car to cart
@@ -97,18 +94,16 @@ function ShopCartContextProvider(props) {
         }
       });
     if(isCar === false){
-      let temp = purchases //make a copy of current purchases
-        temp.products.unshift(car) //update products in the copy
-        setPurchasesState(temp) //overwrite purchases with new updated data
+        purchases.products.unshift(car) //update products 
+        setPurchasesState(purchases) //overwrite purchases with new updated data
     }
   }
 
   // Empty shopping cart
   const emptyCart = () =>{
-    let temp = purchases
-    temp.products = [];
-    temp.isDeliveryChoosed = false
-    setPurchasesState(temp)
+    purchases.products = [];//clean up array with products
+    purchases.isDeliveryChoosed = false //reset isDeliveryChoosed 
+    setPurchasesState(purchases) //overwrite purchases with new updated data
   }
 
   const values = {
