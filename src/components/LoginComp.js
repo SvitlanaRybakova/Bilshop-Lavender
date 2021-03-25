@@ -1,5 +1,5 @@
 import styles from "../styles/LogIn.Module.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function LoginComp() {

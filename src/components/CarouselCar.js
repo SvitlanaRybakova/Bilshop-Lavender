@@ -8,11 +8,13 @@ function CarouselCard(props) {
   const modelUpperCase = car.model.toUpperCase();
 
   const handleClick = () => {
+    //when a car is clicked you go to that cars detail page
     history.push(`/cars/${car.vin}`);
   };
 
   return (
     <div
+    // if the car is the fist in the array when rendering it is given classname "active" (and showed in carousel)
       className={`${styles.carouselItem} carousel-item  ${
         index === 0 ? "active" : ""
       } `}

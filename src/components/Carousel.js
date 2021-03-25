@@ -5,9 +5,12 @@ import CarouselCar from "../components/CarouselCar";
 import CarouselIndicators from "../components/CarouselIndicators";
 
 function Carousel() {
+  //get array with cars
   const { cars } = useContext(CarContext);
+  // array for filtered cars
   const filteredCars = [];
   cars.forEach((car) => {
+    //put all cars with "discount" in array for filtered cars
     if (car.hasOwnProperty("discount")) {
       filteredCars.push(car);
     }
@@ -19,6 +22,7 @@ function Carousel() {
       className="carousel carousel-light slide"
       data-bs-ride="carousel"
     >
+        {/* map over the array and create a indicator and a image for every car */}
       <div className="carousel-indicators">
         {filteredCars.map((car, index) => (
           <CarouselIndicators key={car.vin} car={car} index={index} />
@@ -30,6 +34,7 @@ function Carousel() {
         ))}
       </div>
 
+        {/* Buttons (arrows) to navigate in carousel */}
       <button
         className="carousel-control-prev"
         type="button"

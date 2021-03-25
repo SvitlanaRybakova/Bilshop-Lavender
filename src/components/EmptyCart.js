@@ -1,6 +1,7 @@
 import {useContext } from "react";
 import { ShopCartContext } from "../contexts/ShopCartContext";
 
+//button to empty shopping cart
 function EmptyCart() {
   const { emptyCart } = useContext(ShopCartContext)
 

@@ -5,13 +5,11 @@ export const UserContext = createContext();
 
 function UserContextProvider(props) {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const onChangeFirstName = (e) => {
     setFirstName(e.target.value);
   };
-
-  const [lastName, setLastName] = useState("");
-
   const onChangeLastName = (e) => {
     setLastName(e.target.value);
   };
