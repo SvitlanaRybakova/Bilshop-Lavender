@@ -129,14 +129,14 @@ function CarContextProvider(props) {
     setMaxMiles("");
   }, [copyCars, currentCars]);
 
-  const onChangeMake = (e) => {
-    setMake(e.target.value.trim());
+  const onChangeMake = (make) => {
+    setMake(make.trim());
   };
   const onChangeModel = (e) => {
     setModel(e.target.value.trim());
   };
-  const onChangeYear = (e) => {
-    setYear(e.target.value);
+  const onChangeYear = (year) => {
+    setYear(year);
   };
 
   const onChangeMinPrice = (e) => {
@@ -153,6 +153,7 @@ function CarContextProvider(props) {
   };
 
   const findCarFilter = (e) => {
+    setFinded(true);
     e.preventDefault();
     
     let alteredMinMiles;
@@ -180,8 +181,7 @@ function CarContextProvider(props) {
     } else {
       alteredMaxPrice = maxPrice;
     }
-    setCopyCars(
-      cars.filter((car) => {
+    const result = cars.filter((car) => {
         if (
           car.miles >= alteredMinMiles &&
           car.miles <= alteredMaxMiles &&
@@ -200,9 +200,22 @@ function CarContextProvider(props) {
         } else {
           return false;
         }
-      })
-    );
-    setSearching(true);
+      });
+     
+
+      if (result.length > 0){
+        setCopyCars(result)
+        setSearching(true);
+        // setFinded(true);
+      }else {
+      
+        setFinded(false);
+        setCopyCars(cars)
+        setSearching(true);
+        
+      }
+    
+    
   };
 
   const values = {
