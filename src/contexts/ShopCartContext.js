@@ -34,12 +34,10 @@ function ShopCartContextProvider(props) {
   useEffect(() => {
     //check if there are products in shopping cart stored in local storage
     if (localStorage.getItem("products") !== null) {
-      //create copy (temp) of shopping cart (which is empty)
-      let temp = purchases;
-      //put products from local storage in temp
-      temp.products = JSON.parse(localStorage.getItem("products"));
-      //send temp purchaseState 
-      setPurchasesState(temp);
+      //put products from local storage in purchases.products
+      purchases.products = JSON.parse(localStorage.getItem("products"));
+      //send purchaseState 
+      setPurchasesState(purchases);
     }else{
       //else send the empty shopping cart to setPurshases
       setPurchasesState(purchases);
