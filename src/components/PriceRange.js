@@ -162,7 +162,7 @@ function PriceRange() {
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a year"
                           value={year}
-                          onChange={onChangeYear}
+                          onChange={(e) => onChangeYear(e.target.value.substring(0, 4))}
                         />
                       </div>
 

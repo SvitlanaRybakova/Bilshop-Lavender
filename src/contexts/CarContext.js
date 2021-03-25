@@ -135,8 +135,8 @@ function CarContextProvider(props) {
   const onChangeModel = (e) => {
     setModel(e.target.value.trim());
   };
-  const onChangeYear = (e) => {
-    setYear(e.target.value);
+  const onChangeYear = (year) => {
+    setYear(year);
   };
 
   const onChangeMinPrice = (e) => {
