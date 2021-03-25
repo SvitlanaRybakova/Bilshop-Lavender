@@ -190,32 +190,27 @@ function CarContextProvider(props) {
           car.make.toLowerCase().indexOf(make.toLowerCase()) >= 0 &&
           car.model.toLowerCase().indexOf(model.toLowerCase()) >= 0
         ) {
-          if (year != "" && car.year == year) {
+          if (year != "" && car.year == year) { //if the year is not "" and the year is a match, return car
             return true;
-          } else if (year == "") {
-            return true;
-          } else {
+          } else if (year == "") { //else if the year is not a parameter to take into consideration: return the car
+            return true; 
+          } else { //if the years don't match: don't return the car
             return false;
           }
-        } else {
+        } else { //if the filter input don't match the car: don't return the car
           return false;
         }
       });
      
-
       if (result.length > 0){
         setCopyCars(result)
         setSearching(true);
         // setFinded(true);
       }else {
-      
         setFinded(false);
         setCopyCars(cars)
         setSearching(true);
-        
       }
-    
-    
   };
 
   const values = {
