@@ -9,29 +9,36 @@ import { useHistory } from "react-router-dom";
 import EmptyCart from "../components/EmptyCart";
 
 function ShoppingCart() {
-  const { showPrice } = useContext(CarContext);
+  const { showPrice } = useContext(CarContext); //for showing numbers in a friendly way
   const { purchases, setDeliveryCost, deleteProduct } = useContext(ShopCartContext)
 
+ //2 variables that useEffect listens in order to re-rendering page when the user choose delivery option or deleted product
   const [isRadioButtonClicked, setIsRadioButtonClicked] = useState('false')
   const [isDeleteProductClicked, setisDeleteProductClicked] = useState('false')
-  const history = useHistory();
 
+  //fires when the user presses radio button for choosing delivery option
   const handleClick = (e) => {
     setDeliveryCost(e)
     setIsRadioButtonClicked(!isRadioButtonClicked)
   }
 
+  //for deleting a car from the shopping cart
   const handleDeleteButtonClick = (productToDelete) => {
     deleteProduct(productToDelete)
     setisDeleteProductClicked(!isDeleteProductClicked)
   }
 
+  //for re-rendering when the user either choose delivery option or deletes product
+  useEffect(() => {
+  }, [isRadioButtonClicked, isDeleteProductClicked])
+
+  //when the user goes to carDetails page from shopping cart
+  const history = useHistory();
+
   const goToCarDescription = (car) => {
     history.push(`/cars/${car.vin}`);
   };
 
-  useEffect(() => {
-  }, [isRadioButtonClicked, isDeleteProductClicked])
 
   const props = {
     showPrice,
@@ -52,7 +59,7 @@ function ShoppingCart() {
                 </tr>
               </thead>
               <tbody>
-
+                {/* products renders only if there are products in the purchase */}
                 {purchases.products.length > 0 && purchases.products.map((product, i) => (
                   <tr key={i}>
                     <td className={styles.productList}>
@@ -94,7 +101,7 @@ function ShoppingCart() {
                     </td>
                   </tr>
                 }
-
+                {/* button for deleting all products from the shopping cart by one click, renders only if there are some products in the shopping cart */}
                 {(() => {
                 if (purchases.products.length > 0) {
                   return (
@@ -111,6 +118,8 @@ function ShoppingCart() {
             </table>
           </div>
          <div className={styles.deliveryBox}>
+
+           {/* block with delivery options. Renders only if there are some products in the shopping cart */}
            { purchases.products.length > 0 &&
             <div className={styles.shippingMethods} >
                 <div className={`${styles.formCheckBox} form-check d-flex align-items-end`}>
@@ -130,6 +139,7 @@ function ShoppingCart() {
          </div>
          
         </div>
+        {/* Block with overview which includes all products, delivery cost and total cost  */}
         <div className="col-lg-4">
           <ShoppingCartTotal props={props} />
         </div>
