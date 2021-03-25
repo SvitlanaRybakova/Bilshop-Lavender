@@ -5,21 +5,23 @@ import { UserContext } from "../contexts/UserContext";
 import styles from "../styles/LogIn.Module.css";
 
 function LogIn() {
-  const { onSubmit } = useContext(UserContext);
+  // const { onSubmit } = useContext(UserContext);
 
+  // var to see if login or signup should be rendered
   const [renderLoginBoolean, setRenderLoginBoolean] = useState(true);
-
+  //listens to if button to re-render is pressed
   useEffect(() => {}, [renderLoginBoolean]);
-
+  //button that tells page to render login
   const renderLogin = () => {
     setRenderLoginBoolean(true);
   };
-
+  //button that tells page to render signup
   const renderSignup = () => {
     setRenderLoginBoolean(false);
   };
 
   {
+    //checks if login should be rendered
     if (renderLoginBoolean === true) {
       return (
         <div>
@@ -32,6 +34,7 @@ function LogIn() {
           </button>
         </div>
       );
+    //checks if signup should be rendered
     } else if (renderLoginBoolean === false) {
       return (
         <div>

@@ -101,6 +101,7 @@ function ShoppingCartTotal(props) {
                             if (location.pathname === '/shopping-cart'
                                 && props.props.purchases.isDeliveryChoosed
                                 && props.props.purchases.products.length > 0) {
+                                  //if user is logged in, has chosen a delivery option and there are  products in cart then proceed to checkout 
                                 if (logedIn === true) {
                                     return (
                                         <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`}>
@@ -108,6 +109,7 @@ function ShoppingCartTotal(props) {
                                         </button>
                                     )
                                 } else {
+                                  //if user is not logger in show modal
                                     return (
                                         <button onClick={(e) => checkout(e)} type="button" className={`btn ${styles.toCheckoutBtn}`} data-bs-toggle="modal" data-bs-target="#chooseDeliveryModal">
                                             Proceed to checkout

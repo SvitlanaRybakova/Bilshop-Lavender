@@ -95,6 +95,7 @@ const Navbar = () => {
         >
           {(() => {
             if (logedIn === true) {
+              //If user is logged in, show logout and My profile
               return (
                 <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
                   <li className="nav-item d-flex">
@@ -114,6 +115,7 @@ const Navbar = () => {
                 </ul>
               );
             } else {
+              //If user is logged out, show logout and My profile
               return (
                 <ul className="navbar-nav me-auto mb-lg-0 d-flex align-items-end">
                   <li className="nav-item d-flex">
