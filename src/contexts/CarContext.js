@@ -47,6 +47,7 @@ function CarContextProvider(props) {
   useEffect(() => {
     if (currentPage || isSearching) {
       setCurrentCars(copyCars.slice(indexOfFirstCar, indexOfLastCar));
+      console.log('2 должен менятся currentCar и isSearching', currentCars, isSearching);
     }
     // if there was a transition from another page to the main page, all cars must be rendered again using  the original array (cars)  (not pay attention to past searches)
     if(isSwitching){
@@ -153,6 +154,7 @@ function CarContextProvider(props) {
   };
 
   const findCarFilter = (e) => {
+    setFinded(true);
     e.preventDefault();
     
     let alteredMinMiles;
@@ -180,8 +182,7 @@ function CarContextProvider(props) {
     } else {
       alteredMaxPrice = maxPrice;
     }
-    setCopyCars(
-      cars.filter((car) => {
+    const result = cars.filter((car) => {
         if (
           car.miles >= alteredMinMiles &&
           car.miles <= alteredMaxMiles &&
@@ -200,9 +201,22 @@ function CarContextProvider(props) {
         } else {
           return false;
         }
-      })
-    );
-    setSearching(true);
+      });
+      console.log('result', result, typeof result);
+
+      if (result.length > 0){
+        setCopyCars(result)
+        setSearching(true);
+        // setFinded(true);
+      }else {
+        console.log(result.length);
+        setFinded(false);
+        setCopyCars(cars)
+        setSearching(true);
+        console.log('1, here', copyCars);
+      }
+    
+    
   };
 
   const values = {
