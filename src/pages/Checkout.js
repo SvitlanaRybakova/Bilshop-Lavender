@@ -97,7 +97,8 @@ export default function Checkout() {
                             placeholder="Alicia"
                             required
                             onChange={(e) => {
-                              validateName(e.target.value) //validateName checks value and returns it in a valid view
+                              const { value } = e.target;
+                              e.target.value = validateName(value) //validateName checks value and returns it in a valid view
                               handle(e) //whire the validated value in the userPersonalData obj
                             }} />
                         </div>
@@ -113,7 +114,8 @@ export default function Checkout() {
                             placeholder="Brown"
                             required
                             onChange={(e) => {
-                              validateName(e.target.value);
+                              const { value } = e.target;
+                              e.target.value = validateName(value);
                               handle(e)
                             }} />
                         </div>
@@ -138,7 +140,8 @@ export default function Checkout() {
                             placeholder=" Malmö"
                             required
                             onChange={(e) => {
-                              validateName(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validateName(value)
                               handle(e)
                             }} />
                         </div>
@@ -155,7 +158,8 @@ export default function Checkout() {
                             placeholder="222 25"
                             required
                             onChange={(e) => {
-                              validatePostcode(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validatePostcode(value)
                               handle(e)
                             }} />
                         </div>
@@ -172,7 +176,8 @@ export default function Checkout() {
                         placeholder="Nordanväg 28A"
                         required
                         onChange={(e) => {
-                          validateStreetAdress(e.target.value)
+                          const { value } = e.target;
+                          e.target.value =validateStreetAdress(value)
                           handle(e)
                         }} />
                     </div>
@@ -188,7 +193,8 @@ export default function Checkout() {
                         placeholder="073-123-12-12"
                         required
                         onChange={(e) => {
-                          validatePhoneNumber(e.target.value)
+                          const { value } = e.target;
+                          e.target.value = validatePhoneNumber(value)
                           handle(e)
                         }}
 
@@ -208,7 +214,8 @@ export default function Checkout() {
                             placeholder="Master Card"
                             required
                             onChange={(e) => {
-                              validateName(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validateName(value)
                               handle(e)
                             }} />
                         </div>
@@ -226,7 +233,8 @@ export default function Checkout() {
                             id="validDate"
                             required
                             onChange={(e) => {
-                              validateExpDate(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validateExpDate(value)
                               handle(e)
                             }} />
                         </div>
@@ -249,7 +257,8 @@ export default function Checkout() {
                             id="cardNumber"
                             required
                             onChange={(e) => {
-                              validateCardNumber(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validateCardNumber(value)
                               handle(e)
                             }}
                           />
@@ -268,7 +277,8 @@ export default function Checkout() {
                             id="cvcCode"
                             required
                             onChange={(e) => {
-                              validateCVC(e.target.value)
+                              const { value } = e.target;
+                              e.target.value = validateCVC(value)     
                               handle(e)
                             }} />
                         </div>
@@ -286,7 +296,8 @@ export default function Checkout() {
                         id="cardHolder"
                         required
                         onChange={(e) => {
-                          validateName(e.target.value)
+                          const { value } = e.target;
+                          e.target.value = validateName(value)
                           handle(e)
                         }} />
                     </div>
