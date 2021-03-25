@@ -151,6 +151,7 @@ function CarContextProvider(props) {
         switch (key) {
           case "minPrice":
           case "minMiles":
+            console.log(car[carKey]);
             if (car[carKey] < filterInput[key]) {
               return false
             }
@@ -162,7 +163,10 @@ function CarContextProvider(props) {
             }
             break
             case "year":
-            if (car[carKey] > filterInput[key]) {
+              // console.log('carKey', car[carKey], typeof car[carKey]);
+              // console.log('filterInput[key]', filterInput[key], typeof filterInput[key]);
+
+            if (car[carKey].toString() != filterInput[key]) {
               return false
             }
             break

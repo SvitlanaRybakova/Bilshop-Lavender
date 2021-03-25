@@ -150,11 +150,11 @@ function PriceRange() {
                       <div className={`${styles.col6Large} mb-4`}>
                         <h2 className={`${styles.lable}`}>Year</h2>
                         <input
-                          type="tel" 
+                          type="number" 
                           className={`${styles.formControl} form-control`}
                           placeholder="Enter a year"
                           value={year}
-                          onChange={e => setFilterInput({...filterInput, year: e.target.value})}
+                          onChange={e => setFilterInput({...filterInput, year: e.target.value.replace(/\s/g, "").substr(0, 4)})}
                         />
                       </div>
 
