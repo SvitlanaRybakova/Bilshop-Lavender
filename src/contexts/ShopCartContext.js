@@ -28,19 +28,26 @@ function ShopCartContextProvider(props) {
   
 
   // Local storage
+  //boolean to check if info from local Storage is fetched
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
+    //check if there are products in shopping cart stored in local storage
     if (localStorage.getItem("products") !== null) {
+      //create copy (temp) of shopping cart (which is empty)
       let temp = purchases;
+      //put products from local storage in temp
       temp.products = JSON.parse(localStorage.getItem("products"));
+      //send temp purchaseState 
       setPurchasesState(temp);
     }else{
+      //else send the empty shopping cart to setPurshases
       setPurchasesState(purchases);
     }
     setIsFetched(true);
   }, [])
 
+    //listens to changes in shopping cart and adds new products to local storage
   useEffect(() => {
     if(isFetched === true){
       localStorage.setItem("products", JSON.stringify(purchases.products));
@@ -92,10 +99,12 @@ function ShopCartContextProvider(props) {
   const addCarToCart = (car) => {
       let isCar = false;
       purchases.products.forEach(element => {
+        //check if cars id exists in array, if it exists change isCar to true
         if (car.vin == element.vin) {
           isCar = true;
         }
       });
+      //check if isCar is false, if it is false that means that the car did not exist in the array
     if(isCar === false){
       let temp = purchases //make a copy of current purchases
         temp.products.unshift(car) //update products in the copy

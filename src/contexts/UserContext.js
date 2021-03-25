@@ -4,8 +4,18 @@ import { useHistory } from "react-router-dom";
 export const UserContext = createContext();
 
 function UserContextProvider(props) {
+  const history = useHistory();
+
+  //create account
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [townCity, setTownCity] = useState("");
+  const [postcodeZIP, setPostcodeZIP] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const onChangeFirstName = (e) => {
     setFirstName(e.target.value);
@@ -13,101 +23,31 @@ function UserContextProvider(props) {
   const onChangeLastName = (e) => {
     setLastName(e.target.value);
   };
-
-  const [emailAddress, setEmailAddress] = useState("");
-
   const onChangeEmailAddress = (e) => {
     setEmailAddress(e.target.value);
   };
-
-  const [townCity, setTownCity] = useState("");
-
   const onChangeTownCity = (e) => {
     setTownCity(e.target.value);
   };
-
-  const [postcodeZIP, setPostcodeZIP] = useState("");
-
   const onChangePostcodeZIP = (e) => {
     setPostcodeZIP(e.target.value);
   };
-
-  const [streetAddress, setStreetAddress] = useState("");
-
   const onChangeStreetAddress = (e) => {
     setStreetAddress(e.target.value);
   };
-
-  const [phone, setPhone] = useState("");
-
   const onChangePhone = (e) => {
     setPhone(e.target.value);
   };
-
-  const [password, setPassword] = useState("");
-
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  const [confirmPassword, setConfirmPassword] = useState("");
-
   const onChangeConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
 
-  const [loginPassword, setLoginPassword] = useState("");
-
-  const onChangeLoginPassword = (e) => {
-    setLoginPassword(e.target.value);
-  };
-
-  const [loginEmail, setLoginEmail] = useState("");
-
-  const onChangeLoginEmail = (e) => {
-    setLoginEmail(e.target.value);
-  };
-
-  const [userData, setUserData] = useState({});
-
-  const [userOrders, setUserOrders] = useState({
-    userId: 1,
-    orderHistory: [],
-    firstname: "",
-    lastname: "",
-  });
-
-  const history = useHistory();
-
-  const [userOrderHistoryBoolean, setUserOrderHistoryBoolean] = useState(false);
-
-  const addUserDataToContext = (data) => {
-    setUserData(data);
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem("orders") !== null) {
-      setUserOrders(JSON.parse(localStorage.getItem("orders")));
-    }
-  }, []);
-
-  const orderHistory = (purchases) => {
-    setUserOrders((previousState) => ({
-      orderHistory: [...previousState.orderHistory, purchases],
-    }));
-    setUserOrderHistoryBoolean(true);
-  };
-
-  useEffect(() => {
-    if (userOrderHistoryBoolean === true) {
-      localStorage.setItem("orders", JSON.stringify(userOrders));
-      setUserOrderHistoryBoolean(false);
-      history.push("/shopping-cart/checkout/confirmation");
-    }
-  }, [userOrderHistoryBoolean]);
-
   const onSubmit = (e) => {
     e.preventDefault();
+    //create object with users input
     const userInfo = {
       firstName: firstName,
       lastName: lastName,
@@ -119,11 +59,13 @@ function UserContextProvider(props) {
       password: password,
       confirmPassword: confirmPassword,
     };
+    //check if password is confirmed
     if (confirmPassword !== password) {
       alert("Both passwords must be the same");
       setPassword("");
       setConfirmPassword("");
     } else {
+      //set userInfo in local storage and logedIn to true
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       localStorage.setItem("logedIn", JSON.stringify(true));
       history.push("/");
@@ -138,48 +80,93 @@ function UserContextProvider(props) {
       setConfirmPassword("");
       setLogedIn(true);
     }
-
-    console.log(
-      firstName,
-      lastName,
-      emailAddress,
-      townCity,
-      postcodeZIP,
-      streetAddress,
-      phone
-    );
   };
 
-  const [logedIn, setLogedIn] = useState(false);
+  //var for checkout info
+  const [userData, setUserData] = useState({});
+  const addUserDataToContext = (data) => {
+    setUserData(data);
+  };
 
+  // var for orders
+  const [userOrders, setUserOrders] = useState({
+    userId: 1,
+    orderHistory: [],
+    firstname: "",
+    lastname: "",
+  });
+
+  //boolean that tells if user has saved orders
+  const [userOrderHistoryBoolean, setUserOrderHistoryBoolean] = useState(false);
+
+  //get previous orders from local storage
   useEffect(() => {
-    if (localStorage.getItem("logedIn") !== null) {
-      if (JSON.parse(localStorage.getItem("logedIn")) === true) {
-        setLogedIn(true);
-      }
+    if (localStorage.getItem("orders") !== null) {
+      setUserOrders(JSON.parse(localStorage.getItem("orders")));
     }
-  }, [logedIn]);
+  }, []);
 
-  const logOut = () => {
-    localStorage.setItem("logedIn", false);
-    setLogedIn(false);
-    history.push("/");
+  //add new orders to previous orders
+  const orderHistory = (purchases) => {
+    setUserOrders((previousState) => ({
+      orderHistory: [...previousState.orderHistory, purchases],
+    }));
+    setUserOrderHistoryBoolean(true);
   };
 
-  const [userInfo, setUserInfo] = useState("");
+  //listens to if new orders are placed and adds them to local storage
+  useEffect(() => {
+    if (userOrderHistoryBoolean === true) {
+      localStorage.setItem("orders", JSON.stringify(userOrders));
+      setUserOrderHistoryBoolean(false);
+      history.push("/shopping-cart/checkout/confirmation");
+    }
+  }, [userOrderHistoryBoolean]);
+
+
+  //login
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  
+  const onChangeLoginEmail = (e) => {
+    setLoginEmail(e.target.value);
+  };
+  const onChangeLoginPassword = (e) => {
+    setLoginPassword(e.target.value);
+  };
+
+  const onSubmitLogin = (e) => {
+    e.preventDefault();
+    //check if user is stored
+    if (localStorage.getItem("userInfo") !== null) {
+      //if user info exists, get data
+      setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
+    } else {
+      //else alert
+      setLoginEmail("");
+      setLoginPassword("");
+      alert("Password or Email invalid! Please try again");
+    }
+  };
+
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    if (userInfo !== "") {
+    //if userInfo is not empty
+    if (userInfo !== null) {
+      //check if password and email match with input
       if (
         userInfo.password === loginPassword &&
         userInfo.emailAddress === loginEmail
       ) {
+        //log in and save that user is loged in
         setLogedIn(true);
         setLoginEmail("");
         setLoginPassword("");
         localStorage.setItem("logedIn", JSON.stringify(true));
         history.push("/");
       } else {
+        //else alert
         alert("Password or Email invalid! Please try again");
         setLoginEmail("");
         setLoginPassword("");
@@ -187,17 +174,27 @@ function UserContextProvider(props) {
     }
   }, [userInfo]);
 
-  const onSubmitLogin = (e) => {
-    e.preventDefault();
-    if (localStorage.getItem("userInfo") !== null) {
-      setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
-    } else {
-      setLoginEmail("");
-      setLoginPassword("");
-      alert("Password or Email invalid! Please try again");
+  //var to check if user is logged in or not
+  const [logedIn, setLogedIn] = useState(false);
+
+  useEffect(() => {
+    //check if there is saved data in local storage
+    if (localStorage.getItem("logedIn") !== null) {
+      //check if user is loged in
+      if (JSON.parse(localStorage.getItem("logedIn")) === true) {
+        setLogedIn(true);
+      }
     }
+  }, [logedIn]);
+
+  //logout
+  const logOut = () => {
+    localStorage.setItem("logedIn", false);
+    setLogedIn(false);
+    history.push("/");
   };
 
+  
   const validateName = (value) => {
     return value
       .replace(/^\s*\d*/, "")
